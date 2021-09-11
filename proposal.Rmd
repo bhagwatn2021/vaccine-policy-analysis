@@ -1,0 +1,108 @@
+---
+title: "Vaccine mandates versus incentives"
+subtitle: "A survey of the pros and cons of positive and negative vaccine incentives, and insight into the optimal method to convince Americans to receive a COVID-19 vaccine"
+author: Jennifer Kim, Neel Bhagwat
+date: September 10, 2021 
+output: 
+  html_document:
+    toc: true 
+    toc_float: true
+    number_sections: false
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+# Load libraries and settings here
+library(tidyverse)
+library(here)
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>",
+  fig.path = "figs/", # Folder where rendered plots are saved
+  fig.width = 7.252, # Default plot width
+  fig.height = 4, # Default plot height
+  fig.retina = 3 # For better plot resolution
+)
+```
+
+Write your proposal content here. 
+
+Make sure you update the settings in the YAML for your report. 
+
+Use [markdown](https://commonmark.org/help/) for formatting, e.g.: **Bold**, _Italic_, etc.
+
+Make a bullet list like this: 
+
+- Item 1
+- Item 2
+- Item 3
+
+Or a nubmered list like this: 
+
+1. Item 1
+2. Item 2
+3. Item 3
+
+If you want to insert an image in the `images` folder, you can insert it using html code like this: 
+
+<center>
+<img src="images/madd_logo.png" width=150>
+</center>
+
+The code `<center>` and `</center>` just puts the image in the center of the page, the `src=""` part defines the path to the image, and the `width=300` part defines the image width in pixels - use that to adjust the image size in your report.
+
+Here are some section headers to use: 
+
+# Abstract
+
+This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates. It compares vaccine mandates, the policy in question, to various positive incentives, such as tax rebates, and neutral incentives that focus on increasing access to the vaccine. The study will focus on a national vaccine mandate that businesses are allowed to enforce, as well as the government during tax season. The product attributes valuable to the customer that are considered are:
+
+- Safety of vaccines
+- Efficacy in preventing COVID-19
+- Protection of individual rights
+- Attributes of the policy (positive, negative, neutral)
+- Amount of funds given/fined ($) 
+
+
+The decision variables valuable to the government that are considered are: 
+
+- Cost
+- Feasibility
+- Effectiveness
+- Threshold amount ($) to convince a population
+
+# Introduction
+
+Over 70 million Americans are unvaccinated for COVID-19, a disease that forced life to shut down and decimated the overall health and the economy of the US. Many unvaccinated have numerous reservations against getting vaccinated, ranging from hesitancy due to mistrust in the American healthcare system, to political and religious oppositions. Every unvaccinated individual in the study is expected to respond to various policies, with some getting a vaccine, and others resisting the policies put in place. 
+
+On September 9th, 2021, US President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts, who claim that forcing Americans to get vaccinated is crucial, criticism from other experts, who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
+
+Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted iniatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites. 
+# Market Opportunity
+
+There are approximately 80 million unvaccinated adults in the US. 
+
+# Product Attributes & Decision Variables
+
+The product attributes valuable to the government that are considered are:
+
+- Safety of vaccines: Americans are concerned about the safety of the vaccine, given conspiracy theories that blow rare adverse reactions out of proportion. 
+- Efficacy in preventing COVID-19: Americans 
+- Protection of individual rights
+- Attributes of the policy (positive, negative, neutral)
+
+The decision variables valuable to the government that are considered are:
+ 
+- Cost
+- Feasibility
+- Effectiveness
+- Threshold amount ($) to convince a population
+
+
+# Questions
+- Which Americans favor/oppose the vaccine mandates? 
+- What is the most effective policy to get people vaccinated?
+- What are the net economic benefits of each vaccine policy?
+- Are more Americans unsure about getting a COVID-19 vaccine, or are more Americans hostile  towards getting a COVID-19 vaccine?
+- How many parents are willing to vaccinate children once a COVID-19 vaccine becomes available to them? 
+
