@@ -80,7 +80,17 @@ On September 9th, 2021, US President Joe Biden announced vaccine mandates for 10
 Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted iniatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites. 
 # Market Opportunity
 
-There are approximately 80 million unvaccinated adults in the US. 
+There are approximately 80 million unvaccinated adults in the US. One option is to enact this policy as a personal responsibility and mandate vaccines for everyone by next tax season. This would make the entire unvaccinated population the "customer" in this situation. Another option is to give power to businesses and owners of public spaces to enforce mandates, which would shift our "customer" to businesses. Below are the evaluations of different options to select when choosing our market for a vaccine mandate.
+
+**Businesses and influential people**
+It would be easier to collect data on businesses and influential people such as politicians because many businesses and politicians publish their stances on vaccines on common social media platforms such as Twitter. It would only require us to gather statements from a select few social media platforms and data about support for politicians and businesses (such as approval rating or popularity). This would not be a completely effective model, however, when modeling consumer choice of ordinary American citizens. Given the political climate of the United States and the number of recorded incidents of mask resistance in stores, it would not be effective as pushback will lead to Americans not complying. The following videos depict the extent Americans' negative reactions to mandates:
+
+[Woman Sits on Floor in Anti-Mask Temper Tantrum](https://youtu.be/vAUeIBQoQCU)
+[Parents Protest School Mask Mandate Shouting ‘Will Not Comply’ At Board Members](https://youtu.be/KT-qW5sNrwg)
+[NYC teachers protest vaccine mandate](https://youtu.be/g521LRLFJZo)
+
+**American Citizens**
+It would be more intuitive and insightful to collect data on Americans themselves. Knowing how Americans believe about mandating vaccines will give politicians a sense of who will comply with the mandate. But it would be harder to collect data on enough people to get an unbiased view, as political views differ by geographical region. We would have to be sure to collect data from a numerous sources across a vast political and geographic spectrum. 
 
 # Product Attributes & Decision Variables
 
