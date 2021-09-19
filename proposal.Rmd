@@ -55,21 +55,13 @@ Here are some section headers to use:
 
 # Abstract
 
-This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates. It compares vaccine mandates, the policy in question, to various positive incentives, such as tax rebates, and neutral incentives that focus on increasing access to the vaccine. The study will focus on a national vaccine mandate that businesses are allowed to enforce, as well as the government during tax season. The product attributes valuable to the customer that are considered are:
+This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a universal vaccine mandate, the policy in question, to various positive incentives, such as tax rebates, and neutral incentives that focus on increasing access to the vaccine. The policy attributes valuable to the customer that are considered are:
 
 - Safety of vaccines
 - Efficacy in preventing COVID-19
 - Protection of individual rights
 - Attributes of the policy (positive, negative, neutral)
 - Amount of funds given/fined ($) 
-
-
-The decision variables valuable to the government that are considered are: 
-
-- Cost
-- Feasibility
-- Effectiveness
-- Threshold amount ($) to convince a population
 
 # Introduction
 
@@ -78,6 +70,7 @@ Over 70 million Americans are unvaccinated for COVID-19, a disease that forced l
 On September 9th, 2021, US President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts, who claim that forcing Americans to get vaccinated is crucial, criticism from other experts, who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
 
 Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted iniatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites. 
+
 # Market Opportunity
 
 There are approximately 80 million unvaccinated adults in the US. One option is to enact this policy as a personal responsibility and mandate vaccines for everyone by next tax season. This would make the entire unvaccinated population the "customer" in this situation. Another option is to give power to businesses and owners of public spaces to enforce mandates, which would shift our "customer" to businesses. Below are the evaluations of different options to select when choosing our market for a vaccine mandate.
@@ -92,22 +85,14 @@ It would be easier to collect data on businesses and influential people such as 
 **American Citizens**
 It would be more intuitive and insightful to collect data on Americans themselves. Knowing how Americans believe about mandating vaccines will give politicians a sense of who will comply with the mandate. But it would be harder to collect data on enough people to get an unbiased view, as political views differ by geographical region. We would have to be sure to collect data from a numerous sources across a vast political and geographic spectrum. 
 
-# Product Attributes & Decision Variables
+# Policy Attributes
 
-The product attributes valuable to the government that are considered are:
+The policy attributes valuable to the government that are considered are:
 
-- Safety of vaccines: Americans are concerned about the safety of the vaccine, given conspiracy theories that blow rare adverse reactions out of proportion. 
-- Efficacy in preventing COVID-19: Americans 
-- Protection of individual rights
-- Attributes of the policy (positive, negative, neutral)
-
-The decision variables valuable to the government that are considered are:
- 
-- Cost
-- Feasibility
-- Effectiveness
-- Threshold amount ($) to convince a population
-
+- Safety of vaccines: Americans are concerned about the safety of the vaccine, given conspiracy theories that blow rare adverse reactions out of proportion. Americans must be convinced that conspiracy theories are false and that the vaccine is a harm-free way to protect themselves and others.  
+- Efficacy in preventing COVID-19: Likewise to safety, Americans must be convinced that the vaccine is highly effective against SARS-COV-2. Currently, conspiracy theories falsely claim that vaccines are not effective. 
+- Protection of individual rights: Right-wing media figures and politicians reinforce conspiracy theories about the COVID-19 vaccine by urging the public to have the right to refuse getting vaccinated. The optimal policy must prioritize public health, but also not infringe on constitutional rights. 
+- Attributes of the policy (positive, negative, neutral): The DC plastic bag tax had a larger impact on plastic bag usage in DC than the DC plastic bag rebate. Whether Americans will be gaining something for complying, not be affected, or be losing something for not complying will determine Americans' behavior and attitude towards getting the vaccine. 
 
 # Questions
 - Which Americans favor/oppose the vaccine mandates? 
@@ -115,4 +100,4 @@ The decision variables valuable to the government that are considered are:
 - What are the net economic benefits of each vaccine policy?
 - Are more Americans unsure about getting a COVID-19 vaccine, or are more Americans hostile  towards getting a COVID-19 vaccine?
 - How many parents are willing to vaccinate children once a COVID-19 vaccine becomes available to them? 
-
+- How many Americans support donating vaccine doses abroad? 
