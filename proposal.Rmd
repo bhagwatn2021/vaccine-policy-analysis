@@ -55,7 +55,6 @@ Here are some section headers to use:
 
 
 # Abstract
-JENNY DELETE THIS LINE
 This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a universal vaccine mandate, the policy in question, to various positive incentives, such as tax rebates, and neutral incentives that focus on increasing access to the vaccine. The policy attributes valuable to the customer that are considered are:
 
 - Safety of vaccines
