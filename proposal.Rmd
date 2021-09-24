@@ -14,6 +14,7 @@ output:
 # Load libraries and settings here
 library(tidyverse)
 library(here)
+library(spelling)
 knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
@@ -22,6 +23,8 @@ knitr::opts_chunk$set(
   fig.width = 7.252, # Default plot width
   fig.height = 4, # Default plot height
   fig.retina = 3 # For better plot resolution
+  
+#spelling::spell_check_files("proposal.Rmd")
 )
 ```
 
@@ -37,7 +40,7 @@ Make a bullet list like this:
 - Item 2
 - Item 3
 
-Or a nubmered list like this: 
+Or a numbered list like this: 
 
 1. Item 1
 2. Item 2
@@ -68,9 +71,9 @@ This study focuses on the various policies that the US Federal government can en
 
 Over 80 million Americans are unvaccinated for COVID-19, a disease that forced life to shut down and decimated the overall health and the economy of the US. Many unvaccinated have numerous reservations against getting vaccinated, ranging from hesitancy due to mistrust in the American healthcare system, to political and religious oppositions. Every unvaccinated individual in the study is expected to respond to various policies, with some getting a vaccine, and others resisting the policies put in place. 
 
-On September 9th, 2021, US President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts, who claim that forcing Americans to get vaccinated is crucial, criticism from other experts, who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
+On September 9th, 2021, US President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts, who claim that forcing Americans to get vaccinated is crucial, criticism from other experts, who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitutional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
 
-Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted iniatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites. 
+Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted initiatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites. 
 
 
 # Target Population
@@ -81,7 +84,7 @@ There are approximately 80 million unvaccinated adults in the US. For each polic
   - Political beliefs: this would be achieved by reaching out political organizations to GW Young Americas Foundation, GW College Democrats, and GW College Republicans to get ample results from around the political compass. 
   - Income*: this would be achieved by asking GW students and others who fill out the survey about their income, and comparing that against who would favor different policies over COVID vaccinations. We can also reach out to the financial aid office to get more responses from people of underprivileged backgrounds as we are not violating ethical standards by doing so. 
   
-*These factors are important because of the fact that people from underprivileged backgrounds are hesistant to take the vaccine because of mistrust in the American healthcare system. [A report by California State University, Northridge showcases and explains the disparties in vaccination rates amongst races](https://sundial.csun.edu/163812/news/vaccine-hesitancy-stands-in-the-way-of-reducing-covid-19-cases-in-communities-of-color/) 
+*These factors are important because of the fact that people from underprivileged backgrounds are hesitant to take the vaccine because of mistrust in the American healthcare system. [A report by California State University, Northridge showcases and explains the disparities in vaccination rates amongst races](https://sundial.csun.edu/163812/news/vaccine-hesitancy-stands-in-the-way-of-reducing-covid-19-cases-in-communities-of-color/) 
 
 
 *** IF TIME PERMITS *** 
