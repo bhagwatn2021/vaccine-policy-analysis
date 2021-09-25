@@ -1,5 +1,5 @@
 ---
-title: "Vaccine mandates versus incentives"
+title: "Vaccine Mandates vs. Incentives"
 subtitle: "A survey of the pros and cons of positive and negative vaccine incentives, and insight into the optimal method to convince Americans to receive a COVID-19 vaccine"
 author: Jennifer Kim, Neel Bhagwat
 date: September 10, 2021 
@@ -14,6 +14,7 @@ output:
 # Load libraries and settings here
 library(tidyverse)
 library(here)
+library(spelling)
 knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
@@ -22,65 +23,43 @@ knitr::opts_chunk$set(
   fig.width = 7.252, # Default plot width
   fig.height = 4, # Default plot height
   fig.retina = 3 # For better plot resolution
+  
+#spelling::spell_check_files("proposal.Rmd")
 )
 ```
-
-Write your proposal content here. 
-
-Make sure you update the settings in the YAML for your report. 
-
-Use [markdown](https://commonmark.org/help/) for formatting, e.g.: **Bold**, _Italic_, etc.
-
-Make a bullet list like this: 
-
-- Item 1
-- Item 2
-- Item 3
-
-Or a nubmered list like this: 
-
-1. Item 1
-2. Item 2
-3. Item 3
-
-If you want to insert an image in the `images` folder, you can insert it using html code like this: 
-
-<center>
-<img src="images/madd_logo.png" width=150>
-</center>
-
-The code `<center>` and `</center>` just puts the image in the center of the page, the `src=""` part defines the path to the image, and the `width=300` part defines the image width in pixels - use that to adjust the image size in your report.
-
-Here are some section headers to use: 
 
 
 # Abstract
 
-This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a universal vaccine mandate, the policy in question, to various positive incentives, such as tax rebates, and neutral incentives that focus on increasing access to the vaccine. The policy attributes valuable to the customer that are considered are:
+This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a universal vaccine mandate, the policy in question, to various positive incentives, such as tax rebates, and neutral incentives that focus on increasing access to the vaccine. The target population for this study are all unvaccinated Americans. The policy attributes valuable to the customer that are considered are:
 
 - Protection of individual rights
 - Attributes of the policy (positive, negative, neutral)
 - Amount of funds given/fined ($) 
 
-
 # Introduction
 
-Over 80 million Americans are unvaccinated for COVID-19, a disease that forced life to shut down and decimated the overall health and the economy of the US. Many unvaccinated have numerous reservations against getting vaccinated, ranging from hesitancy due to mistrust in the American healthcare system, to political and religious oppositions. Every unvaccinated individual in the study is expected to respond to various policies, with some getting a vaccine, and others resisting the policies put in place. 
+Over 80 million Americans are unvaccinated for COVID-19, a disease that forced life to shut down and decimated the overall health and the economy of the US. Many unvaccinated Americans have numerous reservations against getting vaccinated, ranging from hesitancy due to mistrust in the American healthcare system, to political and religious oppositions. Every unvaccinated individual in the study is expected to respond to various policies, with some getting a vaccine, and others resisting the policies put in place.
 
-On September 9th, 2021, US President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts, who claim that forcing Americans to get vaccinated is crucial, criticism from other experts, who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
+On September 9th, 2021, US President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts who claim that forcing Americans to get vaccinated is crucial, criticism from other experts who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitutional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
 
-Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted iniatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites. 
+Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted initiatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites.
 
 
 # Target Population
 
-There are approximately 80 million unvaccinated adults in the US. For each policy option, there is a different subset of populations that can potentially be impacted. Different groups of people and organizations have different opinions on each policy. If there is a negative policy (a mandate with a consequence for non-compliance), there is expected to be some resistance, especially from the far-right. But some people in the same sample group may be convinced to take a vaccine if there is a positive incentive for complying. To gain the best data possible, we will have to collect data on both the unvaccinated to vet how open the public is to getting vaccinated under different policies. We will also have to collect data on the vaccinated because we will have to see the overall picture on whether vaccine mandates would work. It is possible that majority of the unvaccinated will be opposed to vaccine mandates, but the vaccinated would want mandates in place because of concerns about vaccine-resistant variants. To account for bias in our data, we will have to make sure that we survey people from a wide range of backgrounds, ranging by: 
+There are approximately 80 million unvaccinated adults in the US. For each policy option, there is a different subset of populations that can potentially be impacted. Different groups of people and organizations have different opinions on each policy. If there is a negative policy (a mandate with a consequence for non-compliance), there is expected to be some resistance, especially from the far-right. But some people in the same sample group may be convinced to take a vaccine if there is a positive incentive for complying. Another reason for the lack of vaccinations is the mistrust that underprivileged groups have towards the American healthcare system. This is the result of microaggressions from providers towards marginalized patients*. The most efficient and effective way, as we hypothesize, is to enact neutral policies that focus on a more aggressive anti-mistrust campaign, including educating these groups of people on the safety and efficacy on the vaccine. To gain the best data possible, we will have to collect data on both the unvaccinated to vet how open the public is to getting vaccinated under different policies. To account for bias in our data, we will have to make sure that we survey people from a wide range of backgrounds, ranging by:
 
-  - Race/ethnicity*: this would be achieved by reaching out to various faith and culture-based organizations (Neel was on the Executive Board of Hindu Students Association during undergrad and is able to reach out to the MSSC.)
-  - Political beliefs: this would be achieved by reaching out political organizations to GW Young Americas Foundation, GW College Democrats, and GW College Republicans to get ample results from around the political compass. 
-  - Income*: this would be achieved by asking GW students and others who fill out the survey about their income, and comparing that against who would favor different policies over COVID vaccinations. We can also reach out to the financial aid office to get more responses from people of underprivileged backgrounds as we are not violating ethical standards by doing so. 
-  
-*These factors are important because of the fact that people from underprivileged backgrounds are hesistant to take the vaccine because of mistrust in the American healthcare system. [A report by California State University, Northridge showcases and explains the disparties in vaccination rates amongst races](https://sundial.csun.edu/163812/news/vaccine-hesitancy-stands-in-the-way-of-reducing-covid-19-cases-in-communities-of-color/) 
+- Race/ethnicity*: this would be achieved by reaching out to various faith and culture-based organizations (Neel was on the Executive Board of Hindu Students Association during undergrad and is able to reach out to the MSSC.)
+- Political beliefs: this would be achieved by reaching out political organizations to GW Young Americas Foundation, GW College Democrats, and GW College Republicans to get ample results from around the political compass. 
+- Income*: this would be achieved by asking GW students and others who fill out the survey about their income, and comparing that against who would favor different policies over COVID vaccinations. We can also reach out to the financial aid office to get more responses from people of underprivileged backgrounds as we are not violating ethical standards by doing so.
+
+We will also be reaching out to the following people/groups to diversify our sample: 
+
+-Dr. Lorien Abroms, a Public Health professor, runs the GW Health Communications Corps, an organization combatting health misinformation. Dr. Abroms would particularly be integral with identifying groups of people that succumb to microaggressions and have lower vaccination rates*. Dr. Abroms can also help us gain more samples from groups that succumb to misinformation about the vaccine, as [a report from HHS in August 2021 estimates that 44% of unvaccinated fall into the "unvaccinated but willing" category](hhttps://www.washingtonpost.com/health/2021/09/23/covid-unvaccinated-but-willing/?fbclid=IwAR26FWna18WL6-V__ofn441XM3cRf76NxEF6sWZdm-iNlO5q-his1OHocuk). This would help to reduce the bias in the sample towards a positive or negative policy, identifying a group of people that is willing to take the vaccine without any incentive or consequence wagered will help us identify the most efficient policy and whether incentives or fines are absolutely necessary. 
+
+
+*These factors are important because of the fact that people from underprivileged backgrounds are hesitant to take the vaccine because of mistrust in the American healthcare system. [A report by California State University, Northridge showcases and explains the disparities in vaccination rates amongst races](https://sundial.csun.edu/163812/news/vaccine-hesitancy-stands-in-the-way-of-reducing-covid-19-cases-in-communities-of-color/) 
 
 
 *** IF TIME PERMITS *** 
@@ -95,19 +74,59 @@ It would be beneficial to collect supplemental data on businesses and influentia
 
 The policy attributes valuable to the government that are considered are:
 
-- Attributes of the policy (positive, negative, neutral): The DC plastic bag tax had a larger impact on plastic bag usage in DC than the DC plastic bag rebate. Whether Americans will be gaining something for complying, not be affected, or be losing something for not complying will determine Americans' behavior and attitude towards getting the vaccine. 
+- Protection of individual rights: far-right media hosts and politicians weaponize misinformation to provide a sense of government control and keep Americans skeptical about the vaccine. Mandates would make getting vaccinated a responsibility, while incentives would keep getting vaccinated an individual choice. 
+- Reinforcement of the policy (positive, negative, neutral): positive policies will wager incentives such as monetary compensation or tangible gifts to those who get vaccinated. Neutral policies focus on increasing access to the vaccine with no reward or consequence. And negative policies involve mandates with fines or other penalties for non-compliance.
+- Amount of funds given/fined ($): if a positive or negative policy is put in place, the amount of funds/goods wagered will influence the number of Americans that will comply. 
 
+| Policy                  | Description                                                                                           | Key Attributes                                                        | Pros                                                           | Cons                                            |
+|-------------------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|----------------------------------------------------------------|-------------------------------------------------|
+| Monetary Incentive      | A pure monetary incentive given to those who choose to receive the vaccine (not retroactive)          | Amount of incentive ($50-$500 with $50 increments)                    | Public approval                                                | Expensive                                       |
+| Vaccine Mandate         | A tax penalty for those who do not comply to a vaccine mandate (health and religious exemptions only) | Amount of fee ($50-$500 with $50 increments                           | Government income, easy implementation into current tax system | Public outrage and pushback                     |
+| Mobile Vaccination Site | A mobile vaccination site that provides more accessibility for those who choose to receive a vaccine  | Distance from home (<1 mile-50 miles with 5 mile increments)          | Public approval                                                | Logistics planning Implementation time and cost |
+| Lottery Entry           | An entry into a lottery given to those who choose to receive the vaccine (not retroactive)            | Amount of lottery (1 million-50 million with 5-10 million increments) | Winnings based on chance Uneven distribution of benefits       | Expensive                                       |
 
 # Questions
 
-- Which Americans favor/oppose the vaccine mandates? 
-- What is the most effective policy to get people vaccinated?
-- What are the net economic benefits of each vaccine policy?
+- When an unvaccinated person steps in an elevator with you, do you get concerned?
 - Are more Americans unsure about getting a COVID-19 vaccine, or are more Americans hostile towards getting a COVID-19 vaccine?
-- When an unvaccinated, unmasked person steps in an elevator with you, do you get concerned? 
 
+- What are the net economic benefits of each vaccine policy?
+- What type of policy is most effective in increasing vaccination rates?
+- What type of policy is seen as the most appropriate and most favorable to Americans?
+- What types of incentives will convince Americans to get vaccinated? 
 
 # Supplemental Questions
 
 - How many Americans support donating vaccine doses abroad? 
-- How many parents are willing to vaccinate children once a COVID-19 vaccine becomes available to them? 
+- How many parents are willing to vaccinate children once a COVID-19 vaccine becomes available to them?
+- If vaccine mandates are enacted, should they be universal or enforced in schools? 
+
+```{r helvys comments, echo=FALSE, message=FALSE, warning=FALSE}
+# Write your proposal content here. 
+# 
+# Make sure you update the settings in the YAML for your report. 
+# 
+# Use [markdown](https://commonmark.org/help/) for formatting, e.g.: **Bold**, _Italic_, etc.
+# 
+# Make a bullet list like this: 
+# 
+# - Item 1
+# - Item 2
+# - Item 3
+# 
+# Or a numbered list like this: 
+# 
+# 1. Item 1
+# 2. Item 2
+# 3. Item 3
+# 
+# If you want to insert an image in the `images` folder, you can insert it using html code like this: 
+# 
+# <center>
+# <img src="images/madd_logo.png" width=150>
+# </center>
+# 
+# The code `<center>` and `</center>` just puts the image in the center of the page, the `src=""` part defines the path to the image, and the `width=300` part defines the image width in pixels - use that to adjust the image size in your report.
+# 
+# Here are some section headers to use: 
+```
