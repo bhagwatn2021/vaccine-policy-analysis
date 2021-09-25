@@ -55,10 +55,9 @@ Here are some section headers to use:
 
 
 # Abstract
+
 This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a universal vaccine mandate, the policy in question, to various positive incentives, such as tax rebates, and neutral incentives that focus on increasing access to the vaccine. The policy attributes valuable to the customer that are considered are:
 
-- Safety of vaccines
-- Efficacy in preventing COVID-19
 - Protection of individual rights
 - Attributes of the policy (positive, negative, neutral)
 - Amount of funds given/fined ($) 
@@ -96,8 +95,6 @@ It would be beneficial to collect supplemental data on businesses and influentia
 
 The policy attributes valuable to the government that are considered are:
 
-- Safety of vaccines: Americans are concerned about the safety of the vaccine, given conspiracy theories that blow rare adverse reactions out of proportion. Americans must be convinced that conspiracy theories are false and that the vaccine is a harm-free way to protect themselves and others.  
-- Efficacy in preventing COVID-19: Likewise to safety, Americans must be convinced that the vaccine is highly effective against SARS-COV-2. Currently, conspiracy theories falsely claim that vaccines are not effective. 
 - Attributes of the policy (positive, negative, neutral): The DC plastic bag tax had a larger impact on plastic bag usage in DC than the DC plastic bag rebate. Whether Americans will be gaining something for complying, not be affected, or be losing something for not complying will determine Americans' behavior and attitude towards getting the vaccine. 
 
 
