@@ -31,7 +31,17 @@ knitr::opts_chunk$set(
 
 # Abstract
 
-Despite the rollout of COVID-19 vaccines, vaccine hesitancy prevented the United States from achieving herd immunity, the level of immunity that a population has to control the spread of a virus. In turn, the Delta variant, a highly-contagious strain of SARS-COV-2, the virus that causes COVID-19, ravaged through unvaccinated populations and caused a surge in cases. This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a vaccine mandate, the policy in question, to various positive incentives, such as tax rebates, and neutral incentives that focus on increasing access to the vaccine. The target population for this study are all unvaccinated Americans. The policy attributes valuable to the customer that are considered are:
+Despite the rollout of COVID-19 vaccines, vaccine hesitancy prevented the United States from achieving herd immunity, the level of immunity that a population has to control the spread of a virus. Below is a chart depicting the number of daily vaccinations over time as a percentage of the population, followed by a chart depicting the percentage of the American population that is vaccinated: 
+
+<center>
+  <img src="images/daily-vaccinations.png" width=1500>
+</center>
+
+<center>
+  <img src="images/total-vaccinations.png" width=1500>
+</center>
+
+In turn, the Delta variant, a highly-contagious strain of SARS-COV-2, the virus that causes COVID-19, ravaged through unvaccinated populations and caused a surge in cases. This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a vaccine mandate, the policy in question, to various positive incentives, such as tax rebates, and neutral incentives that focus on increasing access to the vaccine. The target population for this study are all unvaccinated Americans. The policy attributes valuable to the customer that are considered are:
 
 Varying across all policies: 
 
@@ -52,7 +62,6 @@ Over 80 million Americans are unvaccinated for COVID-19, a disease that forced l
 On September 9th, 2021, US President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts who claim that forcing Americans to get vaccinated is crucial, criticism from other experts who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitutional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
 
 Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted initiatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites.
-
 
 
 # Target Population
