@@ -94,7 +94,7 @@ These two attributes vary across all policies, and policies were made with these
 
 These attributes can vary amongst individual policies: 
 
-- Amount of funds given/fined ($): if a positive or negative policy is put in place, the amount of funds/goods wagered will influence the number of Americans that will comply. 
+- Value of given/taken ($): if a positive or negative policy is put in place, the value of funds/goods wagered will influence the number of Americans that will comply. 
 - Accessibility of the vaccine: since 44% of the unvaccinated fall into the "unvaccinated but willing" category, the policy in question can increase access to the vaccine and reduce the barriers that stop people from getting vaccinated. We can vary the distance from homes and physical access to a site, such as distance to public transportation.
 
 | Policy                   | Description                                                                                                       | Key Attributes                                                         | Pros                                                                          | Cons                                                                                                                                |
