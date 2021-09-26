@@ -31,7 +31,7 @@ knitr::opts_chunk$set(
 
 # Abstract
 
-This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a universal vaccine mandate, the policy in question, to various positive incentives, such as tax rebates, and neutral incentives that focus on increasing access to the vaccine. The target population for this study are all unvaccinated Americans. The policy attributes valuable to the customer that are considered are:
+Despite the rollout of COVID-19 vaccines, vaccine hesitancy prevented the United States from achieving herd immunity, the level of immunity that a population has to control the spread of a virus. In turn, the Delta variant, a highly-contagious strain of SARS-COV-2, the virus that causes COVID-19, ravaged through unvaccinated populations and caused a surge in cases. This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a vaccine mandate, the policy in question, to various positive incentives, such as tax rebates, and neutral incentives that focus on increasing access to the vaccine. The target population for this study are all unvaccinated Americans. The policy attributes valuable to the customer that are considered are:
 
 - Protection of individual rights
 - Attributes of the policy (positive, negative, neutral)
@@ -90,6 +90,7 @@ The policy attributes valuable to the government that are considered are:
 
 - When an unvaccinated person steps in an elevator with you, do you get concerned?
 - Are more Americans unsure about getting a COVID-19 vaccine, or are more Americans hostile towards getting a COVID-19 vaccine?
+- 
 
 - What are the net economic benefits of each vaccine policy?
 - What type of policy is most effective in increasing vaccination rates?
@@ -100,7 +101,8 @@ The policy attributes valuable to the government that are considered are:
 
 - How many Americans support donating vaccine doses abroad? 
 - How many parents are willing to vaccinate children once a COVID-19 vaccine becomes available to them?
-- If vaccine mandates are enacted, should they be universal or enforced in schools? 
+- If vaccine mandates are enacted, how many support universal enforcement during tax season? 
+- How many are dissuaded from the vaccine due to the rollout of booster shots?
 
 ```{r helvys comments, echo=FALSE, message=FALSE, warning=FALSE}
 # Write your proposal content here. 
