@@ -1,0 +1,87 @@
+---
+title: "Vaccine mandates versus incentives"
+subtitle: "An analysis of imposing different COVID-19 vaccine policies" 
+author: Jenny Kim, Neel Bhagwat
+date: October 05, 2021
+output: 
+  html_document:
+    toc: true 
+    toc_float: true
+    number_sections: false
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(spelling)
+
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>",
+  fig.path = "figs/", # Folder where rendered plots are saved
+  fig.width = 7.252, # Default plot width
+  fig.height = 4, # Default plot height
+  fig.retina = 3 # For better plot resolution
+)
+spelling::spell_check_files("survey_plan.Rmd")
+```
+
+# Target population
+Our goal is to find as many unvaccinated people 18 and older in the United States as possible. For parents, we also intend to have them answer for children. We will be looking to vary our survey population by the following attributes: 
+
+- Race/ethnicity: We want to get more responses from marginalized races, such as Blacks and Hispanics. Evidence shows that microaggressions and mistreatment towards these races are preventing them from trusting the vaccine. We would like to find out the extent of these microaggressions and what policy will help to mitigate the issue. Gathering these would be achieved by reaching out to various faith and culture-based organizations (Neel was on the Executive Board of Hindu Students Association during undergrad and is able to reach out to the MSSC.)
+- Political beliefs: Republicans are hostile towards taking the vaccine because of the anti-vaccine rhetoric conveyed by popular conservative media hosts and politicians. Gathering this data would be achieved by reaching out political organizations to GW Young Americas Foundation, GW College Democrats, and GW College Republicans to get ample results from around the political compass. 
+- Income: Evidence also shows mistreatment towards groups of lower income. We want to find our more about the extent of microaggressions in this group and what policy would benefit. We can gather information from this population by asking GW students and others who fill out the survey about their income, and comparing that against who would favor different policies over COVID vaccinations. We can also reach out to the financial aid office to get more responses from people of underprivileged backgrounds as we are not violating ethical standards by doing so.
+
+We be reaching out to the following people/groups to gain responses: 
+- Dr. Lorien Abroms, a Public Health professor, runs the GW Health Communications Corps, an organization combatting health misinformation. Dr. Abroms would particularly be integral with identifying groups of people that succumb to microaggressions and have lower vaccination rates*. Dr. Abroms can also help us gain more samples from groups that succumb to misinformation about the vaccine, as [a report from HHS in August 2021 estimates that 44% of unvaccinated fall into the "unvaccinated but willing" category](hhttps://www.washingtonpost.com/health/2021/09/23/covid-unvaccinated-but-willing/?fbclid=IwAR26FWna18WL6-V__ofn441XM3cRf76NxEF6sWZdm-iNlO5q-his1OHocuk). This would help to reduce the bias in the sample towards a positive or negative policy, identifying a group of people that is willing to take the vaccine without any incentive or consequence wagered will help us identify the most efficient policy and whether incentives or fines are absolutely necessary. 
+- Dr. Dennis Schell, a Psychology professor, teaches general and abnormal pyschology. He also works with people with adverse behavior issues, and will be able to help garner surveys from people with behavioral health issues on why they won't take the vaccine. With these people in our sample, we will be able to identify whether they can comply with a vaccine mandate. 
+- Dr. Patrick McHugh is a Professor of Management. His research is focused on the psychology behind organizational structure and operations. He will be able to identify organizations that do not require vaccinations for its members, and give insight as to the reception towards vaccine mandates. He can also help us identify organizations that incentivize decisions, which we can send the survey to. 
+- No Lost Generation GW is an organization that helps refugees adjust to living in the United States, particularly in the DC area. We can talk to the organization about getting refugees vaccinated by translating the survey into various languages and allowing refugees and immigrants to take them. 
+- Dr. Irene Foster is a Professor of Economics, who can give insight on different unvaccinated populations in the US. She may be able to give contacts of people who work with the above groups to whom we can share the survey with. 
+
+#Eligibility Questions
+
+Are you 18 or older (please have your parent or guardian fill out the survey if you are)? 
+- Yes
+- No 
+
+Have you received at least one dose of a COVID-19 vaccine?
+- Yes
+- No 
+
+
+# Conjoint questions
+
+
+Example markdown table:
+
+Attribute | Levels | Unit
+----------|--------|--------
+Price | 15, 20, 25 | $1000
+Fuel economy | 20, 25, 30 | Miles per gallon
+Acceleration time | 6, 7, 8 | Seconds (from 0-60 mph)
+Powertrain | Gasoline, Electric | Type
+
+
+# Other survey content
+
+
+
+## Welcome page
+<center>
+  <img src="images/family-guy-vaccine-psa.png" width=1500>
+</center>
+<center>
+  <img src="images/family-guy-vaccine-psa-2.png" width=1500>
+</center>
+
+## Consent page
+
+
+## Education information
+
+
+## Critical respondent information
+
+
+## Other questions
