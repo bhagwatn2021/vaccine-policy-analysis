@@ -57,10 +57,9 @@ Example markdown table:
 
 Attribute | Levels | Unit
 ----------|--------|--------
-Price | 15, 20, 25 | $1000
-Fuel economy | 20, 25, 30 | Miles per gallon
-Acceleration time | 6, 7, 8 | Seconds (from 0-60 mph)
-Powertrain | Gasoline, Electric | Type
+Mandate with fine enforced at tax season | 100 - 1000;  | $100
+Monetary incentive | 100 - 1000; steps of $100 | Miles per gallon
+Accessibility | 0 (door-door), 3 (public facilty, mobile site), 10 miles (public facilty, mobile site)  | Miles 
 
 
 # Other survey content
@@ -85,3 +84,6 @@ Powertrain | Gasoline, Electric | Type
 
 
 ## Other questions
+- How far is the nearest school?
+- How far is the nearest post office?
+Do you have access to public transportation? 
