@@ -49,18 +49,338 @@ Have you received at least one dose of a COVID-19 vaccine?
 - Yes
 - No 
 
+# Attention checks (to be put in the beginning and middle): 
+
+Are you able to select the second option? If yes, select the third option and move on.
+- Yes
+- No
+- Maybe
+
+Are you able to select the third option? If yes, select the first option and move on.
+- Yes
+- No
+- Maybe
 
 # Conjoint questions
 
+Will you take a COVID-19 vaccine if mandated with a fine of $100?  
 
-Example markdown table:
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $200?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $300?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $400?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $500?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $600?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $700?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $800?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $900?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $1000?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $100?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $200?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $300?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $400?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $500?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $600?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $700?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $800?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $900?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $1000?  
+
+- Yes
+- No
+
+If you said no to all mandate questions, will you be satisfied with a $100 monetary compensation for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with a $500 monetary compensation for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with a $1000 monetary compensation for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+Will you take a COVID-19 vaccine if given door-door?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if given at a public facility within 3 miles of your residence?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if given at a public facility within 5 miles of your residence?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if given at a public facility within 10 miles of your residence?  
+
+- Yes
+- No
+
+If you said no to all mandate questions, will you be satisfied if given at a public facility within 3 miles of your residence? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied if given at a public facility within 5 miles of your residence? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied if given at a public facility within 10 miles of your residence? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $100?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $200?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $300?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $400?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $500?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $600?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $700?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $800?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $900?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $1000?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with one ticket to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with two tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with three tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with four tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with five tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with six tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with seven tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with eight tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with nine tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with ten tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+
+Will you take a COVID-19 vaccine if incentivized with a 6 month supply of multivitamin supplements?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month supply of multivitamin supplements?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 24 month supply of multivitamin supplements?  
+
+- Yes
+- No
+
+
+Will you take a COVID-19 vaccine if incentivized with a 6 month internet and phone coverage?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month internet and phone coverage?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 24 month internet and phone coverage?  
+
+- Yes
+- No
+
+If you said no to all mandate questions, will you be satisfied with a 12 month supply of multivitamin supplements for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with a 12 month internet/phone coverage for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with a $500 TV for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with 5 tickets to a sporting event of your choice for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
 
 Attribute | Levels | Unit
 ----------|--------|--------
-Mandate with fine enforced at tax season | 100 - 1000;  | $100
-Monetary incentive | 100 - 1000; steps of $100 | Miles per gallon
-Accessibility | 0 (door-door), 3 (public facilty, mobile site), 10 miles (public facilty, mobile site)  | Miles 
-
+Mandate with fine enforced at tax season | $100 - $1000; steps of $100  | USD
+Monetary incentive | 100 - 1000; steps of $100 | USD
+Accessibility | 0 (door-door), 3 (public facilty, mobile site), 5 miles (public facilty, mobile site), 10 miles (public facilty, mobile site)  | Miles 
+Non-monetary incentives | Multivitamin supplements (6 months - 2 years), internet/phone coverage (6 months - 2 years), sporting event tickets (1 - 10 tickets with steps of 1), TV ($100 - $1000 in value with increments of $100) | Product given (categorical), value of product (USD, time)
 
 # Other survey content
 
@@ -76,14 +396,69 @@ Accessibility | 0 (door-door), 3 (public facilty, mobile site), 10 miles (public
 
 ## Consent page
 
+By taking this survey, I certify that I am at least 18 years of age and will, to the best of my ability, answer truthfully and accurately. I understand that my answers may be invalidated should I fail to do so. 
+
+- I attest
+- I do not attest
 
 ## Education information
 
 
 ## Critical respondent information
+What is your annual net income?
+- Under $60,000
+- $60,000 - $80,000
+- $80,000 - $100,000
+- $100,000 - $120,000
+- $120,000 - $120,000
+- $140,000 - $120,000
+- $160,000 - $120,000
+- $180,000 - $120,000
+- Above $200,000
 
+Which of the following best describes your heritage?
+
+- Native American or Alaskan Native (e.g., Navajo Nation, Blackfeet Tribe, Mayan, Aztec, Native Village of Barrow Inupiat Traditional Government, Nome Eskimo Community, etc.)
+- Asian (e.g., Chinese, Filipino, Indian, Vietnamese, Korean, Japanese, Malaysian, etc.)
+- African (e.g., African American, Jamaican, Haitian, Nigerian, Ethiopian, Somalian, etc.)
+- Hispanic or Latino (e.g., Mexican or Mexican American, Puerto Rican, Cuban, Salvadoran, Dominican, Colombian, etc.)
+- Middle Eastern or North African (e.g., Lebanese, Iranian, Egyptian, Syrian, Moroccan, Algerian, etc.)
+- Native Hawaiian or Pacific Islander (e.g., Native Hawaiian, Samoan, Chamorro, Tongan, Fijian, Marshallese, etc.)
+- White (e.g., German, Irish, English, Italian, Polish, French, etc.)
+- Prefer to self-describe
+- Prefer not to say
+
+What do you identify as?
+
+- Female
+- Male
+- Prefer to self-describe
+- Prefer not to say
+
+What is your political orientation?
+
+- Strongly conservative
+- Conservative
+- Leaning conservative
+- Moderate
+- Leaning liberal
+- Liberal
+- Strongly liberal
+- None
+- Prefer not to say
 
 ## Other questions
 - How far is the nearest school?
 - How far is the nearest post office?
-Do you have access to public transportation? 
+- Do you have access to public transportation? 
+- Do you approve of former President Donald Trump's coronavirus response up to January 2021?
+- Do you approve of former President Joe Biden's coronavirus response from January 2021?
+- Do you approve of White House Medical Advisor Anthony Fauci's coronavirus response from March 2020?
+- Do you approve of the Center for Disease Control's coronavirus response from March 2020?
+- Do you believe that vaccinated Americans should continue to wear a face covering while in public?
+
+- Do you follow CNN?
+- Do you follow FOX News? 
+- Do you follow Joe Rogan?
+- 
+
