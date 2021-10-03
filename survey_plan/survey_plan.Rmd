@@ -1,7 +1,7 @@
 ---
 title: "Vaccine mandates versus incentives"
 subtitle: "An analysis of imposing different COVID-19 vaccine policies" 
-author: Jenny Kim, Neel Bhagwat
+author: Jenny Kim and Neel Bhagwat
 date: October 05, 2021
 output: 
   html_document:
@@ -26,7 +26,7 @@ spelling::spell_check_files("survey_plan.Rmd")
 ```
 
 # Target population
-Our goal is to find as many unvaccinated people 18 and older in the United States as possible. For parents, we also intend to have them answer for children. We will be looking to vary our survey population by the following attributes: 
+Our goal is to find as many unvaccinated people 18 years and older residing in the United States as possible. We will be looking to vary our survey population by the following attributes:
 
 - Race/ethnicity: We want to get more responses from marginalized races, such as Blacks and Hispanics. Evidence shows that microaggressions and mistreatment towards these races are preventing them from trusting the vaccine. We would like to find out the extent of these microaggressions and what policy will help to mitigate the issue. Gathering these would be achieved by reaching out to various faith and culture-based organizations (Neel was on the Executive Board of Hindu Students Association during undergrad and is able to reach out to the MSSC.)
 - Political beliefs: Republicans are hostile towards taking the vaccine because of the anti-vaccine rhetoric conveyed by popular conservative media hosts and politicians. Gathering this data would be achieved by reaching out political organizations to GW Young Americas Foundation, GW College Democrats, and GW College Republicans to get ample results from around the political compass. 
@@ -41,7 +41,7 @@ We be reaching out to the following people/groups to gain responses:
 
 #Eligibility Questions
 
-Are you 18 or older (please have your parent or guardian fill out the survey if you are)? 
+Are you 18 years old or older? 
 - Yes
 - No 
 
@@ -163,24 +163,6 @@ Will you take a COVID-19 vaccine if incentivized with $1000?
 - Yes
 - No
 
-If you said no to all mandate questions, will you be satisfied with a $100 monetary compensation for compliance to a mandate? 
-
-- Yes
-- No 
-- I said yes to a mandate
-
-If you said no to all mandate questions, will you be satisfied with a $500 monetary compensation for compliance to a mandate? 
-
-- Yes
-- No 
-- I said yes to a mandate
-
-If you said no to all mandate questions, will you be satisfied with a $1000 monetary compensation for compliance to a mandate? 
-
-- Yes
-- No 
-- I said yes to a mandate
-
 Will you take a COVID-19 vaccine if given door-door?  
 
 - Yes
@@ -200,24 +182,6 @@ Will you take a COVID-19 vaccine if given at a public facility within 10 miles o
 
 - Yes
 - No
-
-If you said no to all mandate questions, will you be satisfied if given at a public facility within 3 miles of your residence? 
-
-- Yes
-- No 
-- I said yes to a mandate
-
-If you said no to all mandate questions, will you be satisfied if given at a public facility within 5 miles of your residence? 
-
-- Yes
-- No 
-- I said yes to a mandate
-
-If you said no to all mandate questions, will you be satisfied if given at a public facility within 10 miles of your residence? 
-
-- Yes
-- No 
-- I said yes to a mandate
 
 Will you take a COVID-19 vaccine if incentivized with a TV worth $100?  
 
@@ -330,6 +294,11 @@ Will you take a COVID-19 vaccine if incentivized with a 12 month supply of multi
 - Yes
 - No
 
+Will you take a COVID-19 vaccine if incentivized with an 18 month supply of multivitamin supplements?  
+
+- Yes
+- No
+
 Will you take a COVID-19 vaccine if incentivized with a 24 month supply of multivitamin supplements?  
 
 - Yes
@@ -346,7 +315,87 @@ Will you take a COVID-19 vaccine if incentivized with a 12 month internet and ph
 - Yes
 - No
 
+Will you take a COVID-19 vaccine if incentivized with an 18 month internet and phone coverage?  
+
+- Yes
+- No
+
 Will you take a COVID-19 vaccine if incentivized with a 24 month internet and phone coverage?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $500 and the vaccine is given at a public facility within 5 miles of your residence?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $500 and a 12 month supply of multivitamin supplements?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $500 and a 12 month internet/phone coverage?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $500 and five tickets to a sporting event of your choice?
+
+- Yes
+- No
+
+Will you take a COVIID-19 vaccine if incentivized with $500 and a TV worth $500?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month supply of multivitamin supplements and the vaccine is given at a public facility within 5 miles of your residence?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month internet/phone coverage and the vaccine is given at a public facility within 5 miles of your residence?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with five tickets to a sporting event of your choice and the vaccine is given at a public facility within 5 miles of your residence?
+
+- Yes
+- No
+
+Will you take a COVIID-19 vaccine if incentivized with a TV worth $500 and the vaccine is given at a public facility within 5 miles of your residence?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month supply of multivitamin supplements and a 12 month internet/phone coverage?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month supply of multivitamin supplements and five tickets to a sporting event of your choice?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month supply of multivitamin supplements and a TV worth $500?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month internet/phone coverage and five tickets to a sporting event of your choice?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month internet/phone coverage and a TV worth $500?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with five tickets to a sporting event of your choice and a TV worth $500?
 
 - Yes
 - No
@@ -375,15 +424,50 @@ If you said no to all mandate questions, will you be satisfied with 5 tickets to
 - No 
 - I said yes to a mandate
 
+If you said no to all mandate questions, will you be satisfied with a $100 monetary compensation for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with a $500 monetary compensation for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with a $1000 monetary compensation for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied if given at a public facility within 3 miles of your residence? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied if given at a public facility within 5 miles of your residence? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied if given at a public facility within 10 miles of your residence? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
 Attribute | Levels | Unit
 ----------|--------|--------
-Mandate with fine enforced at tax season | $100 - $1000; steps of $100  | USD
-Monetary incentive | 100 - 1000; steps of $100 | USD
-Accessibility | 0 (door-door), 3 (public facilty, mobile site), 5 miles (public facilty, mobile site), 10 miles (public facilty, mobile site)  | Miles 
-Non-monetary incentives | Multivitamin supplements (6 months - 2 years), internet/phone coverage (6 months - 2 years), sporting event tickets (1 - 10 tickets with steps of 1), TV ($100 - $1000 in value with increments of $100) | Product given (categorical), value of product (USD, time)
+Mandate with fine enforced at tax season | $100 - $1000; $100 increments | USD
+Monetary incentive | $100 - $1000; $100 increments | USD
+Accessibility | 0 (door-door), 3 (public facilty, mobile site), 5 (public facilty, mobile site), 10 miles (public facilty, mobile site)  | Miles 
+Non-monetary incentives | Multivitamin supplements (6 months - 24 months, 6 month increments ), internet/phone coverage (6 months - 24 months, 6 month increments), sporting event tickets (1 - 10 tickets, 1 ticket increments), TV ($100 - $1000 in value, $100 increments) | Product given (categorical), value of product (USD, time)
 
 # Other survey content
-
 
 
 ## Welcome page
@@ -394,14 +478,23 @@ Non-monetary incentives | Multivitamin supplements (6 months - 2 years), interne
   <img src="images/family-guy-vaccine-psa-2.png" width=1500>
 </center>
 
+Welcome and thank you for your interest in our survey! The purpose of this survey is to develop a quantitative model of consumer choice to inform the design decisions of a COVID vaccine policy. This survey is being conducted by students at The George Washington University for a Marketing Analytics course. You are invited to participate in this survey because you are a resident of the United States above the age of 18.
+
 ## Consent page
 
-By taking this survey, I certify that I am at least 18 years of age and will, to the best of my ability, answer truthfully and accurately. I understand that my answers may be invalidated should I fail to do so. 
+Your participation in this survey is voluntary. You may choose not to participate. If you decide to participate in this survey, you may withdraw at any time with no penalty. The procured involves filling an online survey that will take approximately 20 minutes. All responses will be used solely for educational purposes and individual identified information will not be shared under any circumstances. Your responses will be confidential and we do not collect identifying information such as your name, email address, or IP address.
+
+By taking this survey, I certify that I am at least 18 years of age and will, to the best of my ability, answer truthfully and accurately. I understand that my answers may be invalidated should I fail to do so. I understand that I have read all of the above information and voluntarily agree to participate in this survey.
 
 - I attest
 - I do not attest
 
 ## Education information
+
+This survey involves questions that ask whether a certain condition would result in you receiiving the COVID-19 vaccine. These conditions can be seen as positive, negative, or neutral. These conditions will not actually occur and you will not need to take a COVID-19 vaccine based on your answers in this survey. All responses will be used purely for educational purposes. A type of question you may see would be the following: "Will you take a COVID-19 vaccine if given door-to-door?" This question is asking if you would take a COVID-19 vaccine if you had the option to take it at your doorstep. You may answer "Yes" or "No" to this question. At the end of the survey we will be collecting demographic information (such as income and age) that will also be used purely for educational purposes. This demographic information will help us determine which conditions relate to different demographics of people.
+
+
+If you have any questions about this survey, then please contact marketingvaccinepolicy@gmail.com.
 
 
 ## Critical respondent information
@@ -415,6 +508,16 @@ What is your annual net income?
 - $160,000 - $120,000
 - $180,000 - $120,000
 - Above $200,000
+
+How old are you?
+- 18 - 19 years old
+- 20 - 29 years old
+- 30 - 39 years old
+- 40 - 49 years old
+- 50 - 59 years old
+- 60 - 69 years old
+- 70 - 79 years old
+- 80+ years old
 
 Which of the following best describes your heritage?
 
@@ -447,9 +550,19 @@ What is your political orientation?
 - None
 - Prefer not to say
 
+What type of area would you say you grew up in?
+- Rural
+- Suburban
+- Urban
+
+What type of area do you currently live in?
+- Rural
+- Suburban
+- Urban
+
 ## Other questions
-- How far is the nearest school?
-- How far is the nearest post office?
+- How far is your nearest high school?
+- How far is your nearest post office?
 - Do you have access to public transportation? 
 - Do you approve of former President Donald Trump's coronavirus response up to January 2021?
 - Do you approve of former President Joe Biden's coronavirus response from January 2021?
@@ -460,5 +573,4 @@ What is your political orientation?
 - Do you follow CNN?
 - Do you follow FOX News? 
 - Do you follow Joe Rogan?
-- 
 
