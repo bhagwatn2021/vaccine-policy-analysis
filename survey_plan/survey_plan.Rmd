@@ -491,8 +491,11 @@ By taking this survey, I certify that I am at least 18 years of age and will, to
 
 ## Education information
 
-This survey involves questions that ask whether a certain condition would result in you receiiving the COVID-19 vaccine. These conditions can be seen as positive, negative, or neutral. These conditions will not actually occur and you will not need to take a COVID-19 vaccine based on your answers in this survey. All responses will be used purely for educational purposes. A type of question you may see would be the following: "Will you take a COVID-19 vaccine if given door-to-door?" This question is asking if you would take a COVID-19 vaccine if you had the option to take it at your doorstep. You may answer "Yes" or "No" to this question. At the end of the survey we will be collecting demographic information (such as income and age) that will also be used purely for educational purposes. This demographic information will help us determine which conditions relate to different demographics of people.
+This survey involves questions that ask whether a certain condition would result in you receiiving the COVID-19 vaccine. These conditions can be seen as positive, negative, or neutral. These conditions will not actually occur and you will not need to take a COVID-19 vaccine based on your answers in this survey. All responses will be used purely for educational purposes. A type of question you may see would be the following: "Will you take a COVID-19 vaccine if given door-to-door?" This question is asking if you would take a COVID-19 vaccine if you had the option to take it at your doorstep. You may answer "Yes" or "No" to this question. At the end of the survey we will be collecting demographic information (such as income and age) that will also be used purely for educational purposes. These demographic attributes will help us account for bias in our data: 
 
+- Race/ethnicity: data suggests that marginalized races may have a sense of mistrust in the American healthcare system, stemming from mistreatment to microaggressions towards these groups from practioners. Collecting data from every ethic group allows us to compare the level of trust towards vaccines and infer it on COVID vaccination rates. 
+- Political beliefs: far right media hosts and politicians have incited hostility and resentment towards the COVID-19 vaccine in an effort to gain political clout. We would like to gather data from progressives and conservatives to see the extent of this hostility. 
+- Income: data suggests that people of lower income also are subjected to mistreatment and microaggressions by healthcare practioners, also hampering trust in our healthcare system. Collecting data from various income groups also allows us to compare the level of trust towards vaccines and infer it on COVID vaccination rates. 
 
 If you have any questions about this survey, then please contact marketingvaccinepolicy@gmail.com.
 
@@ -560,17 +563,36 @@ What type of area do you currently live in?
 - Suburban
 - Urban
 
+<center>
+  <img src="images/census-regions.png" width=1500>
+</center>
+
+Based on the above map, what region of the country do you live in? 
+
+- New England 
+- Middle Atlantic
+- South Atlantic
+- East South Central 
+- East North Central 
+- West South Central 
+- West North Central 
+- Mountain
+- Pacific
+
 ## Other questions
 - How far is your nearest high school?
 - How far is your nearest post office?
 - Do you have access to public transportation? 
+- Do you approve of the advice of your healthcare team to make personal health decisions? 
 - Do you approve of former President Donald Trump's coronavirus response up to January 2021?
 - Do you approve of former President Joe Biden's coronavirus response from January 2021?
 - Do you approve of White House Medical Advisor Anthony Fauci's coronavirus response from March 2020?
 - Do you approve of the Center for Disease Control's coronavirus response from March 2020?
 - Do you believe that vaccinated Americans should continue to wear a face covering while in public?
+- Do you believe that delivering vaccines abroad to poorer countries is more important than getting the domestic population vaccinated?
 
 - Do you follow CNN?
 - Do you follow FOX News? 
 - Do you follow Joe Rogan?
-
+- Do you follow NBA players? 
+- Do you follow Seth McFarlane? 
