@@ -33,8 +33,8 @@ Our goal is to find as many unvaccinated people 18 years and older residing in t
 - Income: Evidence also shows mistreatment towards groups of lower income. We want to find our more about the extent of microaggressions in this group and what policy would benefit. We can gather information from this population by asking GW students and others who fill out the survey about their income, and comparing that against who would favor different policies over COVID vaccinations. We can also reach out to the financial aid office to get more responses from people of underprivileged backgrounds as we are not violating ethical standards by doing so.
 
 We be reaching out to the following people/groups to gain responses: 
-- Dr. Lorien Abroms, a Public Health professor, runs the GW Health Communications Corps, an organization combatting health misinformation. Dr. Abroms would particularly be integral with identifying groups of people that succumb to microaggressions and have lower vaccination rates*. Dr. Abroms can also help us gain more samples from groups that succumb to misinformation about the vaccine, as [a report from HHS in August 2021 estimates that 44% of unvaccinated fall into the "unvaccinated but willing" category](hhttps://www.washingtonpost.com/health/2021/09/23/covid-unvaccinated-but-willing/?fbclid=IwAR26FWna18WL6-V__ofn441XM3cRf76NxEF6sWZdm-iNlO5q-his1OHocuk). This would help to reduce the bias in the sample towards a positive or negative policy, identifying a group of people that is willing to take the vaccine without any incentive or consequence wagered will help us identify the most efficient policy and whether incentives or fines are absolutely necessary. 
-- Dr. Dennis Schell, a Psychology professor, teaches general and abnormal pyschology. He also works with people with adverse behavior issues, and will be able to help garner surveys from people with behavioral health issues on why they won't take the vaccine. With these people in our sample, we will be able to identify whether they can comply with a vaccine mandate. 
+- Dr. Lorien Abroms, a Public Health professor, runs the GW Health Communications Corps, an organization combating health misinformation. Dr. Abroms would particularly be integral with identifying groups of people that succumb to microaggressions and have lower vaccination rates*. Dr. Abroms can also help us gain more samples from groups that succumb to misinformation about the vaccine, as [a report from HHS in August 2021 estimates that 44% of unvaccinated fall into the "unvaccinated but willing" category](hhttps://www.washingtonpost.com/health/2021/09/23/covid-unvaccinated-but-willing/?fbclid=IwAR26FWna18WL6-V__ofn441XM3cRf76NxEF6sWZdm-iNlO5q-his1OHocuk). This would help to reduce the bias in the sample towards a positive or negative policy, identifying a group of people that is willing to take the vaccine without any incentive or consequence wagered will help us identify the most efficient policy and whether incentives or fines are absolutely necessary. 
+- Dr. Dennis Schell, a Psychology professor, teaches general and abnormal psychology. He also works with people with adverse behavior issues, and will be able to help garner surveys from people with behavioral health issues on why they won't take the vaccine. With these people in our sample, we will be able to identify whether they can comply with a vaccine mandate. 
 - Dr. Patrick McHugh is a Professor of Management. His research is focused on the psychology behind organizational structure and operations. He will be able to identify organizations that do not require vaccinations for its members, and give insight as to the reception towards vaccine mandates. He can also help us identify organizations that incentivize decisions, which we can send the survey to. 
 - No Lost Generation GW is an organization that helps refugees adjust to living in the United States, particularly in the DC area. We can talk to the organization about getting refugees vaccinated by translating the survey into various languages and allowing refugees and immigrants to take them. 
 - Dr. Irene Foster is a Professor of Economics, who can give insight on different unvaccinated populations in the US. She may be able to give contacts of people who work with the above groups to whom we can share the survey with. 
@@ -345,7 +345,7 @@ Will you take a COVID-19 vaccine if incentivized with $500 and five tickets to a
 - Yes
 - No
 
-Will you take a COVIID-19 vaccine if incentivized with $500 and a TV worth $500?
+Will you take a COVID-19 vaccine if incentivized with $500 and a TV worth $500?
 
 - Yes
 - No
@@ -365,7 +365,7 @@ Will you take a COVID-19 vaccine if incentivized with five tickets to a sporting
 - Yes
 - No
 
-Will you take a COVIID-19 vaccine if incentivized with a TV worth $500 and the vaccine is given at a public facility within 5 miles of your residence?
+Will you take a COVID-19 vaccine if incentivized with a TV worth $500 and the vaccine is given at a public facility within 5 miles of your residence?
 
 - Yes
 - No
@@ -464,11 +464,62 @@ Attribute | Levels | Unit
 ----------|--------|--------
 Mandate with fine enforced at tax season | $100 - $1000; $100 increments | USD
 Monetary incentive | $100 - $1000; $100 increments | USD
-Accessibility | 0 (door-door), 3 (public facilty, mobile site), 5 (public facilty, mobile site), 10 miles (public facilty, mobile site)  | Miles 
+Accessibility | 0 (door-door), 3 (public facility, mobile site), 5 (public facility, mobile site), 10 miles (public facility, mobile site)  | Miles 
 Non-monetary incentives | Multivitamin supplements (6 months - 24 months, 6 month increments ), internet/phone coverage (6 months - 24 months, 6 month increments), sporting event tickets (1 - 10 tickets, 1 ticket increments), TV ($100 - $1000 in value, $100 increments) | Product given (categorical), value of product (USD, time)
 
-# Other survey content
+## Other survey content
 
+<center>
+  <img src="images/vaccine-comparison-cartoon.png" width=1500>
+</center>
+
+To what degree does the above cartoon persuade you to take the Pfizer/BioNTech vaccine? 
+
+1. Not convinced. 
+2. I will give it some thought. 
+3. I will take this into serious condition, but may take Moderna instead. 
+4. I will most likely take the Pfizer/BioNTech vaccine because of its reported rate.
+5. I am convinced. 
+
+<!-- <iframe -->
+<!--     width="640" -->
+<!--     height="480" -->
+<!--     src="https://youtu.be/7DkQl0XigvM" -->
+<!--     frameborder="0" -->
+<!--     allow="autoplay; encrypted-media" -->
+<!--     allowfullscreen> -->
+<!-- </iframe> -->
+
+[A COVID-19 vaccine public service announcement featuring characters from Family Guy, a popular television show](https://youtu.be/7DkQl0XigvM)
+
+
+To what degree does the above video persuade you to take a COVID-19 vaccine? 
+
+1. Not convinced. 
+2. I will give it some thought. 
+3. I will take this into serious condition. 
+4. I will most likely take a COVID-19 vaccine because of the content of this video.
+5. I am convinced. 
+
+[A short film depicting microaggressions towards racial minorities.](https://youtu.be/mrTA_QDEw38)
+
+How well do you understand microaggressions towards racial minorities and their potential impact on COVID-19 vaccination disparities based on the video? 
+
+1. The video did not help me understand this concept. 
+2. I am aware of what someone in this population might face on a daily basis.
+3. I am aware that it is a wider problem beyond the interactions in the video. 
+4. I am convinced that microaggressions similar to the interactions in the video can cause mistrust in the American healthcare system from this population. 
+5. I am convinced that the mistrust in the healthcare system from this population can cause disparities in COVID-19 vaccination rates. 
+
+[A short film depicting microaggressions towards people of low income backgrounds.](https://youtu.be/J6cg8CYDEi8)
+
+How well do you understand microaggressions towards people of low income and their potential impact on COVID-19 vaccination disparities based on the video?
+
+1. The video did not help me understand this concept. 
+2. I am aware of what someone in this population might face on a daily basis.
+3. I am aware that it is a wider problem beyond the interactions in the video. 
+4. I am convinced that microaggressions similar to the interactions in the video can cause mistrust in the American healthcare system from this population. 
+5. I am convinced that the mistrust in the healthcare system from this population can cause disparities in COVID-19 vaccination rates. 
 
 ## Welcome page
 <center>
@@ -502,6 +553,7 @@ If you have any questions about this survey, then please contact marketingvaccin
 
 ## Critical respondent information
 What is your annual net income?
+
 - Under $60,000
 - $60,000 - $80,000
 - $80,000 - $100,000
@@ -513,6 +565,7 @@ What is your annual net income?
 - Above $200,000
 
 How old are you?
+
 - 18 - 19 years old
 - 20 - 29 years old
 - 30 - 39 years old
@@ -554,11 +607,13 @@ What is your political orientation?
 - Prefer not to say
 
 What type of area would you say you grew up in?
+
 - Rural
 - Suburban
 - Urban
 
 What type of area do you currently live in?
+
 - Rural
 - Suburban
 - Urban
@@ -580,19 +635,90 @@ Based on the above map, what region of the country do you live in?
 - Pacific
 
 ## Other questions
-- How far is your nearest high school?
-- How far is your nearest post office?
-- Do you have access to public transportation? 
-- Do you approve of the advice of your healthcare team to make personal health decisions? 
-- Do you approve of former President Donald Trump's coronavirus response up to January 2021?
-- Do you approve of former President Joe Biden's coronavirus response from January 2021?
-- Do you approve of White House Medical Advisor Anthony Fauci's coronavirus response from March 2020?
-- Do you approve of the Center for Disease Control's coronavirus response from March 2020?
-- Do you believe that vaccinated Americans should continue to wear a face covering while in public?
-- Do you believe that delivering vaccines abroad to poorer countries is more important than getting the domestic population vaccinated?
 
-- Do you follow CNN?
-- Do you follow FOX News? 
-- Do you follow Joe Rogan?
-- Do you follow NBA players? 
-- Do you follow Seth McFarlane? 
+
+What political orientation did people you grew up with have (including during college, if applicable)?
+
+- Strongly conservative
+- Conservative
+- Leaning conservative
+- Moderate
+- Leaning liberal
+- Liberal
+- Strongly liberal
+- Prefer not to say/ do not know
+
+How far is your nearest high school?
+   
+- Yes
+- No
+
+How far is your nearest post office?
+
+- Yes
+- No
+
+Do you have access to public transportation? 
+
+- Yes
+- No
+
+Do you approve of the advice of your healthcare team to make personal health decisions? 
+
+- Yes
+- No
+
+Do you approve of former President Donald Trump's coronavirus response up to January 2021?
+
+- Yes
+- No
+
+Do you approve of former President Joe Biden's coronavirus response from January 2021?
+
+- Yes
+- No
+
+Do you approve of White House Medical Advisor Anthony Fauci's coronavirus response from March 2020?
+
+- Yes
+- No
+
+Do you approve of the Center for Disease Control's coronavirus response from March 2020?
+
+- Yes
+- No
+
+Do you believe that vaccinated Americans should continue to wear a face covering while in public?
+
+- Yes
+- No
+
+Do you believe that delivering vaccines abroad to poorer countries is more important than getting the domestic population vaccinated?
+
+- Yes
+- No
+
+Do you follow CNN?
+
+- Yes
+- No
+
+Do you follow FOX News? 
+
+- Yes
+- No
+
+Do you follow Joe Rogan?
+
+- Yes
+- No
+
+Do you follow NBA players? 
+
+- Yes
+- No
+
+Do you follow Seth McFarlane? 
+
+- Yes
+- No
