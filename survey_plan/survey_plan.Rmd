@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
   fig.height = 4, # Default plot height
   fig.retina = 3 # For better plot resolution
 )
-spelling::spell_check_files("survey_plan.Rmd")
+# spelling::spell_check_files("survey_plan.Rmd")
 ```
 
 # Target population
@@ -35,28 +35,32 @@ Our goal is to find as many unvaccinated people 18 years and older residing in t
 We be reaching out to the following people/groups to gain responses: 
 - Dr. Lorien Abroms, a Public Health professor, runs the GW Health Communications Corps, an organization combating health misinformation. Dr. Abroms would particularly be integral with identifying groups of people that succumb to microaggressions and have lower vaccination rates*. Dr. Abroms can also help us gain more samples from groups that succumb to misinformation about the vaccine, as [a report from HHS in August 2021 estimates that 44% of unvaccinated fall into the "unvaccinated but willing" category](hhttps://www.washingtonpost.com/health/2021/09/23/covid-unvaccinated-but-willing/?fbclid=IwAR26FWna18WL6-V__ofn441XM3cRf76NxEF6sWZdm-iNlO5q-his1OHocuk). This would help to reduce the bias in the sample towards a positive or negative policy, identifying a group of people that is willing to take the vaccine without any incentive or consequence wagered will help us identify the most efficient policy and whether incentives or fines are absolutely necessary. 
 - Dr. Dennis Schell, a Psychology professor, teaches general and abnormal psychology. He also works with people with adverse behavior issues, and will be able to help garner surveys from people with behavioral health issues on why they won't take the vaccine. With these people in our sample, we will be able to identify whether they can comply with a vaccine mandate. 
-- Dr. Patrick McHugh is a Professor of Management. His research is focused on the psychology behind organizational structure and operations. He will be able to identify organizations that do not require vaccinations for its members, and give insight as to the reception towards vaccine mandates. He can also help us identify organizations that incentivize decisions, which we can send the survey to. 
+- Dr. Patrick McHugh is a Professor of Management whose research is focused on the psychology behind organizational structure and operations. He will be able to identify organizations that do not require vaccinations for its members, and give insight as to the reception towards vaccine mandates. He can also help us identify organizations that incentivize decisions, which we can send the survey to. 
 - No Lost Generation GW is an organization that helps refugees adjust to living in the United States, particularly in the DC area. We can talk to the organization about getting refugees vaccinated by translating the survey into various languages and allowing refugees and immigrants to take them. 
-- Dr. Irene Foster is a Professor of Economics, who can give insight on different unvaccinated populations in the US. She may be able to give contacts of people who work with the above groups to whom we can share the survey with. 
+- Dr. Irene Foster is a Professor of Economics who can give insight on different unvaccinated populations in the US. She may be able to give contacts of people who work with the above groups to whom we can share the survey with. 
 
-#Eligibility Questions
+## Eligibility questions
 
 Are you 18 years old or older? 
+
 - Yes
 - No 
 
 Have you received at least one dose of a COVID-19 vaccine?
+
 - Yes
 - No 
 
-# Attention checks (to be put in the beginning and middle): 
+## Attention checks (to be put in the beginning and middle): 
 
 Are you able to select the second option? If yes, select the third option and move on.
+
 - Yes
 - No
 - Maybe
 
 Are you able to select the third option? If yes, select the first option and move on.
+
 - Yes
 - No
 - Maybe
@@ -492,7 +496,6 @@ To what degree does the above cartoon persuade you to take the Pfizer/BioNTech v
 
 [A COVID-19 vaccine public service announcement featuring characters from Family Guy, a popular television show](https://youtu.be/7DkQl0XigvM)
 
-
 To what degree does the above video persuade you to take a COVID-19 vaccine? 
 
 1. Not convinced. 
@@ -542,11 +545,11 @@ By taking this survey, I certify that I am at least 18 years of age and will, to
 
 ## Education information
 
-This survey involves questions that ask whether a certain condition would result in you receiiving the COVID-19 vaccine. These conditions can be seen as positive, negative, or neutral. These conditions will not actually occur and you will not need to take a COVID-19 vaccine based on your answers in this survey. All responses will be used purely for educational purposes. A type of question you may see would be the following: "Will you take a COVID-19 vaccine if given door-to-door?" This question is asking if you would take a COVID-19 vaccine if you had the option to take it at your doorstep. You may answer "Yes" or "No" to this question. At the end of the survey we will be collecting demographic information (such as income and age) that will also be used purely for educational purposes. These demographic attributes will help us account for bias in our data: 
+This survey involves questions that ask whether a certain condition would result in you receiving the COVID-19 vaccine. These conditions can be seen as positive, negative, or neutral. These conditions will not actually occur and you will not need to take a COVID-19 vaccine based on your answers in this survey. All responses will be used purely for educational purposes. A type of question you may see would be the following: "Will you take a COVID-19 vaccine if given door-to-door?" This question is asking if you would take a COVID-19 vaccine if you had the option to take it at your doorstep. You may answer "Yes" or "No" to this question. At the end of the survey we will be collecting demographic information (such as income and age) that will also be used purely for educational purposes. These demographic attributes will help us account for bias in our data: 
 
-- Race/ethnicity: data suggests that marginalized races may have a sense of mistrust in the American healthcare system, stemming from mistreatment to microaggressions towards these groups from practioners. Collecting data from every ethic group allows us to compare the level of trust towards vaccines and infer it on COVID vaccination rates. 
+- Race/ethnicity: data suggests that marginalized races may have a sense of mistrust in the American healthcare system, stemming from mistreatment to microaggressions towards these groups from practitioners. Collecting data from every ethic group allows us to compare the level of trust towards vaccines and infer it on COVID vaccination rates. 
 - Political beliefs: far right media hosts and politicians have incited hostility and resentment towards the COVID-19 vaccine in an effort to gain political clout. We would like to gather data from progressives and conservatives to see the extent of this hostility. 
-- Income: data suggests that people of lower income also are subjected to mistreatment and microaggressions by healthcare practioners, also hampering trust in our healthcare system. Collecting data from various income groups also allows us to compare the level of trust towards vaccines and infer it on COVID vaccination rates. 
+- Income: data suggests that people of lower income also are subjected to mistreatment and microaggressions by healthcare practitioners, also hampering trust in our healthcare system. Collecting data from various income groups also allows us to compare the level of trust towards vaccines and infer it on COVID vaccination rates.
 
 If you have any questions about this survey, then please contact marketingvaccinepolicy@gmail.com.
 
@@ -650,13 +653,25 @@ What political orientation did people you grew up with have (including during co
 
 How far is your nearest high school?
    
-- Yes
-- No
+- 0-1 mile
+- 1-3 miles
+- 4-5 miles
+- 5-10 miles
+- 10-15 miles
+- 15-20 miles
+- 20-50 miles
+- 50+ miles
 
 How far is your nearest post office?
 
-- Yes
-- No
+- 0-1 mile
+- 1-3 miles
+- 4-5 miles
+- 5-10 miles
+- 10-15 miles
+- 15-20 miles
+- 20-50 miles
+- 50+ miles
 
 Do you have access to public transportation? 
 
