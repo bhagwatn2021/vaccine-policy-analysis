@@ -1,4 +1,4 @@
-"","respID","qID","altID","obsID","incentive","incentive_monetary_value","non_compliance_fine","accessibility"
+"index","respID","qID","altID","obsID","incentive","incentive_monetary_value","non_compliance_fine","accessibility"
 "1",1,1,1,1,"television unit",200,"TRUE",10
 "2",1,2,1,2,"multivitamin supply",600,"TRUE",3
 "3",1,3,1,3,"television unit",400,"TRUE",5
