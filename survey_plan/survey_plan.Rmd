@@ -1,7 +1,7 @@
 ---
 title: "Vaccine mandates versus incentives"
 subtitle: "An analysis of imposing different COVID-19 vaccine policies" 
-author: Jenny Kim, Neel Bhagwat
+author: Jenny Kim and Neel Bhagwat
 date: October 05, 2021
 output: 
   html_document:
@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
   fig.height = 4, # Default plot height
   fig.retina = 3 # For better plot resolution
 )
-spelling::spell_check_files("survey_plan.Rmd")
+# spelling::spell_check_files("survey_plan.Rmd")
 ```
 
 # Target population
@@ -33,41 +33,449 @@ Our goal is to find as many unvaccinated adults (18 years and older) in the Unit
 - Income: Evidence also shows mistreatment towards groups of lower income. We want to find our more about the extent of microaggressions in this group and what policy would benefit. We can gather information from this population by asking GW students and others who fill out the survey about their income, and comparing that against who would favor different policies over COVID vaccinations. We can also reach out to the financial aid office to get more responses from people of underprivileged backgrounds as we are not violating ethical standards by doing so.
 
 We be reaching out to the following people/groups to gain responses: 
+
 - Dr. Lorien Abroms, a Public Health professor, runs the GW Health Communications Corps, an organization combatting health misinformation. Dr. Abroms would particularly be integral with identifying groups of people that succumb to microaggressions and have lower vaccination rates*. Dr. Abroms can also help us gain more samples from groups that succumb to misinformation about the vaccine, as [a report from HHS in August 2021 estimates that 44% of unvaccinated fall into the "unvaccinated but willing" category](hhttps://www.washingtonpost.com/health/2021/09/23/covid-unvaccinated-but-willing/?fbclid=IwAR26FWna18WL6-V__ofn441XM3cRf76NxEF6sWZdm-iNlO5q-his1OHocuk). This would help to reduce the bias in the sample towards a positive or negative policy, identifying a group of people that is willing to take the vaccine without any incentive or consequence wagered will help us identify the most efficient policy and whether incentives or fines are absolutely necessary. 
 - Dr. Dennis Schell, a Psychology professor, teaches general and abnormal pyschology. He also works with people with adverse behavior issues, and will be able to help garner surveys from people with behavioral health issues on why they won't take the vaccine. With these people in our sample, we will be able to identify whether they can comply with a vaccine mandate. 
 - Dr. Patrick McHugh, a Management professor, whose research is focused on the psychology behind organizational structure and operations. He will be able to identify organizations that do not require vaccinations for its members, and give insight as to the reception towards vaccine mandates. He can also help us identify organizations that incentivize decisions, which we can send the survey to. 
 - No Lost Generation GW is an organization that helps refugees adjust to living in the United States, particularly in the DC area. We can talk to the organization about getting refugees vaccinated by translating the survey into various languages and allowing refugees and immigrants to take them. 
 - Dr. Irene Foster, an Economics professor, who can give insight on different unvaccinated populations in the US. She may be able to give contacts of people who work with the above groups to whom we can share the survey with. 
 
-#Eligibility Questions
+## Eligibility questions
 
-Are you 18 or older? 
+Are you 18 years old or older? 
+
 - Yes
 - No (You are ineligible to take this survey, please ask a parent or guardian to fill it out)
 
 Have you received at least one dose of a COVID-19 vaccine?
+
+- Yes
+- No
+
+## Attention checks (to be put in the beginning and middle): 
+
+Are you able to select the second option? If yes, select the third option and move on.
+
+- Yes
+- No
+- Maybe
+
+Are you able to select the third option? If yes, select the first option and move on.
+
+- Yes
+- No
+- Maybe
+
+# Conjoint questions
+
+Will you take a COVID-19 vaccine if mandated with a fine of $100?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $200?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $300?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $400?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $500?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $600?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $700?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $800?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $900?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if mandated with a fine of $1000?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $100?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $200?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $300?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $400?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $500?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $600?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $700?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $800?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $900?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $1000?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if given door-door?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if given at a public facility within 3 miles of your residence?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if given at a public facility within 5 miles of your residence?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if given at a public facility within 10 miles of your residence?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $100?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $200?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $300?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $400?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $500?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $600?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $700?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $800?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $900?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $1000?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with one ticket to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with two tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with three tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with four tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with five tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with six tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with seven tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with eight tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with nine tickets to a sporting event of your choice?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with ten tickets to a sporting event of your choice?  
+
 - Yes
 - No
 
 
-# Conjoint questions
+Will you take a COVID-19 vaccine if incentivized with a 6 month supply of multivitamin supplements?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month supply of multivitamin supplements?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with an 18 month supply of multivitamin supplements?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 24 month supply of multivitamin supplements?  
+
+- Yes
+- No
 
 
-Example markdown table:
+Will you take a COVID-19 vaccine if incentivized with a 6 month internet and phone coverage?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month internet and phone coverage?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with an 18 month internet and phone coverage?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 24 month internet and phone coverage?  
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $500 and the vaccine is given at a public facility within 5 miles of your residence?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $500 and a 12 month supply of multivitamin supplements?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $500 and a 12 month internet/phone coverage?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $500 and five tickets to a sporting event of your choice?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with $500 and a TV worth $500?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month supply of multivitamin supplements and the vaccine is given at a public facility within 5 miles of your residence?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month internet/phone coverage and the vaccine is given at a public facility within 5 miles of your residence?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with five tickets to a sporting event of your choice and the vaccine is given at a public facility within 5 miles of your residence?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a TV worth $500 and the vaccine is given at a public facility within 5 miles of your residence?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month supply of multivitamin supplements and a 12 month internet/phone coverage?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month supply of multivitamin supplements and five tickets to a sporting event of your choice?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month supply of multivitamin supplements and a TV worth $500?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month internet/phone coverage and five tickets to a sporting event of your choice?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with a 12 month internet/phone coverage and a TV worth $500?
+
+- Yes
+- No
+
+Will you take a COVID-19 vaccine if incentivized with five tickets to a sporting event of your choice and a TV worth $500?
+
+- Yes
+- No
+
+If you said no to all mandate questions, will you be satisfied with a 12 month supply of multivitamin supplements for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with a 12 month internet/phone coverage for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with a $500 TV for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with 5 tickets to a sporting event of your choice for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with a $100 monetary compensation for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with a $500 monetary compensation for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied with a $1000 monetary compensation for compliance to a mandate? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied if given at a public facility within 3 miles of your residence? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied if given at a public facility within 5 miles of your residence? 
+
+- Yes
+- No 
+- I said yes to a mandate
+
+If you said no to all mandate questions, will you be satisfied if given at a public facility within 10 miles of your residence? 
+
+- Yes
+- No 
+- I said yes to a mandate
 
 Attribute | Levels | Unit
 ----------|--------|--------
-Price | 15, 20, 25 | $1000
-Fuel economy | 20, 25, 30 | Miles per gallon
-Acceleration time | 6, 7, 8 | Seconds (from 0-60 mph)
-Powertrain | Gasoline, Electric | Type
-
+Mandate with fine enforced at tax season | $100 - $1000; $100 increments | USD
+Monetary incentive | $100 - $1000; $100 increments | USD
+Accessibility | 0 (door-door), 3 (public facility, mobile site), 5 (public facility, mobile site), 10 miles (public facility, mobile site)  | Miles 
+Non-monetary incentives | Multivitamin supplements (6 months - 24 months, 6 month increments ), internet/phone coverage (6 months - 24 months, 6 month increments), sporting event tickets (1 - 10 tickets, 1 ticket increments), TV ($100 - $1000 in value, $100 increments) | Product given (categorical), value of product (USD, time)
 
 # Other survey content
 
-
-
 ## Welcome page
+
 <center>
   <img src="images/family-guy-vaccine-psa.png" width=1500>
 </center>
@@ -75,19 +483,59 @@ Powertrain | Gasoline, Electric | Type
   <img src="images/family-guy-vaccine-psa-2.png" width=1500>
 </center>
 
+Welcome and thank you for your interest in our survey! The purpose of this survey is to develop a quantitative model of consumer choice to inform the design decisions of a COVID vaccine policy. This survey is being conducted by students at The George Washington University for a Marketing Analytics course. You are invited to participate in this survey because you are a resident of the United States above the age of 18.
+
 ## Consent page
 
+Your participation in this survey is voluntary. You may choose not to participate. If you decide to participate in this survey, you may withdraw at any time with no penalty. The procured involves filling an online survey that will take approximately 20 minutes. All responses will be used solely for educational purposes and individual identified information will not be shared under any circumstances. Your responses will be confidential and we do not collect identifying information such as your name, email address, or IP address.
+
+By taking this survey, I certify that I am at least 18 years of age and will, to the best of my ability, answer truthfully and accurately. I understand that my answers may be invalidated should I fail to do so. I understand that I have read all of the above information and voluntarily agree to participate in this survey.
+
+- I attest
+- I do not attest
 
 ## Education information
+
+This survey involves questions that ask whether a certain condition would result in you receiving the COVID-19 vaccine. These conditions can be seen as positive, negative, or neutral. These conditions will not actually occur and you will not need to take a COVID-19 vaccine based on your answers in this survey. All responses will be used purely for educational purposes. A type of question you may see would be the following: "Will you take a COVID-19 vaccine if given door-to-door?" This question is asking if you would take a COVID-19 vaccine if you had the option to take it at your doorstep. You may answer "Yes" or "No" to this question. At the end of the survey we will be collecting demographic information (such as income and age) that will also be used purely for educational purposes. These demographic attributes will help us account for bias in our data: 
+
+- Race/ethnicity: data suggests that marginalized races may have a sense of mistrust in the American healthcare system, stemming from mistreatment to microaggressions towards these groups from practitioners. Collecting data from every ethic group allows us to compare the level of trust towards vaccines and infer it on COVID vaccination rates. 
+- Political beliefs: conversations around COVID-19 have become increasingly political. We would like to gather data from people of all political beliefs to see the relationship between politics and the COVID vaccine. 
+- Income: data suggests that people of lower income also are subjected to mistreatment and microaggressions by healthcare practitioners, also hampering trust in our healthcare system. Collecting data from various income groups also allows us to compare the level of trust towards vaccines and infer it on COVID vaccination rates.
+
+If you have any questions about this survey, then please contact marketingvaccinepolicy@gmail.com.
 
 
 ## Critical respondent information
 
+What is your annual net income?
+
+- Under $60,000
+- $60,000 - $80,000
+- $80,000 - $100,000
+- $100,000 - $120,000
+- $120,000 - $120,000
+- $140,000 - $120,000
+- $160,000 - $120,000
+- $180,000 - $120,000
+- Above $200,000
+
+How old are you?
+
+- 18 - 19 years old
+- 20 - 29 years old
+- 30 - 39 years old
+- 40 - 49 years old
+- 50 - 59 years old
+- 60 - 69 years old
+- 70 - 79 years old
+- 80+ years old
+
 Which of the following best describes your heritage?
-- American Indian or Alaskan Native (e.g., Navajo Nation, Blackfeet Tribe, Mayan, Aztec, Native Village of Barrow Inupiat Traditional Government, Nome Eskimo Community, etc.)
-- Asian (e.g., Chinese, Filipino, Asian Indian, Vietnamese, Korean, Japanese, etc.)
-- Black or African American (e.g., African American, Jamaican, Haitian, Nigerian, Ethiopian, Somalian, etc.)
-- Hispanic, Latino, or Spanish Origin (e.g., Mexican or Mexican American, Puerto Rican, Cuban, Salvadoran, Dominican, Colombian, etc.)
+
+- Native American or Alaskan Native (e.g., Navajo Nation, Blackfeet Tribe, Mayan, Aztec, Native Village of Barrow Inupiat Traditional Government, Nome Eskimo Community, etc.)
+- Asian (e.g., Chinese, Filipino, Indian, Vietnamese, Korean, Japanese, Malaysian, etc.)
+- African (e.g., African American, Jamaican, Haitian, Nigerian, Ethiopian, Somalian, etc.)
+- Hispanic or Latino (e.g., Mexican or Mexican American, Puerto Rican, Cuban, Salvadoran, Dominican, Colombian, etc.)
 - Middle Eastern or North African (e.g., Lebanese, Iranian, Egyptian, Syrian, Moroccan, Algerian, etc.)
 - Native Hawaiian or Pacific Islander (e.g., Native Hawaiian, Samoan, Chamorro, Tongan, Fijian, Marshallese, etc.)
 - White (e.g., German, Irish, English, Italian, Polish, French, etc.)
@@ -100,22 +548,194 @@ What do you identify as?
 - Prefer to self-describe
 - Prefer not to say
 
-Are you affiliated with any of the following political parties?
-- Republican
-- Democrat
-- Independent
-- Other
+What is your political orientation?
+
+- Strongly conservative
+- Conservative
+- Leaning conservative
+- Moderate
+- Leaning liberal
+- Liberal
+- Strongly liberal
 - None
 - Prefer not to say
 
-Which income bracket are you in?
-- Less than $20,000
-- $20,000 to $34,999
-- $35,000 to $49,999
-- $50,000 to $74,999
-- $75,000 to $99,999
-- Over $100,000
-- Dependent on another person for income
-- Prefer not to say
+What type of area would you say you grew up in?
+
+- Rural
+- Suburban
+- Urban
+
+What type of area do you currently live in?
+
+- Rural
+- Suburban
+- Urban
+
+<center>
+  <img src="images/census-regions.png" width=1500>
+</center>
+
+Based on the above map, what region of the country do you live in? 
+
+- New England 
+- Middle Atlantic
+- South Atlantic
+- East South Central 
+- East North Central 
+- West South Central 
+- West North Central 
+- Mountain
+- Pacific
 
 ## Other questions
+
+What political orientation did people you grew up with have (including during college, if applicable)?
+
+- Strongly conservative
+- Conservative
+- Leaning conservative
+- Moderate
+- Leaning liberal
+- Liberal
+- Strongly liberal
+- Prefer not to say/ do not know
+
+How far is your nearest high school?
+   
+- 0-1 mile
+- 1-3 miles
+- 4-5 miles
+- 5-10 miles
+- 10-15 miles
+- 15-20 miles
+- 20-50 miles
+- 50+ miles
+
+How far is your nearest post office?
+
+- 0-1 mile
+- 1-3 miles
+- 4-5 miles
+- 5-10 miles
+- 10-15 miles
+- 15-20 miles
+- 20-50 miles
+- 50+ miles
+
+Do you have access to public transportation? 
+
+- Yes
+- No
+
+Do you approve of the advice of your healthcare team to make personal health decisions? 
+
+- Yes
+- No
+
+Do you approve of former President Donald Trump's coronavirus response up to January 2021?
+
+- Yes
+- No
+
+Do you approve of former President Joe Biden's coronavirus response from January 2021?
+
+- Yes
+- No
+
+Do you approve of White House Medical Advisor Anthony Fauci's coronavirus response from March 2020?
+
+- Yes
+- No
+
+Do you approve of the Center for Disease Control's coronavirus response from March 2020?
+
+- Yes
+- No
+
+Do you believe that vaccinated Americans should continue to wear a face covering while in public?
+
+- Yes
+- No
+
+Do you believe that delivering vaccines abroad to poorer countries is more important than getting the domestic population vaccinated?
+
+- Yes
+- No
+
+Do you follow CNN?
+
+- Yes
+- No
+
+Do you follow FOX News? 
+
+- Yes
+- No
+
+Do you follow Joe Rogan?
+
+- Yes
+- No
+
+Do you follow NBA players? 
+
+- Yes
+- No
+
+Do you follow Seth McFarlane? 
+
+- Yes
+- No
+
+<center>
+  <img src="images/vaccine-comparison-cartoon.png" width=1500>
+</center>
+
+To what degree does the above cartoon persuade you to take the Pfizer/BioNTech vaccine? 
+
+1. Not convinced. 
+2. I will give it some thought. 
+3. I will take this into serious condition, but may take Moderna instead. 
+4. I will most likely take the Pfizer/BioNTech vaccine because of its reported rate.
+5. I am convinced. 
+
+<!-- <iframe -->
+<!--     width="640" -->
+<!--     height="480" -->
+<!--     src="https://youtu.be/7DkQl0XigvM" -->
+<!--     frameborder="0" -->
+<!--     allow="autoplay; encrypted-media" -->
+<!--     allowfullscreen> -->
+<!-- </iframe> -->
+
+[A COVID-19 vaccine public service announcement featuring characters from Family Guy, a popular television show](https://youtu.be/7DkQl0XigvM)
+
+
+To what degree does the above video persuade you to take a COVID-19 vaccine? 
+
+1. Not convinced. 
+2. I will give it some thought. 
+3. I will take this into serious condition. 
+4. I will most likely take a COVID-19 vaccine because of the content of this video.
+5. I am convinced. 
+
+[A short film depicting microaggressions towards racial minorities.](https://youtu.be/mrTA_QDEw38)
+
+How well do you understand microaggressions towards racial minorities and their potential impact on COVID-19 vaccination disparities based on the video? 
+
+1. The video did not help me understand this concept. 
+2. I am aware of what someone in this population might face on a daily basis.
+3. I am aware that it is a wider problem beyond the interactions in the video. 
+4. I am convinced that microaggressions similar to the interactions in the video can cause mistrust in the American healthcare system from this population. 
+5. I am convinced that the mistrust in the healthcare system from this population can cause disparities in COVID-19 vaccination rates. 
+
+[A short film depicting microaggressions towards people of low income backgrounds.](https://youtu.be/J6cg8CYDEi8)
+
+How well do you understand microaggressions towards people of low income and their potential impact on COVID-19 vaccination disparities based on the video?
+
+1. The video did not help me understand this concept. 
+2. I am aware of what someone in this population might face on a daily basis.
+3. I am aware that it is a wider problem beyond the interactions in the video. 
+4. I am convinced that microaggressions similar to the interactions in the video can cause mistrust in the American healthcare system from this population. 
+5. I am convinced that the mistrust in the healthcare system from this population can cause disparities in COVID-19 vaccination rates. 
