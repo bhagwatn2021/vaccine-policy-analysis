@@ -471,60 +471,10 @@ Monetary incentive | $100 - $1000; $100 increments | USD
 Accessibility | 0 (door-door), 3 (public facility, mobile site), 5 (public facility, mobile site), 10 miles (public facility, mobile site)  | Miles 
 Non-monetary incentives | Multivitamin supplements (6 months - 24 months, 6 month increments ), internet/phone coverage (6 months - 24 months, 6 month increments), sporting event tickets (1 - 10 tickets, 1 ticket increments), TV ($100 - $1000 in value, $100 increments) | Product given (categorical), value of product (USD, time)
 
-## Other survey content
-
-<center>
-  <img src="images/vaccine-comparison-cartoon.png" width=1500>
-</center>
-
-To what degree does the above cartoon persuade you to take the Pfizer/BioNTech vaccine? 
-
-1. Not convinced. 
-2. I will give it some thought. 
-3. I will take this into serious condition, but may take Moderna instead. 
-4. I will most likely take the Pfizer/BioNTech vaccine because of its reported rate.
-5. I am convinced. 
-
-<!-- <iframe -->
-<!--     width="640" -->
-<!--     height="480" -->
-<!--     src="https://youtu.be/7DkQl0XigvM" -->
-<!--     frameborder="0" -->
-<!--     allow="autoplay; encrypted-media" -->
-<!--     allowfullscreen> -->
-<!-- </iframe> -->
-
-[A COVID-19 vaccine public service announcement featuring characters from Family Guy, a popular television show](https://youtu.be/7DkQl0XigvM)
-
-To what degree does the above video persuade you to take a COVID-19 vaccine? 
-
-1. Not convinced. 
-2. I will give it some thought. 
-3. I will take this into serious condition. 
-4. I will most likely take a COVID-19 vaccine because of the content of this video.
-5. I am convinced. 
-
-[A short film depicting microaggressions towards racial minorities.](https://youtu.be/mrTA_QDEw38)
-
-How well do you understand microaggressions towards racial minorities and their potential impact on COVID-19 vaccination disparities based on the video? 
-
-1. The video did not help me understand this concept. 
-2. I am aware of what someone in this population might face on a daily basis.
-3. I am aware that it is a wider problem beyond the interactions in the video. 
-4. I am convinced that microaggressions similar to the interactions in the video can cause mistrust in the American healthcare system from this population. 
-5. I am convinced that the mistrust in the healthcare system from this population can cause disparities in COVID-19 vaccination rates. 
-
-[A short film depicting microaggressions towards people of low income backgrounds.](https://youtu.be/J6cg8CYDEi8)
-
-How well do you understand microaggressions towards people of low income and their potential impact on COVID-19 vaccination disparities based on the video?
-
-1. The video did not help me understand this concept. 
-2. I am aware of what someone in this population might face on a daily basis.
-3. I am aware that it is a wider problem beyond the interactions in the video. 
-4. I am convinced that microaggressions similar to the interactions in the video can cause mistrust in the American healthcare system from this population. 
-5. I am convinced that the mistrust in the healthcare system from this population can cause disparities in COVID-19 vaccination rates. 
+# Other survey content
 
 ## Welcome page
+
 <center>
   <img src="images/family-guy-vaccine-psa.png" width=1500>
 </center>
@@ -555,6 +505,7 @@ If you have any questions about this survey, then please contact marketingvaccin
 
 
 ## Critical respondent information
+
 What is your annual net income?
 
 - Under $60,000
@@ -638,7 +589,6 @@ Based on the above map, what region of the country do you live in?
 - Pacific
 
 ## Other questions
-
 
 What political orientation did people you grew up with have (including during college, if applicable)?
 
@@ -737,3 +687,55 @@ Do you follow Seth McFarlane?
 
 - Yes
 - No
+
+<center>
+  <img src="images/vaccine-comparison-cartoon.png" width=1500>
+</center>
+
+To what degree does the above cartoon persuade you to take the Pfizer/BioNTech vaccine? 
+
+1. Not convinced. 
+2. I will give it some thought. 
+3. I will take this into serious condition, but may take Moderna instead. 
+4. I will most likely take the Pfizer/BioNTech vaccine because of its reported rate.
+5. I am convinced. 
+
+<!-- <iframe -->
+<!--     width="640" -->
+<!--     height="480" -->
+<!--     src="https://youtu.be/7DkQl0XigvM" -->
+<!--     frameborder="0" -->
+<!--     allow="autoplay; encrypted-media" -->
+<!--     allowfullscreen> -->
+<!-- </iframe> -->
+
+[A COVID-19 vaccine public service announcement featuring characters from Family Guy, a popular television show](https://youtu.be/7DkQl0XigvM)
+
+
+To what degree does the above video persuade you to take a COVID-19 vaccine? 
+
+1. Not convinced. 
+2. I will give it some thought. 
+3. I will take this into serious condition. 
+4. I will most likely take a COVID-19 vaccine because of the content of this video.
+5. I am convinced. 
+
+[A short film depicting microaggressions towards racial minorities.](https://youtu.be/mrTA_QDEw38)
+
+How well do you understand microaggressions towards racial minorities and their potential impact on COVID-19 vaccination disparities based on the video? 
+
+1. The video did not help me understand this concept. 
+2. I am aware of what someone in this population might face on a daily basis.
+3. I am aware that it is a wider problem beyond the interactions in the video. 
+4. I am convinced that microaggressions similar to the interactions in the video can cause mistrust in the American healthcare system from this population. 
+5. I am convinced that the mistrust in the healthcare system from this population can cause disparities in COVID-19 vaccination rates. 
+
+[A short film depicting microaggressions towards people of low income backgrounds.](https://youtu.be/J6cg8CYDEi8)
+
+How well do you understand microaggressions towards people of low income and their potential impact on COVID-19 vaccination disparities based on the video?
+
+1. The video did not help me understand this concept. 
+2. I am aware of what someone in this population might face on a daily basis.
+3. I am aware that it is a wider problem beyond the interactions in the video. 
+4. I am convinced that microaggressions similar to the interactions in the video can cause mistrust in the American healthcare system from this population. 
+5. I am convinced that the mistrust in the healthcare system from this population can cause disparities in COVID-19 vaccination rates. 
