@@ -5,7 +5,7 @@ library(here)
 
 # Define the attributes and levels
 levels <- list(
-    incentive = c("multivitamin supply", "internet + phone coverage", "tickets to sporting events", "television unit"),  # Categorical
+    incentive = c("multivitamin supply", "internet + phone coverage", "tickets to sporting events", "television unit","cash"),  # Categorical
     incentive_monetary_value = c(100, 200, 300, 400, 500, 600, 700, 800, 900, 1000),   # Price (USD)
     non_compliance_fine = c(TRUE,FALSE), # TRUE = fine the same monetary amount as incentive for non compliance
     accessibility   = c(0, 3, 5, 10) # Distance (miles) from a vaccination center
