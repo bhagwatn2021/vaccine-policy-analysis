@@ -710,13 +710,6 @@ To what degree does the above cartoon persuade you to take the Pfizer/BioNTech v
 <!-- </iframe> -->
 
 [A COVID-19 vaccine public service announcement featuring characters from Family Guy, a popular television show](https://youtu.be/7DkQl0XigvM)
-The sum of 3 and 4 is `r 3+4`
-The sum of 3 and 4 is ```{r}
-3+4
-5+2 
-6+1
-```
-
 
 To what degree does the above video persuade you to take a COVID-19 vaccine? 
 
