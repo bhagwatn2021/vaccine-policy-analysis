@@ -39,9 +39,54 @@ survey <- makeSurvey(
             ifelse(
             incentive_sport_tickets == 1, 
             paste0("$", value, " gift card for a tickets to a local professional sports event"), "")
-    ))))
+    )))) %>% 
+    mutate(
+        incentive_label = ifelse(
+            value == 0,
+            "No incentives for compliance",
+            incentive_label
+        )
+    ) %>% 
+    mutate(
+        penalty_label = ifelse(
+            penalty == 0,
+            "Vaccine not mandated, no penalty for non-compliance",
+            paste0("Vaccine mandated, $", penalty, " fine for non-compliance")
+        )
+    ) %>% 
+    mutate(
+        accessibility_label = ifelse(
+            accessibility == 0,
+            "Door-door vaccinations",
+            paste0("Vaccination clinic will be located within ", accessibility, " miles from your house")
+        )
+    ) %>% 
+    mutate(
+        no_vaccine_label = ifelse(
+            outsideGood == 1,
+            "I will not take the vaccine under this condition.",
+            ""
+        ),
+        penalty_label = ifelse(
+            outsideGood == 1,
+            "",
+            penalty_label
+        ),
+        accessibility_label = ifelse(
+            outsideGood == 1,
+            "",
+           accessibility_label
+        ),
+        incentive_label = ifelse(
+            outsideGood == 1,
+            "",
+            incentive_label
+        )
+    ) 
 
 head(survey) # preview
 head(survey$incentive_label) # preview incentive labels
+head(survey$penalty_label) # preview incentive labels
+head(survey$no_vaccine_label) # preview incentive labels
 write.csv(survey, here('combined_policy_questions.csv'))
 
