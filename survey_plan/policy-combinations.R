@@ -23,7 +23,7 @@ survey <- makeSurvey(
     doe       = doe,
     nResp     = 1000, 
     nAltsPerQ = 1,
-    nQPerResp = 8, 
+    nQPerResp = 10, 
     outsideGood = TRUE
 ) %>% 
     mutate(
