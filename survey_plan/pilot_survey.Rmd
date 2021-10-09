@@ -1,0 +1,257 @@
+---
+title: "pilot_survey.Rmd"
+author: "Jenny Kim and Neel Bhagwat"
+date: "10/7/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse   = TRUE,
+  warning    = FALSE,
+  message    = FALSE,
+  comment    = "#>",
+  fig.path   = "man/figures/",
+  fig.retina = 3
+)
+library(tidyverse)
+library(dplyr)
+```
+
+## Combined Policy Choice Questions
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r echo=FALSE}
+
+# Read in the choice questions
+library(tidyverse)
+
+survey <- read_csv("https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/main/survey_plan/combined_policy_questions.csv")
+survey
+```
+```{r echo=FALSE}
+# Read in the choice questions
+respondentID <- sample(survey$respID, 1)
+df <- survey %>%
+    filter(respID == respondentID)
+```
+
+## Choice Questions
+
+### 1
+
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 1)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### 2
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 2)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### 3
+
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 3)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### 4
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 4)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### 5
+
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 5)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### 6
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 6)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### 7
+
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 7)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### 8
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 8)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### 9
+
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 9)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### 10
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 10)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
