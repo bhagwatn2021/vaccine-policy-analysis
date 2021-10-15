@@ -41,7 +41,7 @@ df <- survey %>%
 
 ## Choice Questions
 
-### 1
+### Question 1
 
 ```{r , echo=FALSE}
 df_json <- jsonlite::toJSON(df)
@@ -63,7 +63,7 @@ alt2 <- alts %>% filter(altID == 2)
 
 `r alt2$no_vaccine_label`
 
-### 2
+### Question 2
 ```{r , echo=FALSE}
 df_json <- jsonlite::toJSON(df)
 
@@ -84,7 +84,7 @@ alt2 <- alts %>% filter(altID == 2)
 
 `r alt2$no_vaccine_label`
 
-### 3
+### Question 3
 
 ```{r , echo=FALSE}
 df_json <- jsonlite::toJSON(df)
@@ -106,7 +106,7 @@ alt2 <- alts %>% filter(altID == 2)
 
 `r alt2$no_vaccine_label`
 
-### 4
+### Question 4
 ```{r , echo=FALSE}
 df_json <- jsonlite::toJSON(df)
 
@@ -127,7 +127,7 @@ alt2 <- alts %>% filter(altID == 2)
 
 `r alt2$no_vaccine_label`
 
-### 5
+### Question 5
 
 ```{r , echo=FALSE}
 df_json <- jsonlite::toJSON(df)
@@ -149,7 +149,7 @@ alt2 <- alts %>% filter(altID == 2)
 
 `r alt2$no_vaccine_label`
 
-### 6
+### Question 6
 ```{r , echo=FALSE}
 df_json <- jsonlite::toJSON(df)
 
@@ -170,7 +170,7 @@ alt2 <- alts %>% filter(altID == 2)
 
 `r alt2$no_vaccine_label`
 
-### 7
+### Question 7
 
 ```{r , echo=FALSE}
 df_json <- jsonlite::toJSON(df)
@@ -192,7 +192,7 @@ alt2 <- alts %>% filter(altID == 2)
 
 `r alt2$no_vaccine_label`
 
-### 8
+### Question 8
 ```{r , echo=FALSE}
 df_json <- jsonlite::toJSON(df)
 
@@ -213,7 +213,7 @@ alt2 <- alts %>% filter(altID == 2)
 
 `r alt2$no_vaccine_label`
 
-### 9
+### Question 9
 
 ```{r , echo=FALSE}
 df_json <- jsonlite::toJSON(df)
@@ -235,7 +235,7 @@ alt2 <- alts %>% filter(altID == 2)
 
 `r alt2$no_vaccine_label`
 
-### 10
+### Question 10
 ```{r , echo=FALSE}
 df_json <- jsonlite::toJSON(df)
 
