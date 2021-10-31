@@ -1,22 +1,75 @@
 # You should write code here to clean your pilot data and export it as a
 # CSV file to the "data" folder
+library(fastDummies)
 library(here)
+library(lubridate)
 library(tidyverse)
 
 p1 <- read_csv(here("data", "sheet1.csv"))
 p2 <- read_csv(here("data", "sheet2.csv"))
 p3 <- read_csv(here("data", "sheet3.csv"))
 
-varList<- names(p2)[!(names(p2) %in% names(p1))] # get non common names
-varList<- c(varList,"session","created") # appending key parameter
+view(p1)
+view(p2)
+view(p3)
 
-responses <- left_join(p1,p2 %>% select(varList),by='session')
+p1 <- p1 %>% 
+    mutate(
+        created = ymd_hms(created, tz = "EST"),
+        ended =  ymd_hms(ended, tz = "EST"),
+        time_sec_p1 = as.numeric(ended - created, units = "secs")) %>%
+    # Select important columns
+    select(session, time_sec_p1, consentAge, consentVaccine, consentUnderstand) %>% 
+    filter(!is.na(session))
 
-varList<- names(responses)[!(names(responses) %in% names(p3))] # get non common names
-varList<- c(varList,"session") # appending key parameter
+p2 <- p2 %>% 
+    mutate(
+        created = ymd_hms(created),
+        ended =  ymd_hms(ended),
+        time_sec_p2 = as.numeric(ended - created, units = "secs")) %>%
+    # Select important columns
+    select(session, time_sec_p2, respondentID, starts_with("cbc"), cbcAllSame) %>% 
+    filter(!is.na(session))
 
-responses <- left_join(responses,p3,by='session')
+p3 <- p3 %>% 
+    mutate(
+        created = ymd_hms(created),
+        ended =  ymd_hms(ended),
+        time_sec_p3 = as.numeric(ended - created, units = "secs")) %>%
+    # Select important columns
+    select(session, time_sec_p3, yearOfBirth:feedback,completionCode) %>% 
+    filter(!is.na(session))
 
-responses <- responses %>% filter(!grepl('2021-10-15',created)) %>% filter(consentVaccine == 1)
+view(p1)
+view(p2)
+view(p3)
 
-view(responses)
+data <- p1 %>% 
+    inner_join(p2, by = "session") %>% 
+    inner_join(p3, by = "session") 
+view(data)
+data <- data %>% 
+    filter(!is.na(cbc1)) %>% 
+    filter(!is.na(cbc2)) %>% 
+    filter(!is.na(cbc3)) %>% 
+    filter(!is.na(cbc4)) %>% 
+    filter(!is.na(cbc5)) %>% 
+    filter(!is.na(cbc6)) %>% 
+    filter(!is.na(cbc7)) %>% 
+    filter(!is.na(cbc8))%>% 
+    filter(!is.na(cbc9))%>% 
+    filter(!is.na(cbc10)) %>% 
+    filter(yearOfBirth != 'prefer_not_say') %>% 
+    filter(consentVaccine == 1)%>% 
+    filter(consentAge == 1) %>% 
+    filter(consentUnderstand == 1)
+
+data <- data %>% 
+    pivot_longer(
+        cols = cbc1:cbc10,
+        names_to = "qID",
+        values_to = "choice") %>% 
+    # Convert the qID variable to a number
+    mutate(qID = parse_number(qID))
+
+view(data)
