@@ -71,5 +71,14 @@ data <- data %>%
         values_to = "choice") %>% 
     # Convert the qID variable to a number
     mutate(qID = parse_number(qID))
-
+survey <- read_csv("https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/main/survey_plan/combined_policy_questions.csv") %>% 
+    select(-...1,-contains("_label"))
+# Convert choice column to 1 or 0 based on if the alternative was chosen 
+data <- data %>% 
+    rename(respID = respondentID) %>% 
+    left_join(survey, by = c("respID", "qID"))%>% 
+    mutate(choice = ifelse(choice == altID, 1, 0)) %>% 
+    # Drop unused variables
+    select(-cbcPractice, -cbcAllSame)
+view(survey)
 view(data)
