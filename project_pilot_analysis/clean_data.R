@@ -73,6 +73,7 @@ data <- data %>%
     mutate(qID = parse_number(qID))
 survey <- read_csv("https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/pilot-analysis/project_pilot/combined_policy_questions.csv") %>% 
     select(-...1,-contains("_label"))
+
 # Convert choice column to 1 or 0 based on if the alternative was chosen 
 data <- data %>% 
     rename(respID = respondentID) %>% 
