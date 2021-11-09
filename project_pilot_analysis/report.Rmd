@@ -103,11 +103,98 @@ Incentive value refers to the penalty due at tax season for failing to get a  be
 
 # Pilot Data Analysis
 
-p1 <- read_csv(here("data", "appleConjoint_p1.csv"))
-p2 <- read_csv(here("data", "appleConjoint_p2.csv"))
-p3 <- read_csv(here("data", "appleConjoint_p3.csv"))
+### Data Cleaning 
+
+When we first opened the responses from the three separate components, we noticed a lot of null values to numerous attributes, including session ids that seemed to be from unsuccessful attempts to view our survey, or from bots on the internet. To remove these values gracefully, we had to join these three components together by the session id, a unique identifier for each participant associated with the survey. To do so, we took out duplicate columns and removed null values for session. We also computed the time took to complete each survey component in unique columns. Then, we filtered out respondents that did not answer the choice questions and did not meet eligibility criteria. 
 
 
+## Sample Description
+
+The final pilot survey sample consists of 7 respondents who answered all 10 choice questions and met the eligibility criteria. The choice data sheet contains of 20 rows per respondent, denoting 2 alternatives per question (will you take the vaccine under this condition or not?) and 10 questions each. 
+
+```{r echo=FALSE}
+data <- read_csv(here("data", "choiceData.csv"))
+data
+```
+### Demographic Analysis
+
+```{r echo=FALSE}
+
+politics <- data %>% filter(!is.na(politics)) %>% mutate(politics = politics - 4) %>% select(politics) %>% group_by(politics) %>% summarise(num_respondents = n()/20)
+
+politics
+```
+
+```{r echo=FALSE}
+
+incomes <- data %>% select(income) %>% filter(!is.na(income)) %>%  group_by(income) %>% summarise(num_respondents = n()/20)
+incomes
+```
+
+```{r echo=FALSE}
+
+region_label <- c("New England",	"Middle Atlantic",	"South Atlantic", "East South Central",	"East North Central",	"West South Central",	"West North Central",	"Mountain",	"Pacific")
+region <- c(1:9)
+region_df <- data.frame(region,region_label)
+regions <- data %>% select(region) %>% filter(!is.na(region)) %>%  group_by(region) %>% summarise(num_respondents = n()/20) %>% inner_join(region_df,by=c("region"))
+
+regions
+
+```
+
+```{r echo=FALSE}
+
+genders <- data %>% select(gender) %>% filter(!is.na(gender)) %>%  group_by(gender) %>% summarise(num_respondents = n()/20)
+
+genders
+
+```
+
+```{r echo=FALSE}
+
+ages <- data %>% select(yearOfBirth) %>% filter(!is.na(yearOfBirth))  %>% mutate(age = 2021-as.numeric(yearOfBirth)) %>%  group_by(age) %>% summarise(num_respondents = n()/20)
+ages[is.na(c("age"))] <- "Prefer not to say"
+ages
+```
+### Modeling
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=Uj&space;=&space;\beta_{1}x^{value}&space;&plus;&space;\beta_{2}x^{penalty}&space;&plus;&space;\beta_{3}x^{accessibility}&space;&plus;&space;\beta_{4}x^{cash}&space;\beta_{5}x^{groceries}&space;\beta_{6}x^{internet}&space;\beta_{7}x^{sport}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Uj&space;=&space;\beta_{1}x^{value}&space;&plus;&space;\beta_{2}x^{penalty}&space;&plus;&space;\beta_{3}x^{accessibility}&space;&plus;&space;\beta_{4}x^{cash}&space;\beta_{5}x^{groceries}&space;\beta_{6}x^{internet}&space;\beta_{7}x^{sport}" title="Uj = \beta_{1}x^{value} + \beta_{2}x^{penalty} + \beta_{3}x^{accessibility} + \beta_{4}x^{cash} \beta_{5}x^{groceries} \beta_{6}x^{internet} \beta_{7}x^{sport}" /></a>
+
+```{r echo=FALSE}
+library(janitor)
+library(logitr)
+
+# Clean up names of created variables
+data <- clean_names(data)
+
+# Estimate the model
+model <- logitr(
+    data   = data,
+    outcome = "choice",
+    obsID  = "obs_id",
+    pars   = c(
+        "value", 
+        "penalty",
+        "accessibility",
+        "incentive_cash",
+        "incentive_grocery_store",
+        "incentive_internet",
+        "incentive_sport_tickets"
+    )
+)
+
+# View summary of results
+summary(model)
+coefs <- coef(model)
+coefs
+
+# Check the 1st order condition: Is the gradient at the solution zero?
+model$gradient
+
+# 2nd order condition: Is the hessian negative definite?
+# (If all the eigenvalues are negative, the hessian is negative definite)
+eigen(model$hessian)$values
+```
 # Changes to Final Survey
 
 - We removed unnecessary images that may confuse respondents. 
