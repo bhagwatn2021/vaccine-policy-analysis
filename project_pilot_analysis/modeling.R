@@ -7,6 +7,7 @@ library(tidyverse)
 library(fastDummies)
 library(janitor)
 library(here)
+library(cowplot)
 options(dplyr.width = Inf) # So you can see all of the columns
 
 # -----------------------------------------------------------------------------
@@ -40,7 +41,7 @@ coefs
 
 ses <- se(model)
 ses
-
+model
 summary(model)
 
 
@@ -61,14 +62,14 @@ df_value <- data.frame(value = unique(data$value)) %>%
     
 
 # Get upper and lower bounds (plots should have the same y-axis)
-ymin <- floor(min(df_value$utility))
-ymax <- ceiling(max(df_value$utility))
+ymin <- floor(min(df_value$lower))
+ymax <- ceiling(max(df_value$upper))
 
 # Plot the utility for each attribute
 plot_value <- df_value %>% 
     ggplot(aes(x = value, y = utility,ymin=lower,ymax=upper)) +
     geom_line() +
-    geom_ribbon(alpha=0.2)
+    geom_ribbon(alpha=0.2) +
     scale_y_continuous(limits = c(ymin, ymax)) +
     labs(x = 'Value of incentive ($)', y = 'Utility') +
     theme_bw()
@@ -172,9 +173,9 @@ ymin <- floor(min(df_internet$lower))
 ymax <- ceiling(max(df_internet$upper))
 
 plot_internet <- df_internet %>% 
-    ggplot(aes(x = incentive_sport_tickets , y = utility, ymin=lower, ymax=upper)) +
+    ggplot(aes(x = incentive_internet , y = utility, ymin=lower, ymax=upper)) +
     geom_point() +
-    geom_errorbar(width=0.3) 
+    geom_errorbar(width=0.3) +
     scale_y_continuous(limits = c(ymin, ymax)) +
     labs(x = 'Internet bill incentive?', y = 'Utility') +
     theme_bw()
@@ -202,4 +203,30 @@ plot_sport_tickets  <- df_sport_tickets  %>%
     theme_bw()
 
 plot_sport_tickets 
+
+plot_continuous_attributes <- plot_grid(
+    plot_value, plot_accessibility, plot_penalty,
+    nrow = 3
+)
+
+plot_continuous_attributes 
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_continuous_attributes.png'), 
+    plot = plot_continuous_attributes , 
+    width = 10, height = 10)
+
+plot_categorical_attributes <- plot_grid(
+    plot_cash, plot_grocery_store, plot_internet, plot_sport_tickets,
+    nrow = 4
+)
+
+plot_categorical_attributes 
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_categorical_attributes.png'), 
+    plot = plot_categorical_attributes , 
+    width = 10, height = 10)
 

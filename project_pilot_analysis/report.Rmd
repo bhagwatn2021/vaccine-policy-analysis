@@ -110,7 +110,9 @@ When we first opened the responses from the three separate components, we notice
 
 ## Sample Description
 
-The final pilot survey sample consists of 7 respondents who answered all 10 choice questions and met the eligibility criteria. The choice data sheet contains of 20 rows per respondent, denoting 2 alternatives per question (will you take the vaccine under this condition or not?) and 10 questions each. 
+The final pilot survey sample after cleaning consists of 7 respondents who answered all 10 choice questions and met the eligibility criteria. The choice data sheet contains of 20 rows per respondent, denoting 2 alternatives per question (will you take the vaccine under this condition or not?) and 10 questions each. 
+
+
 
 ```{r echo=FALSE}
 data <- read_csv(here("data", "choiceData.csv"))
@@ -118,13 +120,19 @@ data
 ```
 ### Demographic Analysis
 
-```{r echo=FALSE}
+To analyze our sample by each demographic factor, we first filtered out any respondent who did not answer the particular demographic question. We then grouped respondents by demographic and divided the number of responses to each demographic by 20 (since each respondent appears 20 times on the survey) to get the number of respondents in each demographic attribute level. 
 
-politics <- data %>% filter(!is.na(politics)) %>% mutate(politics = politics - 4) %>% select(politics) %>% group_by(politics) %>% summarise(num_respondents = n()/20)
+We were first interested in the politics of our respondents. We found that most of our sample was liberal, with a couple independents and leaning conservatives. This showed us that we need a higher sample across a wide political spectrum. 
+```{r echo=FALSE}
+political_label <- c("Strongly conservative", "Conservative", "Leaning conservative",	"Moderate", "Leaning liberal",	"Liberal",	"Strongly liberal",	"Independent",	"Prefer not to say")
+politics <- c(1:9)
+politics_df <- data.frame(politics,political_label)
+politics <- data %>% filter(!is.na(politics)) %>% select(politics) %>% group_by(politics) %>% summarise(num_respondents = n()/20) %>% inner_join(politics_df,by=c("politics"))
 
 politics
 ```
 
+We were first interested in the politics of our respondents. We found that most of our sample was liberal, with a couple independents and leaning conservatives. This showed us that we need a higher sample across a wide political spectrum. 
 ```{r echo=FALSE}
 
 incomes <- data %>% select(income) %>% filter(!is.na(income)) %>%  group_by(income) %>% summarise(num_respondents = n()/20)
@@ -158,7 +166,13 @@ ages
 ```
 ### Modeling
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=Uj&space;=&space;\beta_{1}x^{value}&space;&plus;&space;\beta_{2}x^{penalty}&space;&plus;&space;\beta_{3}x^{accessibility}&space;&plus;&space;\beta_{4}x^{cash}&space;\beta_{5}x^{groceries}&space;\beta_{6}x^{internet}&space;\beta_{7}x^{sport}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Uj&space;=&space;\beta_{1}x^{value}&space;&plus;&space;\beta_{2}x^{penalty}&space;&plus;&space;\beta_{3}x^{accessibility}&space;&plus;&space;\beta_{4}x^{cash}&space;\beta_{5}x^{groceries}&space;\beta_{6}x^{internet}&space;\beta_{7}x^{sport}" title="Uj = \beta_{1}x^{value} + \beta_{2}x^{penalty} + \beta_{3}x^{accessibility} + \beta_{4}x^{cash} \beta_{5}x^{groceries} \beta_{6}x^{internet} \beta_{7}x^{sport}" /></a>
+Our utility model is as follows: 
+$$
+Uj = \beta_{1}x^{value} + \beta_{2}x^{penalty} + \beta_{3}x^{accessibility} + \beta_{4}x^{cash} \beta_{5}x^{groceries} \beta_{6}x^{internet} \beta_{7}x^{sport}
+$$
+The first three beta values represent continuous attributes, and for every change in value, accessibility, and penalty, the utility for policy j will increase by the beta value for that attribute * the level of the attribute. The last four beta values are for categorical attributes that can either be 0 or 1, with 0 denoting the attribute is not present and 1 denoting the presence of an attribute. If present, the utility for policy j will increase by the beta value for that attribute. 
+
+Using the model and the choice data, we then ran the logitr model using preference space to estimate the beta coefficients. Running a summary of the results returned to us the estimated coefficients and the standard error. It also returned to us the log likelihood that the coefficients are correct and can be used to accurately estimate utility. 
 
 ```{r echo=FALSE}
 library(janitor)
@@ -185,8 +199,12 @@ model <- logitr(
 
 # View summary of results
 summary(model)
-coefs <- coef(model)
-coefs
+
+```
+
+We then validated the accuracy of the model by checking whether the model is at a maximum, because we need to maximize log likelihood. We checked the results against the first-order and second-order derivatives of the model.
+
+```{r echo=FALSE}
 
 # Check the 1st order condition: Is the gradient at the solution zero?
 model$gradient
@@ -194,7 +212,198 @@ model$gradient
 # 2nd order condition: Is the hessian negative definite?
 # (If all the eigenvalues are negative, the hessian is negative definite)
 eigen(model$hessian)$values
+
+``` 
+The first derivates for each attribute were close but not equal to 0. The second order derivatives in the hessian are all negative, denoting that the model has a maximum and is curved down. Since most first order derivatives are positive and all second order derivatives are negative, we can infer that the optimal values for betas are higher than estimated by the model, and for attributes with a negative first derivative, the actual values for betas are lower than estimated. But we concluded that with more data it would be easier to find measurable optimal values for beta. 
+
+We then extracted the coefficients and standard errors to reference when plotting each attribute. 
+```{r echo=FALSE}
+coefs <- coef(model)
+coefs
+
+ses <- se(model)
+ses
 ```
+
+After getting the estimates and errors for beta, we proceeded to plot the utility for each attribute with each beta estimate. For plotting each attribute:
+
+- We created a new data frame containing estimates plus upper and lower bound estimates calculated by the estimated coefficient, the standard error, and the attribute level. The upper and lower bounds are the 95% confidence interval for the estimate, or beta +- 2* std_err. 
+- We plotted the attribute and the upper and lower bounds. For categorical attributes, we used box and whiskers plots to show the confidence interval. For continuous attributes, we shaded in the confidence interval. 
+
+#### Plot for value of incentive
+```{r echo=FALSE}
+df_value <- data.frame(value =unique(data$value)) %>% 
+    mutate(
+        diff    = value - min(value),
+        utility = diff*coefs['value'],
+        upper =  diff*(coefs['value']+2*ses['value']),
+        lower =  diff*(coefs['value']-2*ses['value'])
+    )
+    
+
+# Get upper and lower bounds (plots should have the same y-axis)
+ymin <- floor(min(df_value$lower))
+ymax <- ceiling(max(df_value$upper))
+
+# Plot the utility for each attribute
+plot_value <- df_value %>% 
+    ggplot(aes(x = value, y = utility,ymin=lower,ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility') +
+    theme_bw()
+
+plot_value
+```
+
+#### Plot for accessibility to vaccination center
+```{r echo=FALSE}
+
+df_accessibility <- data.frame(accessibility = unique(data$accessibility)) %>% 
+    mutate(
+        diff    = accessibility - min(accessibility),
+        utility = diff*coefs['accessibility'],
+        upper =  diff*(coefs['accessibility']+2*ses['accessibility']),
+        lower =  diff*(coefs['accessibility']-2*ses['accessibility'])
+)
+
+# Get upper and lower bounds (plots should have the same y-axis)
+ymin <- floor(min(df_accessibility$lower))
+ymax <- ceiling(max(df_accessibility$upper))
+
+plot_accessibility <- df_accessibility %>% 
+    ggplot(aes(x = accessibility, y = utility,ymin=lower,ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility') +
+    theme_bw()
+
+plot_accessibility
+
+```
+
+#### Plot for non-compliance penalty
+```{r echo=FALSE}
+df_penalty <- data.frame(penalty = unique(data$penalty)) %>% 
+    mutate(
+        diff    = penalty - min(penalty),
+        utility = diff*coefs['penalty'],
+        upper =  diff*(coefs['penalty']+2*ses['penalty']),
+        lower =  diff*(coefs['penalty']-2*ses['penalty'])
+    )
+# Get upper and lower bounds (plots should have the same y-axis)
+ymin <- floor(min(df_penalty$lower))
+ymax <- ceiling(max(df_penalty$upper))
+
+plot_penalty<- df_penalty %>% 
+    ggplot(aes(x = penalty, y = utility, ymin=lower, ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility') +
+    theme_bw()
+
+plot_penalty
+```
+
+#### Plot for cash incentives
+```{r echo=FALSE}
+df_cash <- data.frame(incentive_cash = unique(data$incentive_cash)) %>% 
+    mutate(
+        utility = incentive_cash*coefs['incentive_cash'],
+        upper =  incentive_cash*(coefs['incentive_cash']+2*ses['incentive_cash']),
+        lower =  incentive_cash*(coefs['incentive_cash']-2*ses['incentive_cash'])
+    )
+
+# Get upper and lower bounds (plots should have the same y-axis)
+ymin <- floor(min(df_cash$lower))
+ymax <- ceiling(max(df_cash$upper))
+
+plot_cash<- df_cash %>% 
+    ggplot(aes(x = incentive_cash, y = utility, ymin=lower, ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Cash incentive?', y = 'Utility') +
+    theme_bw()
+
+plot_cash
+```
+
+#### Plot for grocery store credit incentives
+```{r echo=FALSE}
+df_grocery_store <- data.frame(incentive_grocery_store = unique(data$incentive_grocery_store)) %>% 
+    mutate(
+        utility = incentive_grocery_store*coefs['incentive_grocery_store'],
+        upper =  incentive_grocery_store*(coefs['incentive_grocery_store']+2*ses['incentive_grocery_store']),
+        lower =  incentive_grocery_store*(coefs['incentive_grocery_store']-2*ses['incentive_grocery_store'])
+    )
+
+# Get upper and lower bounds (plots should have the same y-axis)
+ymin <- floor(min(df_grocery_store$lower))
+ymax <- ceiling(max(df_grocery_store$upper))
+
+plot_grocery_store <- df_grocery_store %>% 
+    ggplot(aes(x = incentive_grocery_store, y = utility, ymin=lower, ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Grocery store incentive?', y = 'Utility') +
+    theme_bw()
+
+plot_grocery_store
+```
+
+#### Plot for internet bill credit incentives
+```{r echo=FALSE}
+df_internet <- data.frame(incentive_internet = unique(data$incentive_internet)) %>% 
+    mutate(
+        utility = incentive_internet*coefs['incentive_internet'],
+        upper =  incentive_internet*(coefs['incentive_internet']+2*ses['incentive_internet']),
+        lower =  incentive_internet*(coefs['incentive_internet']-2*ses['incentive_internet'])
+    )
+
+# Get upper and lower bounds (plots should have the same y-axis)
+ymin <- floor(min(df_internet$lower))
+ymax <- ceiling(max(df_internet$upper))
+
+plot_internet <- df_internet %>% 
+    ggplot(aes(x = incentive_internet , y = utility, ymin=lower, ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Internet bill incentive?', y = 'Utility') +
+    theme_bw()
+
+plot_internet
+```
+
+#### Plot for sporting event tickets incentives
+```{r echo=FALSE}
+df_sport_tickets <- data.frame(incentive_sport_tickets  = unique(data$incentive_sport_tickets)) %>% 
+    mutate(
+        utility = incentive_sport_tickets *coefs['incentive_sport_tickets'],
+        upper =  incentive_sport_tickets*(coefs['incentive_sport_tickets']+2*ses['incentive_sport_tickets']),
+        lower =  incentive_sport_tickets*(coefs['incentive_sport_tickets']-2*ses['incentive_sport_tickets'])
+    )
+
+# Get upper and lower bounds (plots should have the same y-axis)
+ymin <- floor(min(df_sport_tickets$lower))
+ymax <- ceiling(max(df_sport_tickets$upper))
+
+plot_sport_tickets  <- df_sport_tickets  %>% 
+    ggplot(aes(x = incentive_sport_tickets , y = utility, ymin=lower, ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Sporting event tickets incentive?', y = 'Utility') +
+    theme_bw()
+
+plot_sport_tickets 
+```
+
 # Changes to Final Survey
 
 - We removed unnecessary images that may confuse respondents. 
