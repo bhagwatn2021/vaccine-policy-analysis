@@ -105,8 +105,7 @@ Incentive value refers to the penalty due at tax season for failing to get a  be
 
 ### Data Cleaning 
 
-When we first opened the responses from the three separate components, we noticed a lot of null values to numerous attributes, including session ids that seemed to be from unsuccessful attempts to view our survey, or from bots on the internet. To remove these values gracefully, we had to join these three components together by the session id, a unique identifier for each participant associated with the survey. To do so, we took out duplicate columns and removed null values for session. We also computed the time took to complete each survey component in unique columns. Then, we filtered out respondents that did not answer the choice questions and did not meet eligibility criteria. 
-
+When we first opened the responses from the three separate components, we noticed a lot of null values to numerous attributes, including session ids that seemed to be from unsuccessful attempts to view our survey, or from bots on the internet. To remove these values gracefully, we had to join these three components together by the session id, a unique identifier for each participant associated with the survey. To do so, we took out duplicate columns and removed null values for session. We also computed the time took to complete each survey component in unique columns. Then, we filtered out respondents that did not answer the choice questions and did not meet eligibility criteria. There were about 20-30 total respondents, but the actual number is not known because some responses on each part were due to unsuccessful attempts to take the survey (i.e. partial responses, bots, poor network connection, etc.).
 
 ## Sample Description
 
@@ -122,7 +121,7 @@ data
 
 To analyze our sample by each demographic factor, we first filtered out any respondent who did not answer the particular demographic question. We then grouped respondents by demographic and divided the number of responses to each demographic by 20 (since each respondent appears 20 times on the survey) to get the number of respondents in each demographic attribute level. 
 
-We were first interested in the politics of our respondents. We found that most of our sample was liberal, with a couple independents and leaning conservatives. This showed us that we need a higher sample across a wide political spectrum. 
+We were first interested in the politics of our respondents. We found that most of our sample was liberal, with a couple independents and leaning conservatives. This deviates from our ideal sample - we will need responses across a wide political spectrum and we will need more samples in each category - a liberal sample may skew responses towards agreeing to take the vaccine under smaller conditions. 
 ```{r echo=FALSE}
 political_label <- c("Strongly conservative", "Conservative", "Leaning conservative",	"Moderate", "Leaning liberal",	"Liberal",	"Strongly liberal",	"Independent",	"Prefer not to say")
 politics <- c(1:9)
@@ -132,13 +131,14 @@ politics <- data %>% filter(!is.na(politics)) %>% select(politics) %>% group_by(
 politics
 ```
 
-We were first interested in the politics of our respondents. We found that most of our sample was liberal, with a couple independents and leaning conservatives. This showed us that we need a higher sample across a wide political spectrum. 
+We were also interested in the income brackets of our respondents. We found that most of our sample makes under $50,000 per year, which can give us insights about vaccine policies for poorer families, but we will need more responses from a higher income bracket to validate the effect of income on vaccine hesitancy. 
 ```{r echo=FALSE}
 
 incomes <- data %>% select(income) %>% filter(!is.na(income)) %>%  group_by(income) %>% summarise(num_respondents = n()/20)
 incomes
 ```
 
+We then looked at the regions of residencies of our respondents. We found that our sample is overwhelmingly from the East Coast, with a few responses from the West Coast and the Rocky Mountains. We will need more responses from the Midwest and New England. We also realize from the low variation in region that splitting up our sample by state will give us a more granular analysis on the effect of location on vaccine sentiment. 
 ```{r echo=FALSE}
 
 region_label <- c("New England",	"Middle Atlantic",	"South Atlantic", "East South Central",	"East North Central",	"West South Central",	"West North Central",	"Mountain",	"Pacific")
@@ -150,6 +150,7 @@ regions
 
 ```
 
+We also looked at the genders of our respondents. The sample is more balanced with respect to gender with other demographic attributes like we want, but the sample can use more male responses, as well as responses from those in the trans/non-binary community. 
 ```{r echo=FALSE}
 
 genders <- data %>% select(gender) %>% filter(!is.na(gender)) %>%  group_by(gender) %>% summarise(num_respondents = n()/20)
@@ -157,7 +158,7 @@ genders <- data %>% select(gender) %>% filter(!is.na(gender)) %>%  group_by(gend
 genders
 
 ```
-
+We also looked at the ages of our sample. We noticed that all our respondents are young adults, and we need more samples from the elderly and middle-aged adults to get a better prediction for age as their is more likely to be variation between generations as opposed to ages within a generation.
 ```{r echo=FALSE}
 
 ages <- data %>% select(yearOfBirth) %>% filter(!is.na(yearOfBirth))  %>% mutate(age = 2021-as.numeric(yearOfBirth)) %>%  group_by(age) %>% summarise(num_respondents = n()/20)
