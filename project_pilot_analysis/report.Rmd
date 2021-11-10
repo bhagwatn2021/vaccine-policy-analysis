@@ -452,7 +452,7 @@ ggplot(results) +
 
 A power analysis of the pilot survey found that a sample of around 282 people would be necessary to obtain a standard error. The analysis found the standard error of a penalty to always be 0, which may increase once the survey receive more results from respondents. The sports tickets incentive seems to have the highest standard error with smaller sample sizes, which could be attributed to how sports tickets appeal to a certain demographic. This can be furthered by how the standard error decreases significantly as the sample size increases. As expected, a larger the sample size creates a smaller standard error for all variables (excluding penalty).
 
-Our analysis emphasized the importance of achieving a large sample size (300+ respondents) and using a full factorial design. A partial factorial design would have unwanted confounded variables. By using a full factorial design, the high variability and unexpected results in some of our coeefficients may be examined through the main and interaction effects.
+Our analysis emphasized the importance of achieving a large sample size (300+ respondents) and using a full factorial design. A partial factorial design would have unwanted confounded variables. By using a full factorial design, the high variability and unexpected results in some of our coeefficients may be examined through the main and interaction effects. Although a fractional factorial design may have smaller standard error, these errors could also be lower without accounting for confounded variables. Therefore, we decided to continue with a full factorial design.
 
 
 # Changes to Final Survey
