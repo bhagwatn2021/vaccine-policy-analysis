@@ -377,7 +377,7 @@ div.tocify {
 </div>
 <div id="modeling" class="section level3">
 <h3>Modeling</h3>
-<p>Our utility model is as follows: <span class="math display">\[
+<p>Our utility model for each policy attribute is as follows: <span class="math display">\[
 Uj = \beta_{1}x^{value} + \beta_{2}x^{penalty} + \beta_{3}x^{accessibility} + \beta_{4}x^{cash} \beta_{5}x^{groceries} \beta_{6}x^{internet} \beta_{7}x^{sport}
 \]</span> The first three beta values represent continuous attributes, and for every change in value, accessibility, and penalty, the utility for policy j will increase by the beta value for that attribute * the level of the attribute. The last four beta values are for categorical attributes that can either be 0 or 1, with 0 denoting the attribute is not present and 1 denoting the presence of an attribute. If present, the utility for policy j will increase by the beta value for that attribute.</p>
 <p>Using the model and the choice data, we then ran the logitr model using preference space to estimate the beta coefficients. Running a summary of the results returned to us the estimated coefficients and the standard error. It also returned to us the log likelihood that the coefficients are correct and can be used to accurately estimate utility.</p>
@@ -397,7 +397,7 @@ Uj = \beta_{1}x^{value} + \beta_{2}x^{penalty} + \beta_{3}x^{accessibility} + \b
 #&gt; Model Space:          Preference
 #&gt; Model Run:                1 of 1
 #&gt; Iterations:                   16
-#&gt; Elapsed Time:        0h:0m:0.02s
+#&gt; Elapsed Time:        0h:0m:0.01s
 #&gt; Algorithm:        NLOPT_LD_LBFGS
 #&gt; Weights Used?:             FALSE
 #&gt; Robust?                    FALSE

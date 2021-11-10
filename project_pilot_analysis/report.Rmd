@@ -167,7 +167,7 @@ ages
 ```
 ### Modeling
 
-Our utility model is as follows: 
+Our utility model for each policy attribute is as follows: 
 $$
 Uj = \beta_{1}x^{value} + \beta_{2}x^{penalty} + \beta_{3}x^{accessibility} + \beta_{4}x^{cash} \beta_{5}x^{groceries} \beta_{6}x^{internet} \beta_{7}x^{sport}
 $$
@@ -232,6 +232,9 @@ After getting the estimates and errors for beta, we proceeded to plot the utilit
 - We plotted the attribute and the upper and lower bounds. For categorical attributes, we used box and whiskers plots to show the confidence interval. For continuous attributes, we shaded in the confidence interval. 
 
 #### Plot for value of incentive
+
+We plotted the value of the incentive to utility, and there was high variation, particularly for higher values of beta. 
+
 ```{r echo=FALSE}
 df_value <- data.frame(value =unique(data$value)) %>% 
     mutate(
@@ -241,7 +244,6 @@ df_value <- data.frame(value =unique(data$value)) %>%
         lower =  diff*(coefs['value']-2*ses['value'])
     )
     
-
 # Get upper and lower bounds (plots should have the same y-axis)
 ymin <- floor(min(df_value$lower))
 ymax <- ceiling(max(df_value$upper))
@@ -255,6 +257,7 @@ plot_value <- df_value %>%
     labs(x = 'Value of incentive ($)', y = 'Utility') +
     theme_bw()
 
+df_value
 plot_value
 ```
 
