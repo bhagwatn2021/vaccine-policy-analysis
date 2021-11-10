@@ -55,7 +55,7 @@ Incentive Value (USD, no incentive for values of $0):
 value
 ```
 
-The results for our study show a high confidence interval for all attributes, plus a positive coefficient for distance to a vaccination center - our respondents had slightly HIGHER preference towards further vaccination centers, an unlikely and unexpected result. The variance and accuracy of our coefficients reemphasizes that we need a larger and more varied sample to get a more accurate and definite estimate. The positive value for distance to a vaccination center also shows a possible interaction effect with another attribute. It doesn't prove anything, it tells us that to get accurate readings we will need to study both interaction and main effects of attributes. To do so, a full factorial design with every possible choice attribute combination will be the most optimal, and we aim to get a sample size as large as possible by reaching out to others in the GW community and in the US. 
+The results for our study show a high confidence interval for all attributes, plus a positive coefficient for distance to a vaccination center - our respondents had slightly higher preference towards further vaccination centers, an unlikely and unexpected result. The variance and accuracy of our coefficients reemphasizes that we need a larger and more varied sample to get a more accurate and definite estimate. The positive value for distance to a vaccination center also shows a possible interaction effect with another attribute. This informs us that to get accurate readings, we will need to study both interaction and main effects of attributes. To do so, a full factorial design with every possible choice attribute combination will be the most optimal, and we aim to get a sample size as large as possible by reaching out to others in the GW community and across the US. 
 
 # Introduction
 
@@ -72,11 +72,11 @@ Despite the rollout of COVID-19 vaccines, vaccine hesitancy prevented the United
 In turn, the Delta variant, a highly-contagious strain of SARS-COV-2, the virus that causes COVID-19, ravaged through unvaccinated populations and caused a surge in cases. 
 
 
-On September 9th, 2021, US President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts who claim that forcing Americans to get vaccinated is crucial, criticism from other experts who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitutional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
+On September 9th, 2021, U.S. President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts who claim that forcing Americans to get vaccinated is crucial, criticism from other experts who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitutional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
 
 Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted initiatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites.
 
-Our study analyzes the population and the effectiveness of various policies to increase vaccination rates. Each policy in our study consists of different attributes, which vary across each policy. The goal is to optimize the attributes to The attributes to be considered are: 
+Our study analyzes the population and the effectiveness of various policies to increase vaccination rates. Each policy in our study consists of different attributes, which vary across each policy. The goal is to optimize the attributes to get as many people vaccinated as possible. The attributes to be considered are: 
 
 ### Accessibility
 
@@ -101,10 +101,9 @@ Incentive value refers to the penalty due at tax season for failing to get a  be
 
 # Survey Design
 
-In order to see what sort of policy would be most appealing to those who are currently unvaccinated, the survey is designed to only collect responses from those would be able to choose to take the vaccine after seeing the policy options. This consists of adults 18 years or older who have not received any doses of a COVID-19 vaccine. This survey is also restricted to United States residents only, as this policy would only be directed towards United States residents.
+In order to see what sort of policy would be most appealing to those who are currently unvaccinated, the survey is designed to only collect responses from those who would be able to choose to take the vaccine after seeing the policy options. This consists of adults 18 years or older who have not received any doses of a COVID-19 vaccine. Those under the age of 18 and who have already received a vaccine dose were excluded because they are unable to choose to take the vaccine. This survey is also restricted to United States residents only, as this policy would only be directed towards United States residents.
 
 The survey also collects demographic information relating to age, gender identity, race, income, political affiliation, and geographic location to better inform which policies are most effective for which demographics. Educational material presented to the respondents include information on accessibility, incentives, incentive value, and mandate value, which make up the survey's attributes.
-
 
 - Accessibility ranged from 0-10 miles for the distance a vaccination clinic would be placed from a respondent's home. The accessibility range starts at 0 miles because it is in the most convenient spot possible for a respondent to receive a vaccine, and the range ends at 10 miles because most respondents should have a vaccination location outside of 10 miles from their home.
 - Incentive value ranged from $0-$1000 to see if there was a value below $1000 that would sway more people to receive the vaccine. This range stopped at $1000, as anything above that number would most likely be infeasible to implement into a policy.
@@ -114,6 +113,9 @@ The survey also collects demographic information relating to age, gender identit
 
 Each respondent receives 10 choice questions that have two options "I will take the vaccine under these conditions" (where the conditions are listed in the option) and "I will not take the vaccine under these conditions". There is one alternative per choice question (the vaccine conditions) and a no-choice option, where respondents are informed that it means they would not take the vaccine under the conditions listed in the first alternative. An example figure of a random conjoint question can be seen below.
 
+<center>
+  <img src="https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/main/project_pilot_analysis/images/choice-question-image.png" width=1500>
+</center>
 
 # Pilot Data Analysis
 
@@ -179,7 +181,7 @@ Uj = \beta_{1}x^{value} + \beta_{2}x^{penalty} + \beta_{3}x^{accessibility} + \b
 $$
 The first three beta values represent continuous attributes, and for every change in value, accessibility, and penalty, the utility for policy j will increase by the beta value for that attribute * the level of the attribute. The last four beta values are for categorical attributes that can either be 0 or 1, with 0 denoting the attribute is not present and 1 denoting the presence of an attribute. If present, the utility for policy j will increase by the beta value for that attribute. 
 
-Using the model and the choice data, we then ran the logitr model using preference space to estimate the beta coefficients. Running a summary of the results returned to us the estimated coefficients and the standard error. It also returned to us the log likelihood that the coefficients are correct and can be used to accurately estimate utility. 
+Using the model and the choice data, we then ran the logitr model using preference space to estimate the beta coefficients. Running a summary of the results returned to us the estimated coefficients and the standard error. It also returned to us the log likelihood that the coefficients are correct and can be used to accurately estimate utility.
 
 ```{r echo=FALSE}
 library(janitor)
@@ -256,7 +258,7 @@ plot_value <- df_value %>%
 
 plot_value
 ```
-The plot for the value of incentive shows a generally positive utility with a very large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+The plot for the value of incentive shows a generally positive utility with a very large confidence interval. This positive utility is expected because a larger incentive should hypothetically increase willingness to receive a COVID-19 vaccine. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 
 #### Plot for accessibility to vaccination center
@@ -281,7 +283,7 @@ plot_accessibility <- df_accessibility %>%
 plot_accessibility
 ```
 
-The plot for accessibility to a vaccination center shows a generally positive utility with a large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+The plot for accessibility to a vaccination center shows a generally positive utility with a large confidence interval. The positive coefficient for accessibility shows that there may be a bias occurring in the sample. This is unexpected, as the distance to a vaccination center increases, the difficulty for a respondent to to receive a COVID vaccination increases which should likely result in a negative utility. This could be due to our small sample size and/or an interaction effect. This variable and coefficient will need to have a larger sample size in order to be a full factorial design, which will allow us to study both interaction and main effects of each attribute. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for non-compliance penalty
 ```{r echo=FALSE}
@@ -305,7 +307,7 @@ plot_penalty<- df_penalty %>%
 plot_penalty
 ```
 
-The plot for a non-compliance penalty shows a slightly negative utility with a moderately big confidence interval. This variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+The plot for a non-compliance penalty shows a slightly negative utility with a moderately big confidence interval. This negative utility is interesting because a larger tax penalty should hypothetically increase the willingness to receive a COVID-19 vaccine, but an extremely large fine may also discourage trust in the healthcare system and furthermore, vaccinations. Distrust is expected from more conservative demographics, as conservatives are more likely to distrust vaccine policies and information. This further emphasizes a need for a larger sample and full factorial design in order to confirm this hypothesis and find correlation between the utility, specific demographics, and interaction effects. This variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for cash incentives
 ```{r echo=FALSE}
@@ -328,7 +330,7 @@ plot_cash<- df_cash %>%
 plot_cash
 ```
 
-The plot for cash incentives shows a generally positive utility with a very large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+The plot for cash incentives shows a generally positive utility with a very large confidence interval. This positive utility is expected because a larger incentive should hypothetically increase willingness to receive a COVID-19 vaccine. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for grocery store credit incentives
 ```{r echo=FALSE}
@@ -351,7 +353,7 @@ plot_grocery_store <- df_grocery_store %>%
 plot_grocery_store
 ```
 
-The plot for a grocery store credit incentive shows a generally positive utility with a large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+The plot for a grocery store credit incentive shows a generally positive utility with a large confidence interval. This positive utility is expected because a larger grocery store credit should hypothetically increase willingness to receive a COVID-19 vaccine. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for internet bill credit incentives
 ```{r echo=FALSE}
@@ -373,7 +375,7 @@ plot_internet <- df_internet %>%
 plot_internet
 ```
 
-The plot for an internet bill credit incentive shows a generally positive utility with a large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+The plot for an internet bill credit incentive shows a generally positive utility with a large confidence interval. This positive utility is expected because a larger internet bill credit should hypothetically increase willingness to receive a COVID-19 vaccine. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for sporting event tickets incentives
 ```{r echo=FALSE}
@@ -396,7 +398,7 @@ plot_sport_tickets  <- df_sport_tickets  %>%
 plot_sport_tickets 
 ```
 
-The plot for a sporting event ticket incentive shows a slightly negative utility with a moderately large confidence interval. This variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+The plot for a sporting event ticket incentive shows a slightly positive utility with a moderately large confidence interval. This positive utility is expected because a larger sporting event credit should hypothetically increase willingness to receive a COVID-19 vaccine. This attribute also had the smallest coefficient, which is consistent with our expectations that sporting tickets are less of a necessity and more niche than our other attributes. The variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 
 # Power Analysis
@@ -461,9 +463,7 @@ A power analysis of the pilot survey found that a sample of around 282 people wo
   - Dr. Dennis Schell, a Psychology professor, teaches general and abnormal psychology. He also works with people with adverse behavior issues, and will be able to help garner surveys from people with behavioral health issues on why they won't take the vaccine. With these people in our sample, we will be able to identify whether they can comply with a vaccine mandate. 
   - Dr. Patrick McHugh is a Professor of Management whose research is focused on the psychology behind organizational structure and operations. He will be able to identify organizations that do not require vaccinations for its members, and give insight as to the reception towards vaccine mandates. He can also help us identify organizations that incentivize decisions, which we can send the survey to. 
   - No Lost Generation GW is an organization that helps refugees adjust to living in the United States, particularly in the DC area. We can talk to the organization about getting refugees vaccinated by translating the survey into various languages and allowing refugees and immigrants to take them. 
-  - Dr. Irene Foster is a Professor of Economics who can give insight on different unvaccinated populations in the US. She may be able to give contacts of people who work with the above groups to whom we can share the survey with. 
-
-- 
+  - Dr. Irene Foster is a Professor of Economics who can give insight on different unvaccinated populations in the US. She may be able to give contacts of people who work with the above groups to whom we can share the survey with.
 
 # Appendix
 
@@ -555,6 +555,10 @@ This is an attention check. Please choose Option 1 and continue.
 Great work!
 
 We will now show you 10 sets of choice questions starting on the next page. (Image shown below is an example of a choice question)
+
+<center>
+  <img src="https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/main/project_pilot_analysis/images/choice-question-image.png" width=1500>
+</center>
 
 ## Respondent Information
 Nice job!
