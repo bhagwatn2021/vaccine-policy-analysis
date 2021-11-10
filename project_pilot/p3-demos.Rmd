@@ -13,17 +13,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-Thank you for your feedback! The next section will ask some basic questions about apples.
+## Thank you for your feedback! The next section will ask some basic questions about yourself.
 
-Please answer to the best of your knowledge.
-
-### Attention check
-
-Are you able to select the third option? If yes, select the first option and move on.
-
-- Yes
-- No
-- Maybe
+### Please answer to the best of your knowledge.
 
 ---
 
@@ -46,13 +38,6 @@ Different identity (please state):
 - Prefer to self-identify
 - Prefer not to say
 
-### Attention check
-
-Are you able to select the first option? If yes, select the third option and move on.
-
-- No
-- Maybe
-- Yes
 
 (3) I identify my race as (select all that apply):
 Different identity (please state):
@@ -132,13 +117,7 @@ Different identity (please state):
 - $180,000 - $120,000
 - Above $200,000
 
-### Attention check
-
-Are you able to select the third option? If yes, select the first option and move on.
-
-- Yes
-- No
-- Maybe
+---
 
 Please let us know if you have any other thoughts or feedback on this survey.
 

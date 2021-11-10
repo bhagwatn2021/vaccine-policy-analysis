@@ -248,7 +248,6 @@ alt2 <- alts %>% filter(altID == 2)
 
 `r alt2$no_vaccine_label`
 
---
 ### Attention Check 
 
 Are you able to select the second option? If yes, select the third option and move on.
