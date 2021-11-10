@@ -449,6 +449,60 @@ ggplot(results) +
         color = "Coefficient"
     )
 ```
+```{r echo = FALSE}
+library(conjointTools)
+
+# Set levels
+levels <- list(
+  incentive = c("grocery_store", "internet", "sport_tickets", "cash"),
+  value = c(0, 50, 100, 200, 300, 500, 1000),
+  penalty = c(0, 0, 0, 0, 0, 0, 50, 100, 200, 300, 500, 1000),
+  accessibility = c(0, 1, 3, 10) # Distance (miles) from a vaccination center
+)
+
+# D-optimal fractional factorial design
+doe <- makeDoe(levels, type = "D", nTrials = 100, minTrials = 100, search = T)
+doe <- recodeDoe(doe, levels)
+evaluateDoe(doe)
+
+# Now sample the doe to create a survey
+survey <- makeSurvey(
+    doe       = doe,  # Design of experiment
+    nResp     = 1000, # Total number of respondents (upper bound)
+    nAltsPerQ = 2,    # Number of alternatives per question
+    nQPerResp = 10     # Number of questions per respondent
+)
+
+data <- simulateChoices(
+    survey = survey,
+    obsID  = "obsID"
+)
+
+models <- estimateModels(
+    nbreaks = 10,
+    data    = data,
+    pars    = c("incentive", "value", "penalty", "accessibility"),
+    outcome = "choice",
+    obsID   = "obsID"
+)
+
+results <- getModelResults(models)
+
+results
+
+ggplot(results) +
+  geom_hline(yintercept = 0.05, color = "black", linetype = 2) +
+  geom_point(aes(x = sampleSize, y = se, color = coef)) +
+  expand_limits(y = 0) +
+  scale_y_continuous(limits = c(0, 0.125)) +
+  theme_bw() + 
+  labs(
+    title = "Partial Factorial Power Analysis",
+    x = "Sample size", 
+    y = "Standard error", 
+    color = "Coefficient"
+  )
+```
 
 A power analysis of the pilot survey found that a sample of around 282 people would be necessary to obtain a standard error. The analysis found the standard error of a penalty to always be 0, which may increase once the survey receive more results from respondents. The sports tickets incentive seems to have the highest standard error with smaller sample sizes, which could be attributed to how sports tickets appeal to a certain demographic. This can be furthered by how the standard error decreases significantly as the sample size increases. As expected, a larger the sample size creates a smaller standard error for all variables (excluding penalty).
 
