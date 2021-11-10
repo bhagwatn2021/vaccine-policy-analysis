@@ -26,13 +26,6 @@ library(tidyverse)
 library(here)
 ```
 
-Write your report content here.
-
-Make sure you update the settings in the YAML for your report. 
-
-Use [markdown](https://commonmark.org/help/) for formatting, e.g.: **Bold**, _Italic_, etc.
-
-Here are some section headers to use: 
 
 # Abstract
 
@@ -92,13 +85,26 @@ Incentives refers to the type of commodity that would be given out at tax season
 
 ### Incentive Value 
 
-Incentive value refers to the value of commodities that would be given out at tax season for  being fully vaccinated against COVID-19 by the tax return deadline. It varies by increasing increments from $0 to $1000. 
+Incentive value refers to the value of commodities that would be given out at tax season for being fully vaccinated against COVID-19 by the tax return deadline. It varies by increasing increments from $0 to $1000. 
 
 ### Penalty
 
 Incentive value refers to the penalty due at tax season for failing to get a  being fully vaccinated against COVID-19 by the tax return deadline under a vaccine mandate. It varies by increasing increments from $0 to $1000. 
 
 # Survey Design
+
+In order to see what sort of policy would be most appealing to those who are currently unvaccinated, the survey is designed to only collect responses from those would be able to choose to take the vaccine after seeing the policy options. This consists of adults 18 years or older who have not received any doses of a COVID-19 vaccine. This survey is also restricted to United States residents only, as this policy would only be directed towards United States residents.
+
+The survey also collects demographic information relating to age, gender identity, race, income, political affiliation, and geographic location to better inform which policies are most effective for which demographics. Educational material presented to the respondents include information on accessibility, incentives, incentive value, and mandate value, which make up the survey's attributes.
+
+
+- Accessibility ranged from 0-10 miles for the distance a vaccination clinic would be placed from a respondent's home. The accessibility range starts at 0 miles because it is in the most convenient spot possible for a respondent to receive a vaccine, and the range ends at 10 miles because most respondents should have a vaccination location outside of 10 miles from their home.
+- Incentive value ranged from $0-$1000 to see if there was a value below $1000 that would sway more people to receive the vaccine. This range stopped at $1000, as anything above that number would most likely be infeasible to implement into a policy.
+- Incentives were provided as cash or cash equivalents (gift cards) redeemable at grocery stores, internet providers, and professional sporting events. This range of incentives were chosen as they are items that are necessary and/or popular among the general public.
+- Penalties ranged from $0-$1000 to see if there was a value below $1000 that would sway more people to receive the vaccine. This range stopped at $1000, as anything above that number would most likely be infeasible to implement into a policy.
+
+
+Each respondent receives 10 choice questions that have two options "I will take the vaccine under these conditions" (where the conditions are listed in the option) and "I will not take the vaccine under these conditions". There is one alternative per choice question (the vaccine conditions) and a no-choice option, where respondents are informed that it means they would not take the vaccine under the conditions listed in the first alternative. An example figure of a random conjoint question can be seen below.
 
 
 # Pilot Data Analysis
@@ -127,40 +133,32 @@ political_label <- c("Strongly conservative", "Conservative", "Leaning conservat
 politics <- c(1:9)
 politics_df <- data.frame(politics,political_label)
 politics <- data %>% filter(!is.na(politics)) %>% select(politics) %>% group_by(politics) %>% summarise(num_respondents = n()/20) %>% inner_join(politics_df,by=c("politics"))
-
 politics
 ```
 
 We were also interested in the income brackets of our respondents. We found that most of our sample makes under $50,000 per year, which can give us insights about vaccine policies for poorer families, but we will need more responses from a higher income bracket to validate the effect of income on vaccine hesitancy. 
 ```{r echo=FALSE}
-
 incomes <- data %>% select(income) %>% filter(!is.na(income)) %>%  group_by(income) %>% summarise(num_respondents = n()/20)
 incomes
 ```
 
 We then looked at the regions of residencies of our respondents. We found that our sample is overwhelmingly from the East Coast, with a few responses from the West Coast and the Rocky Mountains. We will need more responses from the Midwest and New England. We also realize from the low variation in region that splitting up our sample by state will give us a more granular analysis on the effect of location on vaccine sentiment. 
 ```{r echo=FALSE}
-
 region_label <- c("New England",	"Middle Atlantic",	"South Atlantic", "East South Central",	"East North Central",	"West South Central",	"West North Central",	"Mountain",	"Pacific")
 region <- c(1:9)
 region_df <- data.frame(region,region_label)
 regions <- data %>% select(region) %>% filter(!is.na(region)) %>%  group_by(region) %>% summarise(num_respondents = n()/20) %>% inner_join(region_df,by=c("region"))
-
 regions
-
 ```
 
 We also looked at the genders of our respondents. The sample is more balanced with respect to gender with other demographic attributes like we want, but the sample can use more male responses, as well as responses from those in the trans/non-binary community. 
 ```{r echo=FALSE}
-
 genders <- data %>% select(gender) %>% filter(!is.na(gender)) %>%  group_by(gender) %>% summarise(num_respondents = n()/20)
-
 genders
-
 ```
 We also looked at the ages of our sample. We noticed that all our respondents are young adults, and we need more samples from the elderly and middle-aged adults to get a better prediction for age as their is more likely to be variation between generations as opposed to ages within a generation.
-```{r echo=FALSE}
 
+```{r echo=FALSE}
 ages <- data %>% select(yearOfBirth) %>% filter(!is.na(yearOfBirth))  %>% mutate(age = 2021-as.numeric(yearOfBirth)) %>%  group_by(age) %>% summarise(num_respondents = n()/20)
 ages[is.na(c("age"))] <- "Prefer not to say"
 ages
@@ -178,10 +176,8 @@ Using the model and the choice data, we then ran the logitr model using preferen
 ```{r echo=FALSE}
 library(janitor)
 library(logitr)
-
 # Clean up names of created variables
 data <- clean_names(data)
-
 # Estimate the model
 model <- logitr(
     data   = data,
@@ -197,23 +193,18 @@ model <- logitr(
         "incentive_sport_tickets"
     )
 )
-
 # View summary of results
 summary(model)
-
 ```
 
 We then validated the accuracy of the model by checking whether the model is at a maximum, because we need to maximize log likelihood. We checked the results against the first-order and second-order derivatives of the model.
 
 ```{r echo=FALSE}
-
 # Check the 1st order condition: Is the gradient at the solution zero?
 model$gradient
-
 # 2nd order condition: Is the hessian negative definite?
 # (If all the eigenvalues are negative, the hessian is negative definite)
 eigen(model$hessian)$values
-
 ``` 
 The first derivates for each attribute were close but not equal to 0. The second order derivatives in the hessian are all negative, denoting that the model has a maximum and is curved down. Since most first order derivatives are positive and all second order derivatives are negative, we can infer that the optimal values for betas are higher than estimated by the model, and for attributes with a negative first derivative, the actual values for betas are lower than estimated. But we concluded that with more data it would be easier to find measurable optimal values for beta. 
 
@@ -221,7 +212,6 @@ We then extracted the coefficients and standard errors to reference when plottin
 ```{r echo=FALSE}
 coefs <- coef(model)
 coefs
-
 ses <- se(model)
 ses
 ```
@@ -247,7 +237,6 @@ df_value <- data.frame(value =unique(data$value)) %>%
 # Get upper and lower bounds (plots should have the same y-axis)
 ymin <- floor(min(df_value$lower))
 ymax <- ceiling(max(df_value$upper))
-
 # Plot the utility for each attribute
 plot_value <- df_value %>% 
     ggplot(aes(x = value, y = utility,ymin=lower,ymax=upper)) +
@@ -257,13 +246,13 @@ plot_value <- df_value %>%
     labs(x = 'Value of incentive ($)', y = 'Utility') +
     theme_bw()
 
-df_value
 plot_value
 ```
+The plot for the value of incentive shows a generally positive utility with a very large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+
 
 #### Plot for accessibility to vaccination center
 ```{r echo=FALSE}
-
 df_accessibility <- data.frame(accessibility = unique(data$accessibility)) %>% 
     mutate(
         diff    = accessibility - min(accessibility),
@@ -271,11 +260,9 @@ df_accessibility <- data.frame(accessibility = unique(data$accessibility)) %>%
         upper =  diff*(coefs['accessibility']+2*ses['accessibility']),
         lower =  diff*(coefs['accessibility']-2*ses['accessibility'])
 )
-
 # Get upper and lower bounds (plots should have the same y-axis)
 ymin <- floor(min(df_accessibility$lower))
 ymax <- ceiling(max(df_accessibility$upper))
-
 plot_accessibility <- df_accessibility %>% 
     ggplot(aes(x = accessibility, y = utility,ymin=lower,ymax=upper)) +
     geom_line() +
@@ -283,10 +270,10 @@ plot_accessibility <- df_accessibility %>%
     scale_y_continuous(limits = c(ymin, ymax)) +
     labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility') +
     theme_bw()
-
 plot_accessibility
-
 ```
+
+The plot for accessibility to a vaccination center shows a generally positive utility with a large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for non-compliance penalty
 ```{r echo=FALSE}
@@ -300,7 +287,6 @@ df_penalty <- data.frame(penalty = unique(data$penalty)) %>%
 # Get upper and lower bounds (plots should have the same y-axis)
 ymin <- floor(min(df_penalty$lower))
 ymax <- ceiling(max(df_penalty$upper))
-
 plot_penalty<- df_penalty %>% 
     ggplot(aes(x = penalty, y = utility, ymin=lower, ymax=upper)) +
     geom_line() +
@@ -308,9 +294,10 @@ plot_penalty<- df_penalty %>%
     scale_y_continuous(limits = c(ymin, ymax)) +
     labs(x = 'Penalty for non-compliance ($)', y = 'Utility') +
     theme_bw()
-
 plot_penalty
 ```
+
+The plot for a non-compliance penalty shows a slightly negative utility with a moderately big confidence interval. This variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for cash incentives
 ```{r echo=FALSE}
@@ -320,11 +307,9 @@ df_cash <- data.frame(incentive_cash = unique(data$incentive_cash)) %>%
         upper =  incentive_cash*(coefs['incentive_cash']+2*ses['incentive_cash']),
         lower =  incentive_cash*(coefs['incentive_cash']-2*ses['incentive_cash'])
     )
-
 # Get upper and lower bounds (plots should have the same y-axis)
 ymin <- floor(min(df_cash$lower))
 ymax <- ceiling(max(df_cash$upper))
-
 plot_cash<- df_cash %>% 
     ggplot(aes(x = incentive_cash, y = utility, ymin=lower, ymax=upper)) +
     geom_point() +
@@ -332,9 +317,10 @@ plot_cash<- df_cash %>%
     scale_y_continuous(limits = c(ymin, ymax)) +
     labs(x = 'Cash incentive?', y = 'Utility') +
     theme_bw()
-
 plot_cash
 ```
+
+The plot for cash incentives shows a generally positive utility with a very large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for grocery store credit incentives
 ```{r echo=FALSE}
@@ -344,11 +330,9 @@ df_grocery_store <- data.frame(incentive_grocery_store = unique(data$incentive_g
         upper =  incentive_grocery_store*(coefs['incentive_grocery_store']+2*ses['incentive_grocery_store']),
         lower =  incentive_grocery_store*(coefs['incentive_grocery_store']-2*ses['incentive_grocery_store'])
     )
-
 # Get upper and lower bounds (plots should have the same y-axis)
 ymin <- floor(min(df_grocery_store$lower))
 ymax <- ceiling(max(df_grocery_store$upper))
-
 plot_grocery_store <- df_grocery_store %>% 
     ggplot(aes(x = incentive_grocery_store, y = utility, ymin=lower, ymax=upper)) +
     geom_point() +
@@ -356,23 +340,21 @@ plot_grocery_store <- df_grocery_store %>%
     scale_y_continuous(limits = c(ymin, ymax)) +
     labs(x = 'Grocery store incentive?', y = 'Utility') +
     theme_bw()
-
 plot_grocery_store
 ```
+
+The plot for a grocery store credit incentive shows a generally positive utility with a large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for internet bill credit incentives
 ```{r echo=FALSE}
 df_internet <- data.frame(incentive_internet = unique(data$incentive_internet)) %>% 
-    mutate(
-        utility = incentive_internet*coefs['incentive_internet'],
+    mutate(        utility = incentive_internet*coefs['incentive_internet'],
         upper =  incentive_internet*(coefs['incentive_internet']+2*ses['incentive_internet']),
         lower =  incentive_internet*(coefs['incentive_internet']-2*ses['incentive_internet'])
     )
-
 # Get upper and lower bounds (plots should have the same y-axis)
 ymin <- floor(min(df_internet$lower))
 ymax <- ceiling(max(df_internet$upper))
-
 plot_internet <- df_internet %>% 
     ggplot(aes(x = incentive_internet , y = utility, ymin=lower, ymax=upper)) +
     geom_point() +
@@ -380,9 +362,10 @@ plot_internet <- df_internet %>%
     scale_y_continuous(limits = c(ymin, ymax)) +
     labs(x = 'Internet bill incentive?', y = 'Utility') +
     theme_bw()
-
 plot_internet
 ```
+
+The plot for an internet bill credit incentive shows a generally positive utility with a large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for sporting event tickets incentives
 ```{r echo=FALSE}
@@ -392,11 +375,9 @@ df_sport_tickets <- data.frame(incentive_sport_tickets  = unique(data$incentive_
         upper =  incentive_sport_tickets*(coefs['incentive_sport_tickets']+2*ses['incentive_sport_tickets']),
         lower =  incentive_sport_tickets*(coefs['incentive_sport_tickets']-2*ses['incentive_sport_tickets'])
     )
-
 # Get upper and lower bounds (plots should have the same y-axis)
 ymin <- floor(min(df_sport_tickets$lower))
 ymax <- ceiling(max(df_sport_tickets$upper))
-
 plot_sport_tickets  <- df_sport_tickets  %>% 
     ggplot(aes(x = incentive_sport_tickets , y = utility, ymin=lower, ymax=upper)) +
     geom_point() +
@@ -404,18 +385,232 @@ plot_sport_tickets  <- df_sport_tickets  %>%
     scale_y_continuous(limits = c(ymin, ymax)) +
     labs(x = 'Sporting event tickets incentive?', y = 'Utility') +
     theme_bw()
-
 plot_sport_tickets 
 ```
 
+The plot for a sporting event ticket incentive shows a slightly negative utility with a moderately large confidence interval. This variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+
+
+# Power Analysis
+
+```{r echo = FALSE}
+library(logitr)
+library(tidyverse)
+library(fastDummies)
+library(janitor)
+library(here)
+library(conjointTools)
+options(dplyr.width = Inf) # So you can see all of the columns
+
+# Load the data set:
+data <- read_csv(here("data", "choiceData.csv"))
+
+# Estimate the model
+model <- estimateModels(
+    nbreaks = 7,
+    data   = data,
+    pars   = c(
+        "value", 
+        "penalty",
+        "accessibility",
+        "incentive_cash",
+        "incentive_grocery_store",
+        "incentive_internet",
+        "incentive_sport_tickets"
+    ),
+    outcome = "choice",
+    obsID  = "obsID",
+)
+
+# Extract results
+results <- getModelResults(model)
+
+# Plot results
+ggplot(results) +
+    geom_hline(yintercept = 0.05, color = "black", linetype = 2) +
+    geom_point(aes(x = sampleSize, y = se, color = coef)) +
+    expand_limits(y = 0) +
+    theme_bw() + 
+    labs(title = "Power Analysis",
+        x = "Sample Size", 
+        y = "Standard Error", 
+        color = "Coefficient"
+    )
+```
+
+A power analysis of the pilot survey found that a sample of around 282 people would be necessary to obtain a standard error. The analysis found the standard error of a penalty to always be 0, which may increase once the survey receive more results from respondents. The sports tickets incentive seems to have the highest standard error with smaller sample sizes, which could be attributed to how sports tickets appeal to a certain demographic. This can be furthered by how the standard error decreases significantly as the sample size increases. As expected, a larger the sample size creates a smaller standard error for all variables (excluding penalty).
+
+
 # Changes to Final Survey
 
-- We removed unnecessary images that may confuse respondents. 
-- We wanted to find out how many people have experienced mistreatment in getting healthcare and see mandates for them, so we added a question asking this. 
-- We changed the format of every question to a Yes/No multiple choice button to make the design look more appealing. 
+- We removed unnecessary images that may confuse respondents due to classmate feedback. 
+- We added a sentence that says I will take the vaccine under these conditions to make it more clear that the respondent is either choosing to take the vaccine under the conditions listed or not take it.
+- We also separated the buttons between the choices to be more visually clear.
+- We adjusted our attention checks to be less confusing due to classmate feedback.
+- We removed our regional map question and decided to ask instead what state respondents are from to understand their location better. Classmates had informed us that the regional map was confusing and unclear.
+- We still hope to achieve the necessary sample size for our survey of at least around 300 people. We will do this by reaching out to the following people/groups to gain responses: 
+  - Dr. Lorien Abroms, a Public Health professor, runs the GW Health Communications Corps, an organization combating health misinformation. Dr. Abroms would particularly be integral with identifying groups of people that succumb to microaggressions and have lower vaccination rates*. Dr. Abroms can also help us gain more samples from groups that succumb to misinformation about the vaccine, as [a report from HHS in August 2021 estimates that 44% of unvaccinated fall into the "unvaccinated but willing" category](hhttps://www.washingtonpost.com/health/2021/09/23/covid-unvaccinated-but-willing/?fbclid=IwAR26FWna18WL6-V__ofn441XM3cRf76NxEF6sWZdm-iNlO5q-his1OHocuk). This would help to reduce the bias in the sample towards a positive or negative policy, identifying a group of people that is willing to take the vaccine without any incentive or consequence wagered will help us identify the most efficient policy and whether incentives or fines are absolutely necessary. 
+  - Dr. Dennis Schell, a Psychology professor, teaches general and abnormal psychology. He also works with people with adverse behavior issues, and will be able to help garner surveys from people with behavioral health issues on why they won't take the vaccine. With these people in our sample, we will be able to identify whether they can comply with a vaccine mandate. 
+  - Dr. Patrick McHugh is a Professor of Management whose research is focused on the psychology behind organizational structure and operations. He will be able to identify organizations that do not require vaccinations for its members, and give insight as to the reception towards vaccine mandates. He can also help us identify organizations that incentivize decisions, which we can send the survey to. 
+  - No Lost Generation GW is an organization that helps refugees adjust to living in the United States, particularly in the DC area. We can talk to the organization about getting refugees vaccinated by translating the survey into various languages and allowing refugees and immigrants to take them. 
+  - Dr. Irene Foster is a Professor of Economics who can give insight on different unvaccinated populations in the US. She may be able to give contacts of people who work with the above groups to whom we can share the survey with. 
+
 - 
 
 # Appendix
 
+## Introduction
+
+Welcome to our survey!
+
+Thank you for your interest in our survey! The purpose of this survey is to to inform the design decisions of a COVID vaccine policy. This survey is being conducted by students at The George Washington University for a Marketing Analytics course. You must be a resident of the United States above the age of 18 who has not received a dose of a COVID-19 vaccine to partake in this survey.   
+          
+This survey involves questions that ask whether a certain condition would result in you receiving the COVID-19 vaccine. These conditions can be seen as positive, negative, or neutral. These conditions will not actually occur and you will not need to actually take a COVID-19 vaccine based on your answers in this survey. All responses will be used purely for educational purposes. At the end of the survey we will be collecting demographic information (such as income and age) that will also be used purely for educational purposes.
+
+If you have any questions about this survey, then please contact marketingvaccinepolicy@gmail.com.
+
+## Consent
+
+Your participation in this survey is voluntary. You may choose not to participate. If you decide to participate in this survey, you may withdraw at any time with no penalty. All responses will be used solely for educational purposes. Your responses will be confidential and we will not collect or share any identifying data such as your name or address.
+
+The whole survey will take approximately 10 to 15 minutes to complete. If you would like to participate, please answer the following questions:
+
+## Eligibility Questions
+
+I am age 18 or older.
+
+- Yes
+- No
+
+I have not received any doses of a COVID-19 vaccine.
+
+- Yes
+- No
+
+I have read and understand the above information.
+
+- Yes
+- No
+
+## Education
+
+Great work! Now that you've shared a bit about yourself, we'd like you to consider policies designed to encourage COVID-19 vaccinations. Let's learn about policy attributes.
+
+### Accessibility
+
+Accessibility refers to the distance in which a vaccination clinic would be placed from your home. It varies with 0 miles, 3 miles, 5 miles, and 10 miles from your residence. A distance of 0 miles indicates door-door in-residence vaccination campaigns.
+
+### Incentives
+
+Incentives refers to the type of commodity that would be given out at tax season for being fully vaccinated against COVID-19 by the tax return deadline. It varies by cash and cash equivalents (gift cards) redeemable at:
+
+- Grocery stores
+- Internet providers
+- Professional sporting events 
+
+### Incentive Value
+
+Incentive value refers to the value of commodities that would be given out at tax season for  being fully vaccinated against COVID-19 by the tax return deadline. It varies by increasing increments from $0 to $1000. 
+
+### Mandate Value
+
+Mandate value refers to the penalty due at tax season for failing to get a  being fully vaccinated against COVID-19 by the tax return deadline under a vaccine mandate. It varies by increasing increments from $0 to $1000.
 
 
+## Practice Question
+
+We'll now begin with policy options. On the next few pages we will show you different combinations of policy options regarding COVID-19 vaccinations.
+
+For example, if these were the only options available, would you choose option 1 (a $100 fine if you do not take the vaccine, a vaccination clinic 5 miles from your house, and a professional sporting event ticket) and take the vaccine or choose option 2 and not take the vaccine.
+
+**Option 1**
+
+**Mandate**: $100
+**Accessibility**: 5 miles
+**Incentive**: Professional sporting event
+
+I will take the vaccine under these conditions.
+
+**Option 2**
+
+I will not take the vaccine under these conditions.
+
+## Attention Check
+
+This is an attention check. Please choose Option 1 and continue.
+
+**Option 1**
+**Option 2**
+
+## Conjoint Questions
+
+Great work!
+
+We will now show you 10 sets of choice questions starting on the next page. (Image shown below is an example of a choice question)
+
+## Respondent Information
+Nice job!
+
+We're almost done! We'd just like to ask just a few more questions about you which we will only use for analyzing our survey data.
+
+(1) In what year were you born?
+
+- All years from 1920-2003 are listed
+
+(2) What is your current gender identity?
+
+- Male
+- Female
+- Trans male/trans man
+- Trans female/trans woman
+- Genderqueer/gender non-conforming
+- Prefer not to say
+
+Different identity (please state):
+
+(3) I identify my race as (select all that apply):
+
+- Native American or Alaskan Native (e.g., Navajo Nation, Blackfeet Tribe, Mayan, Aztec, Native Village of Barrow Inupiat Traditional Government, Nome Eskimo Community, etc.)
+- Asian (e.g., Chinese, Filipino, Indian, Vietnamese, Korean, Japanese, Malaysian, etc.)	African (e.g., African American, Jamaican, Haitian, Nigerian, Ethiopian, Somalian, etc.)
+- Hispanic or Latino (e.g., Mexican or Mexican American, Puerto Rican, Cuban, Salvadoran, Dominican, Colombian, etc.)
+- Middle Eastern or North African (e.g., Lebanese, Iranian, Egyptian, Syrian, Moroccan, Algerian, etc.)
+- Native Hawaiian or Pacific Islander (e.g., Native Hawaiian, Samoan, Chamorro, Tongan, Fijian, Marshallese, etc.)
+- Caucasian (e.g., German, Irish, English, Italian, Polish, French, etc.)	Prefer not to say
+
+Different identity (please state):
+
+(4) What is your annual household income (from all sources) before taxes and other deductions from pay?
+
+- Less than $10,000
+- $10,000 - $14,999
+- $15,000 - $24,999
+- $25,000 - $34,999
+- $35,000 - $49,999
+- $50,000 - $74,999
+- $75,000 - $99,999
+- $100,000 - $149,999
+- $150,000 - $199,999
+- $200,000 or more
+- Prefer not to say
+
+(5) What is your political orientation?
+
+- Strongly conservative
+- Conservative
+- Leaning conservative
+- Moderate
+- Leaning liberal
+- Liberal
+- Strongly liberal
+- Independent
+- Prefer not to say
+
+(6) What state do you live in?
+
+- All 50 states and the District of Columbia are listed
+
+## Feedback
+
+Please let us know if you have any other thoughts or feedback on this survey.
+ 
+Your feedback will help us make future improvements :)
