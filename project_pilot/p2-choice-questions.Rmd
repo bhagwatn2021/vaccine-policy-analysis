@@ -53,6 +53,10 @@ Incentive value refers to the value of commodities that would be given out at ta
 
 Incentive value refers to the penalty due at tax season for failing to get a  being fully vaccinated against COVID-19 by the tax return deadline under a vaccine mandate. It varies by increasing increments from $0 to $1000. 
 
+<center>
+  <img src="images/penalty.png" width=1500>
+</center>
+
 ---
 
 # Questions 
