@@ -435,6 +435,8 @@ model <- estimateModels(
 # Extract results
 results <- getModelResults(model)
 
+results
+
 # Plot results
 ggplot(results) +
     geom_hline(yintercept = 0.05, color = "black", linetype = 2) +
