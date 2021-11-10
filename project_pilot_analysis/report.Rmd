@@ -443,10 +443,19 @@ A power analysis of the pilot survey found that a sample of around 282 people wo
 
 # Changes to Final Survey
 
-- We removed unnecessary images that may confuse respondents. 
+- We removed unnecessary images that may confuse respondents due to classmate feedback. 
 - We added a sentence that says I will take the vaccine under these conditions to make it more clear that the respondent is either choosing to take the vaccine under the conditions listed or not take it.
-- We adjusted our attention checks to be less confusing.
-- We removed our regional map question and decided to ask instead what state respondents are from to understand their location better.
+- We also separated the buttons between the choices to be more visually clear.
+- We adjusted our attention checks to be less confusing due to classmate feedback.
+- We removed our regional map question and decided to ask instead what state respondents are from to understand their location better. Classmates had informed us that the regional map was confusing and unclear.
+- We still hope to achieve the necessary sample size for our survey of at least around 300 people. We will do this by reaching out to the following people/groups to gain responses: 
+  - Dr. Lorien Abroms, a Public Health professor, runs the GW Health Communications Corps, an organization combating health misinformation. Dr. Abroms would particularly be integral with identifying groups of people that succumb to microaggressions and have lower vaccination rates*. Dr. Abroms can also help us gain more samples from groups that succumb to misinformation about the vaccine, as [a report from HHS in August 2021 estimates that 44% of unvaccinated fall into the "unvaccinated but willing" category](hhttps://www.washingtonpost.com/health/2021/09/23/covid-unvaccinated-but-willing/?fbclid=IwAR26FWna18WL6-V__ofn441XM3cRf76NxEF6sWZdm-iNlO5q-his1OHocuk). This would help to reduce the bias in the sample towards a positive or negative policy, identifying a group of people that is willing to take the vaccine without any incentive or consequence wagered will help us identify the most efficient policy and whether incentives or fines are absolutely necessary. 
+  - Dr. Dennis Schell, a Psychology professor, teaches general and abnormal psychology. He also works with people with adverse behavior issues, and will be able to help garner surveys from people with behavioral health issues on why they won't take the vaccine. With these people in our sample, we will be able to identify whether they can comply with a vaccine mandate. 
+  - Dr. Patrick McHugh is a Professor of Management whose research is focused on the psychology behind organizational structure and operations. He will be able to identify organizations that do not require vaccinations for its members, and give insight as to the reception towards vaccine mandates. He can also help us identify organizations that incentivize decisions, which we can send the survey to. 
+  - No Lost Generation GW is an organization that helps refugees adjust to living in the United States, particularly in the DC area. We can talk to the organization about getting refugees vaccinated by translating the survey into various languages and allowing refugees and immigrants to take them. 
+  - Dr. Irene Foster is a Professor of Economics who can give insight on different unvaccinated populations in the US. She may be able to give contacts of people who work with the above groups to whom we can share the survey with. 
+
+- 
 
 # Appendix
 
