@@ -248,6 +248,8 @@ plot_value <- df_value %>%
 
 plot_value
 ```
+The plot for the value of incentive shows a generally positive utility with a very large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+
 
 #### Plot for accessibility to vaccination center
 ```{r echo=FALSE}
@@ -271,6 +273,8 @@ plot_accessibility <- df_accessibility %>%
 plot_accessibility
 ```
 
+The plot for accessibility to a vaccination center shows a generally positive utility with a large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+
 #### Plot for non-compliance penalty
 ```{r echo=FALSE}
 df_penalty <- data.frame(penalty = unique(data$penalty)) %>% 
@@ -293,6 +297,8 @@ plot_penalty<- df_penalty %>%
 plot_penalty
 ```
 
+The plot for a non-compliance penalty shows a slightly negative utility with a moderately big confidence interval. This variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+
 #### Plot for cash incentives
 ```{r echo=FALSE}
 df_cash <- data.frame(incentive_cash = unique(data$incentive_cash)) %>% 
@@ -313,6 +319,8 @@ plot_cash<- df_cash %>%
     theme_bw()
 plot_cash
 ```
+
+The plot for cash incentives shows a generally positive utility with a very large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for grocery store credit incentives
 ```{r echo=FALSE}
@@ -335,6 +343,8 @@ plot_grocery_store <- df_grocery_store %>%
 plot_grocery_store
 ```
 
+The plot for a grocery store credit incentive shows a generally positive utility with a large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
+
 #### Plot for internet bill credit incentives
 ```{r echo=FALSE}
 df_internet <- data.frame(incentive_internet = unique(data$incentive_internet)) %>% 
@@ -354,6 +364,8 @@ plot_internet <- df_internet %>%
     theme_bw()
 plot_internet
 ```
+
+The plot for an internet bill credit incentive shows a generally positive utility with a large confidence interval. This significant variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 #### Plot for sporting event tickets incentives
 ```{r echo=FALSE}
@@ -375,6 +387,8 @@ plot_sport_tickets  <- df_sport_tickets  %>%
     theme_bw()
 plot_sport_tickets 
 ```
+
+The plot for a sporting event ticket incentive shows a slightly negative utility with a moderately large confidence interval. This variance needs to be offset by more samples. We hope to receive more respondents in our actual survey in order to minimize the variance.
 
 
 # Power Analysis
