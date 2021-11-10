@@ -428,7 +428,7 @@ A power analysis of the pilot survey found that a sample of around 282 people wo
 - We removed unnecessary images that may confuse respondents. 
 - We added a sentence that says I will take the vaccine under these conditions to make it more clear that the respondent is either choosing to take the vaccine under the conditions listed or not take it.
 - We adjusted our attention checks to be less confusing.
-- We removed our regional map question and decided to ask instead what state respondents are from and what type of area (urban, suburban rural) to understand their location better.
+- We removed our regional map question and decided to ask instead what state respondents are from to understand their location better.
 
 # Appendix
 
