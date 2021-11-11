@@ -1,0 +1,58 @@
+---
+output: html_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse   = TRUE,
+  warning    = FALSE,
+  message    = FALSE,
+  comment    = "#>",
+  fig.path   = "man/figures/",
+  fig.retina = 3
+)
+```
+
+# Welcome to our survey!
+
+
+Thank you for participating in this survey, which is part of a research effort by The George Washing University. For this survey, we will ask you about your preferences for different types of apples.
+
+---
+
+# Consent form
+
+This survey is being conducted by students at The George Washing University. We will not be collecting any identifying data, such as your name or address. The whole survey will take approximately 10 to 15 minutes to complete. Your participation is voluntary and you may stop the survey at any time.
+
+If you would like to participate, please answer the following questions:
+
+I am age 18 or older
+
+- Yes
+- No
+
+I have read and understand the above information
+
+- Yes
+- No
+
+---
+
+Do you like fruit?
+
+- Yes!
+- Kind of
+- No :(
+
+What is your favorite fruit?
+
+(open text response)
+
+---
+
+Before we go on, please select which color you prefer between these two:
+
+- Blue
+- Red
+
+(For this example, I'm using the response here to screen out respondents - I'm only interested in people who choose "Red", so if you choose "Blue" you'll be screened out. Usually you would not tell respondents ahead of time how they will be screened - I'm just putting an explanation here since this whole survey is for demonstration purposes)
