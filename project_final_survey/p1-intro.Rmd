@@ -13,46 +13,44 @@ knitr::opts_chunk$set(
 )
 ```
 
+
 # Welcome to our survey!
 
+Welcome and thank you for your interest in our survey! The purpose of this survey is to develop a quantitative model of consumer choice to inform the design decisions of a COVID vaccine policy. This survey is being conducted for a research initiative at The George Washington University. You must be a resident of the United States above the age of 18 and who has not received a dose of a COVID-19 vaccine to partake in this survey.
 
-Thank you for participating in this survey, which is part of a research effort by The George Washing University. For this survey, we will ask you about your preferences for different types of apples.
+This survey involves questions that ask whether a certain condition would result in you receiving the COVID-19 vaccine. These conditions can be seen as positive, negative, or neutral. These conditions will not actually occur and you will not need to take a COVID-19 vaccine based on your answers in this survey. All responses will be used purely for educational purposes. A type of question you may see would be the following: "Will you take a COVID-19 vaccine if given door-to-door?" This question is asking if you would take a COVID-19 vaccine if you had the option to take it at your doorstep. You may answer "Yes" or "No" to this question. At the end of the survey we will be collecting demographic information (such as income and age) that will also be used purely for educational purposes. These demographic attributes will especially help us account for bias in our data: 
+
+- Race/ethnicity: data suggests that marginalized races may have a sense of mistrust in the American healthcare system, stemming from mistreatment to microaggressions towards these groups from practitioners. Collecting data from every ethic group allows us to compare the level of trust towards vaccines and infer it on COVID vaccination rates. 
+- Political beliefs: conversations around COVID-19 have become increasingly political. We would like to gather data from people of all political beliefs to see the relationship between politics and the COVID vaccine. 
+- Income: data suggests that people of lower income also are subjected to mistreatment and microaggressions by healthcare practitioners, also hampering trust in our healthcare system. Collecting data from various income groups also allows us to compare the level of trust towards vaccines and infer it on COVID vaccination rates.
+
+If you have any questions about this survey, then please contact marketingvaccinepolicy@gmail.com.
 
 ---
 
-# Consent form
+# Consent Form
 
-This survey is being conducted by students at The George Washing University. We will not be collecting any identifying data, such as your name or address. The whole survey will take approximately 10 to 15 minutes to complete. Your participation is voluntary and you may stop the survey at any time.
+Your participation in this survey is voluntary. You may choose not to participate. If you decide to participate in this survey, you may withdraw at any time with no penalty. The procured involves filling an online survey that will take approximately 20 minutes. All responses will be used solely for educational purposes and individual identified information will not be shared under any circumstances. Your responses will be confidential and we will not collect any identifying data such as your name or address.
 
-If you would like to participate, please answer the following questions:
+By taking this survey, I certify that I am at least 18 years of age and will, to the best of my ability, answer truthfully and accurately. I understand that my answers may be invalidated should I fail to do so. I understand that I have read all of the above information and voluntarily agree to participate in this survey.
 
-I am age 18 or older
+---
+
+# Eligibility Questions
+
+The whole survey will take approximately 10 to 15 minutes to complete. Your participation is voluntary and you may stop the survey at any time. If you are eligible to and would like to participate, please answer the following questions:
+
+I am 18 years of age or older.
 
 - Yes
 - No
 
-I have read and understand the above information
+I have not received any doses of a COVID-19 vaccine.
 
 - Yes
 - No
 
----
+I have read and understand the above information. 
 
-Do you like fruit?
-
-- Yes!
-- Kind of
-- No :(
-
-What is your favorite fruit?
-
-(open text response)
-
----
-
-Before we go on, please select which color you prefer between these two:
-
-- Blue
-- Red
-
-(For this example, I'm using the response here to screen out respondents - I'm only interested in people who choose "Red", so if you choose "Blue" you'll be screened out. Usually you would not tell respondents ahead of time how they will be screened - I'm just putting an explanation here since this whole survey is for demonstration purposes)
+- Yes
+- No
