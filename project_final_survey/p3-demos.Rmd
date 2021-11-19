@@ -13,9 +13,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Thank you for your feedback! We're almost done! We'd just like to ask just a few more questions about you which we will only use for analyzing our survey data.The next section will ask some basic questions about yourself.
+## Nice job!
 
-### Please answer to the best of your knowledge.
+We're almost done! We'd just like to ask just a few more questions about you which we will only use for analyzing our survey data.
 
 ---
 
@@ -26,15 +26,18 @@ This is an attention check. Please choose Option 1 and continue.
 - Option 1
 - Option 2
 
+---
+
 ## Demographic information
 
 We're almost done! We'd just like to ask just a few more questions about you which we will only use for analyzing our survey data.
 
 (1) In what year were you born?
 
-- (Drop down menu years `1920` - `2003`)
+(Drop down menu including years `1920` - `2003`)
 
 (2) What is your current gender identity?
+
 Different identity (please state):
 
 - Male
@@ -46,31 +49,34 @@ Different identity (please state):
 - Prefer not to say
 
 
-(3) I identify my ethnicity as (select all that apply):
+(3) What is your ethnicity (select all that apply):
+
 Different identity (please state):
 
-- Native American or Alaskan Native (e.g., Navajo Nation, Blackfeet Tribe, Mayan, Aztec, Native Village of Barrow Inupiat Traditional Government, Nome Eskimo Community, etc.)
 - Asian (e.g., Chinese, Filipino, Indian, Vietnamese, Korean, Japanese, Malaysian, etc.)
 - African (e.g., African American, Jamaican, Haitian, Nigerian, Ethiopian, Somalian, etc.)
-- Hispanic or Latino (e.g., Mexican or Mexican American, Puerto Rican, Cuban, Salvadoran, Dominican, Colombian, etc.)
+- Caucasian (e.g., German, Irish, English, Italian, Polish, French, etc.)
 - Middle Eastern or North African (e.g., Lebanese, Iranian, Egyptian, Syrian, Moroccan, Algerian, etc.)
+- Native American or Alaskan Native (e.g., Navajo Nation, Blackfeet Tribe, Mayan, Aztec, Native 
+Village of Barrow Inupiat Traditional Government, Nome Eskimo Community, etc.)
 - Native Hawaiian or Pacific Islander (e.g., Native Hawaiian, Samoan, Chamorro, Tongan, Fijian, Marshallese, etc.)
-- White (e.g., German, Irish, English, Italian, Polish, French, etc.)
-- Prefer to self-identify
+- Hispanic or Latino (e.g., Mexican or Mexican American, Puerto Rican, Cuban, Salvadoran, Dominican, Colombian, etc.)
+
+
+(4) What is your annual household income (from all sources)?
+
+- Less than $10,000
+- $10,000 - $19,999
+- $20,000 - $29,999
+- $30,000 - $39,999
+- $40,000 - $49,999
+- $50,000 - $74,999
+- $75,000 - $99,999
+- $100,000 - $149,999
+- $150,000 - $199,999
+- $200,000 or more
 - Prefer not to say
 
-
-(4) What is your annual household income (from all sources) before taxes and other deductions from pay?
-
-- Under $60,000
-- $60,000 - $80,000
-- $80,000 - $100,000
-- $100,000 - $120,000
-- $120,000 - $120,000
-- $140,000 - $120,000
-- $160,000 - $120,000
-- $180,000 - $120,000
-- Above $200,000
 
 (5) What is your political orientation?
 
@@ -87,12 +93,10 @@ Different identity (please state):
 (6) What is your primary mode of transportation?
 
 - Personal vehicle
-- Bus 
-- Rail (Rapid transiy, Light-rail)
-- Ride-hailing service (e.g., Lyft, Uber, Via)
-- Shared ride-hailing service (e.g., Lyft Shared, UberPool)
+- Public transportation (Bus, Rail, Ferry, etc.)
+- Ride-hailing service (e.g. Taxi, Lyft, Uber, Via, UberPool)
 - Para-transit services
-- Other (describe below)
+- Prefer to self-describe
 
 (7) What state do you live in? 
 
@@ -157,6 +161,11 @@ Different identity (please state):
 - Bachelor’s degree (e.g. BA, BS)
 - Graduate or Professional Degree (e.g. PhD, MD, JD, MS)
 - Prefer not to say
+
+(9) Do you have a religious exemption that prevents you from taking the COVID-19 vaccine?
+
+- Yes
+- No
 
 ---
 
