@@ -31,17 +31,18 @@ df_json <- jsonlite::toJSON(df)
 
 # Great work!
 
-Now that you've shared a bit about yourself, we'd like you to consider policies designed to encourage COVID-19 vaccinations. Let's learn about policy attributes. 
+Now that you've shared a bit about yourself, we'd like you to consider policies designed to encourage COVID-19 vaccinations. 
 
 --- 
 
 # Policy Attributes
 
-Below is a description of the various policy attributes that will vary across every policy - each policy will be a combination of a universal vaccine mandate, enforced by a fine for not complying, different types of monetary incentives for complying, and the administration of vaccination clinics. Each attribute contains an associated image helping to explain the attribute.      
+Below is a description of the various policy attributes that will vary across every policy - each policy will be a combination of a universal vaccine mandate, enforced by a fine at tax season for not complying, different types of monetary incentives given out at tax season for being fully vaccinated against COVID-19, and the administration of vaccination clinics. Each attribute contains an associated image helping to explain the attribute.      
 
 ### Accessibility
 
-Accessibility refers to the distance which a vaccination clinic would be placed from your home. It varies with 0 miles, 3 miles, 5 miles, and 10 miles from your residence. A distance of 0 miles indicates door-door in-residence vaccination campaigns. 
+Accessibility refers to the distance in which a vaccination clinic would be placed from homes. It varies with increasing increments from 0-10 miles from a constituent's residence. A distance of 0 miles indicates door-door in-residence vaccination campaigns, a distance greater than 0 miles indicates that the policy involves a mobile or indoor public vaccination clinic.
+
 
 <center>
   <img src="https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/main/project_final_survey/images/accessibility.png" width=200>
@@ -83,14 +84,20 @@ This value refers to the penalty due at tax season for failing to get a being fu
 
 We would like to begin with one practice question below. Your response to this question will not be recorded.
 
-"If these were the only options available, would you choose to take the vaccine under the policy below (a $100 fine if you do not take the vaccine, a vaccination clinic 3 miles from your house, and $50 in cash) or choose to not take the vaccine?
+If these were the only options available, would you choose to take the vaccine under the policy below (a $100 fine if you do not take the vaccine, a vaccination clinic 3 miles from your house, and $50 in cash) or choose to not take the vaccine?
 
 **Mandate**: Vaccine mandated, $100 fine for non-compliance
 **Accessibility**: Vaccination clinic will be located within 3 miles from your house
-**Incentive**: $50 in cash"
+**Incentive**: $50 in cash
 
 - I will take the vaccine under these conditions.
 - I will not take the vaccine under these conditions.
+
+---
+
+# Great work!
+
+We will now begin with the choice questions. On the next few pages we will show you different combinations of policy attributes regarding COVID-19 vaccinations. There will be a total of 10 choice questions for you to answer.
 
 ### Question 1
 
