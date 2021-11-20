@@ -21,7 +21,7 @@ Welcome and thank you for your interest in our survey! The purpose of this surve
 This survey involves questions that ask whether a certain policy would result in you receiving the COVID-19 vaccine. These policies vary across attributes and can be seen as positive, negative, or neutral. These policies are still hypothetical and you will not need to take a COVID-19 vaccine based on your answers in this survey. At the end of the survey we will be collecting demographic information. These demographic attributes will especially help us account for bias in our data.
 
 --- 
-# Consent 
+# Consent and Eligibility
 
 Your participation in this survey is voluntary. You may choose not to participate. If you decide to participate in this survey, you may withdraw at any time with no penalty. All responses will be used solely for academic purposes. Your responses will be confidential and we will not collect or share any identifying data such as your name or address.
 
