@@ -86,11 +86,12 @@ We would like to begin with one practice question below. Your response to this q
 
 If these were the only options available, would you choose to take the vaccine under the policy below, or choose to not take the vaccine?
 
-**Mandate**: Vaccine mandated, $100 fine for non-compliance
-**Accessibility**: Vaccination clinic will be located within 3 miles from your house
-**Incentive**: $50 in cash
+- **Mandate**: Vaccine mandated, $100 fine for non-compliance
+- **Accessibility**: Vaccination clinic will be located within 3 miles from your house
+- **Incentive**: $50 in cash
 
 Would you take the vaccine under these conditions?
+
 
 - Yes
 - No
@@ -114,9 +115,10 @@ alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-**Mandate**: `r alt1$penalty_label`
-**Accessibility**: `r alt1$accessibility_label`
-**Incentive**: `r alt1$incentive_label`
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
 
 - Yes
 - No
@@ -135,9 +137,10 @@ alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-**Mandate**: `r alt1$penalty_label`
-**Accessibility**: `r alt1$accessibility_label`
-**Incentive**: `r alt1$incentive_label`
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
 
 - Yes
 - No
@@ -156,9 +159,9 @@ alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-**Mandate**: `r alt1$penalty_label`
-**Accessibility**: `r alt1$accessibility_label`
-**Incentive**: `r alt1$incentive_label`
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
 
 - Yes
 - No
@@ -177,9 +180,10 @@ alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-**Mandate**: `r alt1$penalty_label`
-**Accessibility**: `r alt1$accessibility_label`
-**Incentive**: `r alt1$incentive_label`
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
 
 - Yes
 - No
@@ -197,9 +201,10 @@ alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-**Mandate**: `r alt1$penalty_label`
-**Accessibility**: `r alt1$accessibility_label`
-**Incentive**: `r alt1$incentive_label`
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
 
 - Yes
 - No
@@ -218,9 +223,10 @@ alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-**Mandate**: `r alt1$penalty_label`
-**Accessibility**: `r alt1$accessibility_label`
-**Incentive**: `r alt1$incentive_label`
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
 
 - Yes
 - No
@@ -239,9 +245,10 @@ alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-**Mandate**: `r alt1$penalty_label`
-**Accessibility**: `r alt1$accessibility_label`
-**Incentive**: `r alt1$incentive_label`
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
 
 - Yes
 - No
@@ -260,9 +267,10 @@ alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-**Mandate**: `r alt1$penalty_label`
-**Accessibility**: `r alt1$accessibility_label`
-**Incentive**: `r alt1$incentive_label`
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
 
 - Yes
 - No
@@ -280,9 +288,10 @@ alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-**Mandate**: `r alt1$penalty_label`
-**Accessibility**: `r alt1$accessibility_label`
-**Incentive**: `r alt1$incentive_label`
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
 
 - Yes
 - No
@@ -301,9 +310,10 @@ alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-**Mandate**: `r alt1$penalty_label`
-**Accessibility**: `r alt1$accessibility_label`
-**Incentive**: `r alt1$incentive_label`
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
 
 - Yes
 - No
