@@ -37,7 +37,7 @@ survey <- makeSurvey(
             paste0("$", value, " gift card for your internet provider"), 
             ifelse(
             incentive_sport_tickets == 1, 
-            paste0("$", value, " gift card for a tickets to a local professional sports event"), "")
+            paste0("$", value, " gift card for tickets to a local professional sports event"), "")
     )))) %>% 
     mutate(
         incentive_label = ifelse(
