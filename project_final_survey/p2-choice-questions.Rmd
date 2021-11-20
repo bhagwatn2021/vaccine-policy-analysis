@@ -84,14 +84,16 @@ This value refers to the penalty due at tax season for failing to get a being fu
 
 We would like to begin with one practice question below. Your response to this question will not be recorded.
 
-If these were the only options available, would you choose to take the vaccine under the policy below (a $100 fine if you do not take the vaccine, a vaccination clinic 3 miles from your house, and $50 in cash) or choose to not take the vaccine?
+If these were the only options available, would you choose to take the vaccine under the policy below, or choose to not take the vaccine?
 
 **Mandate**: Vaccine mandated, $100 fine for non-compliance
 **Accessibility**: Vaccination clinic will be located within 3 miles from your house
 **Incentive**: $50 in cash
 
-- I will take the vaccine under these conditions.
-- I will not take the vaccine under these conditions.
+Would you take the vaccine under these conditions?
+
+- Yes
+- No
 
 ---
 
@@ -115,8 +117,10 @@ alt2 <- alts %>% filter(altID == 2)
 - **Accessibility**: `r alt1$accessibility_label`
 - **Incentive**: `r alt1$incentive_label`
 
-- I will take the vaccine under these conditions.
-- `r alt2$no_vaccine_label`
+Would you take the vaccine under these conditions?
+
+- Yes
+- No
 
 
 ### Question 2
@@ -135,8 +139,10 @@ alt2 <- alts %>% filter(altID == 2)
 - **Accessibility**: `r alt1$accessibility_label`
 - **Incentive**: `r alt1$incentive_label`
 
-- I will take the vaccine under these conditions.
-- `r alt2$no_vaccine_label`
+Would you take the vaccine under these conditions?
+
+- Yes
+- No
 
 
 ### Question 3
@@ -155,8 +161,10 @@ alt2 <- alts %>% filter(altID == 2)
 - **Accessibility**: `r alt1$accessibility_label`
 - **Incentive**: `r alt1$incentive_label`
 
-- I will take the vaccine under these conditions.
-- `r alt2$no_vaccine_label`
+Would you take the vaccine under these conditions?
+
+- Yes
+- No
 
 
 ### Question 4
@@ -175,9 +183,10 @@ alt2 <- alts %>% filter(altID == 2)
 - **Accessibility**: `r alt1$accessibility_label`
 - **Incentive**: `r alt1$incentive_label`
 
-- I will take the vaccine under these conditions.
-- `r alt2$no_vaccine_label`
+Would you take the vaccine under these conditions?
 
+- Yes
+- No
 
 ### Question 5
 
@@ -195,8 +204,10 @@ alt2 <- alts %>% filter(altID == 2)
 - **Accessibility**: `r alt1$accessibility_label`
 - **Incentive**: `r alt1$incentive_label`
 
-- I will take the vaccine under these conditions.
-- `r alt2$no_vaccine_label`
+Would you take the vaccine under these conditions?
+
+- Yes
+- No
 
 
 ### Question 6
@@ -214,8 +225,10 @@ alt2 <- alts %>% filter(altID == 2)
 - **Accessibility**: `r alt1$accessibility_label`
 - **Incentive**: `r alt1$incentive_label`
 
-- I will take the vaccine under these conditions.
-- `r alt2$no_vaccine_label`
+Would you take the vaccine under these conditions?
+
+- Yes
+- No
 
 
 ### Question 7
@@ -234,8 +247,10 @@ alt2 <- alts %>% filter(altID == 2)
 - **Accessibility**: `r alt1$accessibility_label`
 - **Incentive**: `r alt1$incentive_label`
 
-- I will take the vaccine under these conditions.
-- `r alt2$no_vaccine_label`
+Would you take the vaccine under these conditions?
+
+- Yes
+- No
 
 
 ### Question 8
@@ -254,9 +269,10 @@ alt2 <- alts %>% filter(altID == 2)
 - **Accessibility**: `r alt1$accessibility_label`
 - **Incentive**: `r alt1$incentive_label`
 
-- I will take the vaccine under these conditions.
-- `r alt2$no_vaccine_label`
+Would you take the vaccine under these conditions?
 
+- Yes
+- No
 
 ### Question 9
 
@@ -274,8 +290,10 @@ alt2 <- alts %>% filter(altID == 2)
 - **Accessibility**: `r alt1$accessibility_label`
 - **Incentive**: `r alt1$incentive_label`
 
-- I will take the vaccine under these conditions.
-- `r alt2$no_vaccine_label`
+Would you take the vaccine under these conditions?
+
+- Yes
+- No
 
 
 ### Question 10
@@ -293,5 +311,7 @@ alt2 <- alts %>% filter(altID == 2)
 - **Accessibility**: `r alt1$accessibility_label`
 - **Incentive**: `r alt1$incentive_label`
 
-- I will take the vaccine under these conditions.
-- `r alt2$no_vaccine_label`
+Would you take the vaccine under these conditions?
+
+- Yes
+- No
