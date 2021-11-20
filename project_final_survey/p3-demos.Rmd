@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 ## Nice job!
 
-We're almost done! We'd just like to ask just a few demographic questions which we will only use for analyzing our survey data.
+We're almost done! We'd just like to ask a few demographic questions which we will only use for analyzing our survey data.
 
 ---
 
