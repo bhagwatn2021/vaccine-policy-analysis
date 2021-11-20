@@ -103,9 +103,10 @@ We will now begin with the choice questions. On the next few pages we will show 
 
 ### Question 1
 
-```{r , echo=FALSE}
-df_json <- jsonlite::toJSON(df)
+Would you choose to take the vaccine under the policy below?
 
+```{r , include=FALSE}
+library(tidyverse)
 alts <- jsonlite::fromJSON(df_json) %>% 
   filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
@@ -113,11 +114,9 @@ alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-- **Mandate**: `r alt1$penalty_label`
-- **Accessibility**: `r alt1$accessibility_label`
-- **Incentive**: `r alt1$incentive_label`
-
-Would you take the vaccine under these conditions?
+**Mandate**: `r alt1$penalty_label`
+**Accessibility**: `r alt1$accessibility_label`
+**Incentive**: `r alt1$incentive_label`
 
 - Yes
 - No
@@ -125,21 +124,20 @@ Would you take the vaccine under these conditions?
 
 ### Question 2
 
-```{r , echo=FALSE}
-df_json <- jsonlite::toJSON(df)
+Would you choose to take the vaccine under the policy below?
 
+```{r , include=FALSE}
+library(tidyverse)
 alts <- jsonlite::fromJSON(df_json) %>% 
-  filter(qID == 2)
+  filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
 alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-- **Mandate**: `r alt1$penalty_label`
-- **Accessibility**: `r alt1$accessibility_label`
-- **Incentive**: `r alt1$incentive_label`
-
-Would you take the vaccine under these conditions?
+**Mandate**: `r alt1$penalty_label`
+**Accessibility**: `r alt1$accessibility_label`
+**Incentive**: `r alt1$incentive_label`
 
 - Yes
 - No
@@ -147,21 +145,20 @@ Would you take the vaccine under these conditions?
 
 ### Question 3
 
-```{r , echo=FALSE}
-df_json <- jsonlite::toJSON(df)
+Would you choose to take the vaccine under the policy below?
 
+```{r , include=FALSE}
+library(tidyverse)
 alts <- jsonlite::fromJSON(df_json) %>% 
-  filter(qID == 3)
+  filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
 alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-- **Mandate**: `r alt1$penalty_label`
-- **Accessibility**: `r alt1$accessibility_label`
-- **Incentive**: `r alt1$incentive_label`
-
-Would you take the vaccine under these conditions?
+**Mandate**: `r alt1$penalty_label`
+**Accessibility**: `r alt1$accessibility_label`
+**Incentive**: `r alt1$incentive_label`
 
 - Yes
 - No
@@ -169,63 +166,61 @@ Would you take the vaccine under these conditions?
 
 ### Question 4
 
-```{r , echo=FALSE}
-df_json <- jsonlite::toJSON(df)
+Would you choose to take the vaccine under the policy below?
 
+```{r , include=FALSE}
+library(tidyverse)
 alts <- jsonlite::fromJSON(df_json) %>% 
-  filter(qID == 4)
+  filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
 alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-- **Mandate**: `r alt1$penalty_label`
-- **Accessibility**: `r alt1$accessibility_label`
-- **Incentive**: `r alt1$incentive_label`
-
-Would you take the vaccine under these conditions?
+**Mandate**: `r alt1$penalty_label`
+**Accessibility**: `r alt1$accessibility_label`
+**Incentive**: `r alt1$incentive_label`
 
 - Yes
 - No
 
 ### Question 5
 
-```{r , echo=FALSE}
-df_json <- jsonlite::toJSON(df)
+Would you choose to take the vaccine under the policy below?
 
+```{r , include=FALSE}
+library(tidyverse)
 alts <- jsonlite::fromJSON(df_json) %>% 
-  filter(qID == 5)
+  filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
 alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-- **Mandate**: `r alt1$penalty_label`
-- **Accessibility**: `r alt1$accessibility_label`
-- **Incentive**: `r alt1$incentive_label`
-
-Would you take the vaccine under these conditions?
+**Mandate**: `r alt1$penalty_label`
+**Accessibility**: `r alt1$accessibility_label`
+**Incentive**: `r alt1$incentive_label`
 
 - Yes
 - No
 
 
 ### Question 6
-```{r , echo=FALSE}
-df_json <- jsonlite::toJSON(df)
 
+Would you choose to take the vaccine under the policy below?
+
+```{r , include=FALSE}
+library(tidyverse)
 alts <- jsonlite::fromJSON(df_json) %>% 
-  filter(qID == 6)
+  filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
 alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-- **Mandate**: `r alt1$penalty_label`
-- **Accessibility**: `r alt1$accessibility_label`
-- **Incentive**: `r alt1$incentive_label`
-
-Would you take the vaccine under these conditions?
+**Mandate**: `r alt1$penalty_label`
+**Accessibility**: `r alt1$accessibility_label`
+**Incentive**: `r alt1$incentive_label`
 
 - Yes
 - No
@@ -233,21 +228,20 @@ Would you take the vaccine under these conditions?
 
 ### Question 7
 
-```{r , echo=FALSE}
-df_json <- jsonlite::toJSON(df)
+Would you choose to take the vaccine under the policy below?
 
+```{r , include=FALSE}
+library(tidyverse)
 alts <- jsonlite::fromJSON(df_json) %>% 
-  filter(qID == 7)
+  filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
 alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-- **Mandate**: `r alt1$penalty_label`
-- **Accessibility**: `r alt1$accessibility_label`
-- **Incentive**: `r alt1$incentive_label`
-
-Would you take the vaccine under these conditions?
+**Mandate**: `r alt1$penalty_label`
+**Accessibility**: `r alt1$accessibility_label`
+**Incentive**: `r alt1$incentive_label`
 
 - Yes
 - No
@@ -255,63 +249,61 @@ Would you take the vaccine under these conditions?
 
 ### Question 8
 
-```{r , echo=FALSE}
-df_json <- jsonlite::toJSON(df)
+Would you choose to take the vaccine under the policy below?
 
+```{r , include=FALSE}
+library(tidyverse)
 alts <- jsonlite::fromJSON(df_json) %>% 
-  filter(qID == 8)
+  filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
 alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-- **Mandate**: `r alt1$penalty_label`
-- **Accessibility**: `r alt1$accessibility_label`
-- **Incentive**: `r alt1$incentive_label`
-
-Would you take the vaccine under these conditions?
+**Mandate**: `r alt1$penalty_label`
+**Accessibility**: `r alt1$accessibility_label`
+**Incentive**: `r alt1$incentive_label`
 
 - Yes
 - No
 
 ### Question 9
 
-```{r , echo=FALSE}
-df_json <- jsonlite::toJSON(df)
+Would you choose to take the vaccine under the policy below?
 
+```{r , include=FALSE}
+library(tidyverse)
 alts <- jsonlite::fromJSON(df_json) %>% 
-  filter(qID == 9)
+  filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
 alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-- **Mandate**: `r alt1$penalty_label`
-- **Accessibility**: `r alt1$accessibility_label`
-- **Incentive**: `r alt1$incentive_label`
-
-Would you take the vaccine under these conditions?
+**Mandate**: `r alt1$penalty_label`
+**Accessibility**: `r alt1$accessibility_label`
+**Incentive**: `r alt1$incentive_label`
 
 - Yes
 - No
 
 
 ### Question 10
-```{r , echo=FALSE}
-df_json <- jsonlite::toJSON(df)
 
+Would you choose to take the vaccine under the policy below?
+
+```{r , include=FALSE}
+library(tidyverse)
 alts <- jsonlite::fromJSON(df_json) %>% 
-  filter(qID == 10)
+  filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
 alt2 <- alts %>% filter(altID == 2)
 
 ```
 
-- **Mandate**: `r alt1$penalty_label`
-- **Accessibility**: `r alt1$accessibility_label`
-- **Incentive**: `r alt1$incentive_label`
-
-Would you take the vaccine under these conditions?
+**Mandate**: `r alt1$penalty_label`
+**Accessibility**: `r alt1$accessibility_label`
+**Incentive**: `r alt1$incentive_label`
 
 - Yes
 - No
