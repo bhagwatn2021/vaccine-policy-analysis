@@ -1,0 +1,329 @@
+---
+output: html_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse   = TRUE,
+  warning    = FALSE,
+  message    = FALSE,
+  comment    = "#>",
+  fig.path   = "man/figures/",
+  fig.retina = 3
+)
+```
+
+```{r, include=FALSE}
+# Read in the choice questions
+library(tidyverse)
+survey <- read_csv("https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/main/survey_plan/combined_policy_questions.csv")
+
+# Define the respondent ID
+respondentID <- sample(survey$respID, 1)
+
+# Create the subset of rows for that respondent ID
+df <- survey %>%
+    filter(respID == respondentID) 
+  
+# Convert df to json
+df_json <- jsonlite::toJSON(df)
+```
+
+# Policy Attributes 
+
+Great work! Now that you've shared a bit about yourself, we'd like you to consider policies designed to encourage COVID-19 vaccinations. Let's learn about policy attributes:
+
+### Accessibility
+
+Accessibility refers to the distance which a vaccination clinic would be placed from your home. It varies with 0 miles, 3 miles, 5 miles, and 10 miles from your residence. A distance of 0 miles indicates door-door in-residence vaccination campaigns. 
+
+### Incentives
+
+Incentives refers to the type of commodity that would be given out at tax season for being fully vaccinated against COVID-19 by the tax return deadline. It varies by cash and cash equivalents (gift cards) redeemable at:
+
+- Grocery stores
+- Internet providers
+- Professional sporting events 
+
+### Incentive Value 
+
+Incentive value refers to the value of commodities that would be given out at tax season for  being fully vaccinated against COVID-19 by the tax return deadline. It varies by increasing increments from $0 to $1000. 
+
+### Penalty
+
+Incentive value refers to the penalty due at tax season for failing to get a  being fully vaccinated against COVID-19 by the tax return deadline under a vaccine mandate. It varies by increasing increments from $0 to $1000. 
+
+<center>
+  <img src="images/penalty.png" width=1500>
+</center>
+
+---
+
+# Questions 
+
+We'll now begin with policy options. On the next few pages we will show you different combinations of policy options regarding COVID-19 vaccinations. 
+
+Would you take the vaccine under any of the following policies? 
+
+### Attention Check 
+
+Are you able to select the third option? If yes, select the first option and move on.
+
+- Yes
+- No
+- Maybe
+
+### Question 1
+
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 1)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### Question 2
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 2)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### Question 3
+
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 3)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### Attention Check
+
+Are you able to select the third option? If yes, select the first option and move on.
+
+- Yes
+- No
+- Maybe
+
+### Question 4
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 4)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### Question 5
+
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 5)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### Attention Check 
+
+Are you able to select the second option? If yes, select the third option and move on.
+
+- Yes
+- No
+- Maybe
+
+### Question 6
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 6)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### Attention Check
+
+Are you able to select the third option? If yes, select the first option and move on.
+
+- Yes
+- No
+- Maybe
+
+### Question 7
+
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 7)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### Attention Check 
+
+Are you able to select the second option? If yes, select the third option and move on.
+
+- Yes
+- No
+- Maybe
+
+### Question 8
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 8)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### Question 9
+
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 9)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`
+
+### Attention Check 
+
+Are you able to select the second option? If yes, select the third option and move on.
+
+- Yes
+- No
+- Maybe
+
+### Question 10
+```{r , echo=FALSE}
+df_json <- jsonlite::toJSON(df)
+
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 10)
+alt1 <- alts %>% filter(altID == 1)
+alt2 <- alts %>% filter(altID == 2)
+
+```
+
+**Option 1**
+
+- **Mandate**: `r alt1$penalty_label`
+- **Accessibility**: `r alt1$accessibility_label`
+- **Incentive**: `r alt1$incentive_label`
+
+**Option 2**
+
+`r alt2$no_vaccine_label`

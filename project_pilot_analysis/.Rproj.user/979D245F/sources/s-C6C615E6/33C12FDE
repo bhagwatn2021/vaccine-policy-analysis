@@ -1,0 +1,26 @@
+{
+    "id": "33C12FDE",
+    "path": "~/Documents/EMSE 6035/vaccine-policy-analysis/project_pilot_analysis/data/choiceData.csv",
+    "project_path": "data/choiceData.csv",
+    "type": "text",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1636514582091.0,
+    "source_on_save": false,
+    "relative_order": 13,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "8,11",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1638327714,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1638327714,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,15 @@
+{
+    "dialog-state": {
+        "query": "{1}",
+        "path": "",
+        "regex": false,
+        "caseSensitive": false,
+        "wholeWord": false,
+        "filePatterns": [],
+        "excludeFilePatterns": [],
+        "resultsCount": 26,
+        "errorCount": 0,
+        "replaceErrors": "",
+        "projectRelative": true
+    }
+}

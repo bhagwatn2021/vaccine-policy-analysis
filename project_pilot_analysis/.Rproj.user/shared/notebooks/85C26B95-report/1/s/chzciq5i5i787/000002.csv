@@ -1,0 +1,3 @@
+"0","politics <- p3 %>% select(politics) %>% filter(!is.na(politics)) %>%  group_by(politics) %>% summarise(num_respondents = n())"
+"0",""
+"0","politics"
