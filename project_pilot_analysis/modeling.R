@@ -24,7 +24,7 @@ view(data %>% filter(outsideGood == 1))
 view(data %>% filter(accessibility_0 == 0 & outsideGood == 0))
 # Clean up names of created variables
 data <- clean_names(data)
-data
+view(data)
 # Estimate the model
 model <- logitr(
     data   = data,

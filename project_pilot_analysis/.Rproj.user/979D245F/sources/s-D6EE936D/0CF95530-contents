@@ -11,13 +11,20 @@ library(cowplot)
 options(dplyr.width = Inf) # So you can see all of the columns
 
 # -----------------------------------------------------------------------------
-# Load the data set:
+# Load the data set and make sure door-door vaccinations aren't in outsideGood:
 data <- read_csv(here("data", "choiceData.csv"))
-view(data)
+data <- dummy_cols(data, c('accessibility'))
+data <- data %>% mutate(
+    accessibility_0 = ifelse(accessibility_0 == 1 & outsideGood == 0, 1,0)
+)
 
+# Validate change for door to door vaccinations with dummy columns
+view(data %>% filter(accessibility_0 == 1 & outsideGood == 0))
+view(data %>% filter(outsideGood == 1))
+view(data %>% filter(accessibility_0 == 0 & outsideGood == 0))
 # Clean up names of created variables
 data <- clean_names(data)
-
+view(data)
 # Estimate the model
 model <- logitr(
     data   = data,
@@ -26,11 +33,13 @@ model <- logitr(
     pars   = c(
         "value", 
         "penalty",
-        "accessibility",
-        "incentive_cash",
+        "accessibility_1",
+        "accessibility_3",
+        "accessibility_10",
         "incentive_grocery_store",
         "incentive_internet",
-        "incentive_sport_tickets"
+        "incentive_sport_tickets",
+        "outside_good"
     )
 )
 

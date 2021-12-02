@@ -66,7 +66,8 @@ data <- data %>%
     filter(consentUnderstand == 1) %>% 
     filter(consentCondition == 1)
 
-data <- data %>% 
+
+choiceData <- data %>% 
     pivot_longer(
         cols = cbc1:cbc10,
         names_to = "qID",
@@ -77,15 +78,22 @@ survey <- read_csv("https://raw.githubusercontent.com/bhagwatn2021/vaccine-polic
     select(-...1,-contains("_label"))
 
 # Convert choice column to 1 or 0 based on if the alternative was chosen 
-data <- data %>% 
+choiceData <- choiceData %>% 
     rename(respID = respondentID) %>% 
     left_join(survey, by = c("respID", "qID"))%>% 
     mutate(choice = ifelse(choice == altID, 1, 0)) %>% 
     # Drop unused variables
     select(-cbcPractice, -cbcAllSame)
 
+
+# Create new values for respID & obsID
+nAlts <- max(survey$altID)
+nQuestions <- max(survey$qID)
+nRespondents <- nrow(data)
+choiceData$respID <- rep(seq(nRespondents), each = nAlts*nQuestions)
+choiceData$obsID <- rep(seq(nRespondents*nQuestions), each = nAlts)
+
 view(survey)
-view(data)
+view(choiceData)
 
-
-write_csv(data, here("data", "choiceData.csv"))
+write_csv(choiceData, here("data", "choiceData.csv"))
