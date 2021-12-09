@@ -11,7 +11,7 @@ options(dplyr.width = Inf) # So you can see all of the columns
 # -----------------------------------------------------------------------------
 # Load the data set and make sure door-door vaccinations aren't in outsideGood:
 data <- read_csv(here("data", "choiceData.csv"))
-data <- dummy_cols(data, c('accessibility'))
+data <- dummy_cols(data, c('accessibility','cbcAllSame'))
 data <- data %>% mutate(
     accessibility_0 = ifelse(accessibility_0 == 1 & outsideGood == 0, 1,0)
 )
@@ -21,14 +21,12 @@ view(data %>% filter(accessibility_0 == 1 & outsideGood == 0))
 view(data %>% filter(outsideGood == 1))
 view(data %>% filter(accessibility_0 == 0 & outsideGood == 0))
 
-# Clean up names of created variables
-data <- clean_names(data)
 view(data)
 # Estimate the model
 model <- logitr(
     data   = data,
     outcome = "choice",
-    obsID  = "obs_id",
+    obsID  = "obsID",
     pars   = c(
         "value", 
         "penalty",
@@ -38,7 +36,7 @@ model <- logitr(
         "incentive_grocery_store",
         "incentive_internet",
         "incentive_sport_tickets",
-        "outside_good"
+        "outsideGood"
     )
 )
 
@@ -240,9 +238,9 @@ ggsave(
 
 # Mixed logit model 
 mxl_pref <- logitr(
-    data    = data,
+    data    = data %>% filter(cbcAllSame == 0),
     outcome = "choice",
-    obsID   = "obs_id",
+    obsID   = "obsID",
     pars    =  c(
         "value", 
         "penalty", 
@@ -252,11 +250,76 @@ mxl_pref <- logitr(
         "incentive_grocery_store", 
         "incentive_internet", 
         "incentive_sport_tickets", 
-        "outside_good"
+        "outsideGood"
     ),
-    randPars = c(value = 'n', penalty = 'n', accessibility_1 = 'n', accessibility_3 = 'n', accessibility_10 = 'n', incentive_grocery_store='n', incentive_internet='n', incentive_sport_tickets='n', outside_good='n')
+    randPars = c(value = 'n', penalty = 'n', incentive_grocery_store='n', incentive_internet='n', incentive_sport_tickets='n'),
+    numMultiStarts=50
 )
 
 # View summary of results
 summary(mxl_pref)
+# Hesitant vs. resistant - cbcAllSame = 0 is reference 
+data_resistant <- data %>%
+    mutate(
+        outsideGood_B = outsideGood * cbcAllSame_1,
+        value_B = value * cbcAllSame_1,
+        penalty_B = penalty * cbcAllSame_1,
+        accessibility_1_B = accessibility_1 * cbcAllSame_1,
+        accessibility_3_B = accessibility_3 * cbcAllSame_1,
+        accessibility_10_B = accessibility_10 * cbcAllSame_1,
+        incentive_grocery_store_B = incentive_grocery_store * cbcAllSame_1,
+        incentive_internet_B = incentive_internet * cbcAllSame_1,
+        incentive_sport_tickets_B = incentive_sport_tickets * cbcAllSame_1
+    )
+model <- logitr(
+    data = data_resistant,
+    outcome = "choice",
+    obsID  = "obsID",
+    pars   = c(
+        "value", 
+        "penalty",
+        "accessibility_1",
+        "accessibility_3",
+        "accessibility_10",
+        "incentive_grocery_store",
+        "incentive_internet",
+        "incentive_sport_tickets",
+        "outsideGood",
+        "outsideGood_B",
+        "value_B",
+        "penalty_B",
+        "accessibility_1_B",
+        "accessibility_3_B",
+        "accessibility_10_B",
+        "incentive_grocery_store_B",
+        "incentive_internet_B",
+        "incentive_sport_tickets_B"
+    )
+)
 
+# Summa
+summary(model)
+# Conservative vs. liberal - moderate is reference 
+model <- logitr(
+    data = data,
+    outcome = "choice",
+    obsID  = "obsID",
+    pars   = c(
+        "value", 
+        "penalty",
+        "accessibility_1",
+        "accessibility_3",
+        "accessibility_10",
+        "incentive_grocery_store",
+        "incentive_internet",
+        "incentive_sport_tickets",
+        "outsideGood"
+    )
+)
+
+summary(model)
+# Lower vs high income - middle class is reference
+
+# Race - white is reference 
+
+# Education - high school diploma is reference 

@@ -19,7 +19,7 @@ p1 <- p1 %>%
         ended =  ymd_hms(ended, tz = "EST"),
         time_sec_p1 = as.numeric(ended - created, units = "secs")) %>%
     # Select important columns
-    filter(as.Date(created) >= as.Date("2021-11-26")) %>% 
+    filter(created >= ymd("2021-11-26")) %>% 
     select(session, time_sec_p1, created, consentAge, consentVaccine, consentUnderstand, consentCondition) %>% 
     filter(!is.na(session))
 p2 <- p2 %>% 
@@ -28,7 +28,7 @@ p2 <- p2 %>%
         ended =  ymd_hms(ended,  tz = "EST"),
         time_sec_p2 = as.numeric(ended - created, units = "secs")) %>%
     # Select important columns
-    filter(as.Date(created) >= as.Date("2021-11-26")) %>% 
+    filter(created >= ymd("2021-11-26")) %>% 
     select(session, time_sec_p2, respondentID, starts_with("cbc"), cbcAllSame) %>% 
     filter(!is.na(session))
 
@@ -38,7 +38,7 @@ p3 <- p3 %>%
         ended =  ymd_hms(ended,  tz = "EST"),
         time_sec_p3 = as.numeric(ended - created, units = "secs")) %>%
     # Select important columns
-    filter(as.Date(created) >= as.Date("2021-11-26")) %>% 
+    filter(created >= ymd("2021-11-26")) %>% 
     select(session, time_sec_p3, yearOfBirth:feedback,completionCode) %>% 
     filter(!is.na(session)) 
 
@@ -52,22 +52,21 @@ data <- p1 %>%
 
 view(data)
 
+# Check to see whether people will take the vaccine in all conditions
+view(data %>% filter(cbcAllSame == 1 & cbc1 == 1))
+# If we filtered out this group, we would filter out 12 people, indicating that people intentionally selected this option. 
+
+# Check to see whether people will not take the vaccine in all conditions
+view(data %>% filter(cbcAllSame == 1 & cbc1 == 2))
+# If we filtered out this group, we would filter out 48 people, indicating that people intentionally selected this option. 
+
 data <- data %>% 
-    filter(!is.na(cbc1)) %>% 
-    filter(!is.na(cbc2)) %>% 
-    filter(!is.na(cbc3)) %>% 
-    filter(!is.na(cbc4)) %>% 
-    filter(!is.na(cbc5)) %>% 
-    filter(!is.na(cbc6)) %>% 
-    filter(!is.na(cbc7)) %>% 
-    filter(!is.na(cbc8))%>% 
-    filter(!is.na(cbc9))%>% 
-    filter(!is.na(cbc10))%>% 
+    filter(!is.na(cbc1) | !is.na(cbc2) | !is.na(cbc3) | !is.na(cbc4) | !is.na(cbc5) | !is.na(cbc6) | !is.na(cbc7) | !is.na(cbc8) | !is.na(cbc9) | !is.na(cbc10)) %>%
+    filter(!(cbcAllSame == 1 & cbc1 == 1)) %>% 
     filter(consentVaccine == 1)%>% 
     filter(consentAge == 1) %>% 
     filter(consentUnderstand == 1) %>% 
     filter(consentCondition == 1)
-
 
 choiceData <- data %>% 
     pivot_longer(
@@ -76,6 +75,7 @@ choiceData <- data %>%
         values_to = "choice") %>% 
     # Convert the qID variable to a number
     mutate(qID = parse_number(qID))
+
 survey <- read_csv("https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/pilot-analysis/project_pilot/combined_policy_questions.csv") %>% 
     select(-...1,-contains("_label"))
 
@@ -85,8 +85,7 @@ choiceData <- choiceData %>%
     left_join(survey, by = c("respID", "qID"))%>% 
     mutate(choice = ifelse(choice == altID, 1, 0)) %>% 
     # Drop unused variables
-    select(-cbcPractice, -cbcAllSame)
-
+    select(-cbcPractice)
 
 # Create new values for respID & obsID
 nAlts <- max(survey$altID)
@@ -97,5 +96,4 @@ choiceData$obsID <- rep(seq(nRespondents*nQuestions), each = nAlts)
 
 view(survey)
 view(choiceData)
-
 write_csv(choiceData, here("data", "choiceData.csv"))
