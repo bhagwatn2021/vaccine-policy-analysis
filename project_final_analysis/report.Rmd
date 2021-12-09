@@ -1,0 +1,75 @@
+---
+title: "Title"
+subtitle: "If you want a subtitle, put it here"
+author: Update with your name
+date: December 12, 2021 - Update with today's date
+output: 
+  html_document:
+    toc: true 
+    toc_float: true
+    number_sections: false
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>",
+  fig.path = "figs/", # Folder where rendered plots are saved
+  fig.width = 7.252, # Default plot width
+  fig.height = 4, # Default plot height
+  fig.retina = 3 # For better plot resolution
+)
+
+# Load libraries here
+library(tidyverse)
+library(here)
+```
+
+Write your report content here.
+
+Make sure you update the settings in the YAML for your report. 
+
+Use [markdown](https://commonmark.org/help/) for formatting, e.g.: **Bold**, _Italic_, etc.
+
+Here are some section headers to use: 
+
+# Abstract
+
+
+
+
+# Introduction
+
+
+
+
+# Survey Design
+
+
+
+
+# Data Analysis
+
+
+
+
+# Results
+
+
+
+# Final Recommendations and Conclusions
+
+
+
+
+# Limitations
+
+
+
+
+
+# Appendix
+
+
+
