@@ -62,7 +62,6 @@ view(data %>% filter(cbcAllSame == 1 & cbc1 == 2))
 
 data <- data %>% 
     filter(!is.na(cbc1) | !is.na(cbc2) | !is.na(cbc3) | !is.na(cbc4) | !is.na(cbc5) | !is.na(cbc6) | !is.na(cbc7) | !is.na(cbc8) | !is.na(cbc9) | !is.na(cbc10)) %>%
-    filter(!(cbcAllSame == 1 & cbc1 == 1)) %>% 
     filter(consentVaccine == 1)%>% 
     filter(consentAge == 1) %>% 
     filter(consentUnderstand == 1) %>% 
