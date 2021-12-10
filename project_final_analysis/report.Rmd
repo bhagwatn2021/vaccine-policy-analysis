@@ -1,8 +1,8 @@
 ---
-title: "Title"
-subtitle: "If you want a subtitle, put it here"
-author: Update with your name
-date: December 12, 2021 - Update with today's date
+title: "Moving the Needle"
+subtitle: "A comparison of different policy options to increase COVID-19 vaccination rates"
+author: Neel Bhagwat & Jenny Kim
+date: December 13, 2021
 output: 
   html_document:
     toc: true 
@@ -26,32 +26,106 @@ library(tidyverse)
 library(here)
 ```
 
-Write your report content here.
-
-Make sure you update the settings in the YAML for your report. 
-
-Use [markdown](https://commonmark.org/help/) for formatting, e.g.: **Bold**, _Italic_, etc.
-
-Here are some section headers to use: 
 
 # Abstract
 
+This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a vaccine mandate enforced with a fine, the policy in question, to various incentives such as tax rebates and sporting tickets. It also takes into account the accessibility of vaccination centers, measured by the proximity of vaccination centers from residencies, as well as combinations of these different policy attributes. The target population for this study are all Americans 18 years and older who have not received a dose of a COVID-19 vaccine. Below are lists of all possible values of each attribute included in the choice questions: 
 
+```{r echo=FALSE}
+incentive = c("Grocery Store Gift Card", "Internet Rebate", "Sporting Tickets", "Cash")
+value = c(0, 50, 100, 200, 300, 500, 1000)
+penalty = c(0, 50, 100, 200, 300, 500, 1000)
+accessibility = c(0, 1, 3, 10) # Distance (miles) from a vaccination center
+
+```
+Accessibility (miles from residency): 
+```{r echo=FALSE}
+accessibility
+```
+Incentive (cateogrical): 
+```{r echo=FALSE}
+incentive
+```
+Mandate Fine (USD, no mandate for values of $0): 
+```{r echo=FALSE}
+penalty
+```
+Incentive Value (USD, no incentive for values of $0): 
+```{r echo=FALSE}
+value
+```
+
+The results for our study show a high confidence interval for all attributes, plus a positive coefficient for distance to a vaccination center - our respondents had slightly higher preference towards further vaccination centers, an unlikely and unexpected result. The variance and accuracy of our coefficients reemphasizes that we need a larger and more varied sample to get a more accurate and definite estimate. The positive value for distance to a vaccination center also shows a possible interaction effect with another attribute. This informs us that to get accurate readings, we will need to study both interaction and main effects of attributes. To do so, a full factorial design with every possible choice attribute combination will be the most optimal, and we aim to get a sample size as large as possible by reaching out to others in the GW community and across the US. 
 
 
 # Introduction
 
+Despite the rollout of COVID-19 vaccines, vaccine hesitancy prevented the United States from achieving herd immunity, the level of immunity that a population has to control the spread of a virus. Below is a chart depicting the number of daily vaccinations over time as a percentage of the population, followed by a chart depicting the percentage of the American population that is vaccinated: 
 
+<center>
+### Insert Image Here
+</center>
+
+<center>
+### Insert Image Here
+</center>
+
+In turn, the Delta variant, a highly-contagious strain of SARS-COV-2, the virus that causes COVID-19, ravaged through unvaccinated populations and caused a surge in cases. 
+
+On September 9th, 2021, U.S. President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts who claim that forcing Americans to get vaccinated is crucial, criticism from other experts who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitutional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
+
+Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted initiatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites.
+
+Our study analyzes the population and the effectiveness of various policies to increase vaccination rates. Each policy in our study consists of different attributes, which vary across each policy. The goal is to optimize the attributes to get as many people vaccinated as possible. The attributes to be considered are: 
+
+### Accessibility
+
+Accessibility refers to the distance which a vaccination clinic would be placed from your home. It varies with 0 (door-door vaccinations) - 10 miles from your residence. 
+
+
+### Incentives
+
+Incentives refers to the type of commodity that would be given out at tax season for being fully vaccinated against COVID-19 by the tax return deadline. It varies by cash tax rebates and cash equivalents (gift cards) redeemable at:
+
+- Grocery stores
+- Internet providers
+- Professional sporting events 
+
+### Incentive Value 
+
+Incentive value refers to the value of commodities that would be given out at tax season for being fully vaccinated against COVID-19 by the tax return deadline. It varies by increasing increments from $0 to $1000. 
+
+### Penalty
+
+Incentive value refers to the penalty due at tax season for failing to get a  being fully vaccinated against COVID-19 by the tax return deadline under a vaccine mandate. It varies by increasing increments from $0 to $1000. 
 
 
 # Survey Design
 
+In order to see what sort of policy would be most appealing to those who are currently unvaccinated, the survey is designed to only collect responses from those who would be able to choose to take the vaccine after seeing the policy options. This consists of adults 18 years or older who have not received any doses of a COVID-19 vaccine. Those under the age of 18 and who have already received a vaccine dose were excluded because they are unable to choose to take the vaccine. This survey is also restricted to United States residents only, as this policy would only be directed towards United States residents.
 
+The survey also collects demographic information relating to age, gender identity, race, income, political affiliation, and geographic location to better inform which policies are most effective for which demographics. Educational material presented to the respondents include information on accessibility, incentives, incentive value, and mandate value, which make up the survey's attributes.
+
+- Accessibility ranged from 0-10 miles for the distance a vaccination clinic would be placed from a respondent's home. The accessibility range starts at 0 miles because it is in the most convenient spot possible for a respondent to receive a vaccine, and the range ends at 10 miles because most respondents should have a vaccination location outside of 10 miles from their home.
+- Incentive value ranged from $0-$1000 to see if there was a value below $1000 that would sway more people to receive the vaccine. This range stopped at $1000, as anything above that number would most likely be infeasible to implement into a policy.
+- Incentives were provided as cash or cash equivalents (gift cards) redeemable at grocery stores, internet providers, and professional sporting events. This range of incentives were chosen as they are items that are necessary and/or popular among the general public.
+- Penalties ranged from $0-$1000 to see if there was a value below $1000 that would sway more people to receive the vaccine. This range stopped at $1000, as anything above that number would most likely be infeasible to implement into a policy.
+
+
+Each respondent receives 10 choice questions that have two options "I will take the vaccine under these conditions" (where the conditions are listed in the option) and "I will not take the vaccine under these conditions". There is one alternative per choice question (the vaccine conditions) and a no-choice option, where respondents are informed that it means they would not take the vaccine under the conditions listed in the first alternative. An example figure of a random conjoint question can be seen below.
+
+<center>
+### Insert Image Here
+</center>
 
 
 # Data Analysis
 
+### Sample Description
 
+### Data Cleaning
+
+### Modeling
 
 
 # Results
@@ -71,5 +145,247 @@ Here are some section headers to use:
 
 # Appendix
 
+Survey Link: https://covid-19-vaccine-policy-final.formr.org
 
+## Introduction
+
+Welcome to our survey!
+
+Welcome and thank you for your interest in our survey! The purpose of this survey is to develop a quantitative model of consumer choice to inform the design decisions of a COVID vaccine policy. This survey is being conducted for a research initiative at The George Washington University. You must be a resident of the United States above the age of 18 and who has not received a dose of a COVID-19 vaccine to partake in this survey. You must also not have a health condition or disability that prevents you from being eligible to take the COVID-19 vaccine. 
+
+This survey involves questions that ask whether a certain condition would result in you receiving the COVID-19 vaccine. These conditions can be seen as positive, negative, or neutral. These conditions will not actually occur and you will not need to take a COVID-19 vaccine based on your answers in this survey. At the end of the survey we will also be collecting demographic information.
+
+If you have any questions about this survey, then please contact marketingvaccinepolicy@gmail.com.
+
+## Consent and Eligibility
+
+Your participation in this survey is voluntary. You may choose not to participate. If you decide to participate in this survey, you may withdraw at any time with no penalty. All responses will be used solely for academic purposes. Your responses will be confidential and we will not collect or share any identifying data such as your name or address.
+
+The whole survey will take approximately 10 to 15 minutes to complete. Your participation is voluntary and you may stop the survey at any time. If you are eligible to and would like to participate, please answer the following questions:
+
+I am age 18 or older.
+
+- Yes
+- No
+
+I have not received any doses of a COVID-19 vaccine.
+
+- Yes
+- No
+
+I am a U.S. resident.
+
+- Yes
+- No
+
+I do not have a disability or health condition that prevents me from being able to take the COVID-19 vaccine.
+
+- Yes
+- No
+
+I have read and understand the above information.
+
+- Yes
+- No
+
+## Education
+
+Great work! Now that you've shared a bit about yourself, we'd like you to consider policies designed to encourage COVID-19 vaccinations. Let's learn about policy attributes.
+
+## Policy Attributes
+
+Below is a description of the various policy attributes that will vary across every policy - each policy will be a combination of a universal vaccine mandate, enforced by a fine at tax season for not complying, different types of monetary incentives given out at tax season for being fully vaccinated against COVID-19, and the administration of vaccination clinics. Each attribute contains an associated image helping to explain the attribute.
+
+### Accessibility
+
+Accessibility refers to the distance in which a vaccination clinic would be placed from homes. It varies with increasing increments from 0-10 miles from a constituent's residence. A distance of 0 miles indicates door-door in-residence vaccination campaigns, a distance greater than 0 miles indicates that the policy involves a mobile or indoor public vaccination clinic.
+
+#### Insert Image Here
+
+### Incentives
+
+Incentives refers to the type of commodity that would be given out at tax season as an incentive for being fully vaccinated against COVID-19 by the tax return deadline. It varies by cash (tax rebates) and cash equivalents (gift cards) redeemable at: 
+
+- Grocery stores 
+- Internet providers 
+- Professional sporting events
+
+#### Insert Image Here
+
+### Incentive Value
+
+Incentive value refers to the monetary value of commodities that would be given out at tax season for being fully vaccinated against COVID-19 by the tax return deadline. It varies by increasing increments from $0 to $1000.
+
+#### Insert Image Here
+
+### Penalty Value
+
+This value refers to the penalty due at tax season for failing to get a being fully vaccinated against COVID-19 by the tax return deadline under a vaccine mandate. It varies by increasing increments from $0 to $1000.
+
+#### Insert Image Here
+
+## Practice Question
+
+We would like to begin with one practice question below. Your response to this question will not be recorded.
+
+If these were the only options available, would you choose to take the vaccine under the policy below?
+
+**Mandate**: Vaccine mandated, $100 fine for non-compliance
+**Accessibility**: Vaccination clinic will be located within 3 miles from your house
+**Incentive**: $50 in cash"
+
+- Yes
+- No
+
+## Conjoint Questions
+
+Great work!
+
+We will now begin with the questions. On the next few pages we will show you different combinations of policy options regarding COVID-19 vaccinations. There will be a total of 10 choice questions for you to answer. (Image shown below is an example of a choice question)
+
+<center>
+### Insert Image Here
+</center>
+
+## Respondent Information
+Nice job!
+
+We're almost done! We'd just like to ask just a few more questions about you which we will use solely to analyze our survey data.
+
+(1) In what year were you born?
+
+- All years from 1920-2003 are listed
+
+(2) What is your current gender identity?
+
+- Male
+- Female
+- Trans male/trans man
+- Trans female/trans woman
+- Genderqueer/gender non-conforming
+- Prefer not to say
+
+Different identity (please state):
+
+(3) I identify my race as (select all that apply):
+
+- Native American or Alaskan Native (e.g., Navajo Nation, Blackfeet Tribe, Mayan, Aztec, Native Village of Barrow Inupiat Traditional Government, Nome Eskimo Community, etc.)
+- Asian (e.g., Chinese, Filipino, Indian, Vietnamese, Korean, Japanese, Malaysian, etc.)	African (e.g., African American, Jamaican, Haitian, Nigerian, Ethiopian, Somalian, etc.)
+- Hispanic or Latino (e.g., Mexican or Mexican American, Puerto Rican, Cuban, Salvadoran, Dominican, Colombian, etc.)
+- Middle Eastern or North African (e.g., Lebanese, Iranian, Egyptian, Syrian, Moroccan, Algerian, etc.)
+- Native Hawaiian or Pacific Islander (e.g., Native Hawaiian, Samoan, Chamorro, Tongan, Fijian, Marshallese, etc.)
+- Caucasian (e.g., German, Irish, English, Italian, Polish, French, etc.)	Prefer not to say
+
+Different identity (please state):
+
+(4) What is your annual household income (from all sources) before taxes and other deductions from pay?
+
+- Less than $10,000
+- $10,000 - $14,999
+- $15,000 - $24,999
+- $25,000 - $34,999
+- $35,000 - $49,999
+- $50,000 - $74,999
+- $75,000 - $99,999
+- $100,000 - $149,999
+- $150,000 - $199,999
+- $200,000 or more
+- Prefer not to say
+
+(5) What is your political orientation?
+
+- Strongly conservative
+- Conservative
+- Leaning conservative
+- Moderate
+- Leaning liberal
+- Liberal
+- Strongly liberal
+- Independent
+- Prefer not to say
+
+(6) What is your primary mode of transportation?
+
+- Personal vehicle
+- Public transportation (Bus, Rail, Ferry, etc.)
+- Ride-hailing service (e.g. Taxi, Lyft, Uber, Via, UberPool)
+- Para-transit services
+- Prefer to self-describe
+
+(7) What state do you live in? 
+
+- Alabama
+- Alaska
+- Arizona
+- Arkansas
+- California
+- Colorado
+- Connecticut
+- Delaware
+- District of Columbia
+- Florida
+- Georgia
+- Hawaii
+- Idaho
+- IllinoisIndiana
+- Iowa
+- Kansas
+- Kentucky
+- Louisiana
+- Maine
+- Maryland
+- Massachusetts
+- Michigan
+- Minnesota
+- Mississippi
+- Missouri
+- Montana
+- Nebraska
+- Nevada
+- New Hampshire
+- New Jersey
+- New Mexico
+- New York
+- North Carolina
+- North Dakota
+- Ohio
+- Oklahoma
+- Oregon
+- PennsylvaniaRhode Island
+- South Carolina
+- South Dakota
+- Tennessee
+- Texas
+- Utah
+- Vermont
+- Virginia
+- Washington
+- West Virginia
+- Wisconsin
+- Wyoming
+
+
+(8) What is the highest degree or level of school you have completed? If currently enrolled, please use the highest degree received.
+
+- Less than a high school diploma
+- High school degree or equivalent (e.g. GED)
+- Some college or university, no college degree
+- Trade/technical/vocational training, no degree awarded
+- Associate's degree (e.g. AA, AS)
+- Bachelor’s degree (e.g. BA, BS)
+- Graduate or Professional Degree (e.g. PhD, MD, JD, MS)
+- Prefer not to say
+
+(9) Do you have a religious exemption that prevents you from taking the COVID-19 vaccine?
+
+- Yes
+- No
+
+---
+
+We have reached the end. Please let us know if you have any other thoughts or feedback on this survey.
+ 
+Your feedback will help us make future improvements :) Thank you so much for taking this survey.
+
+(Open text response)
 
