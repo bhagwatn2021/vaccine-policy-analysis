@@ -991,9 +991,9 @@ df_ethnicity_value <- data.frame(value = unique(data_ethnicity$value)) %>%
         utility_asian = diff*coefs_ethnicity['value_asian'],
         upper_asian =  diff*(coefs_ethnicity['value_asian']+2*ses_ethnicity['value_asian']),
         lower_asian =  diff*(coefs_ethnicity['value_asian']-2*ses_ethnicity['value_asian']),
-        utility_high = diff*coefs_ethnicity['value_black'],
-        upper_high  =  diff*(coefs_ethnicity['value_black']+2*ses_ethnicity['value_black']),
-        lower_high  =  diff*(coefs_ethnicity['value_black']-2*ses_ethnicity['value_black']),
+        utility_black = diff*coefs_ethnicity['value_black'],
+        upper_black  =  diff*(coefs_ethnicity['value_black']+2*ses_ethnicity['value_black']),
+        lower_black  =  diff*(coefs_ethnicity['value_black']-2*ses_ethnicity['value_black']),
         utility_hispanic = diff*coefs_ethnicity['value_hispanic'],
         upper_hispanic =  diff*(coefs_ethnicity['value_hispanic']+2*ses_ethnicity['value_hispanic']),
         lower_hispanic =  diff*(coefs_ethnicity['value_hispanic']-2*ses_ethnicity['value_hispanic']),
@@ -1067,9 +1067,9 @@ df_ethnicity_penalty <- data.frame(penalty = unique(data_ethnicity$penalty)) %>%
         utility_black = diff*coefs_ethnicity['penalty_black'],
         upper_black =  diff*(coefs_ethnicity['penalty_black']+2*ses_ethnicity['penalty_black']),
         lower_black =  diff*(coefs_ethnicity['penalty_black']-2*ses_ethnicity['penalty_black']),
-        utility_asian = diff*coefs_ethnicity['penalty_hispanic'],
-        upper_asian =  diff*(coefs_ethnicity['penalty_hispanic']+2*ses_ethnicity['penalty_hispanic']),
-        lower_asian =  diff*(coefs_ethnicity['penalty_hispanic']-2*ses_ethnicity['penalty_hispanic']),
+        utility_hispanic = diff*coefs_ethnicity['penalty_hispanic'],
+        upper_hispanic =  diff*(coefs_ethnicity['penalty_hispanic']+2*ses_ethnicity['penalty_hispanic']),
+        lower_hispanic =  diff*(coefs_ethnicity['penalty_hispanic']-2*ses_ethnicity['penalty_hispanic']),
         utility_native = diff*coefs_ethnicity['penalty_native'],
         upper_native =  diff*(coefs_ethnicity['penalty_native']+2*ses_ethnicity['penalty_native']),
         lower_native =  diff*(coefs_ethnicity['penalty_native']-2*ses_ethnicity['penalty_native'])
@@ -1419,7 +1419,11 @@ plot_resistant_categorical_attributes <- plot_grid(
 
 plot_resistant_categorical_attributes 
 
-
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_resistant_categorical_attributes.png'), 
+    plot = plot_resistant_continuous_attributes, 
+    width = 10, height = 10)
 
 
 # Plot the utility for each attribute
@@ -1587,25 +1591,583 @@ plot_politics_incentives_independent
 
 
 
-
-
-
-plot_resistant_continuous_attributes <- plot_grid(
-    plot_resistant_value, plot_resistant_value_resistant, plot_resistant_penalty, plot_resistant_penalty_resistant,
+plot_politics_continuous_attributes <- plot_grid(
+    plot_politics_value, plot_politics_value_liberal, plot_politics_value_conservative, plot_politics_value_independent, 
+    plot_politics_penalty, plot_politics_penalty_liberal, plot_politics_penalty_conservative, plot_politics_penalty_independent,
     nrow = 2
 )
 
-plot_resistant_continuous_attributes
+plot_politics_continuous_attributes
+
 
 # Save plots 
 ggsave(
-    filename = here('data', 'plot_resistant_continuous_attributes.png'), 
-    plot = plot_resistant_continuous_attributes, 
+    filename = here('data', 'plot_politics_continuous_attributes.png'), 
+    plot = plot_politics_continuous_attributes, 
     width = 10, height = 10)
 
-plot_resistant_categorical_attributes <- plot_grid(
-    plot_resistant_accessibility, plot_resistant_accessibility_resistant, plot_resistant_incentives, plot_resistant_incentives_resistant,
+plot_politics_categorical_attributes <- plot_grid(
+    plot_politics_accessibility, plot_politics_accessibility_liberal, plot_politics_accessibility_conservative, plot_politics_accessibility_independent, 
+    plot_politics_incentives, plot_politics_incentives_liberal, plot_politics_incentives_conservative, plot_politics_incentives_independent,
     nrow = 2
 )
 
-plot_resistant_categorical_attributes 
+plot_politics_categorical_attributes 
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_politics_categorical_attributes.png'), 
+    plot = plot_politics_categorical_attributes, 
+    width = 10, height = 10)
+
+
+
+
+
+# Plot the utility for each attribute
+plot_income_value <- df_income_value %>% 
+    ggplot(aes(x = value, y = utility,ymin=lower,ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility') +
+    theme_bw()
+
+plot_income_value
+
+plot_income_value_low <- df_income_value %>% 
+    ggplot(aes(x = value, y = utility_low,ymin=lower_low,ymax=upper_low)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for low income respondents') +
+    theme_bw()
+
+plot_income_value_low
+
+plot_income_value_high <- df_income_value %>% 
+    ggplot(aes(x = value, y = utility_high,ymin=lower_high,ymax=upper_high)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for high income respondents') +
+    theme_bw()
+
+plot_income_value_high
+
+plot_income_accessibility <- df_income_accessibility %>% 
+    ggplot(aes(x = distance, y = utility,ymin=lower,ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility') +
+    theme_bw()
+
+plot_income_accessibility
+
+plot_income_accessibility_low <- df_income_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_low,ymin=lower_low,ymax=upper_low)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility for low income respondents') +
+    theme_bw()
+
+plot_income_accessibility_low
+
+plot_income_accessibility_high <- df_income_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_high,ymin=lower_high,ymax=upper_high)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility for high income respondents') +
+    theme_bw()
+
+plot_income_accessibility_high
+
+plot_income_penalty <- df_income_penalty %>% 
+    ggplot(aes(x = penalty, y = utility, ymin=lower, ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility') +
+    theme_bw()
+
+plot_income_penalty
+
+plot_income_penalty_low <- df_income_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_low, ymin=lower_low, ymax=upper_low)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility for low income respondents') +
+    theme_bw()
+
+plot_income_penalty_low
+
+plot_income_penalty_high <- df_income_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_high, ymin=lower_high, ymax=upper_high)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility for high income respondents') +
+    theme_bw()
+
+plot_income_penalty_high
+
+plot_income_incentives <- df_income_incentives %>% 
+    ggplot(aes(x = incentive, y = utility, ymin=lower, ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility') +
+    theme_bw()
+
+plot_income_incentives
+
+plot_income_incentives_low <- df_income_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_low, ymin=lower_low, ymax=upper_low)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for low income respondents') +
+    theme_bw()
+
+plot_income_incentives_low
+
+plot_income_incentives_high <- df_income_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_high, ymin=lower_high, ymax=upper_high)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for high income respondents') +
+    theme_bw()
+
+plot_income_incentives_high
+
+plot_income_continuous_attributes <- plot_grid(
+    plot_income_value, plot_income_value_low, plot_income_value_high, 
+    plot_income_penalty, plot_income_penalty_low, plot_income_penalty_high,
+    nrow = 2
+)
+
+plot_income_continuous_attributes
+
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_income_continuous_attributes.png'), 
+    plot = plot_income_continuous_attributes, 
+    width = 10, height = 10)
+
+plot_income_categorical_attributes <- plot_grid(
+    plot_income_accessibility, plot_income_accessibility_low, plot_income_accessibility_high, 
+    plot_income_incentives, plot_income_incentives_low, plot_income_incentives_high,
+    nrow = 2
+)
+
+plot_income_categorical_attributes 
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_income_categorical_attributes.png'), 
+    plot = plot_income_categorical_attributes, 
+    width = 10, height = 10)
+
+
+
+
+
+# Plot the utility for each attribute
+plot_education_value <- df_education_value %>% 
+    ggplot(aes(x = value, y = utility,ymin=lower,ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility') +
+    theme_bw()
+
+plot_education_value
+
+plot_education_value_low <- df_education_value %>% 
+    ggplot(aes(x = value, y = utility_low,ymin=lower_low,ymax=upper_low)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for less-educated respondents') +
+    theme_bw()
+
+plot_education_value_low
+
+plot_education_value_high <- df_education_value %>% 
+    ggplot(aes(x = value, y = utility_high,ymin=lower_high,ymax=upper_high)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for more-educated respondents') +
+    theme_bw()
+
+plot_education_value_high
+
+plot_education_accessibility <- df_education_accessibility %>% 
+    ggplot(aes(x = distance, y = utility,ymin=lower,ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility') +
+    theme_bw()
+
+plot_education_accessibility
+
+plot_education_accessibility_low <- df_education_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_low,ymin=lower_low,ymax=upper_low)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility for less-educated respondents') +
+    theme_bw()
+
+plot_education_accessibility_low
+
+plot_education_accessibility_high <- df_education_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_high,ymin=lower_high,ymax=upper_high)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility for more-educated respondents') +
+    theme_bw()
+
+plot_education_accessibility_high
+
+plot_education_penalty <- df_education_penalty %>% 
+    ggplot(aes(x = penalty, y = utility, ymin=lower, ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility') +
+    theme_bw()
+
+plot_education_penalty
+
+plot_education_penalty_low <- df_education_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_low, ymin=lower_low, ymax=upper_low)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility for less-educated respondents') +
+    theme_bw()
+
+plot_education_penalty_low
+
+plot_education_penalty_high <- df_education_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_high, ymin=lower_high, ymax=upper_high)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility for more-educated respondents') +
+    theme_bw()
+
+plot_education_penalty_high
+
+plot_education_incentives <- df_education_incentives %>% 
+    ggplot(aes(x = incentive, y = utility, ymin=lower, ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility') +
+    theme_bw()
+
+plot_education_incentives
+
+plot_education_incentives_low <- df_education_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_low, ymin=lower_low, ymax=upper_low)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for less-educated respondents') +
+    theme_bw()
+
+plot_education_incentives_low
+
+plot_education_incentives_high <- df_education_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_high, ymin=lower_high, ymax=upper_high)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for more-educated respondents') +
+    theme_bw()
+
+plot_education_incentives_high
+
+plot_education_continuous_attributes <- plot_grid(
+    plot_education_value, plot_education_value_low, plot_education_value_high, 
+    plot_education_penalty, plot_education_penalty_low, plot_education_penalty_high,
+    nrow = 2
+)
+
+plot_education_continuous_attributes
+
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_education_continuous_attributes.png'), 
+    plot = plot_education_continuous_attributes, 
+    width = 10, height = 10)
+
+plot_education_categorical_attributes <- plot_grid(
+    plot_education_accessibility, plot_education_accessibility_low, plot_education_accessibility_high, 
+    plot_education_incentives, plot_education_incentives_low, plot_education_incentives_high,
+    nrow = 2
+)
+
+plot_education_categorical_attributes 
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_education_categorical_attributes.png'), 
+    plot = plot_education_categorical_attributes, 
+    width = 10, height = 10)
+
+
+
+
+
+
+
+# Plot the utility for each attribute
+plot_ethnicity_value <- df_ethnicity_value %>% 
+    ggplot(aes(x = value, y = utility,ymin=lower,ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility') +
+    theme_bw()
+
+plot_ethnicity_value
+
+plot_ethnicity_value_asian <- df_ethnicity_value %>% 
+    ggplot(aes(x = value, y = utility_asian,ymin=lower_asian,ymax=upper_asian)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for Asian respondents') +
+    theme_bw()
+
+plot_ethnicity_value_asian
+
+plot_ethnicity_value_black <- df_ethnicity_value %>% 
+    ggplot(aes(x = value, y = utility_black,ymin=lower_black,ymax=upper_black)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for Black respondents') +
+    theme_bw()
+
+plot_ethnicity_value_black
+
+plot_ethnicity_value_hispanic <- df_ethnicity_value %>% 
+    ggplot(aes(x = value, y = utility_hispanic,ymin=lower_hispanic,ymax=upper_hispanic)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for Hispanic respondents') +
+    theme_bw()
+
+plot_ethnicity_value_hispanic
+
+plot_ethnicity_value_native <- df_ethnicity_value %>% 
+    ggplot(aes(x = value, y = utility_native,ymin=lower_native,ymax=upper_native)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for Native respondents') +
+    theme_bw()
+
+plot_ethnicity_value_native
+
+
+
+
+
+
+plot_ethnicity_accessibility <- df_ethnicity_accessibility %>% 
+    ggplot(aes(x = distance, y = utility,ymin=lower,ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility') +
+    theme_bw()
+
+plot_ethnicity_accessibility
+
+plot_ethnicity_accessibility_asian <- df_ethnicity_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_asian,ymin=lower_asian,ymax=upper_asian)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility for Asian respondents') +
+    theme_bw()
+
+plot_ethnicity_accessibility_asian
+
+plot_ethnicity_accessibility_black <- df_ethnicity_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_black,ymin=lower_black,ymax=upper_black)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility for Black respondents') +
+    theme_bw()
+
+plot_ethnicity_accessibility_black
+
+plot_ethnicity_accessibility_hispanic <- df_ethnicity_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_hispanic,ymin=lower_hispanic,ymax=upper_hispanic)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility for Hispanic respondents') +
+    theme_bw()
+
+plot_ethnicity_accessibility_hispanic
+
+plot_ethnicity_accessibility_native <- df_ethnicity_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_native,ymin=lower_native,ymax=upper_native)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility for Native respondents') +
+    theme_bw()
+
+plot_ethnicity_accessibility_native
+
+
+
+
+plot_ethnicity_penalty <- df_ethnicity_penalty %>% 
+    ggplot(aes(x = penalty, y = utility, ymin=lower, ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility') +
+    theme_bw()
+
+plot_ethnicity_penalty
+
+plot_ethnicity_penalty_asian <- df_ethnicity_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_asian, ymin=lower_asian, ymax=upper_asian)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility for Asian respondents') +
+    theme_bw()
+
+plot_ethnicity_penalty_asian
+
+plot_ethnicity_penalty_black <- df_ethnicity_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_black, ymin=lower_black, ymax=upper_black)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility for Black respondents') +
+    theme_bw()
+
+plot_ethnicity_penalty_black
+
+plot_ethnicity_penalty_hispanic <- df_ethnicity_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_hispanic, ymin=lower_hispanic, ymax=upper_hispanic)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility for Hispanic respondents') +
+    theme_bw()
+
+plot_ethnicity_penalty_hispanic
+
+plot_ethnicity_penalty_native <- df_ethnicity_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_native, ymin=lower_native, ymax=upper_native)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility for Native respondents') +
+    theme_bw()
+
+plot_ethnicity_penalty_native
+
+plot_ethnicity_incentives <- df_ethnicity_incentives %>% 
+    ggplot(aes(x = incentive, y = utility, ymin=lower, ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility') +
+    theme_bw()
+
+plot_ethnicity_incentives
+
+plot_ethnicity_incentives_asian <- df_ethnicity_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_asian, ymin=lower_asian, ymax=upper_asian)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for Asian respondents') +
+    theme_bw()
+
+plot_ethnicity_incentives_asian
+
+plot_ethnicity_incentives_black <- df_ethnicity_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_black, ymin=lower_black, ymax=upper_black)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for Black respondents') +
+    theme_bw()
+
+plot_ethnicity_incentives_black
+
+plot_ethnicity_incentives_hispanic <- df_ethnicity_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_hispanic, ymin=lower_hispanic, ymax=upper_hispanic)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for Hispanic respondents') +
+    theme_bw()
+
+plot_ethnicity_incentives_hispanic
+
+plot_ethnicity_incentives_native <- df_ethnicity_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_native, ymin=lower_native, ymax=upper_native)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for Native respondents') +
+    theme_bw()
+
+plot_ethnicity_incentives_native
+
+plot_ethnicity_continuous_attributes <- plot_grid(
+    plot_ethnicity_value, plot_ethnicity_value_asian, plot_ethnicity_value_black,  plot_ethnicity_value_hispanic, plot_ethnicity_value_native, 
+    plot_ethnicity_penalty, plot_ethnicity_penalty_asian, plot_ethnicity_penalty_black, plot_ethnicity_penalty_hispanic, plot_ethnicity_penalty_native,
+    nrow = 2
+)
+
+plot_ethnicity_continuous_attributes
+
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_ethnicity_continuous_attributes.png'), 
+    plot = plot_ethnicity_continuous_attributes, 
+    width = 10, height = 10)
+
+plot_ethnicity_categorical_attributes <- plot_grid(
+    plot_ethnicity_accessibility, plot_ethnicity_accessibility_asian, plot_ethnicity_accessibility_black, plot_ethnicity_accessibility_hispanic, plot_ethnicity_accessibility_native, 
+    plot_ethnicity_incentives, plot_ethnicity_incentives_asian, plot_ethnicity_incentives_black, plot_ethnicity_incentives_hispanic, plot_ethnicity_incentives_native,
+    nrow = 2
+)
+
+plot_ethnicity_categorical_attributes 
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_ethnicity_categorical_attributes.png'), 
+    plot = plot_ethnicity_categorical_attributes, 
+    width = 10, height = 10)
