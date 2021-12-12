@@ -1,0 +1,52 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>",
+  fig.retina = 3,
+  fig.path = "figs/"
+)
+```
+
+# Welcome to a survey about penguins! 
+
+<center>
+<img src="https://64.media.tumblr.com/49048fed087b431c3dd04d2bf40ef07f/tumblr_mltunziswD1r4zr2vo1_r1_500.gifv" width=300>
+</center>
+
+([image source](https://giphy.com/gifs/headlikeanorange-bird-penguin-emperor-ue2Mb3oHDmMmc))
+
+---
+
+How do you feel about Penguins? 
+
+- They're amazing! 
+- They're fantastic!
+- They're so cute and fluffy!
+- All of the above!
+
+---
+
+Here are the first 6 rows about hot dog eating competition winners:
+
+```{r, echo=FALSE}
+library(tidyverse)
+url <- "https://raw.githubusercontent.com/emse-eda-gwu/2021-Spring/master/data/hot_dog_winners.csv"
+data <- read_csv(url) 
+head(data)
+```
+
+---
+
+Here are the last 6 rows about hot dog eating competition winners:
+
+```{r, echo=FALSE}
+library(tidyverse)
+url <- "https://raw.githubusercontent.com/emse-eda-gwu/2021-Spring/master/data/hot_dog_winners.csv"
+data <- read_csv(url) 
+tail(data)
+```
