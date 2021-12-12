@@ -3,7 +3,7 @@
     "path": "~/Documents/EMSE 6035/vaccine-policy-analysis/project_final_analysis/clean_data.R",
     "project_path": "clean_data.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "2814707116",
     "contents": "",
     "dirty": false,
     "created": 1638935094555.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "97,53",
-        "scrollLine": "69"
+        "cursorPosition": "65,0",
+        "scrollLine": "42"
     },
     "folds": "",
-    "lastKnownWriteTime": 1639095535,
+    "lastKnownWriteTime": 1639172958,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1639095535303,
+    "last_content_update": 1639172958903,
     "read_only": false,
     "read_only_alternatives": []
 }

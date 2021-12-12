@@ -47,194 +47,17 @@ coefs
 
 ses <- se(model)
 ses
-model
-summary(model)
 
-
+save(
+    model,
+    file = here("models", "model.RData")
+)
 # Check the 1st order condition: Is the gradient at the solution zero?
 model$gradient
 
 # 2nd order condition: Is the hessian negative definite?
 # (If all the eigenvalues are negative, the hessian is negative definite)
 eigen(model$hessian)$values
-
-df_value <- data.frame(value = unique(data$value)) %>% 
-    mutate(
-        diff    = value - min(value),
-        utility = diff*coefs['value'],
-        upper =  diff*(coefs['value']+2*ses['value']),
-        lower =  diff*(coefs['value']-2*ses['value'])
-    )
-
-
-# Get upper and lower bounds (plots should have the same y-axis)
-ymin <- floor(min(df_value$lower))
-ymax <- ceiling(max(df_value$upper))
-
-# Plot the utility for each attribute
-plot_value <- df_value %>% 
-    ggplot(aes(x = value, y = utility,ymin=lower,ymax=upper)) +
-    geom_line() +
-    geom_ribbon(alpha=0.2) +
-    scale_y_continuous(limits = c(ymin, ymax)) +
-    labs(x = 'Value of incentive ($)', y = 'Utility') +
-    theme_bw()
-
-plot_value
-
-df_accessibility <- data.frame(accessibility = unique(data$accessibility)) %>% 
-    mutate(
-        diff    = accessibility - min(accessibility),
-        utility = diff*coefs['accessibility'],
-        upper =  diff*(coefs['accessibility']+2*ses['accessibility']),
-        lower =  diff*(coefs['accessibility']-2*ses['accessibility'])
-    )
-
-# Get upper and lower bounds (plots should have the same y-axis)
-ymin <- floor(min(df_accessibility$lower))
-ymax <- ceiling(max(df_accessibility$upper))
-
-plot_accessibility <- df_accessibility %>% 
-    ggplot(aes(x = accessibility, y = utility,ymin=lower,ymax=upper)) +
-    geom_line() +
-    geom_ribbon(alpha=0.2) +
-    scale_y_continuous(limits = c(ymin, ymax)) +
-    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility') +
-    theme_bw()
-
-plot_accessibility
-
-df_penalty <- data.frame(penalty = unique(data$penalty)) %>% 
-    mutate(
-        diff    = penalty - min(penalty),
-        utility = diff*coefs['penalty'],
-        upper =  diff*(coefs['penalty']+2*ses['penalty']),
-        lower =  diff*(coefs['penalty']-2*ses['penalty'])
-    )
-# Get upper and lower bounds (plots should have the same y-axis)
-ymin <- floor(min(df_penalty$lower))
-ymax <- ceiling(max(df_penalty$upper))
-
-plot_penalty<- df_penalty %>% 
-    ggplot(aes(x = penalty, y = utility, ymin=lower, ymax=upper)) +
-    geom_line() +
-    geom_ribbon(alpha=0.2) +
-    scale_y_continuous(limits = c(ymin, ymax)) +
-    labs(x = 'Penalty for non-compliance ($)', y = 'Utility') +
-    theme_bw()
-
-plot_penalty
-
-df_cash <- data.frame(incentive_cash = unique(data$incentive_cash)) %>% 
-    mutate(
-        utility = incentive_cash*coefs['incentive_cash'],
-        upper =  incentive_cash*(coefs['incentive_cash']+2*ses['incentive_cash']),
-        lower =  incentive_cash*(coefs['incentive_cash']-2*ses['incentive_cash'])
-    )
-
-# Get upper and lower bounds (plots should have the same y-axis)
-ymin <- floor(min(df_cash$lower))
-ymax <- ceiling(max(df_cash$upper))
-
-plot_cash<- df_cash %>% 
-    ggplot(aes(x = incentive_cash, y = utility, ymin=lower, ymax=upper)) +
-    geom_point() +
-    geom_errorbar(width=0.3)  +
-    scale_y_continuous(limits = c(ymin, ymax)) +
-    labs(x = 'Cash incentive?', y = 'Utility') +
-    theme_bw()
-
-plot_cash
-
-df_grocery_store <- data.frame(incentive_grocery_store = unique(data$incentive_grocery_store)) %>% 
-    mutate(
-        utility = incentive_grocery_store*coefs['incentive_grocery_store'],
-        upper =  incentive_grocery_store*(coefs['incentive_grocery_store']+2*ses['incentive_grocery_store']),
-        lower =  incentive_grocery_store*(coefs['incentive_grocery_store']-2*ses['incentive_grocery_store'])
-    )
-
-# Get upper and lower bounds (plots should have the same y-axis)
-ymin <- floor(min(df_grocery_store$lower))
-ymax <- ceiling(max(df_grocery_store$upper))
-
-plot_grocery_store <- df_grocery_store %>% 
-    ggplot(aes(x = incentive_grocery_store, y = utility, ymin=lower, ymax=upper)) +
-    geom_point() +
-    geom_errorbar(width=0.3) +
-    scale_y_continuous(limits = c(ymin, ymax)) +
-    labs(x = 'Grocery store incentive?', y = 'Utility') +
-    theme_bw()
-
-plot_grocery_store
-
-df_internet <- data.frame(incentive_internet = unique(data$incentive_internet)) %>% 
-    mutate(
-        utility = incentive_internet*coefs['incentive_internet'],
-        upper =  incentive_internet*(coefs['incentive_internet']+2*ses['incentive_internet']),
-        lower =  incentive_internet*(coefs['incentive_internet']-2*ses['incentive_internet'])
-    )
-
-# Get upper and lower bounds (plots should have the same y-axis)
-ymin <- floor(min(df_internet$lower))
-ymax <- ceiling(max(df_internet$upper))
-
-plot_internet <- df_internet %>% 
-    ggplot(aes(x = incentive_internet , y = utility, ymin=lower, ymax=upper)) +
-    geom_point() +
-    geom_errorbar(width=0.3) +
-    scale_y_continuous(limits = c(ymin, ymax)) +
-    labs(x = 'Internet bill incentive?', y = 'Utility') +
-    theme_bw()
-
-plot_internet
-
-
-df_sport_tickets <- data.frame(incentive_sport_tickets  = unique(data$incentive_sport_tickets)) %>% 
-    mutate(
-        utility = incentive_sport_tickets *coefs['incentive_sport_tickets'],
-        upper =  incentive_sport_tickets*(coefs['incentive_sport_tickets']+2*ses['incentive_sport_tickets']),
-        lower =  incentive_sport_tickets*(coefs['incentive_sport_tickets']-2*ses['incentive_sport_tickets'])
-    )
-
-# Get upper and lower bounds (plots should have the same y-axis)
-ymin <- floor(min(df_sport_tickets$lower))
-ymax <- ceiling(max(df_sport_tickets$upper))
-
-plot_sport_tickets  <- df_sport_tickets  %>% 
-    ggplot(aes(x = incentive_sport_tickets , y = utility, ymin=lower, ymax=upper)) +
-    geom_point() +
-    geom_errorbar(width=0.3) +
-    scale_y_continuous(limits = c(ymin, ymax)) +
-    labs(x = 'Sporting event tickets incentive?', y = 'Utility') +
-    theme_bw()
-
-plot_sport_tickets 
-
-plot_continuous_attributes <- plot_grid(
-    plot_value, plot_accessibility, plot_penalty,
-    nrow = 3
-)
-
-plot_continuous_attributes 
-
-# Save plots 
-ggsave(
-    filename = here('data', 'plot_continuous_attributes.png'), 
-    plot = plot_continuous_attributes , 
-    width = 10, height = 10)
-
-plot_categorical_attributes <- plot_grid(
-    plot_cash, plot_grocery_store, plot_internet, plot_sport_tickets,
-    nrow = 4
-)
-
-plot_categorical_attributes 
-
-# Save plots 
-ggsave(
-    filename = here('data', 'plot_categorical_attributes.png'), 
-    plot = plot_categorical_attributes , 
-    width = 10, height = 10)
 
 # Mixed logit model 
 mxl_pref <- logitr(
@@ -258,6 +81,8 @@ mxl_pref <- logitr(
 
 # View summary of results
 summary(mxl_pref)
+
+
 # Hesitant vs. resistant - cbcAllSame = 0 is reference 
 resistant_sessions <- choiceData %>% filter(cbcAllSame == 1 & outsideGood == 1) %>% select(session)
 
@@ -275,9 +100,9 @@ data_resistant <- data %>%
     )
 view(data_resistant)
 
-model <- logitr(
+model_resistant <- logitr(
     data = data_resistant,
-    outcome = "choice"
+    outcome = "choice",
     obsID  = "obsID",
     pars   = c(
         "value", 
@@ -302,8 +127,18 @@ model <- logitr(
 )
 
 # Summary of model
-summary(model)
+summary(model_resistant)
 
+coefs_resistant <- coef(model_resistant)
+coefs
+
+ses_resistant <- se(model_resistant)
+ses
+
+save(
+    model_resistant,
+    file = here("models", "model_resistant.RData")
+)
 
 # Conservative vs. liberal - moderate is reference 
 data_politics <- dummy_cols(data, c('politics'))
@@ -341,7 +176,7 @@ data_politics <- data_politics%>%
         
     )
 
-model <- logitr(
+model_politics <- logitr(
     data = data_politics,
     outcome = "choice",
     obsID  = "obsID",
@@ -385,8 +220,18 @@ model <- logitr(
     )
 )
 
-summary(model)
+summary(model_politics)
 
+coefs_politics <- coef(model_politics)
+coefs_politics
+
+ses_politics <- se(model_politics)
+ses_politics
+
+save(
+    model_politics,
+    file = here("models", "model_politics.RData")
+)
 # Lower vs high income - middle class is reference
 data_income <- dummy_cols(data, c('income'))
 view(data_income)
@@ -412,7 +257,7 @@ data_income <- data_income%>%
         incentive_sport_tickets_high = incentive_sport_tickets *  ifelse(income_inc_100_to_150 == 1 | income_inc_150_to_200 == 1 | income_inc_over_200 == 1,1,0),
         outsideGood_high = outsideGood * ifelse(income_inc_100_to_150 == 1 | income_inc_150_to_200 == 1 | income_inc_over_200 == 1,1,0)
  )
-model <- logitr(
+model_income <- logitr(
     data = data_income,
     outcome = "choice",
     obsID  = "obsID",
@@ -447,8 +292,18 @@ model <- logitr(
     )
 )
 
-summary(model)
+summary(model_income)
 
+coefs_income <- coef(model_income)
+coefs_income
+
+ses_income <- se(model_income)
+ses_income
+
+save(
+    model_income,
+    file = here("models", "model_income.RData")
+)
 # Ethnicity - white is reference 
 data_ethnicity <- dummy_cols(data, c('ethnicity'))
 view(data_ethnicity)
@@ -492,7 +347,8 @@ data_ethnicity <- data_ethnicity %>%
         incentive_sport_tickets_native = incentive_sport_tickets * ethnicity_native,
         outsideGood_native = outsideGood * ethnicity_native,
     )
-model <- logitr(
+
+model_ethnicity <- logitr(
     data = data_ethnicity,
     outcome = "choice",
     obsID  = "obsID",
@@ -545,7 +401,18 @@ model <- logitr(
     )
 )
 
-summary(model)
+summary(model_ethnicity)
+
+coefs_ethnicity <- coef(model_ethnicity)
+coefs_ethnicity
+
+ses_ethnicity <- se(model_ethnicity)
+ses_ethnicity
+
+save(
+    model_ethnicity,
+    file = here("models", "model_ethnicity.RData")
+)
 
 # Education - Bachelor's degreee is reference 
 data_education <- dummy_cols(data, c('education'))
@@ -573,7 +440,7 @@ data_education <- data_education%>%
         outsideGood_high = outsideGood * education_degree_grad
     )
     
-model <- logitr(
+model_education <- logitr(
     data = data_education,
     outcome = "choice",
     obsID  = "obsID",
@@ -608,4 +475,1137 @@ model <- logitr(
     )
 )
 
-summary(model)
+summary(model_education)
+
+coefs_education <- coef(model_education)
+coefs_education
+
+ses_education <- se(model_education)
+ses_education
+
+save(
+    model_education,
+    file = here("models", "model_education.RData")
+)
+
+
+
+
+
+
+
+# PLOTTING 
+df_value <- data.frame(value = unique(data$value)) %>% 
+    mutate(
+        diff    = value - min(value),
+        utility = diff*coefs['value'],
+        upper =  diff*(coefs['value']+2*ses['value']),
+        lower =  diff*(coefs['value']-2*ses['value'])
+    )
+
+df_accessibility <- data.frame(
+    distance = c(0, 1, 3, 10),
+    utility = c(0, coefs['accessibility_1'],coefs['accessibility_3'],coefs['accessibility_10']),
+    upper = c(0, coefs['accessibility_1']+2*ses['accessibility_1'], 
+              coefs['accessibility_3']+2*ses['accessibility_3'], 
+              coefs['accessibility_10']+2*ses['accessibility_10']
+    ),
+    lower = c(0, coefs['accessibility_1']-2*ses['accessibility_1'], 
+              coefs['accessibility_3']-2*ses['accessibility_3'], 
+              coefs['accessibility_10']-2*ses['accessibility_10']
+    )
+)
+
+df_penalty <- data.frame(penalty = unique(data$penalty)) %>% 
+    mutate(
+        diff    = penalty - min(penalty),
+        utility = diff*coefs['penalty'],
+        upper =  diff*(coefs['penalty']+2*ses['penalty']),
+        lower =  diff*(coefs['penalty']-2*ses['penalty'])
+    )
+
+df_incentives <-  data.frame(
+    incentive = c("cash", "grocery", "internet", "sports"),
+    utility = c(0, coefs['incentive_grocery_store'], 
+                coefs['incentive_internet'], 
+                coefs['incentive_sport_tickets']
+    ),
+    upper = c(0, coefs['incentive_grocery_store']+2*ses['incentive_grocery_store'], 
+              coefs['incentive_internet']+2*ses['incentive_internet'], 
+              coefs['incentive_sport_tickets']+2*ses['incentive_sport_tickets']
+    ),
+    lower = c(0, coefs['incentive_grocery_store']-2*ses['incentive_grocery_store'], 
+              coefs['incentive_internet']-2*ses['incentive_internet'], 
+              coefs['incentive_sport_tickets']-2*ses['incentive_sport_tickets']
+    )
+)
+
+
+
+
+
+df_resistant_value <- data.frame(value = unique(data_resistant$value)) %>% 
+    mutate(
+        diff    = value - min(value),
+        utility = diff*coefs_resistant['value'],
+        upper =  diff*(coefs_resistant['value']+2*ses_resistant['value']),
+        lower =  diff*(coefs_resistant['value']-2*ses_resistant['value']),
+        utility_resistant = diff*coefs_resistant['value_resistant'],
+        upper_resistant =  diff*(coefs_resistant['value_resistant']+2*ses_resistant['value_resistant']),
+        lower_resistant =  diff*(coefs_resistant['value_resistant']-2*ses_resistant['value_resistant'])
+    )
+df_resistant_value
+
+df_resistant_accessibility <- data.frame(
+    distance = c(0, 1, 3, 10),
+    utility = c(0, coefs_resistant['accessibility_1'],coefs_resistant['accessibility_3'],coefs_resistant['accessibility_10']),
+    utility_resistant = c(0, coefs_resistant['accessibility_1_resistant'],coefs_resistant['accessibility_3_resistant'],coefs_resistant['accessibility_10_resistant']),
+    upper = c(0, coefs_resistant['accessibility_1']+2*ses_resistant['accessibility_1'], 
+              coefs_resistant['accessibility_3']+2*ses_resistant['accessibility_3'], 
+              coefs_resistant['accessibility_10']+2*ses_resistant['accessibility_10']
+    ),
+    upper_resistant = c(0, coefs_resistant['accessibility_1_resistant']+2*ses_resistant['accessibility_1_resistant'], 
+                        coefs_resistant['accessibility_3_resistant']+2*ses_resistant['accessibility_3_resistant'], 
+                        coefs_resistant['accessibility_10_resistant']+2*ses_resistant['accessibility_10_resistant']
+    ),
+    lower = c(0, coefs_resistant['accessibility_1']-2*ses_resistant['accessibility_1'], 
+              coefs_resistant['accessibility_3']-2*ses_resistant['accessibility_3'], 
+              coefs_resistant['accessibility_10']-2*ses_resistant['accessibility_10']
+    ),
+    lower_resistant = c(0, coefs_resistant['accessibility_1_resistant']-2*ses_resistant['accessibility_1_resistant'], 
+                        coefs_resistant['accessibility_3_resistant']-2*ses_resistant['accessibility_3_resistant'], 
+                        coefs_resistant['accessibility_10_resistant']-2*ses_resistant['accessibility_10_resistant']
+    )
+)
+df_resistant_accessibility
+
+df_resistant_penalty <- data.frame(penalty = unique(data_resistant$penalty)) %>% 
+    mutate(
+        diff    = penalty - min(penalty),
+        utility = diff*coefs_resistant['penalty'],
+        upper =  diff*(coefs_resistant['penalty']+2*ses_resistant['penalty']),
+        lower =  diff*(coefs_resistant['penalty']-2*ses_resistant['penalty']),
+        utility_resistant = diff*coefs_resistant['penalty_resistant'],
+        upper_resistant =  diff*(coefs_resistant['penalty_resistant']+2*ses_resistant['penalty_resistant']),
+        lower_resistant =  diff*(coefs_resistant['penalty_resistant']-2*ses_resistant['penalty_resistant'])
+    )
+df_resistant_penalty
+
+df_resistant_incentives <-  data.frame(
+    incentive = c("cash", "grocery", "internet", "sports"),
+    utility = c(0, coefs_resistant['incentive_grocery_store'], 
+                coefs_resistant['incentive_internet'], 
+                coefs_resistant['incentive_sport_tickets']
+    ),
+    upper = c(0, coefs_resistant['incentive_grocery_store']+2*ses_resistant['incentive_grocery_store'], 
+              coefs_resistant['incentive_internet']+2*ses_resistant['incentive_internet'], 
+              coefs_resistant['incentive_sport_tickets']+2*ses_resistant['incentive_sport_tickets']
+    ),
+    lower = c(0, coefs_resistant['incentive_grocery_store']-2*ses_resistant['incentive_grocery_store'], 
+              coefs_resistant['incentive_internet']-2*ses_resistant['incentive_internet'], 
+              coefs_resistant['incentive_sport_tickets']-2*ses_resistant['incentive_sport_tickets']
+    ),
+    utility_resistant = c(0, coefs_resistant['incentive_grocery_store_resistant'], 
+                          coefs_resistant['incentive_internet_resistant'], 
+                          coefs_resistant['incentive_sport_tickets_resistant']
+    ),
+    upper_resistant = c(0, coefs_resistant['incentive_grocery_store_resistant']+2*ses_resistant['incentive_grocery_store_resistant'], 
+                        coefs_resistant['incentive_internet_resistant']+2*ses_resistant['incentive_internet_resistant'], 
+                        coefs_resistant['incentive_sport_tickets_resistant']+2*ses_resistant['incentive_sport_tickets_resistant']
+    ),
+    lower_resistant = c(0, coefs_resistant['incentive_grocery_store_resistant']-2*ses_resistant['incentive_grocery_store_resistant'], 
+                        coefs_resistant['incentive_internet_resistant']-2*ses_resistant['incentive_internet_resistant'], 
+                        coefs_resistant['incentive_sport_tickets_resistant']-2*ses_resistant['incentive_sport_tickets_resistant']
+    )
+)
+
+df_resistant_incentives
+
+
+
+
+df_politics_value <- data.frame(value = unique(data_politics$value)) %>% 
+    mutate(
+        diff    = value - min(value),
+        utility = diff*coefs_politics['value'],
+        upper =  diff*(coefs_politics['value']+2*ses_politics['value']),
+        lower =  diff*(coefs_politics['value']-2*ses_politics['value']),
+        utility_liberal = diff*coefs_politics['value_liberal'],
+        upper_liberal =  diff*(coefs_politics['value_liberal']+2*ses_politics['value_liberal']),
+        lower_liberal =  diff*(coefs_politics['value_liberal']-2*ses_politics['value_liberal']),
+        utility_conservative = diff*coefs_politics['value_conservative'],
+        upper_conservative  =  diff*(coefs_politics['value_conservative']+2*ses_politics['value_conservative']),
+        lower_conservative  =  diff*(coefs_politics['value_conservative']-2*ses_politics['value_conservative']),
+        utility_independent = diff*coefs_politics['value_independent'],
+        upper_independent  =  diff*(coefs_politics['value_independent']+2*ses_politics['value_independent']),
+        lower_independent  =  diff*(coefs_politics['value_independent']-2*ses_politics['value_independent'])
+    )
+df_politics_value
+
+df_politics_accessibility <- data.frame(
+    distance = c(0, 1, 3, 10),
+    utility = c(0, coefs_politics['accessibility_1'],coefs_politics['accessibility_3'],coefs_politics['accessibility_10']),
+    utility_liberal = c(0, coefs_politics['accessibility_1_liberal'],coefs_politics['accessibility_3_liberal'],coefs_politics['accessibility_10_liberal']),
+    utility_conservative = c(0, coefs_politics['accessibility_1_conservative'],coefs_politics['accessibility_3_conservative'],coefs_politics['accessibility_10_conservative']),
+    utility_independent = c(0, coefs_politics['accessibility_1_independent'],coefs_politics['accessibility_3_independent'],coefs_politics['accessibility_10_independent']),
+    upper = c(0, coefs_politics['accessibility_1']+2*ses_politics['accessibility_1'], 
+              coefs_politics['accessibility_3']+2*ses_politics['accessibility_3'], 
+              coefs_politics['accessibility_10']+2*ses_politics['accessibility_10']
+    ),
+    upper_liberal = c(0, coefs_politics['accessibility_1_liberal']+2*ses_politics['accessibility_1_liberal'], 
+                        coefs_politics['accessibility_3_liberal']+2*ses_politics['accessibility_3_liberal'], 
+                        coefs_politics['accessibility_10_liberal']+2*ses_politics['accessibility_10_liberal']
+    ),
+    upper_conservative = c(0, coefs_politics['accessibility_1_conservative']+2*ses_politics['accessibility_1_conservative'], 
+                           coefs_politics['accessibility_3_conservative']+2*ses_politics['accessibility_3_conservative'], 
+                           coefs_politics['accessibility_10_conservative']+2*ses_politics['accessibility_10_conservative']
+    ),
+    upper_independent = c(0, coefs_politics['accessibility_1_independent']+2*ses_politics['accessibility_1_independent'], 
+                           coefs_politics['accessibility_3_independent']+2*ses_politics['accessibility_3_independent'], 
+                           coefs_politics['accessibility_10_independent']+2*ses_politics['accessibility_10_independent']
+    ),
+    lower = c(0, coefs_politics['accessibility_1']-2*ses_politics['accessibility_1'], 
+              coefs_politics['accessibility_3']-2*ses_politics['accessibility_3'], 
+              coefs_politics['accessibility_10']-2*ses_politics['accessibility_10']
+    ),
+    lower_liberal = c(0, coefs_politics['accessibility_1_liberal']-2*ses_politics['accessibility_1_liberal'], 
+                        coefs_politics['accessibility_3_liberal']-2*ses_politics['accessibility_3_liberal'], 
+                        coefs_politics['accessibility_10_liberal']-2*ses_politics['accessibility_10_liberal']
+    ),
+    lower_conservative = c(0, coefs_politics['accessibility_1_conservative']-2*ses_politics['accessibility_1_conservative'], 
+                      coefs_politics['accessibility_3_conservative']-2*ses_politics['accessibility_3_conservative'], 
+                      coefs_politics['accessibility_10_conservative']-2*ses_politics['accessibility_10_conservative']
+    ),
+    lower_independent = c(0, coefs_politics['accessibility_1_independent']-2*ses_politics['accessibility_1_independent'], 
+                           coefs_politics['accessibility_3_independent']-2*ses_politics['accessibility_3_independent'], 
+                           coefs_politics['accessibility_10_independent']-2*ses_politics['accessibility_10_independent']
+    )
+)
+df_politics_accessibility
+
+df_politics_penalty <- data.frame(penalty = unique(data_politics$penalty)) %>% 
+    mutate(
+        diff    = penalty - min(penalty),
+        utility = diff*coefs_politics['penalty'],
+        upper =  diff*(coefs_politics['penalty']+2*ses_politics['penalty']),
+        lower =  diff*(coefs_politics['penalty']-2*ses_politics['penalty']),
+        utility_liberal = diff*coefs_politics['penalty_liberal'],
+        upper_liberal =  diff*(coefs_politics['penalty_liberal']+2*ses_politics['penalty_liberal']),
+        lower_liberal =  diff*(coefs_politics['penalty_liberal']-2*ses_politics['penalty_liberal']),
+        utility_conservative = diff*coefs_politics['penalty_conservative'],
+        upper_conservative =  diff*(coefs_politics['penalty_conservative']+2*ses_politics['penalty_conservative']),
+        lower_conservative =  diff*(coefs_politics['penalty_conservative']-2*ses_politics['penalty_conservative']),
+        utility_independent = diff*coefs_politics['penalty_independent'],
+        upper_independent =  diff*(coefs_politics['penalty_independent']+2*ses_politics['penalty_independent']),
+        lower_independent =  diff*(coefs_politics['penalty_independent']-2*ses_politics['penalty_independent'])
+        
+    )
+df_politics_penalty
+
+df_politics_incentives <-  data.frame(
+    incentive = c("cash", "grocery", "internet", "sports"),
+    utility = c(0, coefs_politics['incentive_grocery_store'], 
+                coefs_politics['incentive_internet'], 
+                coefs_politics['incentive_sport_tickets']
+    ),
+    upper = c(0, coefs_politics['incentive_grocery_store']+2*ses_politics['incentive_grocery_store'], 
+              coefs_politics['incentive_internet']+2*ses_politics['incentive_internet'], 
+              coefs_politics['incentive_sport_tickets']+2*ses_politics['incentive_sport_tickets']
+    ),
+    lower = c(0, coefs_politics['incentive_grocery_store']-2*ses_politics['incentive_grocery_store'], 
+              coefs_politics['incentive_internet']-2*ses_politics['incentive_internet'], 
+              coefs_politics['incentive_sport_tickets']-2*ses_politics['incentive_sport_tickets']
+    ),
+    utility_liberal = c(0, coefs_politics['incentive_grocery_store_liberal'], 
+                          coefs_politics['incentive_internet_liberal'], 
+                          coefs_politics['incentive_sport_tickets_liberal']
+    ),
+    upper_liberal = c(0, coefs_politics['incentive_grocery_store_liberal']+2*ses_politics['incentive_grocery_store_liberal'], 
+                        coefs_politics['incentive_internet_liberal']+2*ses_politics['incentive_internet_liberal'], 
+                        coefs_politics['incentive_sport_tickets_liberal']+2*ses_politics['incentive_sport_tickets_liberal']
+    ),
+    lower_liberal = c(0, coefs_politics['incentive_grocery_store_liberal']-2*ses_politics['incentive_grocery_store_liberal'], 
+                        coefs_politics['incentive_internet_liberal']-2*ses_politics['incentive_internet_liberal'], 
+                        coefs_politics['incentive_sport_tickets_liberal']-2*ses_politics['incentive_sport_tickets_liberal']
+    ),
+    utility_conservative = c(0, coefs_politics['incentive_grocery_store_conservative'], 
+                        coefs_politics['incentive_internet_conservative'], 
+                        coefs_politics['incentive_sport_tickets_conservative']
+    ),
+    upper_conservative = c(0, coefs_politics['incentive_grocery_store_conservative']+2*ses_politics['incentive_grocery_store_conservative'], 
+                      coefs_politics['incentive_internet_conservative']+2*ses_politics['incentive_internet_conservative'], 
+                      coefs_politics['incentive_sport_tickets_conservative']+2*ses_politics['incentive_sport_tickets_conservative']
+    ),
+    lower_conservative = c(0, coefs_politics['incentive_grocery_store_conservative']-2*ses_politics['incentive_grocery_store_conservative'], 
+                      coefs_politics['incentive_internet_conservative']-2*ses_politics['incentive_internet_conservative'], 
+                      coefs_politics['incentive_sport_tickets_conservative']-2*ses_politics['incentive_sport_tickets_conservative']
+    ),
+    utility_independent = c(0, coefs_politics['incentive_grocery_store_independent'], 
+                             coefs_politics['incentive_internet_independent'], 
+                             coefs_politics['incentive_sport_tickets_independent']
+    ),
+    upper_independent = c(0, coefs_politics['incentive_grocery_store_independent']+2*ses_politics['incentive_grocery_store_independent'], 
+                           coefs_politics['incentive_internet_independent']+2*ses_politics['incentive_internet_independent'], 
+                           coefs_politics['incentive_sport_tickets_independent']+2*ses_politics['incentive_sport_tickets_independent']
+    ),
+    lower_independent = c(0, coefs_politics['incentive_grocery_store_independent']-2*ses_politics['incentive_grocery_store_independent'], 
+                           coefs_politics['incentive_internet_independent']-2*ses_politics['incentive_internet_independent'], 
+                           coefs_politics['incentive_sport_tickets_independent']-2*ses_politics['incentive_sport_tickets_independent']
+    )
+)
+
+df_politics_incentives
+
+
+
+
+
+
+
+
+
+
+df_income_value <- data.frame(value = unique(data_income$value)) %>% 
+    mutate(
+        diff    = value - min(value),
+        utility = diff*coefs_income['value'],
+        upper =  diff*(coefs_income['value']+2*ses_income['value']),
+        lower =  diff*(coefs_income['value']-2*ses_income['value']),
+        utility_low = diff*coefs_income['value_low'],
+        upper_low =  diff*(coefs_income['value_low']+2*ses_income['value_low']),
+        lower_low =  diff*(coefs_income['value_low']-2*ses_income['value_low']),
+        utility_high = diff*coefs_income['value_high'],
+        upper_high  =  diff*(coefs_income['value_high']+2*ses_income['value_high']),
+        lower_high  =  diff*(coefs_income['value_high']-2*ses_income['value_high'])
+    )
+
+df_income_value
+
+df_income_accessibility <- data.frame(
+    distance = c(0, 1, 3, 10),
+    utility = c(0, coefs_income['accessibility_1'],coefs_income['accessibility_3'],coefs_income['accessibility_10']),
+    utility_low = c(0, coefs_income['accessibility_1_low'],coefs_income['accessibility_3_low'],coefs_income['accessibility_10_low']),
+    utility_high = c(0, coefs_income['accessibility_1_high'],coefs_income['accessibility_3_high'],coefs_income['accessibility_10_high']),
+    upper = c(0, coefs_income['accessibility_1']+2*ses_income['accessibility_1'], 
+              coefs_income['accessibility_3']+2*ses_income['accessibility_3'], 
+              coefs_income['accessibility_10']+2*ses_income['accessibility_10']
+    ),
+    upper_low = c(0, coefs_income['accessibility_1_low']+2*ses_income['accessibility_1_low'], 
+                      coefs_income['accessibility_3_low']+2*ses_income['accessibility_3_low'], 
+                      coefs_income['accessibility_10_low']+2*ses_income['accessibility_10_low']
+    ),
+    upper_high = c(0, coefs_income['accessibility_1_high']+2*ses_income['accessibility_1_high'], 
+                          coefs_income['accessibility_3_high']+2*ses_income['accessibility_3_high'], 
+                          coefs_income['accessibility_10_high']+2*ses_income['accessibility_10_high']
+    ),
+    lower = c(0, coefs_income['accessibility_1']-2*ses_income['accessibility_1'], 
+              coefs_income['accessibility_3']-2*ses_income['accessibility_3'], 
+              coefs_income['accessibility_10']-2*ses_income['accessibility_10']
+    ),
+    lower_low = c(0, coefs_income['accessibility_1_low']-2*ses_income['accessibility_1_low'], 
+                      coefs_income['accessibility_3_low']-2*ses_income['accessibility_3_low'], 
+                      coefs_income['accessibility_10_low']-2*ses_income['accessibility_10_low']
+    ),
+    lower_high = c(0, coefs_income['accessibility_1_high']-2*ses_income['accessibility_1_high'], 
+                           coefs_income['accessibility_3_high']-2*ses_income['accessibility_3_high'], 
+                           coefs_income['accessibility_10_high']-2*ses_income['accessibility_10_high']
+    )
+)
+df_income_accessibility
+
+df_income_penalty <- data.frame(penalty = unique(data_income$penalty)) %>% 
+    mutate(
+        diff    = penalty - min(penalty),
+        utility = diff*coefs_income['penalty'],
+        upper =  diff*(coefs_income['penalty']+2*ses_income['penalty']),
+        lower =  diff*(coefs_income['penalty']-2*ses_income['penalty']),
+        utility_low = diff*coefs_income['penalty_low'],
+        upper_low =  diff*(coefs_income['penalty_low']+2*ses_income['penalty_low']),
+        lower_low =  diff*(coefs_income['penalty_low']-2*ses_income['penalty_low']),
+        utility_high = diff*coefs_income['penalty_high'],
+        upper_high =  diff*(coefs_income['penalty_high']+2*ses_income['penalty_high']),
+        lower_high =  diff*(coefs_income['penalty_high']-2*ses_income['penalty_high'])
+    )
+
+df_income_penalty
+
+df_income_incentives <-  data.frame(
+    incentive = c("cash", "grocery", "internet", "sports"),
+    utility = c(0, coefs_income['incentive_grocery_store'], 
+                coefs_income['incentive_internet'], 
+                coefs_income['incentive_sport_tickets']
+    ),
+    upper = c(0, coefs_income['incentive_grocery_store']+2*ses_income['incentive_grocery_store'], 
+              coefs_income['incentive_internet']+2*ses_income['incentive_internet'], 
+              coefs_income['incentive_sport_tickets']+2*ses_income['incentive_sport_tickets']
+    ),
+    lower = c(0, coefs_income['incentive_grocery_store']-2*ses_income['incentive_grocery_store'], 
+              coefs_income['incentive_internet']-2*ses_income['incentive_internet'], 
+              coefs_income['incentive_sport_tickets']-2*ses_income['incentive_sport_tickets']
+    ),
+    utility_low = c(0, coefs_income['incentive_grocery_store_low'], 
+                        coefs_income['incentive_internet_low'], 
+                        coefs_income['incentive_sport_tickets_low']
+    ),
+    upper_low = c(0, coefs_income['incentive_grocery_store_low']+2*ses_income['incentive_grocery_store_low'], 
+                      coefs_income['incentive_internet_low']+2*ses_income['incentive_internet_low'], 
+                      coefs_income['incentive_sport_tickets_low']+2*ses_income['incentive_sport_tickets_low']
+    ),
+    lower_low = c(0, coefs_income['incentive_grocery_store_low']-2*ses_income['incentive_grocery_store_low'], 
+                      coefs_income['incentive_internet_low']-2*ses_income['incentive_internet_low'], 
+                      coefs_income['incentive_sport_tickets_low']-2*ses_income['incentive_sport_tickets_low']
+    ),
+    utility_high = c(0, coefs_income['incentive_grocery_store_high'], 
+                             coefs_income['incentive_internet_high'], 
+                             coefs_income['incentive_sport_tickets_high']
+    ),
+    upper_high = c(0, coefs_income['incentive_grocery_store_high']+2*ses_income['incentive_grocery_store_high'], 
+                           coefs_income['incentive_internet_high']+2*ses_income['incentive_internet_high'], 
+                           coefs_income['incentive_sport_tickets_high']+2*ses_income['incentive_sport_tickets_high']
+    ),
+    lower_high = c(0, coefs_income['incentive_grocery_store_high']-2*ses_income['incentive_grocery_store_high'], 
+                           coefs_income['incentive_internet_high']-2*ses_income['incentive_internet_high'], 
+                           coefs_income['incentive_sport_tickets_high']-2*ses_income['incentive_sport_tickets_high']
+    )
+)
+df_income_incentives
+
+
+
+
+
+
+df_education_value <- data.frame(value = unique(data_education$value)) %>% 
+    mutate(
+        diff    = value - min(value),
+        utility = diff*coefs_education['value'],
+        upper =  diff*(coefs_education['value']+2*ses_education['value']),
+        lower =  diff*(coefs_education['value']-2*ses_education['value']),
+        utility_low = diff*coefs_education['value_low'],
+        upper_low =  diff*(coefs_education['value_low']+2*ses_education['value_low']),
+        lower_low =  diff*(coefs_education['value_low']-2*ses_education['value_low']),
+        utility_high = diff*coefs_education['value_high'],
+        upper_high  =  diff*(coefs_education['value_high']+2*ses_education['value_high']),
+        lower_high  =  diff*(coefs_education['value_high']-2*ses_education['value_high'])
+    )
+
+df_education_value
+
+df_education_accessibility <- data.frame(
+    distance = c(0, 1, 3, 10),
+    utility = c(0, coefs_education['accessibility_1'],coefs_education['accessibility_3'],coefs_education['accessibility_10']),
+    utility_low = c(0, coefs_education['accessibility_1_low'],coefs_education['accessibility_3_low'],coefs_education['accessibility_10_low']),
+    utility_high = c(0, coefs_education['accessibility_1_high'],coefs_education['accessibility_3_high'],coefs_education['accessibility_10_high']),
+    upper = c(0, coefs_education['accessibility_1']+2*ses_education['accessibility_1'], 
+              coefs_education['accessibility_3']+2*ses_education['accessibility_3'], 
+              coefs_education['accessibility_10']+2*ses_education['accessibility_10']
+    ),
+    upper_low = c(0, coefs_education['accessibility_1_low']+2*ses_education['accessibility_1_low'], 
+                  coefs_education['accessibility_3_low']+2*ses_education['accessibility_3_low'], 
+                  coefs_education['accessibility_10_low']+2*ses_education['accessibility_10_low']
+    ),
+    upper_high = c(0, coefs_education['accessibility_1_high']+2*ses_education['accessibility_1_high'], 
+                   coefs_education['accessibility_3_high']+2*ses_education['accessibility_3_high'], 
+                   coefs_education['accessibility_10_high']+2*ses_education['accessibility_10_high']
+    ),
+    lower = c(0, coefs_education['accessibility_1']-2*ses_education['accessibility_1'], 
+              coefs_education['accessibility_3']-2*ses_education['accessibility_3'], 
+              coefs_education['accessibility_10']-2*ses_education['accessibility_10']
+    ),
+    lower_low = c(0, coefs_education['accessibility_1_low']-2*ses_education['accessibility_1_low'], 
+                  coefs_education['accessibility_3_low']-2*ses_education['accessibility_3_low'], 
+                  coefs_education['accessibility_10_low']-2*ses_education['accessibility_10_low']
+    ),
+    lower_high = c(0, coefs_education['accessibility_1_high']-2*ses_education['accessibility_1_high'], 
+                   coefs_education['accessibility_3_high']-2*ses_education['accessibility_3_high'], 
+                   coefs_education['accessibility_10_high']-2*ses_education['accessibility_10_high']
+    )
+)
+df_education_accessibility
+
+df_education_penalty <- data.frame(penalty = unique(data_education$penalty)) %>% 
+    mutate(
+        diff    = penalty - min(penalty),
+        utility = diff*coefs_education['penalty'],
+        upper =  diff*(coefs_education['penalty']+2*ses_education['penalty']),
+        lower =  diff*(coefs_education['penalty']-2*ses_education['penalty']),
+        utility_low = diff*coefs_education['penalty_low'],
+        upper_low =  diff*(coefs_education['penalty_low']+2*ses_education['penalty_low']),
+        lower_low =  diff*(coefs_education['penalty_low']-2*ses_education['penalty_low']),
+        utility_high = diff*coefs_education['penalty_high'],
+        upper_high =  diff*(coefs_education['penalty_high']+2*ses_education['penalty_high']),
+        lower_high =  diff*(coefs_education['penalty_high']-2*ses_education['penalty_high'])
+    )
+
+df_education_penalty
+
+df_education_incentives <-  data.frame(
+    incentive = c("cash", "grocery", "internet", "sports"),
+    utility = c(0, coefs_education['incentive_grocery_store'], 
+                coefs_education['incentive_internet'], 
+                coefs_education['incentive_sport_tickets']
+    ),
+    upper = c(0, coefs_education['incentive_grocery_store']+2*ses_education['incentive_grocery_store'], 
+              coefs_education['incentive_internet']+2*ses_education['incentive_internet'], 
+              coefs_education['incentive_sport_tickets']+2*ses_education['incentive_sport_tickets']
+    ),
+    lower = c(0, coefs_education['incentive_grocery_store']-2*ses_education['incentive_grocery_store'], 
+              coefs_education['incentive_internet']-2*ses_education['incentive_internet'], 
+              coefs_education['incentive_sport_tickets']-2*ses_education['incentive_sport_tickets']
+    ),
+    utility_low = c(0, coefs_education['incentive_grocery_store_low'], 
+                    coefs_education['incentive_internet_low'], 
+                    coefs_education['incentive_sport_tickets_low']
+    ),
+    upper_low = c(0, coefs_education['incentive_grocery_store_low']+2*ses_education['incentive_grocery_store_low'], 
+                  coefs_education['incentive_internet_low']+2*ses_education['incentive_internet_low'], 
+                  coefs_education['incentive_sport_tickets_low']+2*ses_education['incentive_sport_tickets_low']
+    ),
+    lower_low = c(0, coefs_education['incentive_grocery_store_low']-2*ses_education['incentive_grocery_store_low'], 
+                  coefs_education['incentive_internet_low']-2*ses_education['incentive_internet_low'], 
+                  coefs_education['incentive_sport_tickets_low']-2*ses_education['incentive_sport_tickets_low']
+    ),
+    utility_high = c(0, coefs_education['incentive_grocery_store_high'], 
+                     coefs_education['incentive_internet_high'], 
+                     coefs_education['incentive_sport_tickets_high']
+    ),
+    upper_high = c(0, coefs_education['incentive_grocery_store_high']+2*ses_education['incentive_grocery_store_high'], 
+                   coefs_education['incentive_internet_high']+2*ses_education['incentive_internet_high'], 
+                   coefs_education['incentive_sport_tickets_high']+2*ses_education['incentive_sport_tickets_high']
+    ),
+    lower_high = c(0, coefs_education['incentive_grocery_store_high']-2*ses_education['incentive_grocery_store_high'], 
+                   coefs_education['incentive_internet_high']-2*ses_education['incentive_internet_high'], 
+                   coefs_education['incentive_sport_tickets_high']-2*ses_education['incentive_sport_tickets_high']
+    )
+)
+df_education_incentives
+
+
+
+df_ethnicity_value <- data.frame(value = unique(data_ethnicity$value)) %>% 
+    mutate(
+        diff    = value - min(value),
+        utility = diff*coefs_ethnicity['value'],
+        upper =  diff*(coefs_ethnicity['value']+2*ses_ethnicity['value']),
+        lower =  diff*(coefs_ethnicity['value']-2*ses_ethnicity['value']),
+        utility_asian = diff*coefs_ethnicity['value_asian'],
+        upper_asian =  diff*(coefs_ethnicity['value_asian']+2*ses_ethnicity['value_asian']),
+        lower_asian =  diff*(coefs_ethnicity['value_asian']-2*ses_ethnicity['value_asian']),
+        utility_high = diff*coefs_ethnicity['value_black'],
+        upper_high  =  diff*(coefs_ethnicity['value_black']+2*ses_ethnicity['value_black']),
+        lower_high  =  diff*(coefs_ethnicity['value_black']-2*ses_ethnicity['value_black']),
+        utility_hispanic = diff*coefs_ethnicity['value_hispanic'],
+        upper_hispanic =  diff*(coefs_ethnicity['value_hispanic']+2*ses_ethnicity['value_hispanic']),
+        lower_hispanic =  diff*(coefs_ethnicity['value_hispanic']-2*ses_ethnicity['value_hispanic']),
+        utility_native = diff*coefs_ethnicity['value_native'],
+        upper_native  =  diff*(coefs_ethnicity['value_native']+2*ses_ethnicity['value_native']),
+        lower_native  =  diff*(coefs_ethnicity['value_native']-2*ses_ethnicity['value_native'])
+    )
+
+df_ethnicity_value
+
+df_ethnicity_accessibility <- data.frame(
+    distance = c(0, 1, 3, 10),
+    utility = c(0, coefs_ethnicity['accessibility_1'],coefs_ethnicity['accessibility_3'],coefs_ethnicity['accessibility_10']),
+    upper = c(0, coefs_ethnicity['accessibility_1']+2*ses_ethnicity['accessibility_1'], 
+              coefs_ethnicity['accessibility_3']+2*ses_ethnicity['accessibility_3'], 
+              coefs_ethnicity['accessibility_10']+2*ses_ethnicity['accessibility_10']
+    ),
+    lower = c(0, coefs_ethnicity['accessibility_1']-2*ses_ethnicity['accessibility_1'], 
+              coefs_ethnicity['accessibility_3']-2*ses_ethnicity['accessibility_3'], 
+              coefs_ethnicity['accessibility_10']-2*ses_ethnicity['accessibility_10']
+    ),
+    utility_asian = c(0, coefs_ethnicity['accessibility_1_asian'],coefs_ethnicity['accessibility_3_asian'],coefs_ethnicity['accessibility_10_asian']),
+    upper_asian = c(0, coefs_ethnicity['accessibility_1_asian']+2*ses_ethnicity['accessibility_1_asian'], 
+                    coefs_ethnicity['accessibility_3_asian']+2*ses_ethnicity['accessibility_3_asian'], 
+                    coefs_ethnicity['accessibility_10_asian']+2*ses_ethnicity['accessibility_10_asian']
+    ),
+    lower_asian = c(0, coefs_ethnicity['accessibility_1_asian']-2*ses_ethnicity['accessibility_1_asian'], 
+                    coefs_ethnicity['accessibility_3_asian']-2*ses_ethnicity['accessibility_3_asian'], 
+                    coefs_ethnicity['accessibility_10_asian']-2*ses_ethnicity['accessibility_10_asian']
+    ),
+    utility_black = c(0, coefs_ethnicity['accessibility_1_black'],coefs_ethnicity['accessibility_3_black'],coefs_ethnicity['accessibility_10_black']),
+    upper_black = c(0, coefs_ethnicity['accessibility_1_black']+2*ses_ethnicity['accessibility_1_black'], 
+                    coefs_ethnicity['accessibility_3_black']+2*ses_ethnicity['accessibility_3_black'], 
+                    coefs_ethnicity['accessibility_10_black']+2*ses_ethnicity['accessibility_10_black']
+    ),
+    lower_black = c(0, coefs_ethnicity['accessibility_1_black']-2*ses_ethnicity['accessibility_1_black'], 
+                    coefs_ethnicity['accessibility_3_black']-2*ses_ethnicity['accessibility_3_black'], 
+                    coefs_ethnicity['accessibility_10_black']-2*ses_ethnicity['accessibility_10_black']
+    ),
+    utility_hispanic = c(0, coefs_ethnicity['accessibility_1_hispanic'],coefs_ethnicity['accessibility_3_hispanic'],coefs_ethnicity['accessibility_10_hispanic']),
+    upper_hispanic = c(0, coefs_ethnicity['accessibility_1_hispanic']+2*ses_ethnicity['accessibility_1_hispanic'], 
+                    coefs_ethnicity['accessibility_3_hispanic']+2*ses_ethnicity['accessibility_3_hispanic'], 
+                    coefs_ethnicity['accessibility_10_hispanic']+2*ses_ethnicity['accessibility_10_hispanic']
+    ),
+    lower_hispanic = c(0, coefs_ethnicity['accessibility_1_hispanic']-2*ses_ethnicity['accessibility_1_hispanic'], 
+                    coefs_ethnicity['accessibility_3_hispanic']-2*ses_ethnicity['accessibility_3_hispanic'], 
+                    coefs_ethnicity['accessibility_10_hispanic']-2*ses_ethnicity['accessibility_10_hispanic']
+    ),
+    utility_native = c(0, coefs_ethnicity['accessibility_1_native'],coefs_ethnicity['accessibility_3_native'],coefs_ethnicity['accessibility_10_native']),
+    upper_native = c(0, coefs_ethnicity['accessibility_1_native']+2*ses_ethnicity['accessibility_1_native'], 
+                       coefs_ethnicity['accessibility_3_native']+2*ses_ethnicity['accessibility_3_native'], 
+                       coefs_ethnicity['accessibility_10_native']+2*ses_ethnicity['accessibility_10_native']
+    ),
+    lower_native = c(0, coefs_ethnicity['accessibility_1_native']-2*ses_ethnicity['accessibility_1_native'], 
+                       coefs_ethnicity['accessibility_3_native']-2*ses_ethnicity['accessibility_3_native'], 
+                       coefs_ethnicity['accessibility_10_native']-2*ses_ethnicity['accessibility_10_native']
+    )
+)
+
+df_ethnicity_accessibility
+
+df_ethnicity_penalty <- data.frame(penalty = unique(data_ethnicity$penalty)) %>% 
+    mutate(
+        diff    = penalty - min(penalty),
+        utility = diff*coefs_ethnicity['penalty'],
+        upper =  diff*(coefs_ethnicity['penalty']+2*ses_ethnicity['penalty']),
+        lower =  diff*(coefs_ethnicity['penalty']-2*ses_ethnicity['penalty']),
+        utility_asian = diff*coefs_ethnicity['penalty_asian'],
+        upper_asian =  diff*(coefs_ethnicity['penalty_asian']+2*ses_ethnicity['penalty_asian']),
+        lower_asian =  diff*(coefs_ethnicity['penalty_asian']-2*ses_ethnicity['penalty_asian']),
+        utility_black = diff*coefs_ethnicity['penalty_black'],
+        upper_black =  diff*(coefs_ethnicity['penalty_black']+2*ses_ethnicity['penalty_black']),
+        lower_black =  diff*(coefs_ethnicity['penalty_black']-2*ses_ethnicity['penalty_black']),
+        utility_asian = diff*coefs_ethnicity['penalty_hispanic'],
+        upper_asian =  diff*(coefs_ethnicity['penalty_hispanic']+2*ses_ethnicity['penalty_hispanic']),
+        lower_asian =  diff*(coefs_ethnicity['penalty_hispanic']-2*ses_ethnicity['penalty_hispanic']),
+        utility_native = diff*coefs_ethnicity['penalty_native'],
+        upper_native =  diff*(coefs_ethnicity['penalty_native']+2*ses_ethnicity['penalty_native']),
+        lower_native =  diff*(coefs_ethnicity['penalty_native']-2*ses_ethnicity['penalty_native'])
+    )
+
+df_ethnicity_penalty
+
+df_ethnicity_incentives <-  data.frame(
+    incentive = c("cash", "grocery", "internet", "sports"),
+    utility = c(0, coefs_ethnicity['incentive_grocery_store'], 
+                coefs_ethnicity['incentive_internet'], 
+                coefs_ethnicity['incentive_sport_tickets']
+    ),
+    upper = c(0, coefs_ethnicity['incentive_grocery_store']+2*ses_ethnicity['incentive_grocery_store'], 
+              coefs_ethnicity['incentive_internet']+2*ses_ethnicity['incentive_internet'], 
+              coefs_ethnicity['incentive_sport_tickets']+2*ses_ethnicity['incentive_sport_tickets']
+    ),
+    lower = c(0, coefs_ethnicity['incentive_grocery_store']-2*ses_ethnicity['incentive_grocery_store'], 
+              coefs_ethnicity['incentive_internet']-2*ses_ethnicity['incentive_internet'], 
+              coefs_ethnicity['incentive_sport_tickets']-2*ses_ethnicity['incentive_sport_tickets']
+    ),
+    utility_asian = c(0, coefs_ethnicity['incentive_grocery_store_asian'], 
+                    coefs_ethnicity['incentive_internet_asian'], 
+                    coefs_ethnicity['incentive_sport_tickets_asian']
+    ),
+    upper_asian = c(0, coefs_ethnicity['incentive_grocery_store_asian']+2*ses_ethnicity['incentive_grocery_store_asian'], 
+                  coefs_ethnicity['incentive_internet_asian']+2*ses_ethnicity['incentive_internet_asian'], 
+                  coefs_ethnicity['incentive_sport_tickets_asian']+2*ses_ethnicity['incentive_sport_tickets_asian']
+    ),
+    lower_asian = c(0, coefs_ethnicity['incentive_grocery_store_asian']-2*ses_ethnicity['incentive_grocery_store_asian'], 
+                  coefs_ethnicity['incentive_internet_asian']-2*ses_ethnicity['incentive_internet_asian'], 
+                  coefs_ethnicity['incentive_sport_tickets_asian']-2*ses_ethnicity['incentive_sport_tickets_asian']
+    ),
+    utility_black = c(0, coefs_ethnicity['incentive_grocery_store_black'], 
+                      coefs_ethnicity['incentive_internet_black'], 
+                      coefs_ethnicity['incentive_sport_tickets_black']
+    ),
+    upper_black = c(0, coefs_ethnicity['incentive_grocery_store_black']+2*ses_ethnicity['incentive_grocery_store_black'], 
+                    coefs_ethnicity['incentive_internet_black']+2*ses_ethnicity['incentive_internet_black'], 
+                    coefs_ethnicity['incentive_sport_tickets_black']+2*ses_ethnicity['incentive_sport_tickets_black']
+    ),
+    lower_black = c(0, coefs_ethnicity['incentive_grocery_store_black']-2*ses_ethnicity['incentive_grocery_store_black'], 
+                    coefs_ethnicity['incentive_internet_black']-2*ses_ethnicity['incentive_internet_black'], 
+                    coefs_ethnicity['incentive_sport_tickets_black']-2*ses_ethnicity['incentive_sport_tickets_black']
+    ),
+    utility_native = c(0, coefs_ethnicity['incentive_grocery_store_native'], 
+                      coefs_ethnicity['incentive_internet_native'], 
+                      coefs_ethnicity['incentive_sport_tickets_native']
+    ),
+    upper_native = c(0, coefs_ethnicity['incentive_grocery_store_native']+2*ses_ethnicity['incentive_grocery_store_native'], 
+                    coefs_ethnicity['incentive_internet_native']+2*ses_ethnicity['incentive_internet_native'], 
+                    coefs_ethnicity['incentive_sport_tickets_native']+2*ses_ethnicity['incentive_sport_tickets_native']
+    ),
+    lower_native = c(0, coefs_ethnicity['incentive_grocery_store_native']-2*ses_ethnicity['incentive_grocery_store_native'], 
+                    coefs_ethnicity['incentive_internet_native']-2*ses_ethnicity['incentive_internet_native'], 
+                    coefs_ethnicity['incentive_sport_tickets_native']-2*ses_ethnicity['incentive_sport_tickets_native']
+    ),
+    utility_hispanic = c(0, coefs_ethnicity['incentive_grocery_store_hispanic'], 
+                      coefs_ethnicity['incentive_internet_hispanic'], 
+                      coefs_ethnicity['incentive_sport_tickets_hispanic']
+    ),
+    upper_hispanic = c(0, coefs_ethnicity['incentive_grocery_store_hispanic']+2*ses_ethnicity['incentive_grocery_store_hispanic'], 
+                   coefs_ethnicity['incentive_internet_hispanic']+2*ses_ethnicity['incentive_internet_hispanic'], 
+                   coefs_ethnicity['incentive_sport_tickets_hispanic']+2*ses_ethnicity['incentive_sport_tickets_hispanic']
+    ),
+    lower_hispanic = c(0, coefs_ethnicity['incentive_grocery_store_hispanic']-2*ses_ethnicity['incentive_grocery_store_hispanic'], 
+                   coefs_ethnicity['incentive_internet_hispanic']-2*ses_ethnicity['incentive_internet_hispanic'], 
+                   coefs_ethnicity['incentive_sport_tickets_hispanic']-2*ses_ethnicity['incentive_sport_tickets_hispanic']
+    )
+)
+df_ethnicity_incentives
+
+# Get upper and lower bounds (plots should have the same y-axis)
+utility <- c(
+    df_value$upper, df_penalty$upper, 
+    df_incentives$upper, df_accessibility$upper,
+    df_value$lower, df_penalty$lower, 
+    df_incentives$lower, df_accessibility$lower,
+   
+    
+    df_resistant_value$upper, df_resistant_penalty$upper, 
+    df_resistant_incentives$upper, df_resistant_accessibility$upper,
+    df_resistant_value$lower, df_resistant_penalty$lower, 
+    df_resistant_incentives$lower, df_resistant_accessibility$lower,
+    
+    df_resistant_value$upper_resistant, df_resistant_penalty$upper_resistant, 
+    df_resistant_incentives$upper_resistant, df_resistant_accessibility$upper_resistant,
+    df_resistant_value$lower_resistant, df_resistant_penalty$lower_resistant, 
+    df_resistant_incentives$lower_resistant, df_resistant_accessibility$lower_resistant,
+   
+   
+    
+    df_politics_value$upper, df_politics_penalty$upper, 
+    df_politics_incentives$upper, df_politics_accessibility$upper,
+    df_politics_value$lower, df_politics_penalty$lower, 
+    df_politics_incentives$lower, df_politics_accessibility$lower,
+    
+    df_politics_value$upper_liberal, df_politics_penalty$upper_liberal, 
+    df_politics_incentives$upper_liberal, df_politics_accessibility$upper_liberal,
+    df_politics_value$lower_liberal, df_politics_penalty$lower_liberal, 
+    df_politics_incentives$lower_liberal, df_politics_accessibility$lower_liberal,
+    
+    df_politics_value$upper_conservative, df_politics_penalty$upper_conservative, 
+    df_politics_incentives$upper_conservative, df_politics_accessibility$upper_conservative,
+    df_politics_value$lower_conservative, df_politics_penalty$lower_conservative, 
+    df_politics_incentives$lower_conservative, df_politics_accessibility$lower_conservative, 
+    
+    df_politics_value$upper_independent, df_politics_penalty$upper_independent, 
+    df_politics_incentives$upper_independent, df_politics_accessibility$upper_independent,
+    df_politics_value$lower_independent, df_politics_penalty$lower_independent, 
+    df_politics_incentives$lower_independent, df_politics_accessibility$lower_independent,
+    
+    
+    
+    df_income_value$upper, df_income_penalty$upper, 
+    df_income_incentives$upper, df_income_accessibility$upper,
+    df_income_value$lower, df_income_penalty$lower, 
+    df_income_incentives$lower, df_income_accessibility$lower,
+    
+    df_income_value$upper_low, df_income_penalty$upper_low, 
+    df_income_incentives$upper_low, df_income_accessibility$upper_low,
+    df_income_value$lower_low, df_income_penalty$lower_low, 
+    df_income_incentives$lower_low, df_income_accessibility$lower_low,
+    
+    df_income_value$upper_high, df_income_penalty$upper_high, 
+    df_income_incentives$upper_high, df_income_accessibility$upper_high,
+    df_income_value$lower_high, df_income_penalty$lower_high, 
+    df_income_incentives$lower_high, df_income_accessibility$lower_high, 
+    
+    
+    
+    df_ethnicity_value$upper, df_ethnicity_penalty$upper, 
+    df_ethnicity_incentives$upper, df_ethnicity_accessibility$upper,
+    df_ethnicity_value$lower, df_ethnicity_penalty$lower, 
+    df_ethnicity_incentives$lower, df_ethnicity_accessibility$lower,
+    
+    df_ethnicity_value$upper_asian, df_ethnicity_penalty$upper_asian, 
+    df_ethnicity_incentives$upper_asian, df_ethnicity_accessibility$upper_asian,
+    df_ethnicity_value$lower_asian, df_ethnicity_penalty$lower_asian, 
+    df_ethnicity_incentives$lower_asian, df_ethnicity_accessibility$lower_asian,
+    
+    df_ethnicity_value$upper_black, df_ethnicity_penalty$upper_black, 
+    df_ethnicity_incentives$upper_black, df_ethnicity_accessibility$upper_black,
+    df_ethnicity_value$lower_black, df_ethnicity_penalty$lower_black, 
+    df_ethnicity_incentives$lower_black, df_ethnicity_accessibility$lower_black, 
+    
+    df_ethnicity_value$upper_hispanic, df_ethnicity_penalty$upper_hispanic, 
+    df_ethnicity_incentives$upper_hispanic, df_ethnicity_accessibility$upper_hispanic,
+    df_ethnicity_value$lower_hispanic, df_ethnicity_penalty$lower_hispanic, 
+    df_ethnicity_incentives$lower_hispanic, df_ethnicity_accessibility$lower_hispanic,
+    
+    df_ethnicity_value$upper_native, df_ethnicity_penalty$upper_native, 
+    df_ethnicity_incentives$upper_native, df_ethnicity_accessibility$upper_native,
+    df_ethnicity_value$lower_native, df_ethnicity_penalty$lower_native, 
+    df_ethnicity_incentives$lower_native, df_ethnicity_accessibility$lower_native,
+    
+    
+    
+    df_education_value$upper, df_education_penalty$upper, 
+    df_education_incentives$upper, df_education_accessibility$upper,
+    df_education_value$lower, df_education_penalty$lower, 
+    df_education_incentives$lower, df_education_accessibility$lower,
+    
+    df_education_value$upper_low, df_education_penalty$upper_low, 
+    df_education_incentives$upper_low, df_education_accessibility$upper_low,
+    df_education_value$lower_low, df_education_penalty$lower_low, 
+    df_education_incentives$lower_low, df_education_accessibility$lower_low,
+    
+    df_education_value$upper_high, df_education_penalty$upper_high, 
+    df_education_incentives$upper_high, df_education_accessibility$upper_high,
+    df_education_value$lower_high, df_education_penalty$lower_high, 
+    df_education_incentives$lower_high, df_education_accessibility$lower_high
+    
+) 
+
+ymin <- floor(min(utility))
+ymax <- ceiling(max(utility))
+ymin
+ymax
+
+# Plot the utility for each attribute
+plot_value <- df_value %>% 
+    ggplot(aes(x = value, y = utility,ymin=lower,ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility') +
+    theme_bw()
+
+plot_value
+
+plot_accessibility <- df_accessibility %>% 
+    ggplot(aes(x = distance, y = utility,ymin=lower,ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility') +
+    theme_bw()
+
+plot_accessibility
+
+plot_penalty<- df_penalty %>% 
+    ggplot(aes(x = penalty, y = utility, ymin=lower, ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility') +
+    theme_bw()
+
+plot_penalty
+
+plot_incentives <- df_incentives %>% 
+    ggplot(aes(x = incentive, y = utility, ymin=lower, ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility') +
+    theme_bw()
+
+plot_incentives
+
+
+plot_continuous_attributes <- plot_grid(
+    plot_value, plot_penalty,
+    nrow = 1
+)
+
+plot_continuous_attributes 
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_continuous_attributes.png'), 
+    plot = plot_continuous_attributes , 
+    width = 10, height = 10)
+
+plot_categorical_attributes <- plot_grid(
+    plot_accessibility, plot_incentives,
+    nrow = 1
+)
+
+plot_categorical_attributes 
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_categorical_attributes.png'), 
+    plot = plot_categorical_attributes , 
+    width = 10, height = 10)
+
+# Plot the utility for each attribute
+plot_resistant_value <- df_resistant_value %>% 
+    ggplot(aes(x = value, y = utility,ymin=lower,ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility') +
+    theme_bw()
+
+plot_resistant_value
+
+plot_resistant_value_resistant <- df_resistant_value %>% 
+    ggplot(aes(x = value, y = utility_resistant,ymin=lower_resistant,ymax=upper_resistant)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for resistant respondents') +
+    theme_bw()
+
+plot_resistant_value_resistant
+
+plot_resistant_accessibility <- df_resistant_accessibility %>% 
+    ggplot(aes(x = distance, y = utility,ymin=lower,ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility') +
+    theme_bw()
+
+plot_resistant_accessibility
+
+plot_resistant_accessibility_resistant <- df_resistant_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_resistant,ymin=lower_resistant,ymax=upper_resistant)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility for resistant respondents') +
+    theme_bw()
+
+plot_resistant_accessibility_resistant
+
+plot_resistant_penalty <- df_resistant_penalty %>% 
+    ggplot(aes(x = penalty, y = utility, ymin=lower, ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility') +
+    theme_bw()
+
+plot_resistant_penalty
+
+plot_resistant_penalty_resistant <- df_resistant_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_resistant, ymin=lower_resistant, ymax=upper_resistant)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance($)', y = 'Utility for resistant respondents') +
+    theme_bw()
+
+plot_resistant_penalty_resistant
+
+plot_resistant_incentives <- df_resistant_incentives %>% 
+    ggplot(aes(x = incentive, y = utility, ymin=lower, ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility') +
+    theme_bw()
+
+plot_resistant_incentives
+
+plot_resistant_incentives_resistant <- df_resistant_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_resistant, ymin=lower_resistant, ymax=upper_resistant)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for resistant respondents') +
+    theme_bw()
+
+plot_resistant_incentives_resistant
+
+plot_resistant_continuous_attributes <- plot_grid(
+    plot_resistant_value, plot_resistant_value_resistant, plot_resistant_penalty, plot_resistant_penalty_resistant,
+    nrow = 2
+)
+
+plot_resistant_continuous_attributes
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_resistant_continuous_attributes.png'), 
+    plot = plot_resistant_continuous_attributes, 
+    width = 10, height = 10)
+
+plot_resistant_categorical_attributes <- plot_grid(
+    plot_resistant_accessibility, plot_resistant_accessibility_resistant, plot_resistant_incentives, plot_resistant_incentives_resistant,
+    nrow = 2
+)
+
+plot_resistant_categorical_attributes 
+
+
+
+
+# Plot the utility for each attribute
+plot_politics_value <- df_politics_value %>% 
+    ggplot(aes(x = value, y = utility,ymin=lower,ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility') +
+    theme_bw()
+
+plot_politics_value
+
+plot_politics_value_liberal <- df_politics_value %>% 
+    ggplot(aes(x = value, y = utility_liberal,ymin=lower_liberal,ymax=upper_liberal)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for liberal respondents') +
+    theme_bw()
+
+plot_politics_value_liberal
+
+plot_politics_value_conservative <- df_politics_value %>% 
+    ggplot(aes(x = value, y = utility_conservative,ymin=lower_conservative,ymax=upper_conservative)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for conservative respondents') +
+    theme_bw()
+
+plot_politics_value_conservative
+
+plot_politics_value_independent <- df_politics_value %>% 
+    ggplot(aes(x = value, y = utility_independent,ymin=lower_independent,ymax=upper_independent)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Value of incentive ($)', y = 'Utility for independent respondents') +
+    theme_bw()
+
+plot_politics_value_independent
+
+plot_politics_accessibility <- df_politics_accessibility %>% 
+    ggplot(aes(x = distance, y = utility,ymin=lower,ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility') +
+    theme_bw()
+
+plot_politics_accessibility
+
+plot_politics_accessibility_liberal <- df_politics_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_liberal,ymin=lower_liberal,ymax=upper_liberal)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility for liberal respondents') +
+    theme_bw()
+
+plot_politics_accessibility_liberal
+
+plot_politics_accessibility_conservative <- df_politics_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_conservative,ymin=lower_conservative,ymax=upper_conservative)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility for conservative respondents') +
+    theme_bw()
+
+plot_politics_accessibility_conservative
+
+plot_politics_accessibility_independent <- df_politics_accessibility %>% 
+    ggplot(aes(x = distance, y = utility_independent,ymin=lower_independent,ymax=upper_independent)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Distance of nearest vaccination center (miles)', y = 'Utility  for independent respondents') +
+    theme_bw()
+
+plot_politics_accessibility_independent
+
+plot_politics_penalty <- df_politics_penalty %>% 
+    ggplot(aes(x = penalty, y = utility, ymin=lower, ymax=upper)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility') +
+    theme_bw()
+
+plot_politics_penalty
+
+plot_politics_penalty_liberal <- df_politics_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_liberal, ymin=lower_liberal, ymax=upper_liberal)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility for liberal respondents') +
+    theme_bw()
+
+plot_politics_penalty_liberal
+
+plot_politics_penalty_conservative <- df_politics_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_conservative, ymin=lower_conservative, ymax=upper_conservative)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility for conservative respondents') +
+    theme_bw()
+
+plot_politics_penalty_conservative
+
+plot_politics_penalty_independent <- df_politics_penalty %>% 
+    ggplot(aes(x = penalty, y = utility_independent, ymin=lower_independent, ymax=upper_independent)) +
+    geom_line() +
+    geom_ribbon(alpha=0.2) +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Penalty for non-compliance ($)', y = 'Utility for independent respondents') +
+    theme_bw()
+
+plot_politics_penalty_independent
+
+
+
+plot_politics_incentives <- df_politics_incentives %>% 
+    ggplot(aes(x = incentive, y = utility, ymin=lower, ymax=upper)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility') +
+    theme_bw()
+
+plot_politics_incentives
+
+plot_politics_incentives_liberal <- df_politics_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_liberal, ymin=lower_liberal, ymax=upper_liberal)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for liberal respondents') +
+    theme_bw()
+
+plot_politics_incentives_liberal
+
+plot_politics_incentives_conservative <- df_politics_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_conservative, ymin=lower_conservative, ymax=upper_conservative)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for conservative respondents') +
+    theme_bw()
+
+plot_politics_incentives_conservative
+
+plot_politics_incentives_independent <- df_politics_incentives %>% 
+    ggplot(aes(x = incentive, y = utility_independent, ymin=lower_independent, ymax=upper_independent)) +
+    geom_point() +
+    geom_errorbar(width=0.3)  +
+    scale_y_continuous(limits = c(ymin, ymax)) +
+    labs(x = 'Incentive', y = 'Utility for independent respondents') +
+    theme_bw()
+
+plot_politics_incentives_independent
+
+
+
+
+
+
+plot_resistant_continuous_attributes <- plot_grid(
+    plot_resistant_value, plot_resistant_value_resistant, plot_resistant_penalty, plot_resistant_penalty_resistant,
+    nrow = 2
+)
+
+plot_resistant_continuous_attributes
+
+# Save plots 
+ggsave(
+    filename = here('data', 'plot_resistant_continuous_attributes.png'), 
+    plot = plot_resistant_continuous_attributes, 
+    width = 10, height = 10)
+
+plot_resistant_categorical_attributes <- plot_grid(
+    plot_resistant_accessibility, plot_resistant_accessibility_resistant, plot_resistant_incentives, plot_resistant_incentives_resistant,
+    nrow = 2
+)
+
+plot_resistant_categorical_attributes 

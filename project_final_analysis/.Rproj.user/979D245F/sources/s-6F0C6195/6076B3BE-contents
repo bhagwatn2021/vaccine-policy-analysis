@@ -39,7 +39,7 @@ p3 <- p3 %>%
         time_sec_p3 = as.numeric(ended - created, units = "secs")) %>%
     # Select important columns
     filter(created >= ymd("2021-11-26")) %>% 
-    select(session, time_sec_p3, yearOfBirth:feedback,completionCode) %>% 
+    select(attentionCheck1,session, time_sec_p3, yearOfBirth:feedback,completionCode) %>% 
     filter(!is.na(session)) 
 
 view(p1)
@@ -60,12 +60,17 @@ view(data %>% filter(cbcAllSame == 1 & cbc1 == 1))
 view(data %>% filter(cbcAllSame == 1 & cbc1 == 2))
 # If we filtered out this group, we would filter out 48 people, indicating that people intentionally selected this option. 
 
+# Check to see who failed the attention check
+view(data %>% filter(attentionCheck1 == 2))
+# If we filtered out this group, we would not filter out anyone.
+
 data <- data %>% 
     filter(!is.na(cbc1) | !is.na(cbc2) | !is.na(cbc3) | !is.na(cbc4) | !is.na(cbc5) | !is.na(cbc6) | !is.na(cbc7) | !is.na(cbc8) | !is.na(cbc9) | !is.na(cbc10)) %>%
     filter(consentVaccine == 1)%>% 
     filter(consentAge == 1) %>% 
     filter(consentUnderstand == 1) %>% 
-    filter(consentCondition == 1)
+    filter(consentCondition == 1) %>% 
+    filter(attentionCheck1 == 1)
 
 choiceData <- data %>% 
     pivot_longer(

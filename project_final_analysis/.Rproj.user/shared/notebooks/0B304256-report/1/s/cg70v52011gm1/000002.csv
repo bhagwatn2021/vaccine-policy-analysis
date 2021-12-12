@@ -1,0 +1,3 @@
+"0","load(here(""models"",""model_resistant.RData""))"
+"0","# View summary of results"
+"0","kable(coef(model_resistant))"
