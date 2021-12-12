@@ -1,0 +1,57 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>",
+  fig.retina = 3,
+  fig.path = "figs/"
+)
+```
+Welcome to the COVID-19 vaccine mandate survey!
+<center>
+<img src="https://cloudfront-us-east-2.images.arcpublishing.com/reuters/ASAZC3JCXRPIFPVR2YH36VZQQI.jpg" width=300>
+</center> 
+
+--- 
+
+Will you take the COVID-19 vaccine?
+
+- Yes
+- Maybe 
+- No
+
+Will you take the COVID-19 vaccine if given monetary compensation?
+
+- Yes 
+- Maybe 
+- No
+
+Will you take the COVID-19 vaccine if mandated?
+
+- Yes 
+- Maybe 
+- No
+  
+--- 
+
+```{r, echo=FALSE}
+library(tidyverse)
+url <- "https://raw.githubusercontent.com/emse-eda-gwu/2021-Spring/master/data/us_covid.csv"
+data <- read_csv(url) 
+head(data,)
+```
+
+--- 
+
+```{r, echo=FALSE}
+library(tidyverse)
+url <- "https://raw.githubusercontent.com/emse-eda-gwu/2021-Spring/master/data/us_covid.csv"
+data <- read_csv(url) 
+tail(data)
+```
+
+

@@ -24,6 +24,8 @@ knitr::opts_chunk$set(
 # Load libraries here
 library(tidyverse)
 library(here)
+library(knitr)
+library(logitr)
 ```
 
 
@@ -115,27 +117,32 @@ When we first opened the responses from the three separate components, we notice
 Our utility model for each policy attribute is as follows: 
 $$
 
-Uj = \beta_{1}x^{value} + \beta_{2}x^{penalty} + \beta_{3}x^{accessibility} + \beta_{4}x^{cash} + \beta_{5}x^{groceries} + \beta_{6}x^{internet} + \beta_{7}x^{sport}
+Uj = \beta_{value}x^{value} + \beta_{penalty}x^{penalty} + \beta_{accessibility_0}\delta^{accessibility_0} + \beta_{accessibility_1}\delta^{accessibility_1} + \beta_{accessibility_3}\delta^{accessibility_3} + \beta_{accessibility_10}\delta^{accessibility_1_0} + \beta_{cash}\delta^{cash} + \beta_{groceries}\delta^{groceries} + \beta_{internet}\delta^{internet} + \beta_{sports}\delta^{sports}
 
 $$
 
-The first three beta values represent continuous attributes, and for every change in value, accessibility, and penalty, the utility for policy j will increase by the beta value for that attribute * the level of the attribute. The last four beta values are for categorical attributes that can either be 0 or 1, with 0 denoting the attribute is not present and 1 denoting the presence of an attribute. If present, the utility for policy j will increase by the beta value for that attribute. 
 
-Using the model and the choice data, we then ran the logitr model using preference space to estimate the beta coefficients. Running a summary of the results returned to us the estimated coefficients and the standard error. It also returned to us the log likelihood that the coefficients are correct and can be used to accurately estimate utility.
+The first two beta values represent continuous attributes, and for every change in value and penalty, the utility for policy j will increase by the beta value for that attribute * the level of the attribute. The last 8 beta values are for categorical attributes that can either be 0 or 1, with 0 denoting the attribute is not present and 1 denoting the presence of an attribute. If present, the utility for policy j will increase by the beta value for that attribute. The first four of those 8 beta values represent categorical variables for distance to a vaccination center, in miles from respondents' residences. The first accessibility coefficient represents door-door vaccination campaigns. The last four terms represents the type of incentive given out - cash, grocery store gift cards, internet rebates, or sporting event tickets. 
+
+Using the model and the choice data, we then ran the logitr model using preference space to estimate the beta coefficients. Running a summary of the results returned to us the estimated coefficients and the standard error.
 
 ```{r echo=FALSE}
 load(here("models","model.RData"))
 # View summary of results
-kable(coef(model))
-kable(se(model))
+kable(data.frame(
+  coefficients=coef(model), st_errors=se(model)))
 ```
 
+
+We ran the logitr model with resistant respondents, those who chose not to take the vaccine under all conditions (denoted by outsideGood). We called this subgroup the "resistant" group. We obtained this group by marking each respondent with a 0 or 1 denoting if they answered "no" to all choice questions, and running the logitr model with this group using separate attributes. 
 ```{r echo=FALSE}
 load(here("models","model_resistant.RData"))
 # View summary of results
-kable(coef(model_resistant))
-kable(se(model_resistant))
+kable(data.frame(
+  coefficients=coef(model_resistant), st_errors=se(model_resistant)))
 ```
+
+We ran the logitr model with conservative, liberal, and independent respondents, who self-identified with each respective political party. We obtained these groups by making dummmy columns for each unique political orientation marking each respondent with a 0 or 1 denoting if they have a specific political orientation. We decided to narrow down the number of political groups to reflect our sample size by merging "strongly liberal" and "leaning liberal" into "liberal" and merging "strongly conservative" and "leaning conservative" into "conservative". We then ran the logitr model on these groups and independents using unique attributes. 
 
 ```{r echo=FALSE}
 load(here("models","model_politics.RData"))
@@ -144,6 +151,8 @@ kable(coef(model_politics))
 kable(se(model_politics))
 ```
 
+We ran the logitr model with low-income and high-income respondents, who self-identified with each respective income group. We obtained these groups by making dummmy columns for each income bracket and marking each respondent with a 0 or 1 denoting if they fall in a particular income group. We decided to narrow down the number of political groups to reflect our sample size by merging respondents who earned less than $50,000 into the low-income group and merging respondents who earned $100,000 oe more into the high-income group. We then ran the logitr model on these groups using unique attributes. 
+
 ```{r echo=FALSE}
 load(here("models","model_income.RData"))
 # View summary of results
@@ -151,12 +160,16 @@ kable(coef(model_income))
 kable(se(model_income))
 ```
 
+We ran the logitr model with Asian, Black, Hispanic, and Native American respondents, who self-identified with each respective race. We obtained these groups by making dummmy columns for each race and marking each respondent with a 0 or 1 denoting if they fall in a particular ethnic group. Due to the fact that racial groups have unique biases, we could not merge racial groups and had to model Asians, Blacks, Hispanics, and Native Americans uniquely. We then ran the logitr model on these groups using unique attributes. 
+
 ```{r echo=FALSE}
 load(here("models","model_ethnicity.RData"))
 # View summary of results
 kable(coef(model_ethnicity))
 kable(se(model_ethnicity))
 ```
+
+We ran the logitr model with poorly-educated and highly-educated respondents, who self-identified with each respective education level. We obtained these groups by making dummmy columns for each education level and marking each respondent with a 0 or 1 denoting if they have earned a particular educational degree. We decided to narrow down the number of groups to reflect our sample size by merging respondents who did not hold a Bachelor's degree into the low-education group and merging respondents who earned a graduate degree into the high-income group. We then ran the logitr model on these groups using unique attributes. 
 
 ```{r echo=FALSE}
 load(here("models","model_education.RData"))
@@ -165,55 +178,6 @@ kable(coef(model_education))
 kable(se(model_education))
 ```
 # Results
-
-```{r echo=FALSE}
-load(here("models","model.RData"))
-# View summary of results
-kable(coef(model))
-kable(se(model))
-```
-
-```{r echo=FALSE}
-load(here("models","model_resistant.RData"))
-# View summary of results
-kable(coef(model_resistant))
-kable(se(model_resistant))
-```
-
-```{r echo=FALSE}
-load(here("models","model_politics.RData"))
-# View summary of results
-kable(coef(model_politics))
-kable(se(model_politics))
-```
-
-```{r echo=FALSE}
-load(here("models","model_income.RData"))
-# View summary of results
-kable(coef(model_income))
-kable(se(model_income))
-```
-
-```{r echo=FALSE}
-load(here("models","model_ethnicity.RData"))
-# View summary of results
-kable(coef(model_ethnicity))
-kable(se(model_ethnicity))
-```
-
-```{r echo=FALSE}
-load(here("models","model_education.RData"))
-# View summary of results
-kable(coef(model_education))
-kable(se(model_education))
-```
-
-```{r echo=FALSE}
-load(here("models","model_education.RData"))
-# View summary of results
-kable(coef(model_education))
-kable(se(model_education))
-```
 
 # Final Recommendations and Conclusions
 
