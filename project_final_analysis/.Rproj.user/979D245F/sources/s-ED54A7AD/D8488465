@@ -3,7 +3,7 @@
     "path": "~/Documents/EMSE 6035/vaccine-policy-analysis/project_final_analysis/report.Rmd",
     "project_path": "report.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "2417977633",
     "contents": "",
     "dirty": false,
     "created": 1639159342745.0,
@@ -12,16 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "237,1377",
-        "scrollLine": "227",
-        "last_setup_crc32": "413F95C4b74e0d1f"
+        "cursorPosition": "192,0",
+        "scrollLine": "175",
+        "last_setup_crc32": ""
     },
     "folds": "",
-    "lastKnownWriteTime": 1639375141,
+    "lastKnownWriteTime": 1639407929,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1639375141561,
+    "last_content_update": 1639407930008,
     "read_only": false,
     "read_only_alternatives": []
 }
