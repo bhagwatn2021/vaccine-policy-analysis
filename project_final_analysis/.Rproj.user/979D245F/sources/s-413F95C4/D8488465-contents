@@ -115,12 +115,8 @@ When we first opened the responses from the three separate components, we notice
 ### Modeling
 
 Our utility model for each policy attribute is as follows: 
-$$
 
-Uj = \beta_{value}x^{value} + \beta_{penalty}x^{penalty} + \beta_{accessibility_0}\delta^{accessibility_0} + \beta_{accessibility_1}\delta^{accessibility_1} + \beta_{accessibility_3}\delta^{accessibility_3} + \beta_{accessibility_10}\delta^{accessibility_1_0} + \beta_{cash}\delta^{cash} + \beta_{groceries}\delta^{groceries} + \beta_{internet}\delta^{internet} + \beta_{sports}\delta^{sports}
-
-$$
-
+$ Uj = \beta_{value}x^{value} + \beta_{penalty}x^{penalty} +\beta_{accessibility_0}\delta^{accessibility_0} + \beta_{accessibility_1}\delta^{accessibility_1} +\beta_{accessibility_3}\delta^{accessibility_3} + \beta_{accessibility_10}\delta^{accessibility_1_0} + \beta_{cash}\delta^{cash} + \beta_{groceries}\delta^{groceries} + \beta_{internet}\delta^{internet} + \beta_{sports}\delta^{sports} $
 
 The first two beta values represent continuous attributes, and for every change in value and penalty, the utility for policy j will increase by the beta value for that attribute * the level of the attribute. The last 8 beta values are for categorical attributes that can either be 0 or 1, with 0 denoting the attribute is not present and 1 denoting the presence of an attribute. If present, the utility for policy j will increase by the beta value for that attribute. The first four of those 8 beta values represent categorical variables for distance to a vaccination center, in miles from respondents' residences. The first accessibility coefficient represents door-door vaccination campaigns. The last four terms represents the type of incentive given out - cash, grocery store gift cards, internet rebates, or sporting event tickets. 
 
@@ -133,6 +129,12 @@ kable(data.frame(
   coefficients=coef(model), st_errors=se(model)))
 ```
 
+We ran the mixed logit model on the data. We tried multiple combinations of attributes to vary with a normal distribution, and found that the optimal parameters were value, penalty, and every incentive type varying across a normal distribution. We also found that since the mixed logit model is not convex, using 50 multistarts optimizes the model. We tried multistarts ranging from 2 to 100, and found that the optimal model is found after 50. However, we found that even the optimal mixed logit model is not a good fit, as the expected value for each of the coefficients does not mirror the expected values of the coefficients when using a multinomial logit model. 
+```{r echo=FALSE}
+load(here("models","mxl_pref.RData"))
+# View summary of results
+kable(data.frame(coefficients = coef(mxl_pref),st_errors = se(mxl_pref)))
+```
 
 We ran the logitr model with resistant respondents, those who chose not to take the vaccine under all conditions (denoted by outsideGood). We called this subgroup the "resistant" group. We obtained this group by marking each respondent with a 0 or 1 denoting if they answered "no" to all choice questions, and running the logitr model with this group using separate attributes. 
 ```{r echo=FALSE}
@@ -147,8 +149,7 @@ We ran the logitr model with conservative, liberal, and independent respondents,
 ```{r echo=FALSE}
 load(here("models","model_politics.RData"))
 # View summary of results
-kable(coef(model_politics))
-kable(se(model_politics))
+kable(data.frame(coefficients = coef(model_politics),st_errors = se(model_politics)))
 ```
 
 We ran the logitr model with low-income and high-income respondents, who self-identified with each respective income group. We obtained these groups by making dummmy columns for each income bracket and marking each respondent with a 0 or 1 denoting if they fall in a particular income group. We decided to narrow down the number of political groups to reflect our sample size by merging respondents who earned less than $50,000 into the low-income group and merging respondents who earned $100,000 oe more into the high-income group. We then ran the logitr model on these groups using unique attributes. 
@@ -178,6 +179,83 @@ kable(coef(model_education))
 kable(se(model_education))
 ```
 # Results
+
+## Plotting subgroup coefficients 
+
+We plotted the model coefficients and a 95% confidence interval for all continuous attributes, regressing attribute value onto utility from that attribute, with each coefficient being the slope. We also plotted each categorical attribute coefficient and a 95% confidence interval, with each coefficient representing the total utility from the respective attribute. 
+
+### Baseline model
+
+We plotted the baseline model attributes. We found that the general sample had a favorable view towards incentives (prefer to take the vaccine with incentives) as utility is positively correlated with incentive value, but an unfavorable view for fines (prefer not to take the vaccine with fines) as utility is negatively correlated with penalty value. Moreover, respondents prefer grocery store gift cards the most. We also saw that respondents in general preferred vaccination centers within 3 miles of residences over door-door vaccinations.
+
+<center>
+  <img src="data/plot_continuous_attributes.png"/>
+</center>
+
+<center>
+  <img src="data/plot_categorical_attributes.png"/>
+</center>
+
+### Resistant model
+
+We plotted the model attributes for resistant respondents, with non-resistant respondents as a reference. We found resistant respondents had an unfavorable view towards incentives as utility is negatively correlated with incentive value, and an unfavorable view for fines as utility is also negatively correlated with penalty value. However, resistant respondents seem to be slightly less sensitive to fines, but there is a high confidence interval for this attribute that spans 0, indicating that there is a high degree of uncertainty about the actual utility term for this attribute. Moreover, we found that resistant respondents. We also saw that respondents in general preferred door-door vaccinations and preferred cash as an incentive, however there is a high confidence interval for these attributes that spans 0, limiting our accuracy as to the actual coefficients. 
+
+<center>
+  <img src="data/plot_resistant_continuous_attributes.png"/>
+</center>
+
+<center>
+  <img src="data/plot_resistant_categorical_attributes.png"/>
+</center>
+
+### Political model
+
+We plotted the model attributes for conservative, liberal, and independent respondents, using moderate respondents as a reference. We found respondents in political groups have a favorable view towards incentives as utility is positively correlated with incentive value, and an unfavorable view for fines as utility is also negatively correlated with penalty value. Liberal and conservative respondents did not seem to be persuaded by incentives, given that incentive value is not correlated with utility, and the coefficients for those groups is close to 0, but they had a more favorable view on penalties given the positive correlation between penalty value and utility. Independents seemed to have a more favorable view on penalties and a more unfavorable view on incentives, given the correlation between value and utility. Respondents of a political party (liberal, conservative, independent) tended to prefer vaccination centers, with a slight preference towards vaccination centers 3 miles or less from residences, given higher coefficients for those subgroups. Also given higher coefficients,conservative and independent respondents also prefer internet the most, while liberal respondents prefer cash more than other incentives. However, there is a high confidence interval that spans 0 across most subgroups and continuous attributes, indicating that there is massive uncertainty about the value of the coefficients.
+
+<center>
+  <img src="data/plot_politics_continuous_attributes.png"/>
+</center>
+
+<center>
+  <img src="data/plot_politics_categorical_attributes.png"/>
+</center>
+
+
+### Income model
+
+We plotted the model attributes for low-income and high-income respondents. We found that utility for low-income respondents with regards to penalties and incentives is positively correlated with both penalty value and incentive value, indicating that they are more favorable towards those policies. The expected coefficient for incentive value is close to 0 with high-income respondents, indicating that they are indifferent about incentives. However, the coefficient for penalties with high-income respondents is much higher, in the positive range, indicating more favorability towards penalties. Moreover, based on the coefficients, we found that low-income respondents in the sample slightly prefer internet rebates and vaccination centers within 10 miles, and that high-income respondents in the sample slightly prefer grocery store gift cards and vaccination centers within 10 miles. However, the high confidence interval in all attributes prevents us from making accurate guesses. 
+
+<center>
+  <img src="data/plot_income_continuous_attributes.png"/>
+</center>
+
+<center>
+  <img src="data/plot_income_categorical_attributes.png"/>
+</center>
+
+### Ethnicity model
+
+We plotted the model attributes for Asian, Black, Hispanic, and Native respondents. Given the positive expected coefficients for Native respondents with regards to incentive value, and the negative coefficients for Black, Asian, and Hispanic respondents with regards to incentive value, we found that Native respondents have a favorable view to incentives, while Black, Asian, and Hispanic respondents have a more unfavorable view on incentives. We also found that Black respondents have a more favorable view on penalties, while Asian, Hispanic, and Native respondents have a more unfavorable view on penalties for non-compliance with vaccine mandates. We also found based on the categorical coefficients that Asian respondents prefer to travel within 1 mile to get a vaccine dose, Hispanic and Native respondents are willing to travel 3 miles, and Black respondents are willing to travel 10 miles. Finally, we found based on model coefficients that Asian respondents slightly preffered grocery store gift cards over cash, and majorly preferred grocery store gift cards over internet rebates and sporting event tickets, that Native respondents mostly prefer grocery store gift cards as incentives, that Hispanic respondents have a favorable view on non-cash incentives, and that Black respondents have a preference towards grocery store gift cards and sporting event tickets. 
+
+<center>
+  <img src="data/plot_ethnicity_continuous_attributes.png"/>
+</center>
+
+<center>
+  <img src="data/plot_ethnicity_categorical_attributes.png"/>
+</center>
+
+### Education model
+
+We plotted the model attributes for less-educated and more-educated respondents. We found that utility for less-educated respondents with regards to penalties is positively correlated with penalty value, and that utility for less-educated respondents with regards to incentives is positively correlated with incentive value, although the coefficient for incentive value is close to 0. The expected coefficients for incentive value and penalty is postive with more-educated respondents, indicating that they are more likely to take the COVID-19 vaccine under incentives or penalties. Moreover, based on the coefficients, we found that less-educated respondents in the sample prefer internet rebates and vaccination centers within 3 miles of their residences, although some less-educated respondents are open to travelling 10 miles to get a vaccine, and that more-educated respondents in the sample slightly prefer internet rebates and vaccination centers within 3 miles. However, the high confidence interval that spans 0 in all attributes prevents us from making accurate guesses. 
+
+<center>
+  <img src="data/plot_education_continuous_attributes.png"/>
+</center>
+
+<center>
+  <img src="data/plot_education_categorical_attributes.png"/>
+</center>
 
 # Final Recommendations and Conclusions
 
@@ -374,7 +452,8 @@ Different identity (please state):
 - Georgia
 - Hawaii
 - Idaho
-- IllinoisIndiana
+- Illinois
+- Indiana
 - Iowa
 - Kansas
 - Kentucky

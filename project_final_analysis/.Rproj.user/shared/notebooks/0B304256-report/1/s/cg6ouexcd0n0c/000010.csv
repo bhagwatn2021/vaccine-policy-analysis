@@ -1,4 +1,0 @@
-"0","load(here(""models"",""model.RData""))"
-"0","# View summary of results"
-"0","kable(data.frame("
-"0","  coefficients=coef(model), st_errors=se(model)))"

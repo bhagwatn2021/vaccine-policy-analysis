@@ -82,9 +82,18 @@ mxl_pref <- logitr(
 # View summary of results
 summary(mxl_pref)
 
+coefs <- coef(mxl_pref)
+coefs
 
+ses <- se(mxl_pref)
+ses
+
+save(
+    mxl_pref,
+    file = here("models", "mxl_pref.RData")
+)
 # Hesitant vs. resistant - cbcAllSame = 0 is reference 
-resistant_sessions <- choiceData %>% filter(cbcAllSame == 1 & outsideGood == 1) %>% select(session)
+resistant_sessions <- data %>% filter(cbcAllSame == 1 & outsideGood == 1) %>% select(session)
 
 data_resistant <- data %>%
     mutate(
@@ -130,10 +139,10 @@ model_resistant <- logitr(
 summary(model_resistant)
 
 coefs_resistant <- coef(model_resistant)
-coefs
+coefs_resistant
 
 ses_resistant <- se(model_resistant)
-ses
+ses_resistant
 
 save(
     model_resistant,
@@ -761,10 +770,6 @@ df_politics_incentives
 
 
 
-
-
-
-
 df_income_value <- data.frame(value = unique(data_income$value)) %>% 
     mutate(
         diff    = value - min(value),
@@ -1141,7 +1146,7 @@ df_ethnicity_incentives <-  data.frame(
     )
 )
 df_ethnicity_incentives
-
+df_value$upper
 # Get upper and lower bounds (plots should have the same y-axis)
 utility <- c(
     df_value$upper, df_penalty$upper, 
@@ -1244,7 +1249,7 @@ utility <- c(
     df_education_incentives$lower_high, df_education_accessibility$lower_high
     
 ) 
-
+utility
 ymin <- floor(min(utility))
 ymax <- ceiling(max(utility))
 ymin
@@ -1422,7 +1427,7 @@ plot_resistant_categorical_attributes
 # Save plots 
 ggsave(
     filename = here('data', 'plot_resistant_categorical_attributes.png'), 
-    plot = plot_resistant_continuous_attributes, 
+    plot = plot_resistant_categorical_attributes, 
     width = 10, height = 10)
 
 
