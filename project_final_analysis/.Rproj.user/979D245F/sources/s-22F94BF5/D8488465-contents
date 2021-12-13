@@ -184,7 +184,9 @@ kable(se(model_education))
 
 # Final Recommendations and Conclusions
 
+## Policy Attribute Recommendations
 
+Based on the tornado plot of policy attributes, we recommend against penalties for non-compliance. 
 
 
 # Limitations

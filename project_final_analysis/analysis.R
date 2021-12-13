@@ -14,7 +14,6 @@ library(maddTools)
 
 # Base model
 load(here("models","model.RData"))
-
 # View summary of results
 summary(model)
 coefs <- coef(model)
@@ -394,48 +393,50 @@ ggsave(
 )
 
 ##### SUBGROUP ANALYSIS
-model_politics <- logitr(
-    data = data_politics,
-    outcome = "choice",
-    obsID  = "obsID",
-    pars   = c(
-        "value", 
-        "penalty",
-        "accessibility_1",
-        "accessibility_3",
-        "accessibility_10",
-        "incentive_grocery_store",
-        "incentive_internet",
-        "incentive_sport_tickets",
-        "outsideGood",
-        "value_liberal",
-        "penalty_liberal",
-        "accessibility_1_liberal",
-        "accessibility_3_liberal",
-        "accessibility_10_liberal",
-        "incentive_grocery_store_liberal",
-        "incentive_internet_liberal",
-        "incentive_sport_tickets_liberal",
-        "outsideGood_liberal",
-        "value_conservative",
-        "penalty_conservative",
-        "accessibility_1_conservative",
-        "accessibility_3_conservative",
-        "accessibility_10_conservative",
-        "incentive_grocery_store_conservative",
-        "incentive_internet_conservative",
-        "incentive_sport_tickets_conservative",
-        "outsideGood_conservative",
-        "value_independent",
-        "penalty_independent",
-        "accessibility_1_independent",
-        "accessibility_3_independent",
-        "accessibility_10_independent",
-        "incentive_grocery_store_independent",
-        "incentive_internet_independent",
-        "incentive_sport_tickets_independent",
-        "outsideGood_independent"
-    )
+load(here("models","model_ethnicity.RData"))
+summary(model_ethnicity)
+coefs_ethnicity <- coef(model_ethnicity)
+
+covariance_ethnicity <- vcov(model_ethnicity)
+coef_draws <- as.data.frame(MASS::mvrnorm(10^4, coefs_ethnicity, covariance))
+coef_draws
+coef_draws_asian <- coef_draws %>%
+    mutate(
+        value = value + value_asian,
+        penalty = penalty + penalty_asian,
+        acessibility_1 = accessibility_1+accessibility_1_asian,
+        acessibility_3 = accessibility_3+accessibility_3_asian,
+        acessibility_10 = accessibility_10+accessibility_10_asian,
+        incentive_grocery_store = incentive_grocery_store + incentive_grocery_store_asian,
+        incentive_internet = incentive_internet + incentive_internet_asian,
+        incentive_sport_tickets = incentive_sport_tickets + incentive_sport_tickets_asian,
+        outsideGood = outsideGood + outsideGood_asian
+    ) %>% select(value,penalty,acessibility_1,acessibility_3,acessibility_10,incentive_grocery_store,incentive_internet,incentive_sport_tickets,outsideGood)
+scenarios
+sim_asian <- maddTools::logitProbs(
+    coefs = coef_draws_asian,
+    newdata = scenarios, 
+    obsID = 'obsID', 
+    ci = 0.95
 )
-coefs <- coef(model_politics)
-covariance <- vcov(model_politics)
+
+View(sim_multi_ethnicity)
+
+# Save simulations
+save(
+    sim_multi_ethnicity,
+    file = here("data", "simulation_ethnicity.RData")
+)
+
+allsims_ethnicity <- sim_multi_ethnicity %>%
+    ggplot(aes(
+        x = as.factor(altID), y = predicted_prob, 
+        ymin = predicted_prob_lower, ymax = predicted_prob_upper)) +
+    geom_col(fill = "grey", width = 0.6) +
+    geom_errorbar(width = 0.3) +
+    facet_wrap(~obsID) +
+    scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
+    labs(x = 'Take the vaccine (1=yes,2=no)?', y = 'Probability') +
+    theme_bw()
+
+allsims_ethnicity
