@@ -252,6 +252,66 @@ kable(se(model_education))
 ```
 
 # Results
+```{r echo=FALSE}
+scenario_continuous_params = data.frame(
+    value=c(0,100,1000),
+    penalty=c(0,100,1000)
+)
+scenario_categorical_params = data.frame(
+    accessibility_1=c(0,1),
+    accessibility_3=c(0,1),
+    accessibility_10=c(0,1),
+    incentive_grocery_store=c(0,1),
+    incentive_internet=c(0,1),
+    incentive_sport_tickets=c(0,1),
+    outsideGood=c(0,1)
+)
+```
+# Market scenarios 
+
+We devised a total of 28 scenarios where we varied either incentive value or penalty with different accessibility levels (distances to vaccination centers) or incentive types, with door-to-door vaccinations and cash as an incentive being the reference values for accessibility and incentive type, respectively. Only value or penalty could be non-zero, exclusive to each scenario as we wanted to see the effects of each attribute individually. For each non-zero level of value or penalty, there were 7 possibilities, varying across each of the categorical attribute levels, including reference levels. Each scenario has two options, one with a combinations of choice attributes and outsideGood set to 0 denoting that a respondent would take a vaccine, and the other option with all chocie attributes set to 0 and outsideGood set to 1 denoting that a respondent would not take a vaccine in that scenario. 
+
+## Continuous Parameters
+
+For continuous attributes (value and penalty), we varied values between 0 (when the other attribute was in effect) and 1000. We decided to include 100 as a variable to take into account variation in coefficients. 
+
+```{r echo=FALSE}
+kable(scenario_continuous_params)
+```
+
+## Categorical Parameters
+
+For categorical attributes (incentive type and accessibility), we varied values between 0 and 1 using dummy columns, with 1 denoting that a certain policy involves an incentive type or accessibility level. Since each scenario is exclusive to value or penalty, for every scenario involving a penalty, we only plotted scenarios that varied by accessibility and kept all incentive type values to 0. 
+
+```{r echo=FALSE}
+kable(scenario_categorical_params)
+```
+
+## Plotting Scenarios
+
+We used the predict function from the stats package to calculate the logit probabilities of each alternative in the scenario, simulating the probability that an arbitrary respondent would take the vaccine in a particular scenario.
+
+We made a table of the predicted probabilities that a respondent would take a vaccine. We also made two tornado plots - one plot of the change in probability of vaccination with types of incentives with reference to cash, and another with probabilities of the accessibility levels with reference to door-door vaccinations. We also made sensitivity plots of each of the incentive types, including cash, with plotting scenarios with different values of each type of unique incentive individually against a baseline scenario (no incentives, vaccination centers, or penalties). 
+
+```{r echo=FALSE}
+load(here("data","simulation.RData"))
+kable(sim_multi %>% filter(altID == 1))
+```
+
+
+<center>
+  <img src="data/plot_incentives.png" width=1500>
+</center>
+
+<center>
+  <img src="data/tornado_accessibility_plot.png" width=1500>
+</center>
+
+<center>
+  <img src="data/tornado_plot.png" width=1500>
+</center>
+
+We found that increasing the value of incentives noticeably increased the value of the probability of vaccination, while increasing the penalties noticeably decreased the probability of vaccination. The probability of vaccination especially increased (10% higher) when the incentive was a grocery store gift card - implying that respondents were more inclined by grocery store incentives, and that respondents were hostile to penalties given the extremely low probabilities with high penalties. Moreover, we found that vaccination clinics within 1-3 miles of residences were most effective, as the probability of vaccination increased from door-door vaccinations, but decreased slightly with vaccination centers within 10 miles of residences. 
 
 
 # Final Recommendations and Conclusions
