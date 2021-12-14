@@ -10,7 +10,7 @@ library(here)
 library(logitr)
 library(fastDummies)
 library(maddTools)
-
+library(cowplot)
 
 # Base model
 load(here("models","model.RData"))
@@ -57,18 +57,6 @@ ggsave(
     width = 8, height = 7
 )
 
-sim1 <- sim_multi %>%
-    filter(obsID == 1) %>%
-    ggplot(aes(
-        x = as.factor(altID), y = predicted_prob, 
-        ymin = predicted_prob_lower, ymax = predicted_prob_upper)) +
-    geom_col(fill = "grey", width = 0.6) +
-    geom_errorbar(width = 0.3) +
-    facet_wrap(~obsID) +
-    scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
-    labs(x = 'Alternative', y = 'Market Share') +
-    theme_bw()
-
 # SENSITIVITY ANALYSIS
 
 baseline <- data.frame(
@@ -86,7 +74,7 @@ baseline <- data.frame(
 )
 
 # make probability for option 1 as high as possible
-# instead of market share do probability of taking the shot
+# instead of market sens do probability of taking the shot
 value <- seq(0, 1000) # Define sensitivity price levels
 n <- length(value) # Number of simulations (21)
 scenarios_cash_value <- rep_df(baseline, n) # Repeat the baseline data frame n times
@@ -104,7 +92,7 @@ sens_cash_value <- predict(
     # Keep only prices and predictions
     select(value, starts_with("predicted_")) 
 
-share_cash_plot <- sens_cash_value %>% 
+sens_cash_plot <- sens_cash_value %>% 
     ggplot(aes( x = value, y = predicted_prob, 
                 ymin = predicted_prob_lower, ymax = predicted_prob_upper)) +
     geom_ribbon(alpha = 0.2) +
@@ -115,16 +103,10 @@ share_cash_plot <- sens_cash_value %>%
      #   data = sens_cash_value %>% filter(value <= 100, value >= 500), 
      #   linetype = "solid") +
     expand_limits(x = c(0, 1000), y = c(0, 1)) +
-    labs(x = 'Value of Cash Incentive', y = 'Probability of taking a COVID-19 vaccine') +
+    labs(x = 'Value of Cash Incentive', y = 'Probability') +
     theme_bw()
-share_cash_plot
+sens_cash_plot
 
-# Save plot
-ggsave(
-    filename = here('data', 'plot_cash_value.png'), 
-    plot = share_cash_plot,
-    width = 5, height = 3
-)
 #Grocery Store plots
 scenarios_grocery_value <- rep_df(baseline, n) # Repeat the baseline data frame n times
 scenarios_grocery_value$obsID <- rep(seq(n), each = 2) # Reset obsIDs
@@ -143,7 +125,7 @@ sens_grocery_value <- predict(
     # Keep only prices and predictions
     select(value, starts_with("predicted_")) 
 
-share_grocery_plot <- sens_grocery_value %>% 
+sens_grocery_plot <- sens_grocery_value %>% 
     ggplot(aes( x = value, y = predicted_prob, 
                 ymin = predicted_prob_lower, ymax = predicted_prob_upper)) +
     geom_ribbon(alpha = 0.2) +
@@ -154,16 +136,9 @@ share_grocery_plot <- sens_grocery_value %>%
     #    data = sens_grocery_value %>% filter(value <= 100, value >= 500), 
     #    linetype = "solid") +
     expand_limits(x = c(0, 1000), y = c(0, 1)) +
-    labs(x = 'Value of Grocery Store Incentive', y = 'Probability of taking a COVID-19 vaccine') +
+    labs(x = 'Value of Grocery Store Incentive', y = 'Probability') +
     theme_bw()
-share_grocery_plot
-
-# Save plot
-ggsave(
-    filename = here('data', 'plot_grocery_value.png'), 
-    plot = share_grocery_plot,
-    width = 5, height = 3
-)
+sens_grocery_plot
 
 #Internet plots
 scenarios_internet_value <- rep_df(baseline, n) # Repeat the baseline data frame n times
@@ -182,7 +157,8 @@ sens_internet_value <- predict(
     filter(altID == 1) %>% 
     # Keep only prices and predictions
     select(value, starts_with("predicted_")) 
-share_internet_plot <- sens_internet_value %>% 
+
+sens_internet_plot <- sens_internet_value %>% 
     ggplot(aes( x = value, y = predicted_prob, 
                 ymin = predicted_prob_lower, ymax = predicted_prob_upper)) +
     geom_ribbon(alpha = 0.2) +
@@ -193,17 +169,10 @@ share_internet_plot <- sens_internet_value %>%
 #        data = sens_internet_value %>% filter(value <= 100, value >= 500), 
 #        linetype = "solid") +
     expand_limits(x = c(0, 1000), y = c(0, 1)) +
-    labs(x = 'Value of Internet Rebate Incentive', y = 'Probability of taking a COVID-19 vaccine') +
+    labs(x = 'Value of Internet Rebate Incentive', y = 'Probability') +
     theme_bw()
-share_internet_plot
+sens_internet_plot
 
-
-# Save plot
-ggsave(
-    filename = here('data', 'plot_internet_value.png'), 
-    plot = share_internet_plot,
-    width = 5, height = 3
-)
 
 #Sporting event plots
 scenarios_sports_value <- rep_df(baseline, n) # Repeat the baseline data frame n times
@@ -223,7 +192,7 @@ sens_sports_value <- predict(
     # Keep only prices and predictions
     select(value, starts_with("predicted_")) 
 
-share_sports_plot <- sens_sports_value %>% 
+sens_sports_plot <- sens_sports_value %>% 
     ggplot(aes( x = value, y = predicted_prob, 
                 ymin = predicted_prob_lower, ymax = predicted_prob_upper)) +
     geom_ribbon(alpha = 0.2) +
@@ -234,16 +203,10 @@ share_sports_plot <- sens_sports_value %>%
 #        data = sens_sports_value %>% filter(value <= 100, value >= 500), 
 #        linetype = "solid") +
     expand_limits(x = c(0, 1000), y = c(0, 1)) +
-    labs(x = 'Value of Sporting Event Tickets Incentive', y = 'Probability of taking a COVID-19 vaccine') +
+    labs(x = 'Value of Sporting Event Tickets Incentive', y = 'Probability') +
     theme_bw()
-share_sports_plot
+sens_sports_plot
 
-# Save plot
-ggsave(
-    filename = here('data', 'plot_sports_value.png'), 
-    plot = share_sports_plot,
-    width = 5, height = 3
-)
 #Penalty plots
 penalty <- seq(0, 1000) # Define sensitivity price levels
 n <- length(value) # Number of simulations (21)
@@ -261,7 +224,7 @@ sens_penalty <- predict(
     # Keep only prices and predictions
     select(penalty, starts_with("predicted_"))
 
-share_penalty_plot <- sens_penalty %>% 
+sens_penalty_plot <- sens_penalty %>% 
     ggplot(aes( x = value, y = predicted_prob, 
                 ymin = predicted_prob_lower, ymax = predicted_prob_upper)) +
     geom_ribbon(alpha = 0.2) +
@@ -272,9 +235,24 @@ share_penalty_plot <- sens_penalty %>%
 #        data = sens_penalty %>% filter(value <= 100, value >= 500), 
 #        linetype = "solid") +
     expand_limits(x = c(0, 1000), y = c(0, 1)) +
-    labs(x = 'Value of Penalty', y = 'Probability of taking a COVID-19 vaccine') +
+    labs(x = 'Value of Penalty', y = 'Probability') +
     theme_bw()
-share_penalty_plot
+
+sens_penalty_plot
+
+plots_incentives<- plot_grid(
+  sens_cash_plot, sens_grocery_plot, sens_internet_plot, sens_sports_plot,
+  nrow = 2
+)
+
+plots_incentives
+
+# Save plot
+ggsave(
+  filename = here('data', 'plot_incentives.png'), 
+  plot = plots_incentives,
+  width = 5, height = 3
+)
 
 #Accessibility tornado plots
 accessibility_cases <- tribble(
@@ -286,6 +264,7 @@ accessibility_cases <- tribble(
     6,      1,     'accessibility_10', 'low', 0,
     7,      1,     'accessibility_10', 'high', 1
 )
+
 # Define scenarios
 n <- 7 # baseline + high & low for each attribute
 scenarios_accessibility_atts <- rep_df(baseline, n) 
@@ -302,7 +281,7 @@ scenarios_accessibility_atts <- scenarios_accessibility_atts %>%
         accessibility_10 = ifelse(attribute == 'accessibility_10',amount, accessibility_10)
     )
 scenarios_accessibility_atts
-# For each case, simulate the market share predictions
+# For each case, simulate the market sens predictions
 sens_accessibility_atts <- predict(
     model,
     newdata = scenarios_accessibility_atts, 
@@ -335,7 +314,7 @@ tornado_accessibility_base <- ggtornado(
 # Change the fill colors, adjust labels
 tornado_accessibility_plot <- tornado_accessibility_base +
     scale_fill_manual(values = c("#67a9cf", "#ef8a62")) + 
-    labs(x = 'Probability of taking a COVID-19 vaccine', y = 'Proximity of vaccination centers (miles)')
+    labs(x = 'Probability', y = 'Proximity of vaccination centers (miles)')
 
 tornado_accessibility_plot
 # Save plot
@@ -376,7 +355,7 @@ scenarios_atts <- scenarios_atts %>%
         incentive_sport_tickets = ifelse(attribute == 'incentive_sport_tickets', amount, incentive_sport_tickets)
     )
 scenarios_atts
-# For each case, simulate the market share predictions
+# For each case, simulate the market sens predictions
 sens_atts <- predict(
     model,
     newdata = scenarios_atts, 
@@ -411,7 +390,7 @@ tornado_base <- ggtornado(
 # Change the fill colors, adjust labels
 tornado_plot <- tornado_base +
     scale_fill_manual(values = c("#67a9cf", "#ef8a62")) + 
-    labs(x = 'Probability of taking a COVID-19 vaccine', y = 'Attribute')
+    labs(x = 'Probability', y = 'Attribute')
 
 tornado_plot
 # Save plot
@@ -449,7 +428,7 @@ sim_asian <- maddTools::logitProbs(
     ci = 0.95
 )
 
-View(sim_multi_ethnicity)
+View(sim_asian)
 
 # Save simulations
 save(
