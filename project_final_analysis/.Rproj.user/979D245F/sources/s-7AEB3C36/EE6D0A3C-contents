@@ -1,0 +1,102 @@
+---
+title: "Title"
+subtitle: "If you want a subtitle, put it here"
+author: Update with your name
+date: December 12, 2021 - Update with today's date
+output: 
+  html_document:
+    toc: true 
+    toc_float: true
+    number_sections: false
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>",
+  fig.path = "figs/", # Folder where rendered plots are saved
+  fig.width = 7.252, # Default plot width
+  fig.height = 4, # Default plot height
+  fig.retina = 3 # For better plot resolution
+)
+
+# Load libraries here
+library(tidyverse)
+library(here)
+```
+
+Write your report content here.
+
+Make sure you update the settings in the YAML for your report. 
+
+Use [markdown](https://commonmark.org/help/) for formatting, e.g.: **Bold**, _Italic_, etc.
+
+Here are some section headers to use: 
+
+# Abstract
+This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a vaccine mandate enforced with a fine, the policy in question, to various incentives such as tax rebates and sporting tickets, enforced at tax season. It also takes into account the accessibility of vaccination centers, measured by the proximity of vaccination centers from residencies, as well as combinations of these different policy attributes. The target population for this study are all Americans 18 years and older who have not received a dose of a COVID-19 vaccine. Below are lists of all possible values of each attribute included in the choice questions: 
+
+
+- Types of incentives, including: grocery store gift cards, internet rebate, sporting tickets, cash
+- Value of incentives from $0 - $1000 in increasing increments
+- Value of fines for non-compliance from $0 - $1000 in increasing increments
+- Distance of vaccination sites from 0 miles - 10 miles in increasing increments
+
+The results for our study show a high confidence interval for all attributes, plus a positive coefficient for distance to a vaccination center - our respondents had slightly higher preference towards further vaccination centers, an unlikely and unexpected result. The variance and accuracy of our coefficients reemphasizes that we need a larger and more varied sample to get a more accurate and definite estimate. The positive value for distance to a vaccination center also shows a possible interaction effect with another attribute. This informs us that to get accurate readings, we will need to study both interaction and main effects of attributes. To do so, a full factorial design with every possible choice attribute combination will be the most optimal, and we aim to get a sample size as large as possible by reaching out to others in the GW community and across the US. 
+
+
+
+
+# Introduction
+
+Despite the rollout of COVID-19 vaccines, vaccine hesitancy prevented the United States from achieving herd immunity, the level of immunity that a population has to control the spread of a virus. Below is a chart depicting the number of daily vaccinations over time as a percentage of the population, followed by a chart depicting the percentage of the American population that is vaccinated: 
+
+<center>
+  <img src="images/daily-vaccinations.png" width=1500>
+</center>
+
+<center>
+  <img src="images/total-vaccinations.png" width=1500>
+</center>
+
+In turn, the Delta variant, a highly-contagious strain of SARS-COV-2, the virus that causes COVID-19, ravaged through unvaccinated populations and caused a surge in cases. 
+
+
+On September 9th, 2021, U.S. President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts who claim that forcing Americans to get vaccinated is crucial, criticism from other experts who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitutional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
+
+Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted initiatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites.
+
+Our study analyzes the population and the effectiveness of various policies to increase vaccination rates. Each policy in our study consists of different attributes, which vary across each policy. The goal is to optimize the attributes to get as many people vaccinated as possible. The attributes to be considered are: 
+
+
+
+# Survey Design
+
+
+
+
+# Data Analysis
+
+
+
+
+# Results
+
+
+
+# Final Recommendations and Conclusions
+
+
+
+
+# Limitations
+
+
+
+
+
+# Appendix
+
+
+

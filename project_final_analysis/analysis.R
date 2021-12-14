@@ -21,7 +21,7 @@ coefs
 
 # Read in market scenarios
 scenarios <- read_csv(here('data', 'scenarios.csv'))
-head(scenarios)
+view(scenarios)
 
 sim_multi <- predict(
     model,
@@ -398,20 +398,20 @@ summary(model_ethnicity)
 coefs_ethnicity <- coef(model_ethnicity)
 
 covariance_ethnicity <- vcov(model_ethnicity)
-coef_draws <- as.data.frame(MASS::mvrnorm(10^4, coefs_ethnicity, covariance))
+coef_draws <- as.data.frame(MASS::mvrnorm(10^4, coefs_ethnicity, covariance_ethnicity))
 coef_draws
 coef_draws_asian <- coef_draws %>%
     mutate(
         value = value + value_asian,
         penalty = penalty + penalty_asian,
-        acessibility_1 = accessibility_1+accessibility_1_asian,
-        acessibility_3 = accessibility_3+accessibility_3_asian,
-        acessibility_10 = accessibility_10+accessibility_10_asian,
+        accessibility_1 = accessibility_1+accessibility_1_asian,
+        accessibility_3 = accessibility_3+accessibility_3_asian,
+        accessibility_10 = accessibility_10+accessibility_10_asian,
         incentive_grocery_store = incentive_grocery_store + incentive_grocery_store_asian,
         incentive_internet = incentive_internet + incentive_internet_asian,
         incentive_sport_tickets = incentive_sport_tickets + incentive_sport_tickets_asian,
         outsideGood = outsideGood + outsideGood_asian
-    ) %>% select(value,penalty,acessibility_1,acessibility_3,acessibility_10,incentive_grocery_store,incentive_internet,incentive_sport_tickets,outsideGood)
+    ) %>% select(value,penalty,accessibility_1,accessibility_3,accessibility_10,incentive_grocery_store,incentive_internet,incentive_sport_tickets,outsideGood)
 scenarios
 sim_asian <- maddTools::logitProbs(
     coefs = coef_draws_asian,
