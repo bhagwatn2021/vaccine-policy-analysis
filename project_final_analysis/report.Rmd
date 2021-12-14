@@ -31,19 +31,19 @@ library(logitr)
 
 # Abstract
 
-This study focuses on the various policies that the US Federal government can enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a vaccine mandate enforced with a fine, the policy in question, to various incentives such as tax rebates and sporting tickets. It also takes into account the accessibility of vaccination centers, measured by the proximity of vaccination centers from residencies, as well as combinations of these different policy attributes. The target population for this study are all Americans 18 years and older who have not received a dose of a COVID-19 vaccine. Below are lists of all possible values of each attribute included in the choice questions: 
+This study focuses on various policies that the US Federal government could enact to increase COVID-19 vaccination rates and stabilize the spread of COVID-19 with herd immunity. It compares a vaccine mandate enforced with a fine to various incentives such as tax rebates and sporting tickets. It also takes into account the accessibility of vaccination centers, measured by the proximity of vaccination centers from residencies, as well as combinations of these different policy attributes. The target population for this study are all Americans 18 years and older who have not received a dose of a COVID-19 vaccine. Below are lists of all possible values of each attribute included in the choice questions: 
 
-- Type of incentives for compliance: grocery store gift cards, internet rebates, sporting tickets, cash 
+- Type of incentives for compliance: cash, grocery store gift cards, internet rebates, sporting tickets
 - Value of incentives for compliance ranging from $0-$1000 in increasing increments
 - Value of fines for non-compliance ranging from $0-$1000 in increasing increments
 - Distance from vaccination centers ranging from 0 miles from residences - 10 miles from residences in increasing increments
 
-The results for our study show a high confidence interval for all attributes, plus a positive coefficient for distance to a vaccination center - our respondents had slightly higher preference towards further vaccination centers, an unlikely and unexpected result. The variance and accuracy of our coefficients reemphasizes that we need a larger and more varied sample to get a more accurate and definite estimate. The positive value for distance to a vaccination center also shows a possible interaction effect with another attribute. This informs us that to get accurate readings, we will need to study both interaction and main effects of attributes. To do so, a full factorial design with every possible choice attribute combination will be the most optimal, and we aim to get a sample size as large as possible by reaching out to others in the GW community and across the US. 
+By collecting choice information on these potential attributes, we hope to gain insight on what incentives and/or penalties are the most effective in getting non-vaccinated U.S. residents above the age of 18 vaccinated.
 
 
 # Introduction
 
-Despite the rollout of COVID-19 vaccines, vaccine hesitancy prevented the United States from achieving herd immunity, the level of immunity that a population has to control the spread of a virus. Below is a chart depicting the number of daily vaccinations over time as a percentage of the population, followed by a chart depicting the percentage of the American population that is vaccinated: 
+Despite the rollout of COVID-19 vaccines, vaccine hesitancy prevented the United States from achieving herd immunity, the level of immunity that a population needs to control the spread of a virus. Below is a chart depicting the number of daily vaccinations over time as a percentage of the population, followed by a chart depicting the percentage of the American population that is vaccinated: 
 
 <center>
   <img src="images/daily-vaccinations.png" width=1500>
@@ -53,12 +53,9 @@ Despite the rollout of COVID-19 vaccines, vaccine hesitancy prevented the United
   <img src="images/total-vaccinations.png" width=1500>
 </center>
 
-
-In turn, the Delta variant, a highly-contagious strain of SARS-COV-2, the virus that causes COVID-19, ravaged through unvaccinated populations and caused a surge in cases. 
-
 On September 9th, 2021, U.S. President Joe Biden announced vaccine mandates for 100 million Americans, including federal employees and private-sector employees part of firms with over 100 people. This has been met with praise from some experts who claim that forcing Americans to get vaccinated is crucial, criticism from other experts who claim that resistance to vaccine mandates will cause labor shortages and is not effective enough to vaccinate enough of the population [for herd immunity], and hostile resistance, particularly from conservatives, who attack the Constitutional provision of the mandates. [View this article to read some of the reactions to Biden's order.](https://www.nytimes.com/2021/09/09/world/biden-covid-vaccine-requirements-reaction.html?campaign_id=9&emc=edit_nn_20210910&instance_id=40054&nl=the-morning&regi_id=77202080&segment_id=68558&te=1&user_id=9d1be558afe1d0264747cb1778f62d0a)
 
-Vaccine mandates have been touted for months, since the COVID-19 vaccine has become available. But before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted initiatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites.
+Vaccine mandates have been touted for months since the COVID-19 vaccine has become available, but before they were enacted many state and local governments started giving out positive incentives such as money or commodities. All levels of government, from the federal government to local, enacted initiatives to increase access to the vaccine by fighting misinformation and setting up mobile vaccination sites.
 
 Our study analyzes the population and the effectiveness of various policies to increase vaccination rates. Each policy in our study consists of different attributes, which vary across each policy. The goal is to optimize the attributes to get as many people vaccinated as possible. The attributes to be considered are: 
 
@@ -68,11 +65,12 @@ Accessibility refers to the distance which a vaccination clinic would be placed 
 
 ### Incentives
 
-Incentives refers to the type of commodity that would be given out at tax season for being fully vaccinated against COVID-19 by the tax return deadline. It varies by cash tax rebates and cash equivalents (gift cards) redeemable at:
+Incentives refers to the type of commodity that would be given out at tax season for being fully vaccinated against COVID-19 by the tax return deadline. It varies by the following cash tax rebates and cash equivalents (gift cards):
 
+- Cash
 - Grocery stores
 - Internet providers
-- Professional sporting events 
+- Professional sporting events
 
 ### Incentive Value 
 
@@ -80,7 +78,7 @@ Incentive value refers to the value of commodities that would be given out at ta
 
 ### Penalty
 
-Incentive value refers to the penalty due at tax season for failing to get a  being fully vaccinated against COVID-19 by the tax return deadline under a vaccine mandate. It varies by increasing increments from $0 to $1000. 
+Penalty refers to the penalty due at tax season for failing to get a  being fully vaccinated against COVID-19 by the tax return deadline under a vaccine mandate. It varies by increasing increments from $0 to $1000. 
 
 
 # Survey Design
@@ -106,11 +104,84 @@ Each respondent receives 10 choice questions that have two options "I will take 
 
 ### Sample Description 
 
-The final pilot survey sample after cleaning consists of 107 respondents. The choice data sheet contains of 20 rows per respondent, denoting 2 alternatives per question (will you take the vaccine under this condition or not?) and 10 questions each. 
+The final pilot survey sample after cleaning consists of 107 respondents. The choice data sheet contains of 20 rows per respondent, denoting 2 alternatives per question (will you take the vaccine under this condition or not?) and 10 questions each. The following tables show a breakdown of some of our important survey respondents' demographics.
+
+|       Gender      | Number of Respondents |
+|:-----------------:|:---------------------:|
+|        Male       |           52          |
+|       Female      |           54          |
+| Prefer not to say |           1           |
+
+We had a pretty even split of gender with slightly more females.
+
+| Year of Birth | Number of Respondents |
+|:-------------:|:---------------------:|
+|   1950-1959   |           7           |
+|   1960-1969   |           8           |
+|   1970-1979   |           5           |
+|   1980-1989   |           27          |
+|   1990-1999   |           36          |
+|   2000-2002   |           11          |
+
+Most of our respondents were born in the 1990s, and our survey respondents seemed to skew more towards a younger population of 20 and 30 year olds.
+
+|    Ethnicity    | Number of Respondents |
+|:---------------:|:---------------------:|
+|      Asian      |           6           |
+|      Black      |           9           |
+|     Hispanic    |           6           |
+| Native American |           3           |
+|      White      |           80           |
+|  Self-Identify  |           3          |
+
+An overwhelming majority of our survey population was white. The 3 people who self-identified had written in their ethnicity as "TX" "American" and "North carolina".
+
+| Income (in thousands of $) | Number of Respondents |
+|:--------------------------:|:---------------------:|
+|            < 10            |           3           |
+|           10 - 20          |           7           |
+|           20 - 30          |           13          |
+|           30 - 40          |           9           |
+|           40 - 50          |           14          |
+|           50 - 75          |           19          |
+|          75 - 100          |           15          |
+|          100 - 150         |           14          |
+|          150 - 200         |           6           |
+|            > 200           |           3           |
+|      Prefer not to say     |           5           |
+
+Our respondents came from all income backgrounds.
+
+|  Political Orientation | Number of Respondents |
+|:----------------------:|:---------------------:|
+| Strongly  Conservative |           8           |
+|      Conservative      |           21          |
+|  Leaning Conservative  |           7           |
+|        Moderate        |           19          |
+|     Leaning Liberal    |           5           |
+|         Liberal        |           16          |
+|    Strongly Liberal    |           8           |
+|       Independent      |           19          |
+|    Prefer not to say   |           4           |
+
+There was a diverse distribution of political orientations for our respondents.
+
+| Education Received | Number of Respondents |
+|:------------------:|:---------------------:|
+|    No High school  |           3           |
+|     High School    |           18          |
+|     Vocational     |           5           |
+|    Some College    |           27          |
+| Associate's Degree |           11          |
+|  Bachelor's Degree |           34          |
+|   Graduate Degree  |           8           |
+|  Prefer not to say |           1           |
+
+The majority of our survey population had some college education or more.
 
 ### Data Cleaning
 
-When we first opened the responses from the three separate components, we noticed a lot of null values to numerous attributes, including session ids that seemed to be from unsuccessful attempts to view our survey, or from bots on the internet. To remove these values gracefully, we had to join these three components together by the session id, a unique identifier for each participant associated with the survey. To do so, we took out duplicate columns and removed null values for session. We also computed the time took to complete each survey component in unique columns. Then, we filtered out respondents that did not answer the choice questions and did not meet eligibility criteria. We only filtered out respondents based on if they didn't answer any choice questions because no one only partially answered th choice questions, so we could filter out only those who didn't answer any. There were 697 total respondents, but we trimmed it down to 107 because many did not meet the eligibility criteria and were not able to get to the choice questions. We also filtered out respondents who didn't pass the attention check, but no one was filtered out in this process as every respondent passed. 
+When we first opened the responses from the three separate components, we noticed a lot of null values to numerous attributes, including session ids that seemed to be from unsuccessful attempts to view our survey, or from bots on the internet. To remove these values gracefully, we had to join these three components together by the session id, a unique identifier for each participant associated with the survey. To do so, we took out duplicate columns and removed null values for session. We also computed the time took to complete each survey component in unique columns. Then, we filtered out respondents that did not answer the choice questions and did not meet eligibility criteria. We only filtered out respondents based on if they didn't answer any choice questions because no one only partially answered th choice questions, so we could filter out only those who didn't answer any. There were 697 total respondents, but we trimmed it down to 107 because many did not meet the eligibility criteria and were not able to get to the choice questions. We also filtered out respondents who didn't pass the attention check, but no one was filtered out in this process as every respondent passed the attention check. 
 
 ### Modeling
 
@@ -130,6 +201,7 @@ kable(data.frame(
 ```
 
 We ran the mixed logit model on the data. We tried multiple combinations of attributes to vary with a normal distribution, and found that the optimal parameters were value, penalty, and every incentive type varying across a normal distribution. We also found that since the mixed logit model is not convex, using 50 multistarts optimizes the model. We tried multistarts ranging from 2 to 100, and found that the optimal model is found after 50. However, we found that even the optimal mixed logit model is not a good fit, as the expected value for each of the coefficients does not mirror the expected values of the coefficients when using a multinomial logit model. 
+
 ```{r echo=FALSE}
 load(here("models","mxl_pref.RData"))
 # View summary of results
@@ -144,7 +216,7 @@ kable(data.frame(
   coefficients=coef(model_resistant), st_errors=se(model_resistant)))
 ```
 
-We ran the logitr model with conservative, liberal, and independent respondents, who self-identified with each respective political party. We obtained these groups by making dummmy columns for each unique political orientation marking each respondent with a 0 or 1 denoting if they have a specific political orientation. We decided to narrow down the number of political groups to reflect our sample size by merging "strongly liberal" and "leaning liberal" into "liberal" and merging "strongly conservative" and "leaning conservative" into "conservative". We then ran the logitr model on these groups and independents using unique attributes. 
+We ran the logitr model with conservative, liberal, and independent respondents, who self-identified with each respective political party. We obtained these groups by making dummy columns for each unique political orientation marking each respondent with a 0 or 1 denoting if they have a specific political orientation. We decided to narrow down the number of political groups to reflect our sample size by merging "strongly liberal" and "leaning liberal" into "liberal" and merging "strongly conservative" and "leaning conservative" into "conservative". We then ran the logitr model on these groups and independents using unique attributes. 
 
 ```{r echo=FALSE}
 load(here("models","model_politics.RData"))
@@ -152,7 +224,7 @@ load(here("models","model_politics.RData"))
 kable(data.frame(coefficients = coef(model_politics),st_errors = se(model_politics)))
 ```
 
-We ran the logitr model with low-income and high-income respondents, who self-identified with each respective income group. We obtained these groups by making dummmy columns for each income bracket and marking each respondent with a 0 or 1 denoting if they fall in a particular income group. We decided to narrow down the number of political groups to reflect our sample size by merging respondents who earned less than $50,000 into the low-income group and merging respondents who earned $100,000 oe more into the high-income group. We then ran the logitr model on these groups using unique attributes. 
+We ran the logitr model with low-income and high-income respondents, who self-identified with each respective income group. We obtained these groups by making dummy columns for each income bracket and marking each respondent with a 0 or 1 denoting if they fall in a particular income group. We decided to narrow down the number of political groups to reflect our sample size by merging respondents who earned less than $50,000 into the low-income group and merging respondents who earned $100,000 or more into the high-income group. We then ran the logitr model on these groups using unique attributes. 
 
 ```{r echo=FALSE}
 load(here("models","model_income.RData"))
@@ -161,7 +233,7 @@ kable(coef(model_income))
 kable(se(model_income))
 ```
 
-We ran the logitr model with Asian, Black, Hispanic, and Native American respondents, who self-identified with each respective race. We obtained these groups by making dummmy columns for each race and marking each respondent with a 0 or 1 denoting if they fall in a particular ethnic group. Due to the fact that racial groups have unique biases, we could not merge racial groups and had to model Asians, Blacks, Hispanics, and Native Americans uniquely. We then ran the logitr model on these groups using unique attributes. 
+We ran the logitr model with Asian, Black, Hispanic, and Native American respondents, who self-identified with each respective race. We obtained these groups by making dummy columns for each race and marking each respondent with a 0 or 1 denoting if they fall in a particular ethnic group. Due to the fact that racial groups have unique biases, we could not merge racial groups and had to model Asians, Blacks, Hispanics, and Native Americans uniquely. We then ran the logitr model on these groups using unique attributes. 
 
 ```{r echo=FALSE}
 load(here("models","model_ethnicity.RData"))
@@ -170,7 +242,7 @@ kable(coef(model_ethnicity))
 kable(se(model_ethnicity))
 ```
 
-We ran the logitr model with poorly-educated and highly-educated respondents, who self-identified with each respective education level. We obtained these groups by making dummmy columns for each education level and marking each respondent with a 0 or 1 denoting if they have earned a particular educational degree. We decided to narrow down the number of groups to reflect our sample size by merging respondents who did not hold a Bachelor's degree into the low-education group and merging respondents who earned a graduate degree into the high-income group. We then ran the logitr model on these groups using unique attributes. 
+We ran the logitr model with poorly-educated and highly-educated respondents, who self-identified with each respective education level. We obtained these groups by making dummy columns for each education level and marking each respondent with a 0 or 1 denoting if they have earned a particular educational degree. We decided to narrow down the number of groups to reflect our sample size by merging respondents who did not hold a Bachelor's degree into the low-education group and merging respondents who earned a graduate degree into the high-income group. We then ran the logitr model on these groups using unique attributes. 
 
 ```{r echo=FALSE}
 load(here("models","model_education.RData"))
@@ -178,22 +250,25 @@ load(here("models","model_education.RData"))
 kable(coef(model_education))
 kable(se(model_education))
 ```
-# Results
 
+# Results
 
 
 # Final Recommendations and Conclusions
 
-## Policy Attribute Recommendations
+In general, findings from our analysis were ultimately disappointing- our survey data found that although some people may respond to incentives and receive the vaccine, the vast majority of the unvaccinated population seems to be set on not receiving the vaccine. When asked for feedback on the survey, one  respondent commented: "Under no circumstances including death will I ever take the covid 19 vaccine". We classified 49 out of our 107 respondents as resistant, meaning that they answered that they would not take the COVID-19 vaccine under any of the incentives given to them in all 10 choice questions. To put into context how resistant this group is, some of our incentives and penalties valued up to $1000 and they still chose to not take the vaccine.
 
-Based on the tornado plot of policy attributes, we recommend against penalties for non-compliance. 
+Despite all of this, we were able to gather some interesting findings. Out of all the incentives offered, our population had the largest preference for our grocery store incentive, even over cash. This finding was surprising, considering people would have had more ways to use the incentive if given cash instead of a grocery store incentive. When looking at the value of the incentive, the dollar amount seemed to be insignificant. This is because as the incentive value increased by hundreds of dollars, up to $1000, the value found diminishing returns. If an incentive were to be implemented, a standard value of $100 would allow policymakers to receive the most bang for their buck.
 
+Our survey results also showed that having accessibility to the vaccine could act as a nice supplement to a grocery store incentive for a vaccine policy. A preferable accessibility distance to the vaccine for our survey respondents was within 3 miles of their home. Bringing in the accessibility within 1 mile only swayed a few more respondents, while not many were swayed by accessibility within 10 miles. Specific values can be seen in our accessibility tornado plot.
+
+Based on the tornado plot of policy attributes, we recommend against penalties for non-compliance. Respondents became more and more averse to receiving a vaccine as the penalty value increased. Not only did penalties fail to convince respondents to take the vaccine, but it made them even more resistant. This resistance to compliance showed that a positive incentive would be much better received than a penalty.
 
 # Limitations
 
+There were many limitations to this survey, the largest being the sample size. With only 107 respondents, a much larger sample size would have allowed a much better confidence interval and standard deviation in all of our data. We would also be able to better see the preferences between the different demographics such as age, ethnicity, education, income, location, and political orientation. This could be useful in determining where to implement certain policies. For example, the sporting ticket incentive was least preferred when compared to cash, a grocery store incentive, and an internet incentive. However, in a state like Texas, where football is a religion and there are countless beloved professional and college sports teams, a subgroup analysis of Texans could find a huge preference for a sporting ticket incentive. Different groups of people will have different preferences and our analysis was only able to scratch the surface in discovering these. Gathering more survey data would be essential in having a more robust and confident analysis, which can inform policymakers to create the most effective policy.
 
-
-
+Furthermore, with more time, the interactions between different variables could also be studied. As mentioned, the grocery store incentive was found to be more effective as an incentive for people to take the vaccine than cash. The relationship between the cash incentive and the grocery store incentive could be studied, along with other attributes, to be sure of any interaction effects. If this interaction were studied, it could be found that cash is just as effective as a grocery store incentive.
 
 # Appendix
 
@@ -252,7 +327,9 @@ Below is a description of the various policy attributes that will vary across ev
 
 Accessibility refers to the distance in which a vaccination clinic would be placed from homes. It varies with increasing increments from 0-10 miles from a constituent's residence. A distance of 0 miles indicates door-door in-residence vaccination campaigns, a distance greater than 0 miles indicates that the policy involves a mobile or indoor public vaccination clinic.
 
-#### Insert Image Here
+<center>
+  <img src="https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/main/project_final_survey/images/accessibility.png" width=200>
+</center>
 
 ### Incentives
 
@@ -262,19 +339,25 @@ Incentives refers to the type of commodity that would be given out at tax season
 - Internet providers 
 - Professional sporting events
 
-#### Insert Image Here
+<center>
+  <img src="https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/main/project_final_survey/images/incentives.png" width=200>
+</center>
 
 ### Incentive Value
 
 Incentive value refers to the monetary value of commodities that would be given out at tax season for being fully vaccinated against COVID-19 by the tax return deadline. It varies by increasing increments from $0 to $1000.
 
-#### Insert Image Here
+<center>
+  <img src="https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/main/project_final_survey/images/incentive_value.png" width=200>
+</center>
 
 ### Penalty Value
 
 This value refers to the penalty due at tax season for failing to get a being fully vaccinated against COVID-19 by the tax return deadline under a vaccine mandate. It varies by increasing increments from $0 to $1000.
 
-#### Insert Image Here
+<center>
+   <img src="https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/main/project_final_survey/images/penalty.png" width=200>
+</center>
 
 ## Practice Question
 
@@ -296,7 +379,7 @@ Great work!
 We will now begin with the questions. On the next few pages we will show you different combinations of policy options regarding COVID-19 vaccinations. There will be a total of 10 choice questions for you to answer. (Image shown below is an example of a choice question)
 
 <center>
-### Insert Image Here
+  <img src="https://raw.githubusercontent.com/bhagwatn2021/vaccine-policy-analysis/main/project_pilot_analysis/images/choice-question-image.png" width=1500>
 </center>
 
 ## Respondent Information
@@ -404,7 +487,8 @@ Different identity (please state):
 - Ohio
 - Oklahoma
 - Oregon
-- PennsylvaniaRhode Island
+- Pennsylvania
+- Rhode Island
 - South Carolina
 - South Dakota
 - Tennessee
