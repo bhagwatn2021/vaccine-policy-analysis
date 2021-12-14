@@ -179,6 +179,14 @@ There was a diverse distribution of political orientations for our respondents.
 
 The majority of our survey population had some college education or more.
 
+|      Resistance     | Number of Respondents |
+|:-------------------:|:---------------------:|
+|    No Resistance    |           12          |
+|        Mixed        |           47          |
+| Complete Resistance |           48          |
+
+From our data we identified different groups with different levels of resistance to the COVID-19 vaccine. The no resistance group consisted of 12 survey respondents who chose to take the vaccine for all 10 choice questions. The mixed resistance group consisted of 47 survey respondents who sometimes chose to take the vaccine and sometimes did not choose to take the vaccine. The complete resistance group consisted of 48 respondents who chose not to take the vaccine under any conditions.
+
 ### Data Cleaning
 
 When we first opened the responses from the three separate components, we noticed a lot of null values to numerous attributes, including session ids that seemed to be from unsuccessful attempts to view our survey, or from bots on the internet. To remove these values gracefully, we had to join these three components together by the session id, a unique identifier for each participant associated with the survey. To do so, we took out duplicate columns and removed null values for session. We also computed the time took to complete each survey component in unique columns. Then, we filtered out respondents that did not answer the choice questions and did not meet eligibility criteria. We only filtered out respondents based on if they didn't answer any choice questions because no one only partially answered th choice questions, so we could filter out only those who didn't answer any. There were 697 total respondents, but we trimmed it down to 107 because many did not meet the eligibility criteria and were not able to get to the choice questions. We also filtered out respondents who didn't pass the attention check, but no one was filtered out in this process as every respondent passed the attention check. 
@@ -269,7 +277,7 @@ scenario_categorical_params = data.frame(
 ```
 # Market scenarios 
 
-We devised a total of 28 scenarios where we varied either incentive value or penalty with different accessibility levels (distances to vaccination centers) or incentive types, with door-to-door vaccinations and cash as an incentive being the reference values for accessibility and incentive type, respectively. Only value or penalty could be non-zero, exclusive to each scenario as we wanted to see the effects of each attribute individually. For each non-zero level of value or penalty, there were 7 possibilities, varying across each of the categorical attribute levels, including reference levels. Each scenario has two options, one with a combinations of choice attributes and outsideGood set to 0 denoting that a respondent would take a vaccine, and the other option with all chocie attributes set to 0 and outsideGood set to 1 denoting that a respondent would not take a vaccine in that scenario. 
+We devised a total of 22 scenarios where we varied either incentive value or penalty with different accessibility levels (distances to vaccination centers) or incentive types, with door-to-door vaccinations and cash as an incentive being the reference values for accessibility and incentive type, respectively. Only value or penalty could be non-zero, exclusive to each scenario as we wanted to see the effects of each attribute individually. For each non-zero level of value or penalty, there were 7 possibilities, varying across each of the categorical attribute levels, including reference levels. Each scenario has two options, one with a combinations of choice attributes and outsideGood set to 0 denoting that a respondent would take a vaccine, and the other option with all chocie attributes set to 0 and outsideGood set to 1 denoting that a respondent would not take a vaccine in that scenario. 
 
 ## Continuous Parameters
 
